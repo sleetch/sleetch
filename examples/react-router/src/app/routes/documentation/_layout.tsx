@@ -1,11 +1,4 @@
-import {
-  ConnectedDocumentationSidebar,
-  DocumentationSidebarContent,
-  DocumentationLayout,
-  DocumentationHeader,
-  DocumentationContent,
-  DocumentationToc,
-} from '@ladoc/react';
+import { ConnectedDocumentationSidebar, DocumentationContent } from '@ladoc/react';
 import { get_tree } from '@ladoc/server';
 import { Outlet } from 'react-router';
 import type { Route } from './+types/_layout';

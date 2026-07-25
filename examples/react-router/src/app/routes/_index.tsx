@@ -3,12 +3,7 @@ import '@ladoc/styles/markdown.css';
 import { Link } from 'react-router';
 import type { Route } from './+types/_index';
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const { get_tree, get_tree_pages } = await import('@ladoc/server');
-  const { tree } = await get_tree();
-  const pages = get_tree_pages(tree);
-  return pages[0].path;
-}
+export async function loader({ params }: Route.LoaderArgs) {}
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
@@ -16,7 +11,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <h1>Welcome to my Super Documentation !</h1>
       <p>This is a place where you can learn a lot about this framework !</p>
       <div className="no-ladoc-markdown">
-        <Link to={'/documentation' + loaderData}>
+        <Link to={'/documentation'}>
           <Button>Let's get started</Button>
         </Link>
       </div>

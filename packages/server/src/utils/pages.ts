@@ -1,39 +1,11 @@
-import { get_configuration } from '@ladoc/core/configuration';
-import { get_tree, get_tree_pages, resolve_language_directory } from '@ladoc/core/routing';
-import fs from 'fs';
+import { resolve_language, type manifest_module } from '@ladoc/core/compiler';
 
-export const get_pages = async (_language?: string) => {
-  const { language, directory } = await resolve_language_directory(_language);
-  const tree = get_tree(directory);
-  const pages = get_tree_pages(tree);
-  return { language, pages };
-};
-
-export const get_page = async (path: string, _language?: string) => {
-  const { language, pages } = await get_pages(_language);
-  for (const page of pages) {
-    if (page.path == path) {
-      return { language, path: page.path };
+export const get_page = async (_path: string, _language?: string) => {
+  const language = await resolve_language(_language);
+  const { default: manifest }: manifest_module = await import('@ladoc/cache/generated/manifest.js'!);
+  for (const path of Object.keys(manifest[language]['markdown_modules'])) {
+    if (path == _path) {
+      return { language, path };
     }
   }
-};
-
-export const get_raw_page = async (path: string, _language?: string) => {
-  const page = await get_page(path, _language);
-  if (page) {
-    if (fs.existsSync(page.path)) {
-      const content = fs.readFileSync(page.path, 'utf-8');
-      return content;
-    }
-  }
-};
-
-export const get_static_paths = async () => {
-  const configuration = await get_configuration();
-  const paths: { language: string; path: string }[] = [];
-  for (const _language of Object.keys(configuration.directories)) {
-    const { language, pages } = await get_pages(_language);
-    for (const page of pages) paths.push({ language, path: page.path });
-  }
-  return paths;
 };

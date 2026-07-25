@@ -30,19 +30,16 @@ type Pages = {
   "/llms.txt": {
     params: {};
   };
-  "/trombinoscope": {
-    params: {};
-  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt";
   };
   "routes/_layout.tsx": {
     id: "routes/_layout";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt";
   };
   "routes/$.tsx": {
     id: "routes/$";
@@ -64,10 +61,6 @@ type RouteFiles = {
     id: "routes/llms.txt";
     page: "/llms.txt";
   };
-  "routes/trombinoscope.tsx": {
-    id: "routes/trombinoscope";
-    page: "/trombinoscope";
-  };
 };
 
 type RouteModules = {
@@ -78,5 +71,4 @@ type RouteModules = {
   "routes/documentation/_layout": typeof import("./src/app/routes/documentation/_layout.tsx");
   "routes/documentation/$": typeof import("./src/app/routes/documentation/$.tsx");
   "routes/llms.txt": typeof import("./src/app/routes/llms.txt.tsx");
-  "routes/trombinoscope": typeof import("./src/app/routes/trombinoscope.tsx");
 };

@@ -1,9 +1,8 @@
-import {get_tree as gt, resolve_language_directory} from "@ladoc/core/routing"
+import { resolve_language, type tree_module, type manifest_module } from '@ladoc/core/compiler';
 
 export const get_tree = async (_language?: string) => {
-  const { language, directory } = await resolve_language_directory(_language);
-  const tree = gt(directory)
-  return { language, tree}
-}
-
-export {get_tree_pages} from "@ladoc/core/routing"
+  const language = await resolve_language(_language);
+  const { default: manifest }: manifest_module = await import('@ladoc/cache/generated/manifest.js'!);
+  const { default: tree }: tree_module = await manifest[language]['tree']();
+  return { tree, language };
+};

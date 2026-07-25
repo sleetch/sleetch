@@ -1,22 +1,15 @@
-
 /*
 AI Generated :(
 Needs more testing
 */
 
-import {
-  use,
-  useEffect,
-  useRef,
-  useState,
-  type BaseHTMLAttributes,
-  type CSSProperties,
-} from 'react';
+import { use, useEffect, useRef, useState, type BaseHTMLAttributes, type CSSProperties } from 'react';
 import styles from '@ladoc/styles/components/documentation/toc/index.module.css';
 import clsx from 'clsx';
+import type { markdown_module } from '@ladoc/core/compiler';
 
 export interface DocumentationTocProps extends BaseHTMLAttributes<HTMLBaseElement> {
-  page: Promise<MarkdownModule>;
+  page: Promise<markdown_module>;
 }
 
 interface TocLinkStyle extends CSSProperties {
@@ -37,9 +30,7 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
   useEffect(() => {
     if (toc.length === 0) return;
 
-    const elements = toc
-      .map((item) => document.getElementById(item.id))
-      .filter((el): el is HTMLElement => el !== null);
+    const elements = toc.map((item) => document.getElementById(item.id)).filter((el): el is HTMLElement => el !== null);
 
     if (elements.length === 0) return;
 
@@ -109,13 +100,7 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
       <h3 className={styles['title']}>On this page</h3>
       <div className={styles['track']} ref={trackRef}>
         <span className={styles['line']} aria-hidden="true" />
-        {gapY !== null && (
-          <span
-            className={styles['gapDot']}
-            style={{ top: gapY }}
-            aria-hidden="true"
-          />
-        )}
+        {gapY !== null && <span className={styles['gapDot']} style={{ top: gapY }} aria-hidden="true" />}
         <ul className={styles['list']}>
           {toc.map((item) => {
             const focused = activeIds.has(item.id);
@@ -128,8 +113,9 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
                 ref={(el) => {
                   if (el) itemRefs.current.set(item.id, el);
                   else itemRefs.current.delete(item.id);
-                }}>
-              <a
+                }}
+              >
+                <a
                   href={`#${item.id}`}
                   title={item.title}
                   aria-current={focused ? 'location' : undefined}

@@ -7,10 +7,10 @@ import type { BaseHTMLAttributes, ReactNode } from 'react';
 import { useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from '@ladoc/styles/components/documentation/sidebar/index.module.css';
-import type { TreeObject, Page, Category, Data } from '@ladoc/core/routing';
+import type { tree_object } from '@ladoc/core/compiler';
 
 export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseElement> {
-  tree: TreeObject[];
+  tree: tree_object[];
   currentPath?: string;
   hrefBuilder?: (path: string) => string;
   iconResolver?: (icon?: string) => ReactNode;
@@ -56,15 +56,19 @@ export function DocumentationSidebar({
   );
 }
 
-function getCategoryData(category: Category): Data | undefined {
-  return category.children.find((c): c is Data => c.type === 'data' && c.id === '_data');
+type category_node = Extract<tree_object, { type: 'category' }>;
+type page_node = Extract<tree_object, { type: 'page' }>;
+type data_node = Extract<tree_object, { type: 'data' }>;
+
+function getCategoryData(category: category_node): data_node | undefined {
+  return category.children.find((c): c is data_node => c.type === 'data');
 }
 
-function getCategoryIndex(category: Category): Page | undefined {
-  return category.children.find((c): c is Page => c.type === 'page' && c.index === true);
+function getCategoryIndex(category: category_node): page_node | undefined {
+  return category.children.find((c): c is page_node => c.type === 'page' && c.index === true);
 }
 
-function getOrder(node: TreeObject): number {
+function getOrder(node: tree_object): number {
   if (node.type === 'category') {
     const data = getCategoryData(node);
     return data?.frontmatter?.order ?? Number.POSITIVE_INFINITY;
@@ -75,7 +79,7 @@ function getOrder(node: TreeObject): number {
   return Number.POSITIVE_INFINITY;
 }
 
-function sortNodes(nodes: TreeObject[]): TreeObject[] {
+function sortNodes(nodes: tree_object[]): tree_object[] {
   return nodes
     .map((node, index) => ({ node, index }))
     .filter(({ node }) => node.type !== 'data')
@@ -86,8 +90,8 @@ function sortNodes(nodes: TreeObject[]): TreeObject[] {
     .map(({ node }) => node);
 }
 
-function resolveTitle(title: string, fallbackId: string): string {
-  return title && title !== 'No title.' ? title : fallbackId;
+function resolveTitle(title: string, fallbackPath: string): string {
+  return title && title !== 'No title.' ? title : fallbackPath;
 }
 
 function Chevron({ open }: { open: boolean }) {
@@ -116,7 +120,7 @@ interface HrefContext {
 }
 
 interface SidebarTreeProps extends HrefContext {
-  nodes: TreeObject[];
+  nodes: tree_object[];
   depth: number;
 }
 
@@ -133,7 +137,7 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver, onL
           const icon = iconResolver(node.frontmatter.icon);
 
           return (
-            <li key={node.id} className={styles['item']}>
+            <li key={node.path} className={styles['item']}>
               <a
                 href={hrefBuilder(node.path)}
                 className={clsx(styles['link'], isActive && styles['active'])}
@@ -141,7 +145,7 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver, onL
                 onClick={onLinkClick}
               >
                 {icon && <span className={styles['icon']}>{icon}</span>}
-                <span className={styles['label']}>{resolveTitle(node.frontmatter.title, node.id)}</span>
+                <span className={styles['label']}>{resolveTitle(node.frontmatter.title, node.path)}</span>
               </a>
             </li>
           );
@@ -150,7 +154,7 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver, onL
         if (node.type === 'category') {
           return (
             <CategoryItem
-              key={node.id}
+              key={node.path}
               category={node}
               depth={depth}
               currentPath={currentPath}
@@ -168,7 +172,7 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver, onL
 }
 
 interface CategoryItemProps extends HrefContext {
-  category: Category;
+  category: category_node;
   depth: number;
 }
 
@@ -176,7 +180,7 @@ function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver,
   const indexPage = getCategoryIndex(category);
   const data = getCategoryData(category);
 
-  const title = data?.frontmatter?.title ?? (indexPage ? resolveTitle(indexPage.frontmatter.title, category.id) : category.id);
+  const title = data?.frontmatter?.title ?? (indexPage ? resolveTitle(indexPage.frontmatter.title, category.path) : category.path);
 
   const iconName = data?.frontmatter?.icon ?? indexPage?.frontmatter?.icon;
   const icon = iconResolver(iconName);
@@ -193,7 +197,7 @@ function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver,
       <div className={styles['row']}>
         {indexPage ? (
           <a
-            href={hrefBuilder(indexPage.path)}
+            href={hrefBuilder(category.path)}
             className={clsx(styles['link'], styles['category-link'], isIndexActive && styles['active'])}
             style={{ '--depth': depth } as React.CSSProperties}
             onClick={onLinkClick}

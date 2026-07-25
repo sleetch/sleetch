@@ -11,9 +11,9 @@
   },
   "exports": {
     ".": "./dist/index.js",
+    "./compiler": "./dist/compiler/index.js",
     "./configuration": "./dist/configuration/index.js",
     "./markdown": "./dist/markdown/index.js",
-    "./routing": "./dist/routing/index.js",
     "./shared": "./dist/shared/index.js",
     "./package.json": "./package.json"
   },

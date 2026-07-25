@@ -7,8 +7,7 @@
       "@/*": ["./src/*"],
     },
     "baseUrl": ".",
-    "rootDirs": [".", "./.react-router/types"],
-    "types": ["@ladoc/vite/types/import"],
+    "rootDirs": [".", "./.react-router/types", "./.ladoc/**/*"],
   },
-  "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"],
+  "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*", ".ladoc/**/*"],
 }

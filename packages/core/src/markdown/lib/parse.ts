@@ -14,12 +14,12 @@ export const markdown_engines: engines = {
   'mdx-js': mdx_js,
 };
 
-export const get_markdown_html = async (content: string, _engine?:parsed_ladoc_configuration["markdown"]["engine"]) => {
+export const get_parsed_markdown = async (content: string, _engine?: parsed_ladoc_configuration['markdown']['engine']) => {
   const configuration = await get_configuration();
-  const engine = _engine ? _engine : configuration.markdown.engine
+  const engine = _engine ? _engine : configuration.markdown.engine;
   const start = Date.now();
-  const html = markdown_engines[engine](content);
+  const output = markdown_engines[engine](content);
   const end = Date.now();
   configuration.logger.debug('parsed with', engine, 'in', end - start, 'ms');
-  return html;
+  return output;
 };

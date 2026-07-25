@@ -11,10 +11,7 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./lib/constants": "./dist/lib/constants.js",
     "./lib/plugin": "./dist/lib/plugin.js",
-    "./lib/utils": "./dist/lib/utils.js",
-    "./types/import": "./dist/types/import.js",
     "./package.json": "./package.json"
   },
   "dependencies": {

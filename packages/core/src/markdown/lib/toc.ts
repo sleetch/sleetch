@@ -1,14 +1,5 @@
+import { slugify } from '@/shared/utils/slugify';
 import type { toc } from '../types/toc';
-
-export const slugify = (input: string) =>
-  input
-    .toLowerCase()
-    .trim()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\s-]/g, ' ')
-    .trim()
-    .replace(/[\s-]+/g, '-');
 
 export const parse_header_content = (line: string) => {
   let level: number = 0;
@@ -47,10 +38,11 @@ export const parse_header_content = (line: string) => {
 export const extract_toc = (input: string) => {
   const lines = input.split('\n');
   const toc: toc = [];
-  for (let i = 0; i < lines.length; i++) {
+  lines_loop: for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     let start_index = 0;
     while (line.length > start_index && line[start_index] != '#') {
+      if (line[start_index] == '`') continue lines_loop;
       start_index += 1;
     }
     if (

@@ -8,7 +8,6 @@
     "declarationMap": false,
     "declaration": false,
     "noEmit": true,
-    "types": ["@ladoc/vite/types/import"],
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],

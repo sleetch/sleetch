@@ -1,4 +1,4 @@
-export { get_markdown_html } from '@/markdown/lib/parse';
+export { get_parsed_markdown } from '@/markdown/lib/parse';
 export { extract_frontmatter } from '@/markdown/lib/frontmatter';
 export { extract_toc } from '@/markdown/lib/toc';
 export { type page_frontmatter, type data_frontmatter } from '@/markdown/types/frontmatter';

@@ -2,9 +2,10 @@ import { use, type BaseHTMLAttributes } from 'react';
 //import styles from '@ladoc/styles/components/Page/header.module.css';
 import clsx from 'clsx';
 import { Button } from '../../button';
+import type { markdown_module } from 'packages/core/dist/compiler';
 
 export interface PageHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {
-  page: Promise<MarkdownModule>;
+  page: Promise<markdown_module>;
 }
 
 export function PageHeader({ page, className, children, ...props }: PageHeaderProps) {

@@ -1,14 +1,14 @@
 import { data } from 'react-router';
-import pages from 'virtual:ladoc:pages';
 import type { Route } from './+types/$';
 import { Suspense } from 'react';
 import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
 import { get_page } from '@ladoc/server';
+import manifest from '@ladoc/cache/generated/manifest.js';
 
 export function meta({ params, loaderData }: Route.MetaArgs) {
-  if (loaderData) {
+  /*  if (loaderData) {
     return [{ title: loaderData.language }, { name: 'description', content: 'This is a React Router website.' }];
-  }
+  }*/
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -18,7 +18,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export default function Page({ params, loaderData: { language, path } }: Route.ComponentProps) {
-  const page = pages[language][path]();
+  const page = manifest[language]['markdown_modules'][path]();
   return (
     <>
       <DocumentationSidebarContent>
@@ -27,7 +27,7 @@ export default function Page({ params, loaderData: { language, path } }: Route.C
           <PageContent
             page={page}
             components={{
-              Button: Button,
+              Button,
             }}
           />
         </Suspense>

@@ -1,5 +1,5 @@
 import type { MarkedExtension } from 'marked';
-import { parse_header_content, slugify } from '@/markdown/lib/toc';
+import { parse_header_content } from '@/markdown/lib/toc';
 
 export const marked_anchors_plugin: MarkedExtension = {
   renderer: {

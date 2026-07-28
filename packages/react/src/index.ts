@@ -14,5 +14,6 @@ export { DocumentationTocContent } from './components/documentation/toc/content'
 
 export { PageContent } from './components/documentation/page/content';
 export { PageHeader } from './components/documentation/page/header';
+export { PageNavigation } from './components/documentation/page/navigation';
 
 export { Button } from './components/button';

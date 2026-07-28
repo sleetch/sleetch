@@ -1,0 +1,28 @@
+{
+  "name": "@ladoc/next",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./lib/plugin": "./dist/lib/plugin.js",
+    "./lib/wepack-plugin": "./dist/lib/wepack-plugin.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ladoc/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": "^16.0.0",
+    "@types/webpack": "^5.28.5"
+  },
+  "devDependencies": {
+    "next": "^16.2.12"
+  }
+}

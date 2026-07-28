@@ -1,0 +1,182 @@
+---
+title: Lists
+
+description: Organize content with ordered, unordered and task lists.
+
+engine: markdown-it
+---
+
+# Usage
+
+Lists are one of the easiest ways to make documentation readable. Whether you're writing installation steps, feature overviews, or checklists, a well-structured list makes everything easier to scan.
+
+| Markdown     | Result  |
+| ------------ | ------- |
+| `- Item`     | • Item  |
+| `* Item`     | • Item  |
+| `+ Item`     | • Item  |
+| `1. Item`    | 1. Item |
+| `- [ ] Task` | ☐ Task  |
+| `- [x] Task` | ☑ Task  |
+
+Documentation without lists is just a very long paragraph... and nobody enjoys that.
+
+---
+
+# Syntax
+
+Creating a list is straightforward.
+
+## Unordered list
+
+```md
+- Apple
+- Banana
+- Orange
+```
+
+Result:
+
+- Apple
+- Banana
+- Orange
+
+---
+
+## Ordered list
+
+```md
+1. Install the package
+2. Import it
+3. Build your app
+```
+
+Result:
+
+1. Install the package
+2. Import it
+3. Build your app
+
+---
+
+## Task list
+
+Task lists are useful for checklists, TODOs or progress tracking.
+
+```md
+- [x] Install dependencies
+- [x] Configure the project
+- [ ] Deploy to production
+```
+
+Result:
+
+- [x] Install dependencies
+- [x] Configure the project
+- [ ] Deploy to production
+
+---
+
+# Nested lists
+
+Lists can be nested by indenting with two or four spaces.
+
+### Markdown
+
+```md
+- Fruits
+  - Apple
+  - Banana
+  - Orange
+
+- Vegetables
+  - Carrot
+  - Tomato
+```
+
+### Result
+
+- Fruits
+  - Apple
+  - Banana
+  - Orange
+
+- Vegetables
+  - Carrot
+  - Tomato
+
+Nested ordered lists work exactly the same.
+
+```md
+1. Installation
+   1. Download
+   2. Extract
+2. Configuration
+3. Launch
+```
+
+Result:
+
+1. Installation
+   1. Download
+   2. Extract
+2. Configuration
+3. Launch
+
+---
+
+# Mixing list types
+
+There's nothing stopping you from combining ordered, unordered and task lists together.
+
+### Markdown
+
+```md
+1. Prepare the project
+   - Install dependencies
+   - Configure the environment
+   - [x] Initialize Git
+
+2. Build
+   - Run the compiler
+   - [ ] Fix warnings
+
+3. Deploy
+```
+
+### Result
+
+1. Prepare the project
+   - Install dependencies
+   - Configure the environment
+   - [x] Initialize Git
+
+2. Build
+   - Run the compiler
+   - [ ] Fix warnings
+
+3. Deploy
+
+---
+
+# Paragraphs inside lists
+
+Need a little more explanation? Leave a blank line and indent the paragraph.
+
+### Markdown
+
+```md
+1. Install the package
+
+   This downloads everything required to run the project.
+
+2. Start the development server
+```
+
+### Result
+
+1. Install the package
+
+   This downloads everything required to run the project.
+
+2. Start the development server

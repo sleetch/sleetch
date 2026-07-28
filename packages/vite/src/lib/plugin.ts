@@ -1,8 +1,6 @@
-import type { Plugin, ViteDevServer } from 'vite';
-import { ladoc_builder, ladoc_watcher } from '@ladoc/core/compiler';
+import type { Plugin } from 'vite';
+import { CACHE_FOLDER, ladoc_builder, ladoc_watcher } from '@ladoc/core/compiler';
 import { ladoc_router } from '@ladoc/core/compiler';
-import { get_root_dir } from '@ladoc/core/shared';
-import path from 'path';
 
 const router = new ladoc_router();
 const builder = new ladoc_builder(router);
@@ -16,7 +14,7 @@ export function plugin(): Plugin {
       return {
         resolve: {
           alias: {
-            '@ladoc/cache': path.join(get_root_dir(), '.ladoc'),
+            '@ladoc/cache': CACHE_FOLDER,
           },
         },
       };

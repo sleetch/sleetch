@@ -1,3 +1,5 @@
+'use client';
+
 export { DocumentationSidebar } from './components/documentation/sidebar';
 export { DocumentationSidebarContent } from './components/documentation/sidebar/content';
 export { ConnectedDocumentationSidebar } from './components/documentation/connected-sidebar';

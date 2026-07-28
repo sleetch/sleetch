@@ -2,11 +2,10 @@ import { ConnectedDocumentationSidebar, DocumentationContent } from '@ladoc/reac
 import { get_tree } from '@ladoc/server';
 import { Outlet } from 'react-router';
 import type { Route } from './+types/_layout';
-import { iconResolver } from '@/shared/utils/icons';
+//import { iconResolver } from '@/shared/utils/icons';
 
 export const loader = async ({}: Route.LoaderArgs) => {
-  const { tree } = await get_tree();
-  return { tree };
+  return await get_tree();
 };
 
 export default function Layout({ params, loaderData: { tree } }: Route.ComponentProps) {
@@ -16,7 +15,7 @@ export default function Layout({ params, loaderData: { tree } }: Route.Component
         tree={tree}
         hrefBuilder={(href) => '/documentation' + href}
         currentPath={'/' + params['*']}
-        iconResolver={iconResolver}
+        //iconResolver={iconResolver}
       />
       <Outlet />
     </DocumentationContent>

@@ -1,7 +1,13 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  exports: {},
+  exports: {
+    customExports: {
+      './markdown.css': {
+        default: './src/styles/markdown.css',
+      },
+    },
+  },
   entry: ['src/**/*.ts'],
   fixedExtension: false,
   format: 'esm',

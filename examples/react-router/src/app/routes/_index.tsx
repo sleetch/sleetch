@@ -1,5 +1,5 @@
 import { Button } from '@ladoc/react';
-import '@ladoc/styles/markdown.css';
+import '@ladoc/client/markdown.css';
 import { Link } from 'react-router';
 import type { Route } from './+types/_index';
 

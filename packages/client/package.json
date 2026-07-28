@@ -10,10 +10,14 @@
     "dev": "tsdown --watch"
   },
   "dependencies": {
-    "@ladoc/core": "workspace:*"
+    "@ladoc/core": "workspace:*",
+    "@ladoc/styles": "workspace:*"
   },
   "exports": {
     ".": "./dist/index.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./markdown.css": {
+      "default": "./src/styles/markdown.css"
+    }
   }
 }

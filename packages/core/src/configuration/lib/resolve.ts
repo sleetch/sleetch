@@ -24,7 +24,7 @@ const load_configuration = async (): Promise<parsed_ladoc_configuration> => {
   const root = get_root_dir();
   const file_path = path.join(root, 'ladoc.config.ts');
   if (fs.existsSync(file_path)) {
-    const mod = await import(/* @vite-ignore */ `${file_path}?t=${Date.now()}`);
+    const mod = await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
     if ('default' in mod && typeof mod.default == 'object') {
       const { data: configuration, error } = configuration_schema.safeParse(mod.default);
       if (error) {

@@ -1,8 +1,8 @@
 import { data } from 'react-router';
 import type { Route } from './+types/$';
 import { Suspense } from 'react';
-import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
-import { get_page } from '@ladoc/server';
+import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader, PageNavigation } from '@ladoc/react';
+import { get_page, get_tree } from '@ladoc/server';
 import manifest from '@ladoc/cache/generated/manifest.js';
 
 export function meta({ params, loaderData }: Route.MetaArgs) {
@@ -14,10 +14,17 @@ export function meta({ params, loaderData }: Route.MetaArgs) {
 export async function loader({ params }: Route.LoaderArgs) {
   const page = await get_page('/' + params['*']);
   if (!page) throw data(null, { status: 404 });
-  return page;
+  const tree = await get_tree();
+  return { page, tree };
 }
 
-export default function Page({ params, loaderData: { language, path } }: Route.ComponentProps) {
+export default function Page({
+  params,
+  loaderData: {
+    page: { language, path },
+    tree: { tree },
+  },
+}: Route.ComponentProps) {
   const page = manifest[language]['markdown_modules'][path]();
   return (
     <>
@@ -30,6 +37,7 @@ export default function Page({ params, loaderData: { language, path } }: Route.C
               Button,
             }}
           />
+          <PageNavigation hrefBuilder={(href) => '/documentation' + href} tree={tree} currentPath={path} />
         </Suspense>
       </DocumentationSidebarContent>
       <Suspense fallback={<p>Loading.</p>}>

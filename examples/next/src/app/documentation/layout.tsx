@@ -12,14 +12,21 @@ export default async function DocumentationLayout({
   const { tree } = await get_tree();
 
   return (
-    <DocumentationTocContent>
-      <ConnectedDocumentationSidebar
-        tree={tree}
-        hrefBuilder={(href) => "/documentation" + href}
-        // currentPath ?
-      />
-
+    <>
+      {JSON.stringify(tree)}
       {children}
-    </DocumentationTocContent>
+    </>
   );
 }
+
+/*
+<DocumentationTocContent>
+  <ConnectedDocumentationSidebar
+    tree={tree}
+    hrefBuilder={(href) => "/documentation" + href}
+    // currentPath ?
+  />
+
+  {children}
+</DocumentationTocContent>
+*/

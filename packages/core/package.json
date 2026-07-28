@@ -10,29 +10,6 @@
     "dev": "tsdown --watch"
   },
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./compiler": {
-      "import": "./dist/compiler/index.js",
-      "require": "./dist/compiler/index.cjs"
-    },
-    "./configuration": {
-      "import": "./dist/configuration/index.js",
-      "require": "./dist/configuration/index.cjs"
-    },
-    "./markdown": {
-      "import": "./dist/markdown/index.js",
-      "require": "./dist/markdown/index.cjs"
-    },
-    "./shared": {
-      "import": "./dist/shared/index.js",
-      "require": "./dist/shared/index.cjs"
-    },
-    "./package.json": "./package.json"
-  },
   "dependencies": {
     "@mdit/plugin-katex": "^1.0.1",
     "@mdx-js/mdx": "^3.1.1",
@@ -60,7 +37,15 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4"
   },
-  "main": "./dist/index.cjs",
+  "exports": {
+    ".": "./dist/index.js",
+    "./compiler": "./dist/compiler/index.js",
+    "./configuration": "./dist/configuration/index.js",
+    "./markdown": "./dist/markdown/index.js",
+    "./shared": "./dist/shared/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.cts"
+  "types": "./dist/index.d.ts"
 }

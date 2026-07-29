@@ -3,7 +3,7 @@ import type { Route } from './+types/$';
 import { Suspense } from 'react';
 import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader, PageNavigation } from '@ladoc/react';
 import { get_page, get_tree } from '@ladoc/server';
-import manifest from '@ladoc/cache/generated/manifest.js';
+import manifest from '@ladoc/cache/manifest.js';
 
 export function meta({ params, loaderData }: Route.MetaArgs) {
   if (loaderData) {

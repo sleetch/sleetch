@@ -668,3 +668,9 @@
   border-left: var(--_ladoc-blockquote-border-width) solid var(--_ladoc-twoslash-tag-annotate-color);
   color: var(--_ladoc-twoslash-tag-annotate-color);
 }
+
+.ladoc-markdown pre.shiki {
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 100%;
+}

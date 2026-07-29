@@ -1,0 +1,146 @@
+import { get_configuration } from '@/configuration';
+import type { ladoc_source } from './source';
+import { ladoc_file_system_source } from './sources/file-system';
+import { ladoc_events_emitter } from './emitter';
+import type { tree_object } from '../types/routing';
+import type { content } from '../types/content';
+import type { source } from '@/configuration/types/sources';
+import { ladoc_router } from './router';
+import { generate_manifest } from './generators/manifest';
+import { write_file } from '../utils/write-file';
+import path from 'node:path';
+import { CACHE_FOLDER } from '../utils/constants';
+import { generate_tree } from './generators/tree';
+import { resolve_language } from '../utils/resolve-language';
+
+export class ladoc_runtime {
+  private sources_map: Map<string, ladoc_source<tree_object, content, source>> = new Map();
+  private event_emitter = new ladoc_events_emitter();
+  private _router = new ladoc_router();
+
+  private get sources_instances() {
+    return this.sources_map.values();
+  }
+
+  constructor() {
+    this.event_emitter.on('edited', async (content, source) => {
+      console.log('edited', content);
+      const language = await resolve_language(source.language);
+      const object = source.router.get_object(content);
+      source.builder.build_object(language, object);
+
+      this._router.join_object(language, object);
+      await this.build_tree(language);
+      await this.build_manifest();
+    });
+
+    this.event_emitter.on('added', async (content, source) => {
+      console.log('added', content);
+      const language = await resolve_language(source.language);
+      const object = source.router.get_object(content);
+      source.builder.build_object(language, object);
+
+      this._router.join_object(language, object);
+      await this.build_tree(language);
+      await this.build_manifest();
+    });
+
+    this.event_emitter.on('removed', async (content, source) => {
+      console.log('removed', content);
+      const language = await resolve_language(source.language);
+      const path = this._router.path_from_content(language, content);
+      if (path) {
+        this._router.remove_object_from_path(language, path);
+      } else {
+        throw new Error('WHATTTTTTTTTT');
+      }
+      await this.build_tree(language);
+      await this.build_manifest();
+    });
+  }
+
+  public readonly sources = {
+    load: async () => {
+      if (this.sources_map.size > 0) throw new Error('You cannot load sources twice.');
+      console.time('runtime.sources.load');
+      const configuration = await get_configuration();
+      for (const source of configuration.sources) {
+        if (source.type == 'file-system') {
+          const instance = new ladoc_file_system_source({ source, events_emitter: this.event_emitter });
+          this.sources_map.set(instance.id, instance);
+        }
+      }
+      console.timeEnd('runtime.sources.load');
+    },
+    watch: async () => {
+      console.time('runtime.sources.watch');
+      for (const source of this.sources_instances) {
+        await source.watcher.watch();
+      }
+      console.timeEnd('runtime.sources.watch');
+    },
+    close: async () => {
+      for (const source of this.sources_instances) {
+        source.watcher.close();
+      }
+    },
+  };
+
+  public readonly router = {
+    load: async () => {
+      console.time('runtime.router.load');
+      for (const source of this.sources_instances) {
+        await source.router.load(this._router);
+      }
+      console.timeEnd('runtime.router.load');
+    },
+  };
+
+  public readonly builder = {
+    build: async () => {
+      console.time('runtime.builder.build');
+      await this.router.load();
+      for (const language of this._router.get_languages()) {
+        for (const object of this._router.get_tree(language)) {
+          await this.builder.build_object(language, object);
+        }
+        await this.build_tree(language);
+      }
+      await this.build_manifest();
+      console.timeEnd('runtime.builder.build');
+    },
+    build_object: async (language: string, object: tree_object) => {
+      if (object.type == 'category') {
+        for (const child_object of object.children) {
+          await this.builder.build_object(language, child_object);
+        }
+      } else {
+        console.time('runtime.builder.build_object');
+        const instance = this.resolve_source(object.content.source_id);
+        instance.builder.build_object(language, object);
+        console.timeEnd('runtime.builder.build_object');
+      }
+    },
+  };
+
+  private async build_tree(language: string) {
+    const tree = this._router.get_tree(language);
+    const files = await generate_tree(tree);
+    for (const extension of Object.keys(files) as (keyof typeof files)[]) {
+      write_file(path.join(CACHE_FOLDER, 'trees', language + extension), files[extension]);
+    }
+  }
+
+  private async build_manifest() {
+    const files = await generate_manifest(this._router);
+    for (const extension of Object.keys(files) as (keyof typeof files)[]) {
+      write_file(path.join(CACHE_FOLDER, 'manifest' + extension), files[extension]);
+    }
+  }
+
+  private resolve_source(source_id: string) {
+    const instance = this.sources_map.get(source_id);
+    if (!instance) throw new Error('Could not find any sources with that id.');
+    return instance;
+  }
+}

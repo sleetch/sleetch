@@ -1,9 +1,11 @@
 export type file_system_content = {
+  source_id: string;
   type: 'file-system';
   file_path: string;
 };
 
 export type git_content = {
+  source_id: string;
   type: 'git';
   file_url: string;
 };

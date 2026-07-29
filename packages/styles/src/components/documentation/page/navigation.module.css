@@ -4,9 +4,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
-  margin: 3em 0 1em;
-  padding-top: 1.5em;
   padding: var(--_ladoc-padding-root);
+  padding-top: 0px;
   font-family: var(--_ladoc-font-base);
 }
 
@@ -24,10 +23,9 @@
   gap: 0.25em;
   width: 100%;
   max-width: 320px;
-  padding: 1em 1.2em;
+  padding: 1em 1em;
   border-radius: var(--_ladoc-radius);
   border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
-  background-color: var(--_ladoc-color-card);
   color: var(--_ladoc-color-text);
   text-decoration: none;
   transition:
@@ -62,12 +60,12 @@
   gap: 0.3em;
   font-size: var(--_ladoc-font-size-tiny);
   color: var(--_ladoc-color-muted-foreground);
-  letter-spacing: 0.04em;
 }
 
 .chevron {
   flex-shrink: 0;
-  color: var(--_ladoc-color-text-primary);
+  width: 20px;
+  height: 20px;
 }
 
 .title {
@@ -78,18 +76,26 @@
 }
 
 .description {
-  font-size: var(--_ladoc-font-size-small);
+  font-size: var(--_ladoc-font-size-tiny);
   line-height: var(--_ladoc-line-height);
   color: var(--_ladoc-color-muted-foreground);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navigation {
+    padding: 1.5em 2em;
+  }
+}
+
 @media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+
   .navigation {
     grid-template-columns: 1fr;
+
     padding: 1em 1em;
   }
 

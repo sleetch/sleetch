@@ -1,23 +1,10 @@
-import { get_configuration } from '@/configuration';
-import { ladoc_file_system_router } from './sources/file-system/router';
-import { ladoc_git_router } from './sources/git/router';
 import type { content, file_system_content, git_content } from '../types/content';
-import type { file_system_source, git_source, source } from '@/configuration/types/sources';
+import type { source } from '@/configuration/types/sources';
 import type { category, page, tree_object } from '../types/routing';
 
 export class ladoc_router {
   private trees: Map<string, tree_object[]> = new Map();
   private source_index: Map<string, Map<string, string>> = new Map();
-
-  private file_system = new ladoc_file_system_router(this);
-  private git = new ladoc_git_router(this);
-
-  async load() {
-    console.time('loaded tree');
-    await this.file_system.load();
-    await this.git.load();
-    console.timeEnd('loaded tree');
-  }
 
   get_tree(language: string): tree_object[] {
     let tree = this.trees.get(language);
@@ -71,14 +58,6 @@ export class ladoc_router {
       this.source_index.set(language, index);
     }
     return index;
-  }
-
-  get_object(content: content, source: source) {
-    if (content.type === 'file-system' && source.type === 'file-system') {
-      return this.file_system.get_object(content, source);
-    }
-    if (content.type === 'git' && source.type === 'git') {
-    }
   }
 
   insert_object(language: string, object: tree_object, tree: tree_object[] = this.get_tree(language)) {

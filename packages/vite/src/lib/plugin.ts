@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite';
-import { CACHE_FOLDER, ladoc_runtime } from '@ladoc/core/compiler';
+import { ladoc_runtime } from '@ladoc/core/compiler';
 
 const runtime = new ladoc_runtime();
 
@@ -7,16 +7,6 @@ export function plugin(): Plugin {
   return {
     name: 'ladoc',
     enforce: 'pre',
-
-    /*config() {
-      return {
-        resolve: {
-          alias: {
-            '@ladoc/cache': CACHE_FOLDER,
-          },
-        },
-      };
-      },*/
 
     async buildStart() {
       if (this.environment.mode === 'build' && !runtime.sources.loaded()) {

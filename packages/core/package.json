@@ -40,6 +40,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./compiler": "./dist/compiler/index.js",
+    "./compiler/utils": "./dist/compiler/utils/index.js",
     "./configuration": "./dist/configuration/index.js",
     "./markdown": "./dist/markdown/index.js",
     "./shared": "./dist/shared/index.js",

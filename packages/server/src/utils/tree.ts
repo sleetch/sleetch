@@ -9,7 +9,10 @@ export const get_tree = async (_language?: string) => {
   return { tree, language };
 };
 
-export const get_static_paths = async (path_builder: path_builder, _language?: string) => {
+export const get_static_paths = async <T extends string | unknown>(
+  path_builder: (data: { language: string; path: string }) => T,
+  _language?: string
+) => {
   const { tree, language } = await get_tree(_language);
   const paths = to_flat_tree(tree).map((page) => path_builder({ language, path: page.path }));
   return { paths, language };

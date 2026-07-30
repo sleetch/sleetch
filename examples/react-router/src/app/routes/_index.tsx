@@ -5,11 +5,6 @@ import type { Route } from './+types/_index';
 
 import manifest from '@ladoc/cache/manifest.js';
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const test = await import('@ladoc/cache/manifest.js');
-  console.log('await import', test.default);
-}
-
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <main className="max-w-337.5 w-full mx-auto  ladoc-markdown">

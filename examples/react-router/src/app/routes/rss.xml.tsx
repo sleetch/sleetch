@@ -5,7 +5,7 @@ export const loader = async () => {
     site: 'https://ladoc.net',
     title: 'My Documentation',
     description: 'Documentation updates',
-    transformer: ({ path }) => new URL('/documentation' + path, 'https://ladoc.net').toString(),
+    transformer: ({ path, language }) => new URL('/' + language + '/' + 'documentation' + path, 'https://ladoc.net').toString(),
   });
   return new Response(rss, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
 };

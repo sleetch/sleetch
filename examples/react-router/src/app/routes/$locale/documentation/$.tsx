@@ -13,9 +13,9 @@ export function meta({ params, loaderData: data }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const page = await get_page('/' + params['*']);
+  const page = await get_page('/' + params['*'], params.locale);
   if (!page) throw data(null, { status: 404 });
-  const tree = await get_tree();
+  const tree = await get_tree(params.locale);
   return { page, tree };
 }
 
@@ -37,7 +37,7 @@ export default function Page({
               Button,
             }}
           />
-          <PageNavigation hrefBuilder={(href) => '/documentation' + href} tree={tree} currentPath={path} />
+          <PageNavigation hrefBuilder={(href) => '/' + language + '/documentation' + href} tree={tree} currentPath={path} />
         </Suspense>
       </DocumentationSidebarContent>
       <Suspense fallback={<p>Loading.</p>}>

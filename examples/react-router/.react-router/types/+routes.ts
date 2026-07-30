@@ -19,11 +19,14 @@ type Pages = {
       "*": string;
     };
   };
-  "/documentation": {
-    params: {};
-  };
-  "/documentation/*": {
+  "/:locale": {
     params: {
+      "locale": string;
+    };
+  };
+  "/:locale/documentation/*": {
+    params: {
+      "locale": string;
       "*": string;
     };
   };
@@ -41,27 +44,27 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/rss.xml" | "/sitemap.xml";
+    page: "/" | "/*" | "/:locale" | "/:locale/documentation/*" | "/llms.txt" | "/rss.xml" | "/sitemap.xml";
   };
   "routes/_layout.tsx": {
     id: "routes/_layout";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/rss.xml" | "/sitemap.xml";
+    page: "/" | "/*" | "/:locale" | "/:locale/documentation/*" | "/llms.txt" | "/rss.xml" | "/sitemap.xml";
   };
   "routes/$.tsx": {
     id: "routes/$";
     page: "/*";
   };
+  "routes/$locale/_layout.tsx": {
+    id: "routes/$locale/_layout";
+    page: "/:locale" | "/:locale/documentation/*";
+  };
+  "routes/$locale/documentation/$.tsx": {
+    id: "routes/$locale/documentation/$";
+    page: "/:locale/documentation/*";
+  };
   "routes/_index.tsx": {
     id: "routes/_index";
     page: "/";
-  };
-  "routes/documentation/_layout.tsx": {
-    id: "routes/documentation/_layout";
-    page: "/documentation" | "/documentation/*";
-  };
-  "routes/documentation/$.tsx": {
-    id: "routes/documentation/$";
-    page: "/documentation/*";
   };
   "routes/llms.txt.tsx": {
     id: "routes/llms.txt";
@@ -81,9 +84,9 @@ type RouteModules = {
   "root": typeof import("./src/app/root.tsx");
   "routes/_layout": typeof import("./src/app/routes/_layout.tsx");
   "routes/$": typeof import("./src/app/routes/$.tsx");
+  "routes/$locale/_layout": typeof import("./src/app/routes/$locale/_layout.tsx");
+  "routes/$locale/documentation/$": typeof import("./src/app/routes/$locale/documentation/$.tsx");
   "routes/_index": typeof import("./src/app/routes/_index.tsx");
-  "routes/documentation/_layout": typeof import("./src/app/routes/documentation/_layout.tsx");
-  "routes/documentation/$": typeof import("./src/app/routes/documentation/$.tsx");
   "routes/llms.txt": typeof import("./src/app/routes/llms.txt.tsx");
   "routes/rss.xml": typeof import("./src/app/routes/rss.xml.tsx");
   "routes/sitemap.xml": typeof import("./src/app/routes/sitemap.xml.tsx");

@@ -1,4 +1,5 @@
 import { resolve_language, type manifest_module } from '@ladoc/core/compiler';
+import { get_static_paths } from './tree';
 
 export const get_page = async (_path: string, _language?: string) => {
   if (_path.length > 1 && _path.slice(-1) == '/') _path = _path.slice(0, -1);
@@ -10,4 +11,10 @@ export const get_page = async (_path: string, _language?: string) => {
       return { language, path, seo: { title: page.frontmatter.title, description: page.frontmatter.description } };
     }
   }
+};
+
+export const get_pages = async (_language?: string) => {
+  const { language, paths } = await get_static_paths(async ({ path, language }) => await get_page(path, language), _language);
+  const pages = (await Promise.all(paths)).filter((x) => x != undefined);
+  return { language, pages };
 };

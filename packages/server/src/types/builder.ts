@@ -1,1 +1,1 @@
-export type path_builder<T = unknown> = (data: { language: string; path: string }) => T;
+export type transformer<T = unknown> = (data: { language: string; path: string }) => T;

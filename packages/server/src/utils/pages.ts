@@ -6,7 +6,8 @@ export const get_page = async (_path: string, _language?: string) => {
   const { default: manifest }: manifest_module = await import('@ladoc/cache/manifest.js'!);
   for (const path of Object.keys(manifest[language]['markdown_modules'])) {
     if (path == _path) {
-      return { language, path };
+      const { default: page } = await manifest[language]['markdown_modules'][path]();
+      return { language, path, seo: { title: page.frontmatter.title, description: page.frontmatter.description } };
     }
   }
 };

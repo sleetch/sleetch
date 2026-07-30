@@ -12,12 +12,13 @@ export type markdown_module = {
 };
 
 export type manifest_module = {
-  languages: string[];
-  default: Record<
+  default: {
+    languages: string[];
+  } & Record<
     string,
     {
       tree: () => Promise<tree_module>;
-      markdown_modules: () => Promise<markdown_module>[];
+      markdown_modules: Record<string, () => Promise<markdown_module>>;
     }
   >;
 };

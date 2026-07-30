@@ -6,10 +6,9 @@ export default {
   ssr: true,
   prerender: {
     paths: async (args) => {
-      const { paths } = await get_static_paths();
-      const documentation = paths.map((path) => '/' + 'documentation' + path);
-      console.log(args.getStaticPaths(), documentation);
-      return [...documentation];
+      const { paths } = await get_static_paths(({ path }) => '/' + 'documentation' + path);
+      console.log(args.getStaticPaths(), paths);
+      return [...paths];
     },
     concurrency: 10,
   },

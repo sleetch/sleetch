@@ -5,10 +5,11 @@ import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, Pag
 import { get_page, get_tree } from '@ladoc/server';
 import manifest from '@ladoc/cache/manifest.js';
 
-export function meta({ params, loaderData }: Route.MetaArgs) {
-  if (loaderData) {
-    return [{ title: loaderData.page.language }, { name: 'description', content: 'This is a React Router website.' }];
+export function meta({ params, loaderData: data }: Route.MetaArgs) {
+  if (data) {
+    return [{ title: data.page.seo.title }, { name: 'description', content: data.page.seo.description }];
   }
+  return [];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -19,7 +20,6 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export default function Page({
-  params,
   loaderData: {
     page: { language, path },
     tree: { tree },

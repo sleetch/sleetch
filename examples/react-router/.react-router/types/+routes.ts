@@ -30,16 +30,19 @@ type Pages = {
   "/llms.txt": {
     params: {};
   };
+  "/sitemap.xml": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/sitemap.xml";
   };
   "routes/_layout.tsx": {
     id: "routes/_layout";
-    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/sitemap.xml";
   };
   "routes/$.tsx": {
     id: "routes/$";
@@ -61,6 +64,10 @@ type RouteFiles = {
     id: "routes/llms.txt";
     page: "/llms.txt";
   };
+  "routes/sitemap.xml.tsx": {
+    id: "routes/sitemap.xml";
+    page: "/sitemap.xml";
+  };
 };
 
 type RouteModules = {
@@ -71,4 +78,5 @@ type RouteModules = {
   "routes/documentation/_layout": typeof import("./src/app/routes/documentation/_layout.tsx");
   "routes/documentation/$": typeof import("./src/app/routes/documentation/$.tsx");
   "routes/llms.txt": typeof import("./src/app/routes/llms.txt.tsx");
+  "routes/sitemap.xml": typeof import("./src/app/routes/sitemap.xml.tsx");
 };

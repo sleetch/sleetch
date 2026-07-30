@@ -37,8 +37,7 @@ export const generate_manifest = (router: ladoc_router) => {
     ${language_manifests.join(',\n')}
     };`,
     '.d.ts': `
-        import type { manifest_module } from '@/compiler/types/routing';
-
+        import type { manifest_module } from '@ladoc/core/compiler';
         declare const manifest: manifest_module['default'];
         export default manifest;
       `,

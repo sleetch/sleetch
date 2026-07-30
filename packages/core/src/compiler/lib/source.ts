@@ -9,9 +9,9 @@ export abstract class ladoc_source<tree_object_type extends tree_object, content
   readonly type: source_type['type'];
   readonly source: source_type;
   protected readonly events_emitter: ladoc_events_emitter;
-  public readonly language?: string;
+  public readonly language: string;
 
-  public id = crypto.randomUUID();
+  public id: string;
 
   constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: ladoc_events_emitter }) {
     if (this.constructor == ladoc_source) {
@@ -20,8 +20,9 @@ export abstract class ladoc_source<tree_object_type extends tree_object, content
     this.type = configuration.type;
     this.source = configuration.source;
     this.events_emitter = configuration.events_emitter;
-    // :(  this.language = resolve_language(configuration.source.language);
-    this.language = configuration.source.language;
+    this.language = resolve_language(configuration.source.language);
+
+    this.id = `${this.type}:${crypto.randomUUID()}`;
   }
 
   abstract readonly watcher: {

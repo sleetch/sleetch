@@ -2,12 +2,13 @@ import { defineConfig } from 'tsdown';
 
 export default defineConfig({
   exports: {
-    legacy: true,
+    customExports: {
+      './markdown.css': {
+        default: './src/styles/markdown.css',
+      },
+    },
   },
-  entry: ['src/**/index.ts'],
-  deps: {
-    neverBundle: [/^@ladoc\/cache(\/.*)?$/],
-  },
+  entry: ['src/**/*.ts'],
   fixedExtension: false,
   format: 'esm',
   clean: true,

@@ -12,7 +12,7 @@ import type { PluggableList } from 'unified';
 export const mdx_js: parser = async (content: string) => {
   const remarkPlugins: PluggableList = [[remark_anchors_plugin], [remark_gfm_plugin]];
   const rehypePlugins: PluggableList = [];
-  const configuration = await get_configuration();
+  const configuration = get_configuration();
   if (configuration.markdown.plugins.mermaid) rehypePlugins.push([rehype_mermaid_plugin]);
   if (configuration.markdown.plugins.syntax_highlighting) rehypePlugins.push([rehype_shiki_plugin]);
   if (configuration.markdown.plugins.latex) {

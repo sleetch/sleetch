@@ -22,6 +22,7 @@
     "@ladoc/server": "workspace:*",
     "@ladoc/client": "workspace:*",
     "@ladoc/vite": "workspace:*",
+    "@ladoc/cache": "workspace:*",
     "@react-router/dev": "^8.0.1",
     "@react-router/node": "^8.0.1",
     "@react-router/serve": "^8.0.1",

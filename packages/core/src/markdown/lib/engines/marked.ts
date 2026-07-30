@@ -7,7 +7,7 @@ import { marked_katex_plugin } from '../plugins/marked/katex';
 import { get_configuration } from '@/configuration';
 
 export const marked: parser = async (content: string) => {
-  const configuration = await get_configuration();
+  const configuration = get_configuration();
   const _marked = new Marked(marked_anchors_plugin);
   if (configuration.markdown.plugins.mermaid) _marked.use(marked_mermaid_plugin);
   if (configuration.markdown.plugins.syntax_highlighting) _marked.use(marked_shiki_plugin);

@@ -7,9 +7,7 @@ import { write_file } from '@/compiler/utils/write-file';
 import type { file_info } from '@/compiler/types/watcher';
 import type { ladoc_router } from '../router';
 import type { ladoc_events_emitter } from '../emitter';
-import type { file_system_content } from '@/compiler/types/content';
-import type { file_system_source } from '@/configuration/types/sources';
-import type { file_system_data, file_system_page, file_system_tree_object } from '@/compiler/types/routing';
+import type { category, data, page } from '@/compiler/types/routing';
 
 import { CACHE_FOLDER, DATA_PAGE_NAME, INDEX_PAGE_NAME } from '@/compiler/utils/constants';
 
@@ -17,9 +15,24 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { list_all_files } from '@/shared/utils/list-files';
 import { resolve_language } from '@/compiler/utils/resolve-language';
+import z from 'zod';
 
-export class ladoc_file_system_source extends ladoc_source<file_system_tree_object, file_system_content, file_system_source> {
-  constructor(configuration: { source: file_system_source; events_emitter: ladoc_events_emitter }) {
+export type configuration_file_system_source = z.infer<typeof ladoc_file_system_source.configuration_schema>;
+export type file_system_content = {
+  source_id: string;
+  type: configuration_file_system_source['type'];
+  file_path: string;
+};
+export type file_system_tree_object = data<file_system_content> | page<file_system_content> | category<file_system_tree_object>;
+
+export class ladoc_file_system_source extends ladoc_source<file_system_tree_object, file_system_content, configuration_file_system_source> {
+  static configuration_schema = z.object({
+    type: z.literal('file-system'),
+    language: z.string().optional(),
+    path: z.string(),
+  });
+
+  constructor(configuration: { source: configuration_file_system_source; events_emitter: ladoc_events_emitter }) {
     super({
       type: 'file-system',
       source: configuration.source,
@@ -61,7 +74,7 @@ export class ladoc_file_system_source extends ladoc_source<file_system_tree_obje
   public readonly router = {
     load: async (router: ladoc_router) => {
       const files = list_all_files(this.source.path);
-      const language = await resolve_language(this.source.language);
+      const language = resolve_language(this.source.language);
       for (const file_path of files) {
         const object = this.router.get_object({ type: 'file-system', file_path, source_id: this.id });
         router.join_object(language, object);
@@ -79,7 +92,7 @@ export class ladoc_file_system_source extends ladoc_source<file_system_tree_obje
           path: '/' + segments.join('/'),
           content: content,
           frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), data_frontmatter_schema).frontmatter,
-        } satisfies file_system_data;
+        } satisfies data<file_system_content>;
       } else {
         return {
           type: 'page',
@@ -87,7 +100,7 @@ export class ladoc_file_system_source extends ladoc_source<file_system_tree_obje
           content: content,
           frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), page_frontmatter_schema).frontmatter,
           index: name == INDEX_PAGE_NAME ? true : undefined,
-        } satisfies file_system_page;
+        } satisfies page<file_system_content>;
       }
     },
   };

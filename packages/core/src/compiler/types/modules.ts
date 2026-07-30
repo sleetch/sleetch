@@ -12,6 +12,7 @@ export type markdown_module = {
 };
 
 export type manifest_module = {
+  languages: string[];
   default: Record<
     string,
     {

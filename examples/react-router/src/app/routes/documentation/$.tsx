@@ -7,7 +7,7 @@ import manifest from '@ladoc/cache/manifest.js';
 
 export function meta({ params, loaderData }: Route.MetaArgs) {
   if (loaderData) {
-    return [{ title: loaderData.language }, { name: 'description', content: 'This is a React Router website.' }];
+    return [{ title: loaderData.page.language }, { name: 'description', content: 'This is a React Router website.' }];
   }
 }
 

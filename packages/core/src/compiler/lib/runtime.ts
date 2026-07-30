@@ -9,9 +9,9 @@ import { ladoc_router } from './router';
 import { generate_manifest } from './generators/manifest';
 import { write_file } from '../utils/write-file';
 import path from 'node:path';
-import { CACHE_FOLDER } from '../utils/constants';
+import fs from 'node:fs';
+import { CACHE_FOLDER, NODE_MODULES_FOLDER } from '../utils/constants';
 import { generate_tree } from './generators/tree';
-import { resolve_language } from '../utils/resolve-language';
 
 export class ladoc_runtime {
   private sources_map: Map<string, ladoc_source<tree_object, content, source>> = new Map();
@@ -25,45 +25,43 @@ export class ladoc_runtime {
   constructor() {
     this.event_emitter.on('edited', async (content, source) => {
       console.log('edited', content);
-      const language = await resolve_language(source.language);
       const object = source.router.get_object(content);
-      source.builder.build_object(language, object);
-
-      this._router.join_object(language, object);
-      await this.build_tree(language);
-      await this.build_manifest();
+      source.builder.build_object(source.language, object);
+      this._router.join_object(source.language, object);
+      this.build_tree(source.language);
+      this.build_manifest();
     });
 
     this.event_emitter.on('added', async (content, source) => {
       console.log('added', content);
-      const language = await resolve_language(source.language);
       const object = source.router.get_object(content);
-      source.builder.build_object(language, object);
-
-      this._router.join_object(language, object);
-      await this.build_tree(language);
-      await this.build_manifest();
+      source.builder.build_object(source.language, object);
+      this._router.join_object(source.language, object);
+      this.build_tree(source.language);
+      this.build_manifest();
     });
 
     this.event_emitter.on('removed', async (content, source) => {
       console.log('removed', content);
-      const language = await resolve_language(source.language);
-      const path = this._router.path_from_content(language, content);
+      const path = this._router.path_from_content(source.language, content);
       if (path) {
-        this._router.remove_object_from_path(language, path);
+        this._router.remove_object_from_path(source.language, path);
       } else {
         throw new Error('WHATTTTTTTTTT');
       }
-      await this.build_tree(language);
-      await this.build_manifest();
+      this.build_tree(source.language);
+      this.build_manifest();
     });
   }
 
   public readonly sources = {
+    loaded: () => {
+      return this.sources_map.size > 0;
+    },
     load: async () => {
       if (this.sources_map.size > 0) throw new Error('You cannot load sources twice.');
       console.time('runtime.sources.load');
-      const configuration = await get_configuration();
+      const configuration = get_configuration();
       for (const source of configuration.sources) {
         if (source.type == 'file-system') {
           const instance = new ladoc_file_system_source({ source, events_emitter: this.event_emitter });
@@ -104,9 +102,9 @@ export class ladoc_runtime {
         for (const object of this._router.get_tree(language)) {
           await this.builder.build_object(language, object);
         }
-        await this.build_tree(language);
+        this.build_tree(language);
       }
-      await this.build_manifest();
+      this.build_manifest();
       console.timeEnd('runtime.builder.build');
     },
     build_object: async (language: string, object: tree_object) => {
@@ -123,16 +121,16 @@ export class ladoc_runtime {
     },
   };
 
-  private async build_tree(language: string) {
+  private build_tree(language: string) {
     const tree = this._router.get_tree(language);
-    const files = await generate_tree(tree);
+    const files = generate_tree(tree);
     for (const extension of Object.keys(files) as (keyof typeof files)[]) {
       write_file(path.join(CACHE_FOLDER, 'trees', language + extension), files[extension]);
     }
   }
 
-  private async build_manifest() {
-    const files = await generate_manifest(this._router);
+  private build_manifest() {
+    const files = generate_manifest(this._router);
     for (const extension of Object.keys(files) as (keyof typeof files)[]) {
       write_file(path.join(CACHE_FOLDER, 'manifest' + extension), files[extension]);
     }

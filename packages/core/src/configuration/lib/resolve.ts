@@ -8,23 +8,26 @@ import z from 'zod';
 let cache: parsed_ladoc_configuration | undefined;
 let cache_mtime: number | undefined;
 
-export const get_configuration = async () => {
+export const get_configuration = () => {
   const root = get_root_dir();
   const file_path = path.join(root, 'ladoc.config.ts');
   const mtime = fs.existsSync(file_path) ? fs.statSync(file_path).mtimeMs : undefined;
   if (!cache || cache_mtime !== mtime) {
-    cache = await load_configuration();
+    cache = load_configuration();
     cache.logger.debug(cache_mtime ? 'cached ladoc configuration.' : 'refreshed ladoc configuration.');
     cache_mtime = mtime;
   }
   return cache;
 };
 
-const load_configuration = async (): Promise<parsed_ladoc_configuration> => {
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+
+const load_configuration = (): parsed_ladoc_configuration => {
   const root = get_root_dir();
   const file_path = path.join(root, 'ladoc.config.ts');
   if (fs.existsSync(file_path)) {
-    const mod = await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
+    const mod = require(file_path); // await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
     if ('default' in mod && typeof mod.default == 'object') {
       const { data: configuration, error } = configuration_schema.safeParse(mod.default);
       if (error) {

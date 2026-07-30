@@ -1,8 +1,4 @@
-export type file_system_content = {
-  source_id: string;
-  type: 'file-system';
-  file_path: string;
-};
+import type { file_system_content } from '../lib/sources/file-system';
 
 export type git_content = {
   source_id: string;

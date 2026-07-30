@@ -1,4 +1,4 @@
-import type { partial_ladoc_configuration } from '@ladoc/core/configuration';
+import type { ladoc_configuration } from '@ladoc/server';
 
 export default {
   languages: {
@@ -16,4 +16,4 @@ export default {
       mermaid: true,
     },
   },
-} satisfies partial_ladoc_configuration;
+} satisfies ladoc_configuration;

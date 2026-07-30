@@ -7,7 +7,7 @@ import { markdown_it_katex_plugin } from '../plugins/markdown-it/katex';
 import { get_configuration } from '@/configuration';
 
 export const markdown_it: parser = async (content: string) => {
-  const configuration = await get_configuration();
+  const configuration = get_configuration();
   const _markdown_it = MarkdownItAsync({ html: true }).use(markdown_it_anchors_plugin);
   if (configuration.markdown.plugins.mermaid) _markdown_it.use(markdown_it_mermaid_plugin);
   if (configuration.markdown.plugins.syntax_highlighting) _markdown_it.use(markdown_it_shiki_plugin);

@@ -3,7 +3,12 @@ import '@ladoc/client/markdown.css';
 import { Link } from 'react-router';
 import type { Route } from './+types/_index';
 
-export async function loader({ params }: Route.LoaderArgs) {}
+import manifest from '@ladoc/cache/manifest.js';
+
+export async function loader({ params }: Route.LoaderArgs) {
+  const test = await import('@ladoc/cache/manifest.js');
+  console.log('await import', test.default);
+}
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
@@ -15,6 +20,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <Button>Let's get started</Button>
         </Link>
       </div>
+      <pre className="mt-4!">
+        <code>{JSON.stringify(manifest)}</code>
+      </pre>
     </main>
   );
 }

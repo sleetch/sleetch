@@ -8,7 +8,7 @@ export function plugin(): Plugin {
     name: 'ladoc',
     enforce: 'pre',
 
-    config() {
+    /*config() {
       return {
         resolve: {
           alias: {
@@ -16,10 +16,11 @@ export function plugin(): Plugin {
           },
         },
       };
-    },
+      },*/
 
     async buildStart() {
-      if (this.environment.mode === 'build') {
+      if (this.environment.mode === 'build' && !runtime.sources.loaded()) {
+        console.log('buildStart', this.environment.name, this.environment.mode);
         await runtime.sources.load();
         await runtime.builder.build();
       }
@@ -27,6 +28,7 @@ export function plugin(): Plugin {
 
     async configureServer(server) {
       if (server.config.mode == 'development') {
+        console.log('configServer', server.config.mode);
         await runtime.sources.load();
         await runtime.builder.build();
         await runtime.sources.watch();

@@ -1,6 +1,5 @@
 import z from 'zod';
-import { file_system_schema } from './file-system';
-import { git_schema } from './git';
+import { ladoc_file_system_source } from '@/compiler/lib/sources/file-system';
 
-export const source_schema = z.discriminatedUnion('type', [file_system_schema, git_schema]);
+export const source_schema = z.discriminatedUnion('type', [ladoc_file_system_source.configuration_schema]);
 export const sources_schema = z.array(source_schema).default([]);

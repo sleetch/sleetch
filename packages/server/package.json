@@ -12,6 +12,9 @@
   "dependencies": {
     "@ladoc/core": "workspace:*"
   },
+  "peerDependencies": {
+    "@ladoc/cache": "workspace:*"
+  },
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"

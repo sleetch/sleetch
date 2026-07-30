@@ -3,3 +3,4 @@ export type { tree_module, markdown_module, manifest_module } from './types/modu
 export { resolve_language } from './utils/resolve-language';
 export { CACHE_FOLDER } from '@/compiler/utils/constants';
 export { ladoc_runtime } from '@/compiler/lib/runtime';
+export { to_flat_tree } from '@/compiler/utils/flat-tree';

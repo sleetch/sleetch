@@ -1,6 +1,6 @@
-import type { content, file_system_content, git_content } from '../types/content';
-import type { source } from '@/configuration/types/sources';
+import type { content } from '../types/content';
 import type { category, page, tree_object } from '../types/routing';
+import { to_flat_tree } from '../utils/flat-tree';
 
 export class ladoc_router {
   private trees: Map<string, tree_object[]> = new Map();
@@ -16,39 +16,11 @@ export class ladoc_router {
   }
 
   get_flat_tree(language: string) {
-    return this.flat_tree(this.get_tree(language));
+    return to_flat_tree(this.get_tree(language));
   }
 
   get_languages(): string[] {
     return [...this.trees.keys()];
-  }
-
-  private flat_tree(tree: tree_object[], parent_path: string = '/'): Array<page<file_system_content> | page<git_content>> {
-    const pages: Array<page<file_system_content> | page<git_content>> = [];
-
-    for (const object of tree) {
-      switch (object.type) {
-        case 'page':
-          if (object.index && parent_path) {
-            pages.push({
-              ...object,
-              path: parent_path,
-            });
-          } else {
-            pages.push(object);
-          }
-          break;
-
-        case 'category':
-          pages.push(...this.flat_tree(object.children, object.path));
-          break;
-
-        case 'data':
-          break;
-      }
-    }
-
-    return pages;
   }
 
   private get_source_index(language: string): Map<string, string> {

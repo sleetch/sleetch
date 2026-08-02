@@ -11,15 +11,13 @@
   --ladoc-color-blockquote-border: #2fa860;
   }*/
 
-/*
 :root {
-  --ladoc-color-text-primary: #ffffff;
-  --ladoc-color-text-underline: #888888;
-  --ladoc-color-text: #ededed;
-  --ladoc-color-background: #000000;
-  --ladoc-color-card: #0a0a0a;
-  --ladoc-color-muted-foreground: #888888;
-  --ladoc-color-muted: #1a1a1a;
-  --ladoc-color-blockquote-border: #ffffff;
+  --ladoc-color-text-primary: #a8b5c2;
+  --ladoc-color-text-underline: #3a3f45;
+  --ladoc-color-text: #e4e4e4;
+  --ladoc-color-background: #191a1c;
+  --ladoc-color-card: #232427;
+  --ladoc-color-muted-foreground: #8a8d91;
+  --ladoc-color-muted: #2c2d30;
+  --ladoc-color-blockquote-border: #5a6672;
 }
-*/

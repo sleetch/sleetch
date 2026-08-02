@@ -1,0 +1,84 @@
+.file-system {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  color: var(--_ladoc-color-text);
+  font-family: var(--_ladoc-font-base);
+  font-size: var(--_ladoc-font-size-small);
+  line-height: var(--_ladoc-line-height);
+  padding: 0.85em;
+  background: var(--_ladoc-color-card);
+  border-radius: var(--_ladoc-radius);
+  border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+  margin: 0 0 1em;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+}
+
+.folder.hidden {
+  opacity: 0.5;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.4em 0.6em;
+  border-radius: calc(var(--_ladoc-radius) - 2px);
+  transition:
+    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
+    color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.folderRow {
+  color: var(--_ladoc-color-muted-foreground);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--_ladoc-color-muted-foreground);
+  font-style: italic;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  margin-left: 0.75em;
+  padding-left: 0.65em;
+  border-left: var(--_ladoc-underline-height) solid var(--_ladoc-color-muted);
+}
+
+.file {
+  color: var(--_ladoc-color-text);
+  cursor: default;
+}
+
+.file:hover {
+  background: var(--_ladoc-color-muted);
+}
+
+.file.selected {
+  color: var(--_ladoc-color-text-primary);
+  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 12%, transparent);
+}
+
+.file.selected:hover {
+  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 18%, transparent);
+}

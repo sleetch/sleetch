@@ -8,6 +8,25 @@ order: 1
 
 Mermaid is a library designed to create powerful vizualizations with low efforts, with the mermaid syntax you can create database diagrams, control flow graphs and everything you want.. Learn more about [Mermaid syntax](https://mermaid.ai/open-source/intro/syntax-reference.html)
 
+### Enable it
+
+First enable this advanced markdown syntax in your configuration.
+
+```ts title="my-project/ladoc.config.ts"
+import type { ladoc_configuration } from '@ladoc/server';
+
+export default {
+  // ...
+  markdown: {
+    engine: 'marked', // Can be any engine
+    plugins: {
+      mermaid: true,
+      // ...
+    },
+  },
+} satisfies ladoc_configuration;
+```
+
 ## Examples
 
 ````text title="Mermaid Example"

@@ -16,4 +16,6 @@ export { PageContent } from './components/documentation/page/content';
 export { PageHeader } from './components/documentation/page/header';
 export { PageNavigation } from './components/documentation/page/navigation';
 
+export { FileSystem, File, Folder } from './components/file-system';
+
 export { Button } from './components/button';

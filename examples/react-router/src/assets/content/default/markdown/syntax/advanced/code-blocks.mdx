@@ -8,6 +8,25 @@ order: 2
 
 If like me your target audience is developers, you'll sometimes need to show code. But waitttt !! Nobody want to read spagetthi code on ugly code blocks that's why, to keep the attention of a developer who actually reads documentation, ladoc implemented a super cool and beautiful code block. Ours is powered by [Shiki](https://shiki.style/) syntax highlighting, allowing you to embed code for [many languages](https://shiki.style/languages) with various features for documentation writers.
 
+### Enable it
+
+First enable this advanced markdown syntax in your configuration.
+
+```ts title="my-project/ladoc.config.ts"
+import type { ladoc_configuration } from '@ladoc/server';
+
+export default {
+  // ...
+  markdown: {
+    engine: 'marked', // Can be any engine
+    plugins: {
+      syntax_highlighting: true,
+      // ...
+    },
+  },
+} satisfies ladoc_configuration;
+```
+
 ## The base syntax
 
 This syntax is easy to learn.

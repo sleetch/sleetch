@@ -55,3 +55,8 @@
     font-size: 14px;
   }
 }
+
+:global(.ladoc-markdown) .default,
+:global(.ladoc-markdown) .secondary {
+  margin: 0 0 1em;
+}

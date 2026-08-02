@@ -1,0 +1,110 @@
+---
+title: File System
+description: File System source integration setup and structure instructions.
+engine: mdx-js
+---
+
+# Configuration Setup
+
+You can specify in the ladoc configuration, a new file system source by following this type.
+
+| Field      | Type                    | Comment                                              |
+| ---------- | ----------------------- | ---------------------------------------------------- |
+| `type`     | literal `'file-system'` |                                                      |
+| `path`     | `string`                | Should be relative to the root                       |
+| `language` | `string \| undefined`   | Undefined language will fallback to default language |
+
+## Example
+
+We can think about something like this :
+
+```ts title="my-project/ladoc.config.ts"
+import type { ladoc_configuration } from '@ladoc/server';
+
+export default {
+  // ...
+  languages: {
+    default: 'en',
+  },
+  sources: [
+    { type: 'file-system', path: './src/assets/content/default' },
+    { type: 'file-system', path: './src/assets/content/preview', language: 'en' },
+    { type: 'file-system', path: './src/assets/content/french', language: 'fr' },
+  ],
+} satisfies ladoc_configuration;
+```
+
+<FileSystem>
+  <Folder name="my-project">
+    <Folder name="src">
+      <Folder name="assets">
+        <Folder name="content">
+          <Folder name="default">
+            <File name="..." comment="Here is the content structure." />
+          </Folder>
+          <Folder name="french">
+            <File name="..." comment="And here." />
+          </Folder>
+          <Folder name="preview">
+            <File name="..." comment="And here !" />
+          </Folder>
+        </Folder>
+      </Folder>
+    </Folder>
+    <File name="ladoc.config.ts" />
+  </Folder>
+</FileSystem>
+
+# Structure
+
+After you've get done the boring configuration phase you are free to discover the structure you'll need to follow in your content folders.
+
+Put this in your mind first :
+
+- A folder is a category.
+- A `_data.mdx` file is a parent category meta file.
+- A `_index.mdx` file is a parent category index page.
+- Any other `*.mdx` file is a page.
+
+## Base Example
+
+I'll explain let's take this example
+
+<FileSystem>
+  <Folder name="my-project / src / assets / content / default">
+    <Folder name="welcome">
+      <File name="hey.mdx" comment="/welcome/hey" />
+    </Folder>
+    <File name="hello.mdx" comment="/hello" />
+  </Folder>
+</FileSystem>
+
+For now this is really straight forward `/hello` will point to `hello.mdx` and `/welcome/hey` will point to `welcome/hey.mdx`..
+
+## \_index.mdx
+
+Then a `_index.mdx` file can be placed in a category to act like the homepage. When a user visits the category without listing a specific page this one will be resolved.
+
+#### Exampleaaa
+
+<FileSystem>
+  <Folder name="my-project / src / assets / content / default">
+    <Folder name="welcome">
+      <File name="_index.mdx" comment="/welcome" />
+      <File name="hey.mdx" comment="/welcome/hey" />
+    </Folder>
+    <Folder name="and">
+      <Folder name="goodbye">
+        <File name="_index.mdx" comment="/and/goodbye" />
+      </Folder>
+    </Folder>
+    <File name="hello.mdx" comment="/hello" />
+  </Folder>
+</FileSystem>
+
+So `welcome/_index.mdx` will be the homepage of the **welcome** category and will point to `/welcome`  
+And `and/goodbye/_index.mdx` will be the homepage of the **goodbye** category, itself a sub category of the **and** category and will point to `/and/goodbye`
+
+## \_data.mdx
+
+The `_data.mdx` file must be placed in a category to give basic informations about it like the title, the description or the icon.

@@ -17,6 +17,7 @@
     "./components/documentation/toc/index.module.css": "./src/components/documentation/toc/index.module.css",
     "./components/documentation/layout.module.css": "./src/components/documentation/layout.module.css",
     "./components/documentation/header.module.css": "./src/components/documentation/header.module.css",
+    "./components/file-system.module.css": "./src/components/file-system.module.css",
     "./components/button.module.css": "./src/components/button.module.css"
   }
 }

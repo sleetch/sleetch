@@ -19,6 +19,7 @@ interface TocLinkStyle extends CSSProperties {
 export function DocumentationToc({ className, children, page, ...props }: DocumentationTocProps) {
   const value = use(page);
   const toc = value.default.toc;
+  if (toc.length == 0) return null;
 
   const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
   const [gapY, setGapY] = useState<number | null>(null);

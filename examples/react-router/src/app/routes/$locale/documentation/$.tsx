@@ -1,7 +1,17 @@
 import { data } from 'react-router';
 import type { Route } from './+types/$';
 import { Suspense } from 'react';
-import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader, PageNavigation } from '@ladoc/react';
+import {
+  Button,
+  FileSystem,
+  File,
+  Folder,
+  DocumentationSidebarContent,
+  DocumentationToc,
+  PageContent,
+  PageHeader,
+  PageNavigation,
+} from '@ladoc/react';
 import { get_page, get_tree } from '@ladoc/server';
 import manifest from '@ladoc/cache/manifest.js';
 
@@ -35,6 +45,9 @@ export default function Page({
             page={page}
             components={{
               Button,
+              FileSystem,
+              File,
+              Folder,
             }}
           />
           <PageNavigation hrefBuilder={(href) => '/' + language + '/documentation' + href} tree={tree} currentPath={path} />

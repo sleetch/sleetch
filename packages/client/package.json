@@ -18,6 +18,9 @@
     "./package.json": "./package.json",
     "./markdown.css": {
       "default": "./src/styles/markdown.css"
-    }
+    },
+    "./manifest.js": "./.ladoc/manifest.js",
+    "./trees/*.js": "./.ladoc/trees/*.js",
+    "./markdown-modules/*.js": "./.ladoc/markdown-modules/*.js"
   }
 }

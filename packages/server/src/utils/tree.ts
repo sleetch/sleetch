@@ -4,7 +4,7 @@ import { resolve_language, type tree_module, type manifest_module } from '@ladoc
 
 export const get_tree = async (_language?: string) => {
   const language = resolve_language(_language);
-  const { default: manifest }: manifest_module = await import('@ladoc/cache/manifest.js'!);
+  const { default: manifest }: manifest_module = await import('@ladoc/client/manifest.js'!);
   const { default: tree }: tree_module = await manifest[language]['tree']();
   return { tree, language };
 };
@@ -16,6 +16,6 @@ export const get_static_paths = async <T>(transformer: transformer<T>, _language
 };
 
 export const get_languages = async () => {
-  const { default: manifest }: manifest_module = await import('@ladoc/cache/manifest.js'!);
+  const { default: manifest }: manifest_module = await import('@ladoc/client/manifest.js'!);
   return manifest.languages;
 };

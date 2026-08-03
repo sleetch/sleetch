@@ -13,7 +13,7 @@ import {
   PageNavigation,
 } from '@ladoc/react';
 import { get_page, get_tree } from '@ladoc/server';
-import manifest from '@ladoc/cache/manifest.js';
+import manifest from '@ladoc/client/manifest.js';
 import { ThemeToggle } from '@/theme/components/theme-toggle';
 
 export function meta({ params, loaderData: data }: Route.MetaArgs) {

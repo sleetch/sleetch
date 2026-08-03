@@ -2,13 +2,16 @@
   "name": "ladoc",
   "scripts": {
     "build": "bunx bun-workspaces run build --dep-order --output-style=prefixed",
-    "dev": "bunx bun-workspaces run dev"
+    "dev": "bunx bun-workspaces run dev",
+    "ci:version": "changeset version && bun update",
+    "ci:publish": "./scripts/ci-publish.sh"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "bun-workspaces": "^1.11.2",
     "publint": "^0.3.22",
-    "tsdown": "^0.22.14"
+    "tsdown": "^0.22.14",
+    "@changesets/cli": "^2.31.1"
   },
   "peerDependencies": {
     "typescript": "^5"

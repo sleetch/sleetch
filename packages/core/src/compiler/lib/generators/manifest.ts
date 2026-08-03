@@ -11,7 +11,7 @@ export const generate_manifest = (router: ladoc_router) => {
 
     language_manifests.push(`
           "${language}" : {
-          'tree': () => import('${path.join('@ladoc/cache/trees', language + '.js')}'),
+          'tree': () => import('${path.join('@ladoc/client/trees', language + '.js')}'),
 
           'markdown_modules':{
 
@@ -20,7 +20,7 @@ export const generate_manifest = (router: ladoc_router) => {
             .map(
               (page) =>
                 `        "${page.path}": () => import('${path.join(
-                  '@ladoc/cache/markdown-modules',
+                  '@ladoc/client/markdown-modules',
                   language,
                   page.path + (page.index ? '/_index' : '') + '.js'
                 )}')`

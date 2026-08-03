@@ -13,7 +13,7 @@
     "@ladoc/core": "workspace:*"
   },
   "peerDependencies": {
-    "@ladoc/cache": "workspace:*"
+    "@ladoc/client": "workspace:*"
   },
   "exports": {
     ".": "./dist/index.js",

@@ -3,7 +3,7 @@ import '@ladoc/client/markdown.css';
 import { Link } from 'react-router';
 import type { Route } from './+types/_index';
 
-import manifest from '@ladoc/cache/manifest.js';
+import manifest from '@ladoc/client/manifest.js';
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (

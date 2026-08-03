@@ -84,7 +84,9 @@
   margin: var(--_ladoc-margin-paragraph);
 }
 
-.ladoc-markdown a:not(.no-ladoc-markdown *) {
+.ladoc-markdown a:has(.no-ladoc-markdown),
+.ladoc-markdown a:not(:has(> *)),
+.ladoc-markdown a:not(:has(> button:only-child)) {
   color: var(--_ladoc-color-text-primary);
   border-bottom: var(--_ladoc-underline-height) solid var(--_ladoc-color-text-underline);
   transition:

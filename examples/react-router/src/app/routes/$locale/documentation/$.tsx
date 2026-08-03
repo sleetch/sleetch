@@ -14,6 +14,7 @@ import {
 } from '@ladoc/react';
 import { get_page, get_tree } from '@ladoc/server';
 import manifest from '@ladoc/cache/manifest.js';
+import { ThemeToggle } from '@/theme/components/theme-toggle';
 
 export function meta({ params, loaderData: data }: Route.MetaArgs) {
   if (data) {
@@ -40,6 +41,8 @@ export default function Page({
     <>
       <DocumentationSidebarContent>
         <Suspense fallback={<p>Loading.</p>}>
+          <ThemeToggle />
+
           <PageHeader page={page} />
           <PageContent
             page={page}

@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/*:root {
+:root {
   --ladoc-color-text-primary: #1f8a4c;
   --ladoc-color-text-underline: #bfe4cd;
   --ladoc-color-text: #1a1a1a;
@@ -9,9 +9,11 @@
   --ladoc-color-muted-foreground: #6b6b6b;
   --ladoc-color-muted: #ececec;
   --ladoc-color-blockquote-border: #2fa860;
-  }*/
+}
 
-:root {
+@custom-variant dark (&:is(.dark *));
+
+.dark {
   --ladoc-color-text-primary: #a8b5c2;
   --ladoc-color-text-underline: #3a3f45;
   --ladoc-color-text: #e4e4e4;

@@ -70,7 +70,7 @@
     },
     "packages/client": {
       "name": "@ladoc/client",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@ladoc/core": "workspace:*",
         "@ladoc/styles": "workspace:*",
@@ -78,7 +78,7 @@
     },
     "packages/core": {
       "name": "@ladoc/core",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@mdit/plugin-katex": "^1.0.1",
         "@mdx-js/mdx": "^3.1.1",
@@ -109,7 +109,7 @@
     },
     "packages/next": {
       "name": "@ladoc/next",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@ladoc/core": "workspace:*",
       },
@@ -123,7 +123,7 @@
     },
     "packages/react": {
       "name": "@ladoc/react",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@mdx-js/mdx": "^3.1.1",
         "clsx": "^2.1.1",
@@ -150,7 +150,7 @@
     },
     "packages/server": {
       "name": "@ladoc/server",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@ladoc/core": "workspace:*",
       },
@@ -160,11 +160,11 @@
     },
     "packages/styles": {
       "name": "@ladoc/styles",
-      "version": "1.0.0",
+      "version": "1.0.1",
     },
     "packages/vite": {
       "name": "@ladoc/vite",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "dependencies": {
         "@ladoc/core": "workspace:*",
         "vite": "^8.1.0",

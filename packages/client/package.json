@@ -1,9 +1,10 @@
 {
   "name": "@ladoc/client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "src/styles"
   ],
   "access": "public",
   "scripts": {

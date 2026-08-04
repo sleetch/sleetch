@@ -1,10 +1,12 @@
 {
   "name": "ladoc",
+  "private": true,
   "scripts": {
     "build": "bunx bun-workspaces run build --dep-order --output-style=prefixed",
     "dev": "bunx bun-workspaces run dev",
+    "changeset": "changeset",
     "ci:version": "changeset version && bun update",
-    "ci:publish": "./scripts/ci-publish.sh"
+    "ci:publish": "bun scripts/publish.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

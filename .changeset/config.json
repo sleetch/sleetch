@@ -2,7 +2,17 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [],
+  "fixed": [
+    [
+      "@ladoc/core",
+      "@ladoc/vite",
+      "@ladoc/next",
+      "@ladoc/react",
+      "@ladoc/server",
+      "@ladoc/client",
+      "@ladoc/styles"
+    ]
+  ],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",

@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "access": "public",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch"

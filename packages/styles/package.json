@@ -5,6 +5,7 @@
   "files": [
     "src"
   ],
+  "access": "public",
   "scripts": {
     "build": "bun ./src/scripts/build.ts"
   },

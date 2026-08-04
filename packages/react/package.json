@@ -2,6 +2,7 @@
   "name": "@ladoc/react",
   "version": "0.0.1",
   "type": "module",
+  "access": "public",
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build"

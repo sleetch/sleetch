@@ -16,7 +16,7 @@ for (const entry of entries) {
   console.log(`Publication de ${entry.name}...`);
 
   const result = Bun.spawnSync({
-    cmd: ["bun", "publish", "--no-git-checks"],
+    cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],
     cwd: packageDir,
     stdout: "inherit",
     stderr: "inherit",

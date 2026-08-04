@@ -10,13 +10,13 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "bun-workspaces": "^1.11.2",
+    "bun-workspaces": "^1.12.0",
     "publint": "^0.3.22",
     "tsdown": "^0.22.14",
     "@changesets/cli": "^2.31.1"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "workspaces": [
     "./packages/*",

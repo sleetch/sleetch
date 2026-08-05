@@ -20,15 +20,27 @@ const releases = release_plan.releases.filter(
 
 for (const release of releases) {
   console.log(`Publishing : ${release.name}@${release.newVersion}`);
-  const result = Bun.spawnSync({
-    cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],
-    cwd: packages_to_cwd.get(release.name),
+  const cwd = packages_to_cwd.get(release.name);
+  const build = Bun.spawnSync({
+    cmd: ["bun", "run", "build"],
+    cwd,
     stdout: "inherit",
     stderr: "inherit",
   });
 
-  if (!result.success) {
-    process.exit(result.exitCode ?? 1);
+  if (build.exitCode !== 0) {
+    throw new Error(`Build failed for ${release.name}`);
+  }
+
+  const result = Bun.spawnSync({
+    cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],
+    cwd,
+    stdout: "inherit",
+    stderr: "inherit",
+  });
+
+  if (result.exitCode !== 0) {
+    throw new Error(`Publish failed for ${release.name}`);
   }
 }
 

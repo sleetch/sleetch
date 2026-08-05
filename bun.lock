@@ -6,6 +6,7 @@
       "name": "ladoc",
       "devDependencies": {
         "@changesets/cli": "^2.31.1",
+        "@changesets/get-release-plan": "^4.0.16",
         "@types/bun": "latest",
         "bun-workspaces": "^1.12.0",
         "publint": "^0.3.22",
@@ -70,7 +71,7 @@
     },
     "packages/client": {
       "name": "@ladoc/client",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@ladoc/core": "workspace:*",
         "@ladoc/styles": "workspace:*",
@@ -78,7 +79,7 @@
     },
     "packages/core": {
       "name": "@ladoc/core",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@mdit/plugin-katex": "^1.0.1",
         "@mdx-js/mdx": "^3.1.1",
@@ -109,7 +110,7 @@
     },
     "packages/next": {
       "name": "@ladoc/next",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@ladoc/core": "workspace:*",
       },
@@ -123,7 +124,7 @@
     },
     "packages/react": {
       "name": "@ladoc/react",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@mdx-js/mdx": "^3.1.1",
         "clsx": "^2.1.1",
@@ -150,7 +151,7 @@
     },
     "packages/server": {
       "name": "@ladoc/server",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@ladoc/core": "workspace:*",
       },
@@ -160,11 +161,11 @@
     },
     "packages/styles": {
       "name": "@ladoc/styles",
-      "version": "1.0.1",
+      "version": "2.0.0",
     },
     "packages/vite": {
       "name": "@ladoc/vite",
-      "version": "1.0.1",
+      "version": "2.0.0",
       "dependencies": {
         "@ladoc/core": "workspace:*",
         "vite": "^8.1.0",
@@ -1670,7 +1671,7 @@
 
     "proxy-addr": ["proxy-addr@2.0.7", "", { "dependencies": { "forwarded": "0.2.0", "ipaddr.js": "1.9.1" } }, "sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg=="],
 
-    "publint": ["publint@0.3.22", "", { "dependencies": { "@publint/pack": "^0.1.6", "package-manager-detector": "^1.7.0", "picocolors": "^1.1.1", "sade": "^1.8.1" }, "bin": { "publint": "./src/cli.js" } }, "sha512-6Z/scsr5CA7APdwyF35EY88CqgDj1textWuY788DVTJYPCWVv/Wn9G6KmLnrVRnStgYcahqN4wCDLZGSbQJ69w=="],
+    "publint": ["publint@0.3.23", "", { "dependencies": { "@publint/pack": "^0.1.6", "package-manager-detector": "^1.7.0", "picocolors": "^1.1.1", "sade": "^1.8.1" }, "bin": { "publint": "./src/cli.js" } }, "sha512-5MQipUPcB7MWw84zLUkHrg/H/UBtk3LL+A0GngTTBSsiNJLQurMUaSIRG3edlOrRz4UFe0AOKK9TZdIWviV+jQ=="],
 
     "punycode": ["punycode@2.3.1", "", {}, "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg=="],
 

@@ -52,7 +52,11 @@ export interface FilesProps {
 }
 
 export function FileSystem({ children, className = '' }: FilesProps) {
-  return <div className={[styles['file-system'], className, 'no-ladoc-markdown'].filter(Boolean).join(' ')}>{children}</div>;
+  return (
+    <div className="no-ladoc-markdown">
+      <div className={[styles['file-system'], className].filter(Boolean).join(' ')}>{children}</div>
+    </div>
+  );
 }
 
 export interface FolderProps {

@@ -21,42 +21,37 @@ if (!(await release_plan_file.exists())) {
 
 const { releases } = await release_plan_file.json();
 
-for (const release of releases) {
-  console.log(`Publishing : ${release.name}@${release.newVersion}`);
-  const cwd = packages_to_cwd.get(release.name);
-
-  if (!cwd) {
-    console.error("Could not find package cwd :", release.name);
-    process.exit(0);
-  }
-
-  const build = Bun.spawnSync({
+if (releases.length > 0) {
+  Bun.spawnSync({
     cmd: ["bun", "run", "build"],
-    cwd,
+    cwd: root,
     stdout: "inherit",
     stderr: "inherit",
   });
 
-  if (build.exitCode !== 0) {
-    throw new Error(`Build failed for ${release.name}`);
+  for (const release of releases) {
+    console.log(`Publishing : ${release.name}@${release.newVersion}`);
+    const cwd = packages_to_cwd.get(release.name);
+
+    if (!cwd) {
+      console.error("Could not find package cwd :", release.name);
+      process.exit(0);
+    }
+
+    const result = Bun.spawnSync({
+      cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],
+      cwd,
+      stdout: "inherit",
+      stderr: "inherit",
+      env: {
+        ...process.env,
+        NPM_CONFIG_TOKEN: process.env.NPM_TOKEN,
+      },
+    });
+
+    if (result.exitCode !== 0) {
+      throw new Error(`Publish failed for ${release.name}`);
+    }
   }
-
-  await Bun.write(
-    path.join(cwd, ".npmrc"),
-    `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}\n`,
-  );
-
-  const result = Bun.spawnSync({
-    cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],
-    cwd,
-    stdout: "inherit",
-    stderr: "inherit",
-  });
-
-  if (result.exitCode !== 0) {
-    throw new Error(`Publish failed for ${release.name}`);
-  }
-}
-
-if (releases.length == 0) console.log("Nothing to publish..");
-else console.log(`Publisheddd ${releases.length} packages.`);
+  console.log(`Publisheddd ${releases.length} packages.`);
+} else if (releases.length == 0) console.log("Nothing to publish..");

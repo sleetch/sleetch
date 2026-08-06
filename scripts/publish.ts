@@ -1,6 +1,7 @@
 import path from "node:path";
 import { Glob } from "bun";
 import { release_plan_file_path, root } from "./utils/constants";
+import type { ReleasePlan } from "@changesets/types";
 
 const packages_to_cwd = new Map<string, string>();
 
@@ -19,7 +20,25 @@ if (!(await release_plan_file.exists())) {
   process.exit(0);
 }
 
-const { releases } = await release_plan_file.json();
+const release_plan: ReleasePlan = await release_plan_file.json();
+const releases = release_plan.releases.filter((release) => {
+  const npmCheck = Bun.spawnSync({
+    cmd: ["npm", "view", `${release.name}@${release.newVersion}`, "version"],
+    stdout: "pipe",
+    stderr: "ignore",
+  });
+
+  const exists = npmCheck.exitCode === 0;
+
+  if (exists) {
+    console.log(
+      `Skipping ${release.name}@${release.newVersion} (already published)`,
+    );
+    return false;
+  }
+
+  return true;
+});
 
 if (releases.length > 0) {
   Bun.spawnSync({
@@ -30,8 +49,9 @@ if (releases.length > 0) {
   });
 
   for (const release of releases) {
-    console.log(`Publishing : ${release.name}@${release.newVersion}`);
     const cwd = packages_to_cwd.get(release.name);
+
+    console.log(`Publishing : ${release.name}@${release.newVersion}`);
 
     if (!cwd) {
       console.error("Could not find package cwd :", release.name);

@@ -1,12 +1,5 @@
 # @ladoc/client
 
-## 1.0.2
-
-### Patch Changes
-
-- @ladoc/core@1.0.2
-- @ladoc/styles@1.0.2
-
 ## 1.0.1
 
 ### Patch Changes

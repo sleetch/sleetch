@@ -1,8 +1,7 @@
 import path from "node:path";
 import { Glob } from "bun";
-import get_release_plan from "@changesets/get-release-plan";
+import { release_plan_file_path, root } from "./utils/constants";
 
-const root = process.cwd();
 const packages_to_cwd = new Map<string, string>();
 
 for await (const file of new Glob("**/package.json").scan({ cwd: root })) {
@@ -13,10 +12,16 @@ for await (const file of new Glob("**/package.json").scan({ cwd: root })) {
   }
 }
 
-const release_plan = await get_release_plan(root);
-const releases = release_plan.releases.filter(
-  (r) => r.oldVersion !== r.newVersion,
-);
+const release_plan_file = Bun.file(release_plan_file_path);
+
+if (!(await release_plan_file.exists())) {
+  console.error("release-plan.json is missing");
+  process.exit(0);
+}
+
+const { releases } = await release_plan_file.json();
+
+console.log(releases);
 
 for (const release of releases) {
   console.log(`Publishing : ${release.name}@${release.newVersion}`);

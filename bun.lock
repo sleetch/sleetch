@@ -9,7 +9,7 @@
         "@changesets/get-release-plan": "^4.0.16",
         "@types/bun": "latest",
         "bun-workspaces": "^1.12.0",
-        "publint": "^0.3.22",
+        "publint": "^0.3.23",
         "tsdown": "^0.22.14",
       },
       "peerDependencies": {

@@ -1,5 +1,11 @@
 # @ladoc/react
 
+## 1.0.3
+
+### Patch Changes
+
+- fa9a075: Fixed the react file-system component styling
+
 ## 1.0.2
 
 ### Patch Changes

@@ -1,0 +1,27 @@
+{
+  "name": "@ladoc/cli",
+  "version": "1.0.2",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "access": "public",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "@ladoc/core": "workspace:*",
+    "zod": "^4.4.3"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "ladoc": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js"
+}

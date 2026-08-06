@@ -21,11 +21,15 @@ if (!(await release_plan_file.exists())) {
 
 const { releases } = await release_plan_file.json();
 
-console.log(releases);
-
 for (const release of releases) {
   console.log(`Publishing : ${release.name}@${release.newVersion}`);
   const cwd = packages_to_cwd.get(release.name);
+
+  if (!cwd) {
+    console.error("Could not find package cwd :", release.name);
+    process.exit(0);
+  }
+
   const build = Bun.spawnSync({
     cmd: ["bun", "run", "build"],
     cwd,
@@ -36,6 +40,11 @@ for (const release of releases) {
   if (build.exitCode !== 0) {
     throw new Error(`Build failed for ${release.name}`);
   }
+
+  await Bun.write(
+    path.join(cwd, ".npmrc"),
+    `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}\n`,
+  );
 
   const result = Bun.spawnSync({
     cmd: ["bun", "publish", "--no-git-checks", "--access", "public"],

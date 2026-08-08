@@ -1,5 +1,12 @@
 # @ladoc/server
 
+## 1.0.4
+
+### Patch Changes
+
+- @ladoc/core@1.0.4
+- @ladoc/client@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes

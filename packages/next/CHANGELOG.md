@@ -1,5 +1,11 @@
 # @ladoc/next
 
+## 1.0.4
+
+### Patch Changes
+
+- @ladoc/core@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes

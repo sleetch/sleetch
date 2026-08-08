@@ -2,50 +2,50 @@
   "releases": [
     {
       "name": "@ladoc/cli",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/core",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/vite",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/next",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/react",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/server",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/client",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     },
     {
       "name": "@ladoc/styles",
-      "oldVersion": "1.0.2",
-      "newVersion": "1.0.3",
+      "oldVersion": "1.0.3",
+      "newVersion": "1.0.4",
       "type": "patch"
     }
   ]

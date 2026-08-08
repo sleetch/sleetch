@@ -19,7 +19,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "cli": "./dist/index.js"
+    "ladoc": "./dist/index.js"
   },
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",

@@ -43,6 +43,7 @@
     "examples/react-router": {
       "name": "@ladoc/react-router-example",
       "dependencies": {
+        "@ladoc/cli": "workspace:*",
         "@ladoc/client": "workspace:*",
         "@ladoc/react": "workspace:*",
         "@ladoc/server": "workspace:*",

@@ -2,6 +2,60 @@
 title: 'Engines'
 description: This part of the documentation introduces markdown usage.
 order: 2
+engine: mdx-js
 ---
 
-Hello how are you ?
+# Multiple Engines
+
+With ladoc you can use any of the available markdown engines, at any time allowing you to optimize build time and fit your needs. You can override the configuration markdown engine in the frontmatter of your pages when needed.
+
+## Example
+
+Let's say i have this configuration :
+
+```ts title="my-project/ladoc.config.ts"
+import type { ladoc_configuration } from '@ladoc/server';
+
+export default {
+  // ...
+  markdown: {
+    engine: 'marked', // Can be any engine
+    plugins: {
+      syntax_highlighting: true,
+      latex: true,
+      mermaid: true,
+    },
+  },
+} satisfies ladoc_configuration;
+```
+
+**BUT** for some reasons i have a page where i do not want to use `marked` but an engine that support embedding react components like `mdx-js` but i do not want it to slow down the parsing of other pages by setting it globally... Well just set in your page the engine you want !
+
+```mdx title="my-project/content/test.mdx"
+---
+title: 'Hello'
+description: This part of the documentation is using another markdown engine.
+engine: mdx-js
+---
+
+Welcome there, welcome to my documentation !
+
+[<Button variant="secondary">Check my website</Button>](https://ladoc.net)
+```
+
+> Welcome there, welcome to my documentation !  
+> [<Button variant="secondary">Check my website</Button>](https://ladoc.net)
+
+# Features
+
+Each markdown engine is unique, as you can see some are lightweight but do not support every feature
+
+| Item                 | Basic Syntax | Latex | Syntax Highlighting | Mermaid | JSX Components |
+| :------------------- | :----------: | :---: | :-----------------: | :-----: | :------------: |
+| ladoc (as md engine) |      🔴      |  🔴   |         🔴          |   🔴    |       🔴       |
+| Bun                  |      🟢      |  🔴   |         🔴          |   🔴    |       🔴       |
+| Marked               |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
+| Markdown It          |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
+| MDX.js               |      🟢      |  🟢   |         🟢          |   🟢    |       🟢       |
+
+_I recommend `marked` globally and `mdx-js` when needed on a page for the time being._

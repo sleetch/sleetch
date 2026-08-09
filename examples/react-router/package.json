@@ -18,9 +18,10 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@ladoc/cli": "workspace:*",
+    "@ladoc/client": "workspace:*",
     "@ladoc/react": "workspace:*",
     "@ladoc/server": "workspace:*",
-    "@ladoc/client": "workspace:*",
     "@ladoc/vite": "workspace:*",
     "@react-router/dev": "^8.0.1",
     "@react-router/node": "^8.0.1",

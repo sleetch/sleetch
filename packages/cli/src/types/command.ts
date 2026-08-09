@@ -1,7 +1,8 @@
-import type { ladoc_runtime } from '@ladoc/core/compiler';
+import type { ladoc_cli } from '@/lib/cli';
 
 export type command = {
   name: string;
   description: string;
-  action: (args: string[], runtime: ladoc_runtime) => void;
+  fallback?: boolean;
+  action: (args: string[], cli: ladoc_cli) => void;
 };

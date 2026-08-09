@@ -1,25 +1,18 @@
-import { getDocumentationTree } from "@/actions/tree";
-import {
-  ConnectedDocumentationSidebar,
-  DocumentationTocContent,
-} from "@ladoc/react";
+import { getDocumentationTree } from '@/actions/tree';
+import { ConnectedDocumentationSidebar, DocumentationContent } from '@ladoc/react';
 
-export default async function DocumentationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function DocumentationLayout({ children }: { children: React.ReactNode }) {
   const tree = await getDocumentationTree();
 
   return (
-    <DocumentationTocContent>
+    <DocumentationContent>
       <ConnectedDocumentationSidebar
         tree={tree}
-        hrefBuilder={(href) => "/documentation" + href}
+        // hrefBuilder={(href) => "/documentation" + href}
         // currentPath ?
       />
 
       {children}
-    </DocumentationTocContent>
+    </DocumentationContent>
   );
 }

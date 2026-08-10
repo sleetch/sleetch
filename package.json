@@ -2,8 +2,8 @@
   "name": "sleetch",
   "private": true,
   "scripts": {
-    "build": "bunx bun-workspaces run build 'path:packages/*' --dep-order --output-style=prefixed ",
-    "dev": "bunx bun-workspaces run dev",
+    "build": "bunx pacwich run build 'path:packages/*' --dep-order --output-style=prefixed ",
+    "dev": "bunx pacwich run dev",
     "changeset": "changeset",
     "ci:version": "bun scripts/version.ts",
     "ci:publish": "bun scripts/publish.ts"
@@ -13,7 +13,6 @@
     "@changesets/get-release-plan": "^4.0.16",
     "@changesets/types": "^6.1.0",
     "@types/bun": "latest",
-    "bun-workspaces": "^1.12.0",
     "publint": "^0.3.23",
     "tsdown": "^0.22.14"
   },
@@ -23,5 +22,8 @@
   "workspaces": [
     "./packages/*",
     "./examples/*"
-  ]
+  ],
+  "dependencies": {
+    "pacwich": "^0.7.0"
+  }
 }

@@ -1,5 +1,5 @@
-import { ConnectedDocumentationSidebar, DocumentationContent } from '@ladoc/react';
-import { get_tree } from '@ladoc/server';
+import { ConnectedDocumentationSidebar, DocumentationContent } from '@sleetch/react';
+import { get_tree } from '@sleetch/server';
 import { Outlet } from 'react-router';
 import type { Route } from './+types/_layout';
 //import { iconResolver } from '@/shared/utils/icons';

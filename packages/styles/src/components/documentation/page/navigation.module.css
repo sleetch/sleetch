@@ -4,9 +4,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
-  padding: var(--_ladoc-padding-root);
+  padding: var(--_sleetch-padding-root);
   padding-top: 0px;
-  font-family: var(--_ladoc-font-base);
+  font-family: var(--_sleetch-font-base);
 }
 
 .slot {
@@ -24,23 +24,23 @@
   width: 100%;
   max-width: 320px;
   padding: 1em 1em;
-  border-radius: var(--_ladoc-radius);
-  border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
-  color: var(--_ladoc-color-text);
+  border-radius: var(--_sleetch-radius);
+  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-muted);
+  color: var(--_sleetch-color-text);
   text-decoration: none;
   transition:
-    border-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .card:hover,
 .card:focus-visible {
-  border-color: var(--_ladoc-color-text-primary);
-  background-color: color-mix(in srgb, var(--_ladoc-color-text-primary) 8%, var(--_ladoc-color-card));
+  border-color: var(--_sleetch-color-text-primary);
+  background-color: color-mix(in srgb, var(--_sleetch-color-text-primary) 8%, var(--_sleetch-color-card));
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--_ladoc-color-text-primary);
+  outline: 2px solid var(--_sleetch-color-text-primary);
   outline-offset: 2px;
 }
 
@@ -58,8 +58,8 @@
   display: flex;
   align-items: center;
   gap: 0.3em;
-  font-size: var(--_ladoc-font-size-tiny);
-  color: var(--_ladoc-color-muted-foreground);
+  font-size: var(--_sleetch-font-size-tiny);
+  color: var(--_sleetch-color-muted-foreground);
 }
 
 .chevron {
@@ -69,16 +69,16 @@
 }
 
 .title {
-  font-size: var(--_ladoc-font-size-base);
-  font-weight: var(--_ladoc-font-weight-heading);
-  line-height: var(--_ladoc-line-height-heading);
-  color: var(--_ladoc-color-text);
+  font-size: var(--_sleetch-font-size-base);
+  font-weight: var(--_sleetch-font-weight-heading);
+  line-height: var(--_sleetch-line-height-heading);
+  color: var(--_sleetch-color-text);
 }
 
 .description {
-  font-size: var(--_ladoc-font-size-tiny);
-  line-height: var(--_ladoc-line-height);
-  color: var(--_ladoc-color-muted-foreground);
+  font-size: var(--_sleetch-font-size-tiny);
+  line-height: var(--_sleetch-line-height);
+  color: var(--_sleetch-color-muted-foreground);
   overflow: hidden;
 }
 

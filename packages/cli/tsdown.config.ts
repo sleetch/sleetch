@@ -4,12 +4,12 @@ export default defineConfig({
   exports: {
     legacy: true,
     bin: {
-      ladoc: 'src/bin/index.ts',
+      sleetch: 'src/bin/index.ts',
     },
   },
   entry: ['src/**/index.ts'],
   deps: {
-    neverBundle: [/^@ladoc\/cache(\/.*)?$/],
+    neverBundle: [/^@sleetch\/cache(\/.*)?$/],
   },
   fixedExtension: false,
   format: 'esm',

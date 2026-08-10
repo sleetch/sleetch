@@ -1,8 +1,8 @@
 import type { command } from '@/types/command';
-import { ladoc_runtime } from '@ladoc/core/compiler';
+import { sleetch_runtime } from '@sleetch/core/compiler';
 
-export class ladoc_cli {
-  runtime = new ladoc_runtime();
+export class sleetch_cli {
+  runtime = new sleetch_runtime();
   commands: command[] = [];
   private fallback?: command;
 
@@ -19,7 +19,7 @@ export class ladoc_cli {
   run(args: string[]) {
     if (args.length == 0) {
       if (this.fallback) this.fallback.action([], this);
-      else console.error(`ladoc: no command `);
+      else console.error(`sleetch: no command `);
       return;
     }
     const [command_name, ...command_args] = args;
@@ -30,6 +30,6 @@ export class ladoc_cli {
         return;
       }
     }
-    console.error(`ladoc: bad option: ${command_name}`);
+    console.error(`sleetch: bad option: ${command_name}`);
   }
 }

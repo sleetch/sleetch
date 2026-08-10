@@ -1,4 +1,4 @@
-import type { ladoc_configuration } from '@ladoc/server';
+import type { sleetch_configuration } from '@sleetch/server';
 
 export default {
   languages: {
@@ -16,4 +16,4 @@ export default {
       mermaid: true,
     },
   },
-} satisfies ladoc_configuration;
+} satisfies sleetch_configuration;

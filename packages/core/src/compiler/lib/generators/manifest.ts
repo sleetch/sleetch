@@ -1,7 +1,7 @@
-import type { ladoc_router } from '../router';
+import type { sleetch_router } from '../router';
 import path from 'path';
 
-export const generate_manifest = (router: ladoc_router) => {
+export const generate_manifest = (router: sleetch_router) => {
   const languages = router.get_languages();
 
   const language_manifests = [];
@@ -11,7 +11,7 @@ export const generate_manifest = (router: ladoc_router) => {
 
     language_manifests.push(`
           "${language}" : {
-          'tree': () => import('${path.join('@ladoc/client/trees', language + '.js')}'),
+          'tree': () => import('${path.join('@sleetch/client/trees', language + '.js')}'),
 
           'markdown_modules':{
 
@@ -20,7 +20,7 @@ export const generate_manifest = (router: ladoc_router) => {
             .map(
               (page) =>
                 `        "${page.path}": () => import('${path.join(
-                  '@ladoc/client/markdown-modules',
+                  '@sleetch/client/markdown-modules',
                   language,
                   page.path + (page.index ? '/_index' : '') + '.js'
                 )}')`
@@ -37,7 +37,7 @@ export const generate_manifest = (router: ladoc_router) => {
     ${language_manifests.join(',\n')}
     };`,
     '.d.ts': `
-        import type { manifest_module } from '@ladoc/core/compiler';
+        import type { manifest_module } from '@sleetch/core/compiler';
         declare const manifest: manifest_module['default'];
         export default manifest;
       `,

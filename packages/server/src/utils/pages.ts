@@ -1,4 +1,4 @@
-import { resolve_language, type manifest_module } from '@ladoc/core/compiler';
+import { resolve_language, type manifest_module } from '@sleetch/core/compiler';
 import { get_static_paths } from './tree';
 
 export const get_page = async (_path: string, _language?: string) => {
@@ -7,7 +7,7 @@ export const get_page = async (_path: string, _language?: string) => {
   if (_path.length > 1 && _path.slice(-1) == '/') _path = _path.slice(0, -1);
 
   const language = resolve_language(_language);
-  const { default: manifest }: manifest_module = await import('@ladoc/client/manifest.js'!);
+  const { default: manifest }: manifest_module = await import('@sleetch/client/manifest.js'!);
   for (const path of Object.keys(manifest[language]['markdown_modules'])) {
     if (path == _path) {
       const { default: page } = await manifest[language]['markdown_modules'][path]();

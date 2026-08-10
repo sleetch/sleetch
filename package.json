@@ -1,5 +1,5 @@
 {
-  "name": "ladoc",
+  "name": "sleetch",
   "private": true,
   "scripts": {
     "build": "bunx bun-workspaces run build 'path:packages/*' --dep-order --output-style=prefixed ",

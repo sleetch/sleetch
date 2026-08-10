@@ -3,7 +3,7 @@
 .default {
   display: flex;
   flex: 1;
-  min-height: calc(100vh - var(--_ladoc-header-height));
+  min-height: calc(100vh - var(--_sleetch-header-height));
 }
 
 @media (max-width: 768px) {

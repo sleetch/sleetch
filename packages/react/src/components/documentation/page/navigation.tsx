@@ -5,8 +5,8 @@
 
 import { useMemo, type BaseHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import styles from '@ladoc/styles/components/documentation/page/navigation.module.css';
-import type { tree_object } from '@ladoc/core/compiler';
+import styles from '@sleetch/styles/components/documentation/page/navigation.module.css';
+import type { tree_object } from '@sleetch/core/compiler';
 
 type category_node = Extract<tree_object, { type: 'category' }>;
 type page_node = Extract<tree_object, { type: 'page' }>;

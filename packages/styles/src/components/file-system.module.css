@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.15em;
-  color: var(--_ladoc-color-text);
-  font-family: var(--_ladoc-font-base);
-  font-size: var(--_ladoc-font-size-small);
-  line-height: var(--_ladoc-line-height);
+  color: var(--_sleetch-color-text);
+  font-family: var(--_sleetch-font-base);
+  font-size: var(--_sleetch-font-size-small);
+  line-height: var(--_sleetch-line-height);
   padding: 0.85em;
-  background: var(--_ladoc-color-card);
-  border-radius: var(--_ladoc-radius);
-  border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+  background: var(--_sleetch-color-card);
+  border-radius: var(--_sleetch-radius);
+  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-muted);
   margin: 0 0 1em;
 }
 
@@ -27,14 +27,14 @@
   align-items: center;
   gap: 0.55em;
   padding: 0.4em 0.6em;
-  border-radius: calc(var(--_ladoc-radius) - 2px);
+  border-radius: calc(var(--_sleetch-radius) - 2px);
   transition:
-    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .folderRow {
-  color: var(--_ladoc-color-muted-foreground);
+  color: var(--_sleetch-color-muted-foreground);
 }
 
 .icon {
@@ -52,7 +52,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--_ladoc-color-muted-foreground);
+  color: var(--_sleetch-color-muted-foreground);
   font-style: italic;
 }
 
@@ -62,23 +62,23 @@
   gap: 0.15em;
   margin-left: 0.75em;
   padding-left: 0.65em;
-  border-left: var(--_ladoc-underline-height) solid var(--_ladoc-color-muted);
+  border-left: var(--_sleetch-underline-height) solid var(--_sleetch-color-muted);
 }
 
 .file {
-  color: var(--_ladoc-color-text);
+  color: var(--_sleetch-color-text);
   cursor: default;
 }
 
 .file:hover {
-  background: var(--_ladoc-color-muted);
+  background: var(--_sleetch-color-muted);
 }
 
 .file.selected {
-  color: var(--_ladoc-color-text-primary);
-  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 12%, transparent);
+  color: var(--_sleetch-color-text-primary);
+  background: color-mix(in srgb, var(--_sleetch-color-text-primary) 12%, transparent);
 }
 
 .file.selected:hover {
-  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 18%, transparent);
+  background: color-mix(in srgb, var(--_sleetch-color-text-primary) 18%, transparent);
 }

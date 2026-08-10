@@ -1,19 +1,19 @@
-import type { partial_ladoc_configuration } from "@ladoc/core/configuration";
+import type { partial_sleetch_configuration } from '@sleetch/core/configuration';
 
 export default {
   languages: {
-    default: "en",
+    default: 'en',
   },
   sources: [
-    { type: "file-system", path: "./src/content/default" },
-    { type: "file-system", path: "./src/content/french", language: "fr" },
+    { type: 'file-system', path: './src/content/default' },
+    { type: 'file-system', path: './src/content/french', language: 'fr' },
   ],
   markdown: {
-    engine: "marked",
+    engine: 'marked',
     plugins: {
       syntax_highlighting: true,
       latex: true,
       mermaid: true,
     },
   },
-} satisfies partial_ladoc_configuration;
+} satisfies partial_sleetch_configuration;

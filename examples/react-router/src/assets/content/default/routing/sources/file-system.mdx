@@ -6,7 +6,7 @@ engine: mdx-js
 
 # Configuration Setup
 
-You can specify in the ladoc configuration, a new file system source by following this type.
+You can specify in the sleetch configuration, a new file system source by following this type.
 
 | Field      | Type                    | Comment                                              |
 | ---------- | ----------------------- | ---------------------------------------------------- |
@@ -18,8 +18,8 @@ You can specify in the ladoc configuration, a new file system source by followin
 
 We can think about something like this :
 
-```ts title="my-project/ladoc.config.ts"
-import type { ladoc_configuration } from '@ladoc/server';
+```ts title="my-project/sleetch.config.ts"
+import type { sleetch_configuration } from '@sleetch/server';
 
 export default {
   // ...
@@ -31,7 +31,7 @@ export default {
     { type: 'file-system', path: './src/assets/content/preview', language: 'en' },
     { type: 'file-system', path: './src/assets/content/french', language: 'fr' },
   ],
-} satisfies ladoc_configuration;
+} satisfies sleetch_configuration;
 ```
 
 <FileSystem>
@@ -51,7 +51,7 @@ export default {
         </Folder>
       </Folder>
     </Folder>
-    <File name="ladoc.config.ts" />
+    <File name="sleetch.config.ts" />
   </Folder>
 </FileSystem>
 

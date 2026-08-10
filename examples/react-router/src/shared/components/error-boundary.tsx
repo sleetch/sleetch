@@ -1,6 +1,6 @@
 import { isRouteErrorResponse } from 'react-router';
 import { useRouteError } from 'react-router';
-import '@ladoc/client/markdown.css';
+import '@sleetch/client/markdown.css';
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -16,7 +16,7 @@ export function ErrorBoundary() {
   }
 
   return (
-    <main className="ladoc-markdown">
+    <main className="sleetch-markdown">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (

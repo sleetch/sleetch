@@ -1,6 +1,6 @@
-import z from "zod";
-import { engine_schema } from "./engine";
-import { plugins_schema } from "./plugins";
+import z from 'zod';
+import { engine_schema } from './engine';
+import { plugins_schema } from './plugins';
 
 export const markdown_schema = z
   .object({
@@ -8,7 +8,7 @@ export const markdown_schema = z
     plugins: plugins_schema,
   })
   .default({
-    engine: "ladoc",
+    engine: 'sleetch',
     plugins: {
       syntax_highlighting: true,
       mermaid: false,

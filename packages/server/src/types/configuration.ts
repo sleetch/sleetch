@@ -1,1 +1,1 @@
-export { type partial_ladoc_configuration as ladoc_configuration } from '@ladoc/core/configuration';
+export { type partial_sleetch_configuration as sleetch_configuration } from '@sleetch/core/configuration';

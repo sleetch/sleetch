@@ -2,18 +2,18 @@
 @import '../../../variables.css';
 
 .sidebar {
-  min-width: var(--_ladoc-sidebar-width);
-  height: calc(100vh - var(--_ladoc-header-height));
+  min-width: var(--_sleetch-sidebar-width);
+  height: calc(100vh - var(--_sleetch-header-height));
   position: sticky;
-  top: var(--_ladoc-header-height);
-  color: var(--_ladoc-color-text);
+  top: var(--_sleetch-header-height);
+  color: var(--_sleetch-color-text);
   padding: 4em 1.5em;
-  border-right: 1px dashed var(--_ladoc-color-muted);
+  border-right: 1px dashed var(--_sleetch-color-muted);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--_ladoc-color-muted) transparent;
+  scrollbar-color: var(--_sleetch-color-muted) transparent;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -25,12 +25,12 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: var(--_ladoc-color-muted);
+  background-color: var(--_sleetch-color-muted);
   border-radius: 3px;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: var(--_ladoc-color-muted-foreground);
+  background-color: var(--_sleetch-color-muted-foreground);
 }
 
 .overlay {
@@ -40,18 +40,18 @@
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
-    top: var(--_ladoc-header-height);
+    top: var(--_sleetch-header-height);
     left: 0;
     bottom: 0;
     width: 280px;
     min-width: 280px;
     max-width: 85vw;
     z-index: 90;
-    background-color: var(--_ladoc-color-background);
+    background-color: var(--_sleetch-color-background);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     padding: 2em 1.5em;
-    border-right: 1px solid var(--_ladoc-color-muted);
+    border-right: 1px solid var(--_sleetch-color-muted);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
   }
 
@@ -62,7 +62,7 @@
   .overlay {
     display: block;
     position: fixed;
-    top: var(--_ladoc-header-height);
+    top: var(--_sleetch-header-height);
     left: 0;
     right: 0;
     bottom: 0;
@@ -128,36 +128,36 @@
   border: none;
   border-left: 3px solid transparent;
   background: none;
-  font-family: var(--_ladoc-font-base);
+  font-family: var(--_sleetch-font-base);
   font-size: calc(1em - (var(--depth) - 1) * 0.03em);
   line-height: 1.3;
   text-align: left;
-  color: var(--_ladoc-color-muted-foreground);
+  color: var(--_sleetch-color-muted-foreground);
   text-decoration: none;
   cursor: pointer;
   transition:
-    color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    border-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    transform var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+    color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    transform var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .link:hover,
 .category-label:hover {
-  color: var(--_ladoc-color-text);
+  color: var(--_sleetch-color-text);
 }
 
 .category-link,
 .category-label {
-  font-weight: var(--_ladoc-font-weight-heading);
-  color: var(--_ladoc-color-text);
+  font-weight: var(--_sleetch-font-weight-heading);
+  color: var(--_sleetch-color-text);
   padding-top: 0.5em;
 }
 
 .active {
-  border-left-color: var(--_ladoc-color-text-primary);
-  background: color-mix(in srgb, var(--_ladoc-color-text-underline) 35%, transparent);
-  color: var(--_ladoc-color-text);
+  border-left-color: var(--_sleetch-color-text-primary);
+  background: color-mix(in srgb, var(--_sleetch-color-text-underline) 35%, transparent);
+  color: var(--_sleetch-color-text);
   transform: translateX(4px);
 }
 
@@ -175,21 +175,21 @@
   margin-right: 0.2em;
   background: none;
   border: none;
-  border-radius: var(--_ladoc-radius);
-  color: var(--_ladoc-color-muted-foreground);
+  border-radius: var(--_sleetch-radius);
+  color: var(--_sleetch-color-muted-foreground);
   cursor: pointer;
   transition:
-    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .toggle:hover {
-  background-color: var(--_ladoc-color-card);
-  color: var(--_ladoc-color-text);
+  background-color: var(--_sleetch-color-card);
+  color: var(--_sleetch-color-text);
 }
 
 .chevron {
-  transition: transform var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+  transition: transform var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .chevron-open {

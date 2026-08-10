@@ -9,9 +9,9 @@ import {
   PageContent,
   PageHeader,
   PageNavigation,
-} from '@ladoc/react';
-import { get_page, get_tree } from '@ladoc/server';
-import manifest from '@ladoc/client/manifest.js';
+} from '@sleetch/react';
+import { get_page, get_tree } from '@sleetch/server';
+import manifest from '@sleetch/client/manifest.js';
 import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {

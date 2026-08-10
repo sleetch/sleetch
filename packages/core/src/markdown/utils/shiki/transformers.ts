@@ -13,7 +13,7 @@ import {
 
 export function transformerTitle(): ShikiTransformer {
   return {
-    name: 'ladoc:title',
+    name: 'sleetch:title',
     pre(node) {
       const raw = this.options.meta?.__raw;
       const match = raw?.match(/title=["']([^"']+)["']/);
@@ -31,7 +31,7 @@ export function transformerTitle(): ShikiTransformer {
 
 export function transformerLineNumbers(): ShikiTransformer {
   return {
-    name: 'ladoc:line-numbers',
+    name: 'sleetch:line-numbers',
     pre(node) {
       const raw = this.options.meta?.__raw;
       if (!raw?.match(/(?:^|\s)lineNumbers(?:\s|$)/)) return;
@@ -56,7 +56,7 @@ function parseRangeString(rangeStr: string): number[] {
 
 export function transformerMetaDiff(): ShikiTransformer {
   return {
-    name: 'ladoc:meta-diff',
+    name: 'sleetch:meta-diff',
     line(node, line) {
       const raw = this.options.meta?.__raw;
       if (!raw) return;

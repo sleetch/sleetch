@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { get_tree } from "@ladoc/server";
+import { get_tree } from '@sleetch/server';
 
 export async function getDocumentationTree() {
   const { tree } = await get_tree();

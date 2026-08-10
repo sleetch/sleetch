@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/server",
+  "name": "@sleetch/server",
   "version": "1.0.4",
   "type": "module",
   "files": [
@@ -13,10 +13,10 @@
     "dev": "tsdown --watch"
   },
   "dependencies": {
-    "@ladoc/core": "workspace:*"
+    "@sleetch/core": "workspace:*"
   },
   "peerDependencies": {
-    "@ladoc/client": "workspace:*"
+    "@sleetch/client": "workspace:*"
   },
   "exports": {
     ".": "./dist/index.js",

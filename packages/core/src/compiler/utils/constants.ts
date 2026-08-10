@@ -5,4 +5,4 @@ export const INDEX_PAGE_NAME = '_index';
 export const DATA_PAGE_NAME = '_data';
 
 export const NODE_MODULES_FOLDER = path.join(get_root_dir(), 'node_modules');
-export const CACHE_FOLDER = path.join(NODE_MODULES_FOLDER, '/@ladoc/client/.ladoc');
+export const CACHE_FOLDER = path.join(NODE_MODULES_FOLDER, '/@sleetch/client/.sleetch');

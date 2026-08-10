@@ -1,5 +1,5 @@
 import type { Config } from '@react-router/dev/config';
-import { get_static_paths } from '@ladoc/server';
+import { get_static_paths } from '@sleetch/server';
 
 export default {
   appDirectory: './src/app',

@@ -1,5 +1,5 @@
 import type { BaseHTMLAttributes } from 'react';
-import styles from '@ladoc/styles/components/documentation/toc/content.module.css';
+import styles from '@sleetch/styles/components/documentation/toc/content.module.css';
 import clsx from 'clsx';
 
 export interface DocumentationTocContentProps extends BaseHTMLAttributes<HTMLDivElement> {}

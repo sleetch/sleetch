@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/website",
+  "name": "@sleetch/website",
   "type": "module",
   "scripts": {
     "build": "react-router build",

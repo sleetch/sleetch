@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/vite",
+  "name": "@sleetch/vite",
   "version": "1.0.4",
   "type": "module",
   "files": [
@@ -18,7 +18,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@ladoc/core": "workspace:*",
+    "@sleetch/core": "workspace:*",
     "vite": "^8.1.0"
   }
 }

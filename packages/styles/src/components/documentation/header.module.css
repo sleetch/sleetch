@@ -1,11 +1,11 @@
 @import '../../variables.css';
 
 .default {
-  color: var(--_ladoc-color-text);
-  height: var(--_ladoc-header-height);
-  background-color: color-mix(in srgb, var(--_ladoc-color-card) 30%, transparent);
+  color: var(--_sleetch-color-text);
+  height: var(--_sleetch-header-height);
+  background-color: color-mix(in srgb, var(--_sleetch-color-card) 30%, transparent);
   backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--_ladoc-color-muted);
+  border-bottom: 1px solid var(--_sleetch-color-muted);
   position: sticky;
   top: 0;
   display: flex;
@@ -19,15 +19,15 @@
   display: none;
   background: none;
   border: none;
-  color: var(--_ladoc-color-text);
+  color: var(--_sleetch-color-text);
   cursor: pointer;
   padding: 0.5em;
-  border-radius: var(--_ladoc-radius);
-  transition: background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+  border-radius: var(--_sleetch-radius);
+  transition: background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .menu-toggle:hover {
-  background-color: var(--_ladoc-color-muted);
+  background-color: var(--_sleetch-color-muted);
 }
 
 .menu-toggle:active {

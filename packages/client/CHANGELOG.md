@@ -1,33 +1,33 @@
-# @ladoc/client
+# @sleetch/client
 
 ## 1.0.4
 
 ### Patch Changes
 
-- @ladoc/core@1.0.4
-- @ladoc/styles@1.0.4
+- @sleetch/core@1.0.4
+- @sleetch/styles@1.0.4
 
 ## 1.0.3
 
 ### Patch Changes
 
-- @ladoc/core@1.0.3
-- @ladoc/styles@1.0.3
+- @sleetch/core@1.0.3
+- @sleetch/styles@1.0.3
 
 ## 1.0.2
 
 ### Patch Changes
 
-- @ladoc/core@1.0.2
-- @ladoc/styles@1.0.2
+- @sleetch/core@1.0.2
+- @sleetch/styles@1.0.2
 
 ## 1.0.1
 
 ### Patch Changes
 
 - Fixed client module css export
-  - @ladoc/core@1.0.1
-  - @ladoc/styles@1.0.1
+  - @sleetch/core@1.0.1
+  - @sleetch/styles@1.0.1
 
 ## 1.0.0
 
@@ -38,5 +38,5 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @ladoc/core@1.0.0
-  - @ladoc/styles@1.0.0
+  - @sleetch/core@1.0.0
+  - @sleetch/styles@1.0.0

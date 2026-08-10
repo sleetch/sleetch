@@ -1,5 +1,5 @@
 import type { BaseHTMLAttributes } from 'react';
-import styles from '@ladoc/styles/components/documentation/sidebar/content.module.css';
+import styles from '@sleetch/styles/components/documentation/sidebar/content.module.css';
 import clsx from 'clsx';
 
 export interface DocumentationSidebarContentProps extends BaseHTMLAttributes<HTMLDivElement> {}

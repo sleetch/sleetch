@@ -1,4 +1,4 @@
-# @ladoc/styles
+# @sleetch/styles
 
 ## 1.0.4
 

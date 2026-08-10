@@ -1,7 +1,7 @@
 @import '../../../variables.css';
 
 .default {
-  color: var(--_ladoc-color-text);
+  color: var(--_sleetch-color-text);
   width: 100%;
   flex: 1;
   padding: 0 2em;

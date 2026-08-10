@@ -1,7 +1,7 @@
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { flushSync } from 'react-dom';
 import { useCallback, useRef } from 'react';
-import { Button } from '@ladoc/react';
+import { Button } from '@sleetch/react';
 import { Themes, type Theme } from '../types/themes';
 import { useTheme } from '../lib';
 

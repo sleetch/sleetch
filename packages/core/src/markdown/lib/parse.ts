@@ -1,4 +1,4 @@
-import { get_configuration, type parsed_ladoc_configuration } from '@/configuration';
+import { get_configuration, type parsed_sleetch_configuration } from '@/configuration';
 import type { engines, parser } from '../types/engine';
 import { dummy } from './engines/dummy';
 import { markdown_it } from './engines/markdown-it';
@@ -8,13 +8,13 @@ import { mdx_js } from './engines/mdx-js';
 
 export const markdown_engines: engines = {
   bun: bun,
-  ladoc: dummy,
+  sleetch: dummy,
   'markdown-it': markdown_it,
   marked: marked,
   'mdx-js': mdx_js,
 };
 
-export const get_parsed_markdown = async (content: string, _engine?: parsed_ladoc_configuration['markdown']['engine']) => {
+export const get_parsed_markdown = async (content: string, _engine?: parsed_sleetch_configuration['markdown']['engine']) => {
   const configuration = get_configuration();
   const engine = _engine ? _engine : configuration.markdown.engine;
   // const start = Date.now();

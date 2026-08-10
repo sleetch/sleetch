@@ -1,4 +1,4 @@
-# @ladoc/core
+# @sleetch/core
 
 ## 1.0.4
 

@@ -6,9 +6,9 @@ export default defineConfig({
       './markdown.css': {
         default: './src/styles/markdown.css',
       },
-      './manifest.js': './.ladoc/manifest.js',
-      './trees/*.js': './.ladoc/trees/*.js',
-      './markdown-modules/*.js': './.ladoc/markdown-modules/*.js',
+      './manifest.js': './.sleetch/manifest.js',
+      './trees/*.js': './.sleetch/trees/*.js',
+      './markdown-modules/*.js': './.sleetch/markdown-modules/*.js',
     },
   },
   entry: ['src/**/*.ts'],

@@ -1,6 +1,6 @@
 import type { ReactNode, BaseHTMLAttributes } from 'react';
 import { createContext, useContext, useState } from 'react';
-import styles from '@ladoc/styles/components/documentation/layout.module.css';
+import styles from '@sleetch/styles/components/documentation/layout.module.css';
 import clsx from 'clsx';
 
 export interface DocumentationLayoutProps extends BaseHTMLAttributes<HTMLDivElement> {}

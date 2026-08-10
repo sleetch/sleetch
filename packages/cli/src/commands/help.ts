@@ -7,9 +7,9 @@ export const help_command: command = {
   fallback: true,
   action: (args, cli) => {
     let lines = [
-      `${styleText('green', 'ladoc') + styleText('greenBright', '.net')} is a powerful documentation framework.`,
+      `${styleText('green', 'sleetch') + styleText('greenBright', '.net')} is a powerful documentation framework.`,
       '',
-      `Usage: ${styleText('green', 'ladoc')} ${styleText('gray', '<command>')} ${styleText('greenBright', '[...args]')}`,
+      `Usage: ${styleText('green', 'sleetch')} ${styleText('gray', '<command>')} ${styleText('greenBright', '[...args]')}`,
       '',
       'Commands:',
       '',
@@ -19,8 +19,8 @@ export const help_command: command = {
     }
 
     lines.push('');
-    lines.push(`Learn more: ${styleText('gray', 'https://') + styleText('green', 'ladoc') + styleText('greenBright', '.net')} `);
-    lines.push(`            ${styleText('gray', 'https://github.com/tornado-softwares/') + styleText('green', 'ladoc')}`);
+    lines.push(`Learn more: ${styleText('gray', 'https://') + styleText('green', 'sleetch') + styleText('greenBright', '.net')} `);
+    lines.push(`            ${styleText('gray', 'https://github.com/tornado-softwares/') + styleText('green', 'sleetch')}`);
 
     console.log(lines.join('\n'));
   },

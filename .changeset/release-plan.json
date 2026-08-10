@@ -1,49 +1,49 @@
 {
   "releases": [
     {
-      "name": "@ladoc/cli",
+      "name": "@sleetch/cli",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/core",
+      "name": "@sleetch/core",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/vite",
+      "name": "@sleetch/vite",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/next",
+      "name": "@sleetch/next",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/react",
+      "name": "@sleetch/react",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/server",
+      "name": "@sleetch/server",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/client",
+      "name": "@sleetch/client",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"
     },
     {
-      "name": "@ladoc/styles",
+      "name": "@sleetch/styles",
       "oldVersion": "1.0.3",
       "newVersion": "1.0.4",
       "type": "patch"

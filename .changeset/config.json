@@ -2,7 +2,9 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [["@ladoc/cli", "@ladoc/core", "@ladoc/vite", "@ladoc/next", "@ladoc/react", "@ladoc/server", "@ladoc/client", "@ladoc/styles"]],
+  "fixed": [
+    ["@sleetch/cli", "@sleetch/core", "@sleetch/vite", "@sleetch/next", "@sleetch/react", "@sleetch/server", "@sleetch/client", "@sleetch/styles"]
+  ],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",

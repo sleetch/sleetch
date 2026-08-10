@@ -1,13 +1,13 @@
 @import '../../../variables.css';
 
 .default {
-  min-width: var(--_ladoc-toc-width);
-  height: calc(100vh - var(--_ladoc-header-height));
+  min-width: var(--_sleetch-toc-width);
+  height: calc(100vh - var(--_sleetch-header-height));
   position: sticky;
-  top: var(--_ladoc-header-height);
-  color: var(--_ladoc-color-text);
+  top: var(--_sleetch-header-height);
+  color: var(--_sleetch-color-text);
   padding: 4em 2em;
-  border-left: 1px dashed var(--_ladoc-color-muted);
+  border-left: 1px dashed var(--_sleetch-color-muted);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -29,8 +29,8 @@
 .title {
   margin: 0 0 0.5em;
   font-size: 0.9em;
-  font-weight: var(--_ladoc-font-weight-heading);
-  color: var(--_ladoc-color-text);
+  font-weight: var(--_sleetch-font-weight-heading);
+  color: var(--_sleetch-color-text);
 }
 
 .track {
@@ -43,7 +43,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: var(--_ladoc-color-muted);
+  background: var(--_sleetch-color-muted);
   z-index: 0;
 }
 
@@ -53,11 +53,11 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--_ladoc-color-muted-foreground);
+  background: var(--_sleetch-color-muted-foreground);
   transform: translate(-50%, -50%);
   z-index: 1;
   pointer-events: none;
-  transition: top var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+  transition: top var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .list {
@@ -87,10 +87,10 @@
 
   border-left: 3px solid transparent;
 
-  font-family: var(--_ladoc-font-base);
+  font-family: var(--_sleetch-font-base);
   font-size: calc(0.85em - (var(--depth) - 1) * 0.03em);
   line-height: 1.3;
-  color: var(--_ladoc-color-muted-foreground);
+  color: var(--_sleetch-color-muted-foreground);
   text-decoration: none;
 
   white-space: nowrap;
@@ -98,19 +98,19 @@
   text-overflow: ellipsis;
 
   transition:
-    color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    border-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
-    transform var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+    color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    transform var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .link:hover {
-  color: var(--_ladoc-color-text);
+  color: var(--_sleetch-color-text);
 }
 
 .active {
-  border-left-color: var(--_ladoc-color-text-primary);
-  background: color-mix(in srgb, var(--_ladoc-color-text-underline) 35%, transparent);
-  color: var(--_ladoc-color-text);
+  border-left-color: var(--_sleetch-color-text-primary);
+  background: color-mix(in srgb, var(--_sleetch-color-text-underline) 35%, transparent);
+  color: var(--_sleetch-color-text);
   transform: translateX(4px);
 }

@@ -1,25 +1,25 @@
 @import 'tailwindcss';
 
 :root {
-  --ladoc-color-text-primary: #1f8a4c;
-  --ladoc-color-text-underline: #bfe4cd;
-  --ladoc-color-text: #1a1a1a;
-  --ladoc-color-background: #f6f6f6;
-  --ladoc-color-card: #ffffff;
-  --ladoc-color-muted-foreground: #6b6b6b;
-  --ladoc-color-muted: #ececec;
-  --ladoc-color-blockquote-border: #2fa860;
+  --sleetch-color-text-primary: #1f8a4c;
+  --sleetch-color-text-underline: #bfe4cd;
+  --sleetch-color-text: #1a1a1a;
+  --sleetch-color-background: #f6f6f6;
+  --sleetch-color-card: #ffffff;
+  --sleetch-color-muted-foreground: #6b6b6b;
+  --sleetch-color-muted: #ececec;
+  --sleetch-color-blockquote-border: #2fa860;
 }
 
 @custom-variant dark (&:is(.dark *));
 
 .dark {
-  --ladoc-color-text-primary: #a8b5c2;
-  --ladoc-color-text-underline: #3a3f45;
-  --ladoc-color-text: #e4e4e4;
-  --ladoc-color-background: #191a1c;
-  --ladoc-color-card: #232427;
-  --ladoc-color-muted-foreground: #8a8d91;
-  --ladoc-color-muted: #2c2d30;
-  --ladoc-color-blockquote-border: #5a6672;
+  --sleetch-color-text-primary: #a8b5c2;
+  --sleetch-color-text-underline: #3a3f45;
+  --sleetch-color-text: #e4e4e4;
+  --sleetch-color-background: #191a1c;
+  --sleetch-color-card: #232427;
+  --sleetch-color-muted-foreground: #8a8d91;
+  --sleetch-color-muted: #2c2d30;
+  --sleetch-color-blockquote-border: #5a6672;
 }

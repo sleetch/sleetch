@@ -6,8 +6,8 @@
 import type { BaseHTMLAttributes, ReactNode } from 'react';
 import { useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
-import styles from '@ladoc/styles/components/documentation/sidebar/index.module.css';
-import type { tree_object } from '@ladoc/core/compiler';
+import styles from '@sleetch/styles/components/documentation/sidebar/index.module.css';
+import type { tree_object } from '@sleetch/core/compiler';
 
 export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseElement> {
   tree: tree_object[];

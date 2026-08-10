@@ -12,7 +12,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: 'src/index.ts',
-      name: 'ladoc',
+      name: 'sleetch',
       formats: ['es', 'cjs'],
     },
     rolldownOptions: {

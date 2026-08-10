@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/react-router-example",
+  "name": "@sleetch/react-router-example",
   "type": "module",
   "private": true,
   "scripts": {
@@ -18,11 +18,11 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@ladoc/cli": "workspace:*",
-    "@ladoc/client": "workspace:*",
-    "@ladoc/react": "workspace:*",
-    "@ladoc/server": "workspace:*",
-    "@ladoc/vite": "workspace:*",
+    "@sleetch/cli": "workspace:*",
+    "@sleetch/client": "workspace:*",
+    "@sleetch/react": "workspace:*",
+    "@sleetch/server": "workspace:*",
+    "@sleetch/vite": "workspace:*",
     "@react-router/dev": "^8.0.1",
     "@react-router/node": "^8.0.1",
     "@react-router/serve": "^8.0.1",

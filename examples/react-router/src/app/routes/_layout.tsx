@@ -1,4 +1,4 @@
-import { DocumentationLayout, ConnectedDocumentationHeader } from '@ladoc/react';
+import { DocumentationLayout, ConnectedDocumentationHeader } from '@sleetch/react';
 import { Outlet } from 'react-router';
 
 export default function Layout() {

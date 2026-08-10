@@ -1,4 +1,4 @@
-# @ladoc/react
+# @sleetch/react
 
 ## 1.0.4
 

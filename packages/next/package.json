@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/next",
+  "name": "@sleetch/next",
   "version": "1.0.4",
   "type": "module",
   "files": [
@@ -19,7 +19,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@ladoc/core": "workspace:*"
+    "@sleetch/core": "workspace:*"
   },
   "peerDependencies": {
     "next": "^16.0.0",

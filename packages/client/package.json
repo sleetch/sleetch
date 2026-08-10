@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/client",
+  "name": "@sleetch/client",
   "version": "1.0.4",
   "type": "module",
   "files": [
@@ -14,8 +14,8 @@
     "dev": "tsdown --watch"
   },
   "dependencies": {
-    "@ladoc/core": "workspace:*",
-    "@ladoc/styles": "workspace:*"
+    "@sleetch/core": "workspace:*",
+    "@sleetch/styles": "workspace:*"
   },
   "exports": {
     ".": "./dist/index.js",
@@ -23,8 +23,8 @@
     "./markdown.css": {
       "default": "./src/styles/markdown.css"
     },
-    "./manifest.js": "./.ladoc/manifest.js",
-    "./trees/*.js": "./.ladoc/trees/*.js",
-    "./markdown-modules/*.js": "./.ladoc/markdown-modules/*.js"
+    "./manifest.js": "./.sleetch/manifest.js",
+    "./trees/*.js": "./.sleetch/trees/*.js",
+    "./markdown-modules/*.js": "./.sleetch/markdown-modules/*.js"
   }
 }

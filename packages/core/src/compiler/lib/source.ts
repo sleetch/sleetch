@@ -1,20 +1,20 @@
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
-import type { ladoc_events_emitter } from './emitter';
-import type { ladoc_router } from './router';
+import type { sleetch_events_emitter } from './emitter';
+import type { sleetch_router } from './router';
 import { resolve_language } from '../utils/resolve-language';
 
-export abstract class ladoc_source<tree_object_type extends tree_object, content_type extends content, source_type extends source> {
+export abstract class sleetch_source<tree_object_type extends tree_object, content_type extends content, source_type extends source> {
   readonly type: source_type['type'];
   readonly source: source_type;
-  protected readonly events_emitter: ladoc_events_emitter;
+  protected readonly events_emitter: sleetch_events_emitter;
   public readonly language: string;
 
   public id: string;
 
-  constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: ladoc_events_emitter }) {
-    if (this.constructor == ladoc_source) {
+  constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: sleetch_events_emitter }) {
+    if (this.constructor == sleetch_source) {
       throw new Error("Class is of abstract type and can't be instantiated");
     }
     this.type = configuration.type;
@@ -35,7 +35,7 @@ export abstract class ladoc_source<tree_object_type extends tree_object, content
   };
 
   abstract readonly router: {
-    load(router: ladoc_router): Promise<void>;
+    load(router: sleetch_router): Promise<void>;
     get_object(content: content_type): tree_object_type;
   };
 }

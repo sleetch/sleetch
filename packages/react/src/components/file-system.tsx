@@ -1,4 +1,4 @@
-import styles from '@ladoc/styles/components/file-system.module.css';
+import styles from '@sleetch/styles/components/file-system.module.css';
 import type { ReactNode, SVGProps } from 'react';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
@@ -53,7 +53,7 @@ export interface FilesProps {
 
 export function FileSystem({ children, className = '' }: FilesProps) {
   return (
-    <div className="no-ladoc-markdown">
+    <div className="no-sleetch-markdown">
       <div className={[styles['file-system'], className].filter(Boolean).join(' ')}>{children}</div>
     </div>
   );

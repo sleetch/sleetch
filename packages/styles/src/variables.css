@@ -1,103 +1,116 @@
 :root {
-  --_ladoc-color-text-primary: var(--ladoc-color-text-primary, #7bc193);
-  --_ladoc-color-text-underline: var(--ladoc-color-text-underline, #3d5245);
-  --_ladoc-color-text: var(--ladoc-color-text, #eaeaea);
-  --_ladoc-color-background: var(--ladoc-color-background, #171717);
-  --_ladoc-color-card: var(--ladoc-color-card, #212121);
-  --_ladoc-color-muted-foreground: var(--ladoc-color-muted-foreground, #9a9a9a);
-  --_ladoc-color-muted: var(--ladoc-color-muted, #2c2c2c);
-  --_ladoc-color-blockquote-border: var(--ladoc-color-blockquote-border, #4fae7b);
-  --_ladoc-syntax-keyword: var(--ladoc-syntax-keyword, #7bc193);
-  --_ladoc-syntax-string: var(--ladoc-syntax-string, #d4a76a);
-  --_ladoc-syntax-comment: var(--ladoc-syntax-comment, #6a6a6a);
-  --_ladoc-syntax-function: var(--ladoc-syntax-function, #82aaff);
-  --_ladoc-syntax-number: var(--ladoc-syntax-number, #c792ea);
-  --_ladoc-syntax-built-in: var(--ladoc-syntax-built-in, #82aaff);
-  --_ladoc-syntax-variable: var(--ladoc-syntax-variable, #eaeaea);
-  --_ladoc-syntax-operator: var(--ladoc-syntax-operator, #9a9a9a);
-  --_ladoc-syntax-punctuation: var(--ladoc-syntax-punctuation, #9a9a9a);
-  --_ladoc-syntax-class: var(--ladoc-syntax-class, #ffcb6b);
-  --_ladoc-syntax-tag: var(--ladoc-syntax-tag, #7bc193);
-  --_ladoc-syntax-attr: var(--ladoc-syntax-attr, #82aaff);
-  --_ladoc-syntax-title: var(--ladoc-syntax-title, #82aaff);
-  --_ladoc-syntax-literal: var(--ladoc-syntax-literal, #c792ea);
-  --_ladoc-syntax-meta: var(--ladoc-syntax-meta, #6a6a6a);
-  --_ladoc-syntax-deletion: var(--ladoc-syntax-deletion, #f07178);
-  --_ladoc-syntax-addition: var(--ladoc-syntax-addition, #7bc193);
-  --_ladoc-syntax-emphasis: var(--ladoc-syntax-emphasis, #eaeaea);
-  --_ladoc-syntax-strong: var(--ladoc-syntax-strong, #eaeaea);
+  --_sleetch-color-text-primary: var(--sleetch-color-text-primary, #7bc193);
+  --_sleetch-color-text-underline: var(--sleetch-color-text-underline, #3d5245);
+  --_sleetch-color-text: var(--sleetch-color-text, #eaeaea);
+  --_sleetch-color-background: var(--sleetch-color-background, #171717);
+  --_sleetch-color-card: var(--sleetch-color-card, #212121);
+  --_sleetch-color-muted-foreground: var(--sleetch-color-muted-foreground, #9a9a9a);
+  --_sleetch-color-muted: var(--sleetch-color-muted, #2c2c2c);
+  --_sleetch-color-blockquote-border: var(--sleetch-color-blockquote-border, #4fae7b);
+  --_sleetch-syntax-keyword: var(--sleetch-syntax-keyword, #7bc193);
+  --_sleetch-syntax-string: var(--sleetch-syntax-string, #d4a76a);
+  --_sleetch-syntax-comment: var(--sleetch-syntax-comment, #6a6a6a);
+  --_sleetch-syntax-function: var(--sleetch-syntax-function, #82aaff);
+  --_sleetch-syntax-number: var(--sleetch-syntax-number, #c792ea);
+  --_sleetch-syntax-built-in: var(--sleetch-syntax-built-in, #82aaff);
+  --_sleetch-syntax-variable: var(--sleetch-syntax-variable, #eaeaea);
+  --_sleetch-syntax-operator: var(--sleetch-syntax-operator, #9a9a9a);
+  --_sleetch-syntax-punctuation: var(--sleetch-syntax-punctuation, #9a9a9a);
+  --_sleetch-syntax-class: var(--sleetch-syntax-class, #ffcb6b);
+  --_sleetch-syntax-tag: var(--sleetch-syntax-tag, #7bc193);
+  --_sleetch-syntax-attr: var(--sleetch-syntax-attr, #82aaff);
+  --_sleetch-syntax-title: var(--sleetch-syntax-title, #82aaff);
+  --_sleetch-syntax-literal: var(--sleetch-syntax-literal, #c792ea);
+  --_sleetch-syntax-meta: var(--sleetch-syntax-meta, #6a6a6a);
+  --_sleetch-syntax-deletion: var(--sleetch-syntax-deletion, #f07178);
+  --_sleetch-syntax-addition: var(--sleetch-syntax-addition, #7bc193);
+  --_sleetch-syntax-emphasis: var(--sleetch-syntax-emphasis, #eaeaea);
+  --_sleetch-syntax-strong: var(--sleetch-syntax-strong, #eaeaea);
 
-  --_ladoc-font-base: var(--ladoc-font-base, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
-  --_ladoc-font-mono: var(--ladoc-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
-
-  --_ladoc-font-weight-heading: var(--ladoc-font-weight-heading, 600);
-
-  --_ladoc-font-size-base: var(--ladoc-font-size-base, 16px);
-  --_ladoc-font-size-h1: var(--ladoc-font-size-h1, 2em);
-  --_ladoc-font-size-h2: var(--ladoc-font-size-h2, 1.6em);
-  --_ladoc-font-size-h3: var(--ladoc-font-size-h3, 1.3em);
-  --_ladoc-font-size-small: var(--ladoc-font-size-small, 0.9em);
-  --_ladoc-font-size-tiny: var(--ladoc-font-size-tiny, 0.8em);
-
-  --_ladoc-line-height: var(--ladoc-line-height, 1.6);
-  --_ladoc-line-height-heading: var(--ladoc-line-height-heading, 1.25);
-
-  --_ladoc-header-height: var(--ladoc-header-height, 3.5em);
-  --_ladoc-sidebar-width: var(--ladoc-sidebar-width, clamp(300px, 25vw, 350px)); /*To check*/
-  --_ladoc-toc-width: var(--ladoc-toc-width, 280px);
-
-  --_ladoc-margin-heading: var(--ladoc-margin-heading, 1.2em 0 0.6em);
-  --_ladoc-margin-paragraph: var(--ladoc-margin-paragraph, 0 0 1em);
-  --_ladoc-margin-list: var(--ladoc-margin-list, 0 0 1em 2em);
-  --_ladoc-margin-li: var(--ladoc-margin-li, 0.3em 0);
-  --_ladoc-margin-li-before: var(--ladoc-margin-li-before, 4px);
-  --_ladoc-margin-hr: var(--ladoc-margin-hr, 2em);
-  --_ladoc-margin-blockquote: var(--ladoc-margin-blockquote, 0 0 1em);
-
-  --_ladoc-padding-pre: var(--ladoc-padding-pre, 1em);
-  --_ladoc-padding-code: var(--ladoc-padding-code, 0.2em 0.4em);
-  --_ladoc-padding-blockquote: var(--ladoc-padding-blockquote, 0.5em 1em);
-  --_ladoc-padding-root: var(--ladoc-padding-root, 1.5em 4em);
-
-  --_ladoc-mobile-breakpoint: var(--ladoc-mobile-breakpoint, 768px);
-  --_ladoc-tablet-breakpoint: var(--ladoc-tablet-breakpoint, 1024px);
-
-  --_ladoc-radius: var(--ladoc-radius, 6px);
-  --_ladoc-hr-height: var(--ladoc-hr-height, 1px);
-  --_ladoc-underline-height: var(--ladoc-underline-height, 1px);
-  --_ladoc-blockquote-border-width: var(--ladoc-blockquote-border-width, 4px);
-
-  --_ladoc-transition-duration: var(--ladoc-transition-duration, 200ms);
-  --_ladoc-transition-timing: var(--ladoc-transition-timing, ease);
-
-  --_ladoc-pre-font-size: var(--ladoc-pre-font-size, 0.9em);
-  --_ladoc-pre-line-height: var(--ladoc-pre-line-height, 1.5);
-
-  --_ladoc-twoslash-border-color: var(--ladoc-twoslash-border-color, var(--_ladoc-color-muted));
-  --_ladoc-twoslash-underline-color: var(--ladoc-twoslash-underline-color, currentColor);
-  --_ladoc-twoslash-highlighted-border: var(
-    --ladoc-twoslash-highlighted-border,
-    color-mix(in srgb, var(--_ladoc-color-text-primary) 30%, transparent)
+  --_sleetch-font-base: var(
+    --sleetch-font-base,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif
   );
-  --_ladoc-twoslash-highlighted-bg: var(--ladoc-twoslash-highlighted-bg, color-mix(in srgb, var(--_ladoc-color-text-primary) 15%, transparent));
-  --_ladoc-twoslash-popup-bg: var(--ladoc-twoslash-popup-bg, var(--_ladoc-color-card));
-  --_ladoc-twoslash-popup-color: var(--ladoc-twoslash-popup-color, var(--_ladoc-color-text));
-  --_ladoc-twoslash-popup-shadow: var(--ladoc-twoslash-popup-shadow, rgba(0, 0, 0, 0.35) 0px 2px 8px);
-  --_ladoc-twoslash-docs-color: var(--ladoc-twoslash-docs-color, var(--_ladoc-color-muted-foreground));
-  --_ladoc-twoslash-docs-font: var(--ladoc-twoslash-docs-font, var(--_ladoc-font-base));
-  --_ladoc-twoslash-code-font: var(--ladoc-twoslash-code-font, var(--_ladoc-font-mono));
-  --_ladoc-twoslash-code-font-size: var(--ladoc-twoslash-code-font-size, var(--_ladoc-pre-font-size));
-  --_ladoc-twoslash-matched-color: var(--ladoc-twoslash-matched-color, var(--_ladoc-color-text));
-  --_ladoc-twoslash-unmatched-color: var(--ladoc-twoslash-unmatched-color, var(--_ladoc-color-muted-foreground));
-  --_ladoc-twoslash-cursor-color: var(--ladoc-twoslash-cursor-color, var(--_ladoc-color-muted-foreground));
-  --_ladoc-twoslash-error-color: var(--ladoc-twoslash-error-color, var(--_ladoc-syntax-deletion));
-  --_ladoc-twoslash-error-bg: var(--ladoc-twoslash-error-bg, color-mix(in srgb, var(--_ladoc-syntax-deletion) 15%, transparent));
-  --_ladoc-twoslash-warn-color: var(--ladoc-twoslash-warn-color, #e0af68);
-  --_ladoc-twoslash-warn-bg: var(--ladoc-twoslash-warn-bg, color-mix(in srgb, #e0af68 15%, transparent));
-  --_ladoc-twoslash-tag-color: var(--ladoc-twoslash-tag-color, var(--_ladoc-syntax-built-in));
-  --_ladoc-twoslash-tag-bg: var(--ladoc-twoslash-tag-bg, color-mix(in srgb, var(--_ladoc-syntax-built-in) 15%, transparent));
-  --_ladoc-twoslash-tag-warn-color: var(--ladoc-twoslash-tag-warn-color, var(--_ladoc-twoslash-warn-color));
-  --_ladoc-twoslash-tag-warn-bg: var(--ladoc-twoslash-tag-warn-bg, var(--_ladoc-twoslash-warn-bg));
-  --_ladoc-twoslash-tag-annotate-color: var(--ladoc-twoslash-tag-annotate-color, var(--_ladoc-color-text-primary));
-  --_ladoc-twoslash-tag-annotate-bg: var(--ladoc-twoslash-tag-annotate-bg, color-mix(in srgb, var(--_ladoc-color-text-primary) 15%, transparent));
+  --_sleetch-font-mono: var(--sleetch-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
+
+  --_sleetch-font-weight-heading: var(--sleetch-font-weight-heading, 600);
+
+  --_sleetch-font-size-base: var(--sleetch-font-size-base, 16px);
+  --_sleetch-font-size-h1: var(--sleetch-font-size-h1, 2em);
+  --_sleetch-font-size-h2: var(--sleetch-font-size-h2, 1.6em);
+  --_sleetch-font-size-h3: var(--sleetch-font-size-h3, 1.3em);
+  --_sleetch-font-size-small: var(--sleetch-font-size-small, 0.9em);
+  --_sleetch-font-size-tiny: var(--sleetch-font-size-tiny, 0.8em);
+
+  --_sleetch-line-height: var(--sleetch-line-height, 1.6);
+  --_sleetch-line-height-heading: var(--sleetch-line-height-heading, 1.25);
+
+  --_sleetch-header-height: var(--sleetch-header-height, 3.5em);
+  --_sleetch-sidebar-width: var(--sleetch-sidebar-width, clamp(300px, 25vw, 350px)); /*To check*/
+  --_sleetch-toc-width: var(--sleetch-toc-width, 280px);
+
+  --_sleetch-margin-heading: var(--sleetch-margin-heading, 1.2em 0 0.6em);
+  --_sleetch-margin-paragraph: var(--sleetch-margin-paragraph, 0 0 1em);
+  --_sleetch-margin-list: var(--sleetch-margin-list, 0 0 1em 2em);
+  --_sleetch-margin-li: var(--sleetch-margin-li, 0.3em 0);
+  --_sleetch-margin-li-before: var(--sleetch-margin-li-before, 4px);
+  --_sleetch-margin-hr: var(--sleetch-margin-hr, 2em);
+  --_sleetch-margin-blockquote: var(--sleetch-margin-blockquote, 0 0 1em);
+
+  --_sleetch-padding-pre: var(--sleetch-padding-pre, 1em);
+  --_sleetch-padding-code: var(--sleetch-padding-code, 0.2em 0.4em);
+  --_sleetch-padding-blockquote: var(--sleetch-padding-blockquote, 0.5em 1em);
+  --_sleetch-padding-root: var(--sleetch-padding-root, 1.5em 4em);
+
+  --_sleetch-mobile-breakpoint: var(--sleetch-mobile-breakpoint, 768px);
+  --_sleetch-tablet-breakpoint: var(--sleetch-tablet-breakpoint, 1024px);
+
+  --_sleetch-radius: var(--sleetch-radius, 6px);
+  --_sleetch-hr-height: var(--sleetch-hr-height, 1px);
+  --_sleetch-underline-height: var(--sleetch-underline-height, 1px);
+  --_sleetch-blockquote-border-width: var(--sleetch-blockquote-border-width, 4px);
+
+  --_sleetch-transition-duration: var(--sleetch-transition-duration, 200ms);
+  --_sleetch-transition-timing: var(--sleetch-transition-timing, ease);
+
+  --_sleetch-pre-font-size: var(--sleetch-pre-font-size, 0.9em);
+  --_sleetch-pre-line-height: var(--sleetch-pre-line-height, 1.5);
+
+  --_sleetch-twoslash-border-color: var(--sleetch-twoslash-border-color, var(--_sleetch-color-muted));
+  --_sleetch-twoslash-underline-color: var(--sleetch-twoslash-underline-color, currentColor);
+  --_sleetch-twoslash-highlighted-border: var(
+    --sleetch-twoslash-highlighted-border,
+    color-mix(in srgb, var(--_sleetch-color-text-primary) 30%, transparent)
+  );
+  --_sleetch-twoslash-highlighted-bg: var(--sleetch-twoslash-highlighted-bg, color-mix(in srgb, var(--_sleetch-color-text-primary) 15%, transparent));
+  --_sleetch-twoslash-popup-bg: var(--sleetch-twoslash-popup-bg, var(--_sleetch-color-card));
+  --_sleetch-twoslash-popup-color: var(--sleetch-twoslash-popup-color, var(--_sleetch-color-text));
+  --_sleetch-twoslash-popup-shadow: var(--sleetch-twoslash-popup-shadow, rgba(0, 0, 0, 0.35) 0px 2px 8px);
+  --_sleetch-twoslash-docs-color: var(--sleetch-twoslash-docs-color, var(--_sleetch-color-muted-foreground));
+  --_sleetch-twoslash-docs-font: var(--sleetch-twoslash-docs-font, var(--_sleetch-font-base));
+  --_sleetch-twoslash-code-font: var(--sleetch-twoslash-code-font, var(--_sleetch-font-mono));
+  --_sleetch-twoslash-code-font-size: var(--sleetch-twoslash-code-font-size, var(--_sleetch-pre-font-size));
+  --_sleetch-twoslash-matched-color: var(--sleetch-twoslash-matched-color, var(--_sleetch-color-text));
+  --_sleetch-twoslash-unmatched-color: var(--sleetch-twoslash-unmatched-color, var(--_sleetch-color-muted-foreground));
+  --_sleetch-twoslash-cursor-color: var(--sleetch-twoslash-cursor-color, var(--_sleetch-color-muted-foreground));
+  --_sleetch-twoslash-error-color: var(--sleetch-twoslash-error-color, var(--_sleetch-syntax-deletion));
+  --_sleetch-twoslash-error-bg: var(--sleetch-twoslash-error-bg, color-mix(in srgb, var(--_sleetch-syntax-deletion) 15%, transparent));
+  --_sleetch-twoslash-warn-color: var(--sleetch-twoslash-warn-color, #e0af68);
+  --_sleetch-twoslash-warn-bg: var(--sleetch-twoslash-warn-bg, color-mix(in srgb, #e0af68 15%, transparent));
+  --_sleetch-twoslash-tag-color: var(--sleetch-twoslash-tag-color, var(--_sleetch-syntax-built-in));
+  --_sleetch-twoslash-tag-bg: var(--sleetch-twoslash-tag-bg, color-mix(in srgb, var(--_sleetch-syntax-built-in) 15%, transparent));
+  --_sleetch-twoslash-tag-warn-color: var(--sleetch-twoslash-tag-warn-color, var(--_sleetch-twoslash-warn-color));
+  --_sleetch-twoslash-tag-warn-bg: var(--sleetch-twoslash-tag-warn-bg, var(--_sleetch-twoslash-warn-bg));
+  --_sleetch-twoslash-tag-annotate-color: var(--sleetch-twoslash-tag-annotate-color, var(--_sleetch-color-text-primary));
+  --_sleetch-twoslash-tag-annotate-bg: var(
+    --sleetch-twoslash-tag-annotate-bg,
+    color-mix(in srgb, var(--_sleetch-color-text-primary) 15%, transparent)
+  );
 }

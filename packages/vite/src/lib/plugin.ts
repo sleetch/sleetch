@@ -1,11 +1,11 @@
 import type { Plugin } from 'vite';
-import { ladoc_runtime } from '@ladoc/core/compiler';
+import { sleetch_runtime } from '@sleetch/core/compiler';
 
-const runtime = new ladoc_runtime();
+const runtime = new sleetch_runtime();
 
 export function plugin(): Plugin {
   return {
-    name: 'ladoc',
+    name: 'sleetch',
     enforce: 'pre',
 
     async buildStart() {

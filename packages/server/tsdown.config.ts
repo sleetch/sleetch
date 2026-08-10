@@ -6,7 +6,7 @@ export default defineConfig({
   },
   entry: ['src/**/index.ts'],
   deps: {
-    neverBundle: [/^@ladoc\/cache(\/.*)?$/],
+    neverBundle: [/^@sleetch\/cache(\/.*)?$/],
   },
   fixedExtension: false,
   format: 'esm',

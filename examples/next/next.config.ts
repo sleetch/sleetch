@@ -1,8 +1,6 @@
-import type { NextConfig } from "next";
-import withLadoc from "@ladoc/next";
+import type { NextConfig } from 'next';
+import withSleetch from '@sleetch/next';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig: NextConfig = {/* config options here */};
 
-export default withLadoc(nextConfig);
+export default withSleetch(nextConfig);

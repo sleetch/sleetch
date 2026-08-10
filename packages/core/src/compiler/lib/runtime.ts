@@ -1,11 +1,11 @@
 import { get_configuration } from '@/configuration';
-import type { ladoc_source } from './source';
-import { ladoc_file_system_source } from './sources/file-system';
-import { ladoc_events_emitter } from './emitter';
+import type { sleetch_source } from './source';
+import { sleetch_file_system_source } from './sources/file-system';
+import { sleetch_events_emitter } from './emitter';
 import type { tree_object } from '../types/routing';
 import type { content } from '../types/content';
 import type { source } from '@/configuration/types/sources';
-import { ladoc_router } from './router';
+import { sleetch_router } from './router';
 import { generate_manifest } from './generators/manifest';
 import { write_file } from '../utils/write-file';
 import path from 'node:path';
@@ -13,10 +13,10 @@ import fs from 'node:fs';
 import { CACHE_FOLDER, NODE_MODULES_FOLDER } from '../utils/constants';
 import { generate_tree } from './generators/tree';
 
-export class ladoc_runtime {
-  private sources_map: Map<string, ladoc_source<tree_object, content, source>> = new Map();
-  private event_emitter = new ladoc_events_emitter();
-  private _router = new ladoc_router();
+export class sleetch_runtime {
+  private sources_map: Map<string, sleetch_source<tree_object, content, source>> = new Map();
+  private event_emitter = new sleetch_events_emitter();
+  private _router = new sleetch_router();
 
   private get sources_instances() {
     return this.sources_map.values();
@@ -64,7 +64,7 @@ export class ladoc_runtime {
       const configuration = get_configuration();
       for (const source of configuration.sources) {
         if (source.type == 'file-system') {
-          const instance = new ladoc_file_system_source({ source, events_emitter: this.event_emitter });
+          const instance = new sleetch_file_system_source({ source, events_emitter: this.event_emitter });
           this.sources_map.set(instance.id, instance);
         }
       }

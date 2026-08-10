@@ -1,13 +1,13 @@
 import type { Compiler } from 'webpack';
-import { ladoc_runtime } from '@ladoc/core/compiler';
+import { sleetch_runtime } from '@sleetch/core/compiler';
 
-const runtime = new ladoc_runtime();
+const runtime = new sleetch_runtime();
 
-export class ladoc_webpack_plugin {
+export class sleetch_webpack_plugin {
   constructor() {}
 
   apply(compiler: Compiler) {
-    compiler.hooks.beforeCompile.tapPromise('LadocWebpackPlugin', async () => {
+    compiler.hooks.beforeCompile.tapPromise('SleetchWebpackPlugin', async () => {
       if (!runtime.sources.loaded()) {
         await runtime.sources.load();
         await runtime.builder.build();

@@ -2,7 +2,7 @@ import type { content } from '../types/content';
 import type { category, page, tree_object } from '../types/routing';
 import { to_flat_tree } from '../utils/flat-tree';
 
-export class ladoc_router {
+export class sleetch_router {
   private trees: Map<string, tree_object[]> = new Map();
   private source_index: Map<string, Map<string, string>> = new Map();
 

@@ -7,14 +7,14 @@ engine: mdx-js
 
 # Multiple Engines
 
-With ladoc you can use any of the available markdown engines, at any time allowing you to optimize build time and fit your needs. You can override the configuration markdown engine in the frontmatter of your pages when needed.
+With sleetch you can use any of the available markdown engines, at any time allowing you to optimize build time and fit your needs. You can override the configuration markdown engine in the frontmatter of your pages when needed.
 
 ## Example
 
 Let's say i have this configuration :
 
-```ts title="my-project/ladoc.config.ts"
-import type { ladoc_configuration } from '@ladoc/server';
+```ts title="my-project/sleetch.config.ts"
+import type { sleetch_configuration } from '@sleetch/server';
 
 export default {
   // ...
@@ -26,7 +26,7 @@ export default {
       mermaid: true,
     },
   },
-} satisfies ladoc_configuration;
+} satisfies sleetch_configuration;
 ```
 
 **BUT** for some reasons i have a page where i do not want to use `marked` but an engine that support embedding react components like `mdx-js` but i do not want it to slow down the parsing of other pages by setting it globally... Well just set in your page the engine you want !
@@ -40,22 +40,22 @@ engine: mdx-js
 
 Welcome there, welcome to my documentation !
 
-[<Button variant="secondary">Check my website</Button>](https://ladoc.net)
+[<Button variant="secondary">Check my website</Button>](https://sleetch.net)
 ```
 
 > Welcome there, welcome to my documentation !  
-> [<Button variant="secondary">Check my website</Button>](https://ladoc.net)
+> [<Button variant="secondary">Check my website</Button>](https://sleetch.net)
 
 # Features
 
 Each markdown engine is unique, as you can see some are lightweight but do not support every feature
 
-| Item              | Basic Syntax | Latex | Syntax Highlighting | Mermaid | JSX Components |
-| :---------------- | :----------: | :---: | :-----------------: | :-----: | :------------: |
-| _@ladoc/markdown_ |      🏗️      |  🏗️   |         🏗️          |   🏗️    |       🏗️       |
-| Bun               |      🟢      |  🔴   |         🔴          |   🔴    |       🔴       |
-| Marked            |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
-| Markdown It       |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
-| MDX.js            |      🟢      |  🟢   |         🟢          |   🟢    |       🟢       |
+| Item                | Basic Syntax | Latex | Syntax Highlighting | Mermaid | JSX Components |
+| :------------------ | :----------: | :---: | :-----------------: | :-----: | :------------: |
+| _@sleetch/markdown_ |      🏗️      |  🏗️   |         🏗️          |   🏗️    |       🏗️       |
+| Bun                 |      🟢      |  🔴   |         🔴          |   🔴    |       🔴       |
+| Marked              |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
+| Markdown It         |      🟢      |  🟢   |         🟢          |   🟢    |       🔴       |
+| MDX.js              |      🟢      |  🟢   |         🟢          |   🟢    |       🟢       |
 
 _Since our fast internal markdown engine is in developement. I recommend using `marked` globally and `mdx-js` when needed on a page for the time being._

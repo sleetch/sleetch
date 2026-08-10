@@ -1,5 +1,5 @@
 {
-  "name": "@ladoc/react",
+  "name": "@sleetch/react",
   "version": "1.0.4",
   "type": "module",
   "publishConfig": {
@@ -29,9 +29,9 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@ladoc/core": "workspace:*",
-    "@ladoc/styles": "workspace:*",
-    "@ladoc/vite": "workspace:*",
+    "@sleetch/core": "workspace:*",
+    "@sleetch/styles": "workspace:*",
+    "@sleetch/vite": "workspace:*",
     "@types/mdx": "^2.0.14",
     "@types/react": "^19",
     "@types/react-dom": "^19",

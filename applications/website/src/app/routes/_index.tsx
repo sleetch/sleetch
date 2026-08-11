@@ -3,6 +3,7 @@ import Logo from '@/assets/branding/logo.svg?react';
 import '@sleetch/client/markdown.css';
 import { Button } from '@sleetch/react';
 import Sleeky from '@/assets/branding/sleeky.svg?react';
+import { ThemeToggle } from '@/features/theme/components/theme-toggle';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Sleetch' }, { name: 'description', content: 'Welcome to Sleetch !' }];
@@ -68,6 +69,7 @@ export default function Home() {
           <li>I love it {'<3'}</li>
         </ul>
         <Button>Read the docs</Button>
+        <ThemeToggle />
       </section>
     </main>
   );

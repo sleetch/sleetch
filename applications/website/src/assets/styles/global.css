@@ -3,6 +3,17 @@
 @import './themes.css';
 @import './fonts/satoshi.css';
 
+:root {
+  --sleetch-color-text-primary: var(--primary);
+  --sleetch-color-text-underline: var(--secondary);
+  --sleetch-color-text: var(--foreground);
+  --sleetch-color-background: var(--background);
+  --sleetch-color-card: var(--card);
+  --sleetch-color-muted-foreground: var(--muted-foreground);
+  --sleetch-color-muted: var(--muted);
+  --sleetch-color-blockquote-border: var(--primary);
+}
+
 @theme inline {
   --font-brand: 'Satoshi-Variable';
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';

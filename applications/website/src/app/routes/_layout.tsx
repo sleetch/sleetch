@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Layout() {
   return (
     <main className="min-h-screen relative">
-      <LandingHeader />
+      {/*<LandingHeader /> */}
       <Outlet />
     </main>
   );

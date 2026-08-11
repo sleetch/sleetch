@@ -21,7 +21,8 @@
   },
   "workspaces": [
     "./packages/*",
-    "./examples/*"
+    "./examples/*",
+    "./applications/*"
   ],
   "dependencies": {
     "pacwich": "^0.7.0"

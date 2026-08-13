@@ -1,6 +1,6 @@
 import type { Route } from './+types/_index';
 import { Outlet } from 'react-router';
-import { NoiseOverlay } from '@/shared/components/noise';
+import { NoiseOverlay } from '@/shared/components/effects/noise';
 import { LandingHeader } from '@/features/landing/components/header';
 
 export function meta({}: Route.MetaArgs) {

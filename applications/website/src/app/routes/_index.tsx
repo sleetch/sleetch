@@ -36,9 +36,9 @@ export default function Home() {
       onMouseLeave={(e) => {
         set_cursor_position({ x: 0, y: 0 });
       }}
-      className="max-w-337.5 w-full mx-auto space-y-5 mt-20"
+      className="max-w-337.5 w-full mx-auto space-y-5 mt-20 sm:px-5"
     >
-      <section className="bg-card border rounded-xl p-8 py-20  flex flex-col items-center justify-center border-b border-dashed">
+      <section className="min-h-45 bg-card border rounded-xl p-8 py-20  flex flex-col items-center justify-center border-b border-dashed">
         <div className="flex flex-col gap-4">
           <div className="flex gap-11.25 items-center ">
             <Logo className="w-37.5" />
@@ -67,8 +67,8 @@ export default function Home() {
           <Button> Read the docs</Button>
         </div>
       </section>
-      <section className="grid gap-5 grid-cols-4">
-        <div className="col-span-3 h-50 border rounded-xl p-5 space-y-2">
+      <section className="grid gap-5 grid-cols-1 md:grid-cols-4 sm:grid-cols-1">
+        <div className="col-span-3  h-50 border rounded-xl p-5 space-y-2">
           <h1 className="text-3xl font-brand ">Framework Agnostic</h1>
           <p className="text-muted-foreground text-lg">
             The stack doesn't matter anymore, Sleetch works on any React JS framework, we adapt you don't.
@@ -77,12 +77,12 @@ export default function Home() {
             <img className="aspect-square w-20 px-2 " src={NextLogo} />
             <img className="aspect-square w-20 px-2 " src={ViteLogo} />
             <img className="aspect-square w-20 px-2 " src={TanstackLogo} />
-            <img className="aspect-square w-20 px-2  " src={RRLogo} />
+            <img className="aspect-square w-20 px-2 " src={RRLogo} />
             <div />
           </div>
         </div>
-        <div className="col-span-1 h-50 border rounded-xl overflow-hidden p-5">
-          <Sleeky />
+        <div className="col-span-1 h-50 border rounded-xl overflow-hidden md:block hidden ">
+          <Sleeky className="absolute top-[1%] m-5" />
         </div>
 
         <div className="bg-primary relative col-span-2 h-60  rounded-t-xl rounded-bl-xl  flex flex-col ">

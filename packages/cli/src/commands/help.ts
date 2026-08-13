@@ -7,20 +7,20 @@ export const help_command: command = {
   fallback: true,
   action: (args, cli) => {
     let lines = [
-      `${styleText('green', 'sleetch') + styleText('greenBright', '.net')} is a powerful documentation framework.`,
+      `${styleText('cyan', 'sleetch') + styleText('cyanBright', '.net')} is a powerful documentation framework.`,
       '',
-      `Usage: ${styleText('green', 'sleetch')} ${styleText('gray', '<command>')} ${styleText('greenBright', '[...args]')}`,
+      `Usage: ${styleText('cyan', 'sleetch')} ${styleText('gray', '<command>')} ${styleText('cyanBright', '[...args]')}`,
       '',
       'Commands:',
       '',
     ];
     for (const command of cli.commands) {
-      lines.push(`   ${styleText('green', command.name)} ${styleText('gray', '-')} ${command.description}`);
+      lines.push(`   ${styleText('cyan', command.name)} ${styleText('gray', '-')} ${command.description}`);
     }
 
     lines.push('');
-    lines.push(`Learn more: ${styleText('gray', 'https://') + styleText('green', 'sleetch') + styleText('greenBright', '.net')} `);
-    lines.push(`            ${styleText('gray', 'https://github.com/tornado-softwares/') + styleText('green', 'sleetch')}`);
+    lines.push(`Learn more: ${styleText('gray', 'https://') + styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} `);
+    lines.push(`            ${styleText('gray', 'https://github.com/tornado-softwares/') + styleText('cyan', 'sleetch')}`);
 
     console.log(lines.join('\n'));
   },

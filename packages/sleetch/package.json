@@ -1,0 +1,15 @@
+{
+  "name": "sleetch",
+  "version": "1.0.4",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@sleetch/cli": "workspace:*"
+  },
+  "bin": "./src/bin/index.js"
+}

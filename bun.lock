@@ -106,7 +106,7 @@
     },
     "packages/cli": {
       "name": "@sleetch/cli",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "bin": {
         "sleetch": "./dist/index.js",
       },
@@ -117,7 +117,7 @@
     },
     "packages/client": {
       "name": "@sleetch/client",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@sleetch/core": "workspace:*",
         "@sleetch/styles": "workspace:*",
@@ -125,7 +125,7 @@
     },
     "packages/core": {
       "name": "@sleetch/core",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@mdit/plugin-katex": "^1.0.1",
         "@mdx-js/mdx": "^3.1.1",
@@ -154,13 +154,9 @@
         "@types/mdast": "^4.0.4",
       },
     },
-    "packages/markdown": {
-      "name": "@sleetch/markdown",
-      "version": "0.0.0",
-    },
     "packages/next": {
       "name": "@sleetch/next",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@sleetch/core": "workspace:*",
       },
@@ -174,7 +170,7 @@
     },
     "packages/react": {
       "name": "@sleetch/react",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@mdx-js/mdx": "^3.1.1",
         "clsx": "^2.1.1",
@@ -201,7 +197,7 @@
     },
     "packages/server": {
       "name": "@sleetch/server",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@sleetch/core": "workspace:*",
       },
@@ -211,21 +207,19 @@
     },
     "packages/sleetch": {
       "name": "sleetch",
-      "version": "1.0.4",
-      "bin": {
-        "sleetch": "./dist/index.js",
-      },
+      "version": "1.0.5",
+      "bin": "./src/bin/index.js",
       "dependencies": {
         "@sleetch/cli": "workspace:*",
       },
     },
     "packages/styles": {
       "name": "@sleetch/styles",
-      "version": "1.0.4",
+      "version": "1.0.5",
     },
     "packages/vite": {
       "name": "@sleetch/vite",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@sleetch/core": "workspace:*",
         "vite": "^8.1.0",
@@ -614,8 +608,6 @@
     "@sleetch/client": ["@sleetch/client@workspace:packages/client"],
 
     "@sleetch/core": ["@sleetch/core@workspace:packages/core"],
-
-    "@sleetch/markdown": ["@sleetch/markdown@workspace:packages/markdown"],
 
     "@sleetch/next": ["@sleetch/next@workspace:packages/next"],
 
@@ -2214,10 +2206,6 @@
     "mlly/pkg-types": ["pkg-types@1.3.1", "", { "dependencies": { "confbox": "^0.1.8", "mlly": "^1.7.4", "pathe": "^2.0.1" } }, "sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ=="],
 
     "morgan/debug": ["debug@2.6.9", "", { "dependencies": { "ms": "2.0.0" } }, "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="],
-
-    "next-example/@types/react": ["@types/react@19.2.17", "", { "dependencies": { "csstype": "^3.2.2" } }, "sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw=="],
-
-    "next-example/@types/react-dom": ["@types/react-dom@19.2.3", "", { "peerDependencies": { "@types/react": "^19.2.0" } }, "sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ=="],
 
     "next-example/react": ["react@19.2.4", "", {}, "sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ=="],
 

@@ -1,5 +1,12 @@
 # @sleetch/server
 
+## 1.0.5
+
+### Patch Changes
+
+- @sleetch/core@1.0.5
+- @sleetch/client@1.0.5
+
 ## 1.0.4
 
 ### Patch Changes

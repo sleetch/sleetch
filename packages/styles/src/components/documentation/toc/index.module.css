@@ -7,7 +7,7 @@
   top: var(--_sleetch-header-height);
   color: var(--_sleetch-color-text);
   padding: 4em 2em;
-  border-left: 1px dashed var(--_sleetch-color-muted);
+  border-left: 1px dashed var(--_sleetch-color-border);
   display: flex;
   flex-direction: column;
   overflow-y: auto;

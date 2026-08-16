@@ -9,7 +9,7 @@
   padding: 0.85em;
   background: var(--_sleetch-color-card);
   border-radius: var(--_sleetch-radius);
-  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-muted);
+  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
   margin: 0 0 1em;
 }
 
@@ -62,7 +62,7 @@
   gap: 0.15em;
   margin-left: 0.75em;
   padding-left: 0.65em;
-  border-left: var(--_sleetch-underline-height) solid var(--_sleetch-color-muted);
+  border-left: var(--_sleetch-underline-height) solid var(--_sleetch-color-border);
 }
 
 .file {

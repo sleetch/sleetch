@@ -9,11 +9,11 @@
     "dev": "vite build --watch",
     "build": "vite build"
   },
-  "main": "./dist/index.esm.js",
+  "main": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js",
+      "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     }

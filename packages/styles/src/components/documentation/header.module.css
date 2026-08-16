@@ -5,7 +5,7 @@
   height: var(--_sleetch-header-height);
   background-color: color-mix(in srgb, var(--_sleetch-color-card) 30%, transparent);
   backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--_sleetch-color-muted);
+  border-bottom: 1px solid var(--_sleetch-color-border);
   position: sticky;
   top: 0;
   display: flex;

@@ -1,16 +1,19 @@
 @import 'tailwindcss';
+@plugin "fluid-tailwindcss";
 
 @import './themes.css';
 @import './fonts/satoshi.css';
 
 :root {
-  --sleetch-color-text-primary: var(--primary);
+  --sleetch-color-primary: var(--primary);
   --sleetch-color-text-underline: var(--secondary);
   --sleetch-color-text: var(--foreground);
   --sleetch-color-background: var(--background);
+  --sleetch-color-secondary: var(--secondary);
   --sleetch-color-card: var(--card);
   --sleetch-color-muted-foreground: var(--muted-foreground);
   --sleetch-color-muted: var(--muted);
+  --sleetch-color-border: var(--border);
   --sleetch-color-blockquote-border: var(--primary);
 }
 

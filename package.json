@@ -1,5 +1,5 @@
 {
-  "name": "sleetch",
+  "name": "sleetch-monorepo",
   "private": true,
   "scripts": {
     "build": "bunx pacwich run build 'path:packages/*' --dep-order --output-style=prefixed ",

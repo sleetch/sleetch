@@ -1,62 +1,124 @@
 @import '../variables.css';
 
-.default {
-  color: var(--_sleetch-color-text);
-  background-color: var(--_sleetch-color-card);
+/* Shared base */
+.default,
+.primary,
+.secondary,
+.ghost,
+.outline,
+.destructive {
   border-radius: var(--_sleetch-radius);
   padding: 3px 10px;
-
   font-family: var(--_sleetch-font-base);
-  border: 1px solid var(--_sleetch-color-muted);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
+  border: 1px solid transparent;
   transition:
     background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    filter var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+    opacity var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
+/* Default — neutral filled, matches card surface */
+.default {
+  color: var(--_sleetch-color-text);
+  background-color: var(--_sleetch-color-background);
+  border-color: var(--_sleetch-color-border);
+}
 .default:hover {
   background-color: var(--_sleetch-color-muted);
   border-color: var(--_sleetch-color-text-underline);
 }
 
-.secondary {
-  color: var(--_sleetch-color-background);
-  background-color: var(--_sleetch-color-text-primary);
-  border-radius: var(--_sleetch-radius);
-  padding: 3px 10px;
-
-  font-family: var(--_sleetch-font-base);
-  border: 1px solid transparent;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: filter var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+.outline {
+  color: var(--_sleetch-color-text);
+  border-color: var(--_sleetch-color-border);
+}
+.outline:hover {
+  background-color: var(--_sleetch-color-muted);
+  border-color: var(--_sleetch-color-text-underline);
 }
 
-.secondary:hover {
+.primary {
+  color: var(--_sleetch-color-primary-foreground);
+  background-color: var(--_sleetch-color-text-primary);
+  border-color: transparent;
+}
+.primary:hover {
   filter: brightness(1.1);
 }
 
+.secondary {
+  color: var(--_sleetch-color-text);
+  background-color: var(--_sleetch-color-secondary);
+  border-color: var(--_sleetch-color-border);
+}
+.secondary:hover {
+  background-color: var(--_sleetch-color-muted);
+}
+
+/* Ghost — no border, no fill until interaction */
+.ghost {
+  color: var(--_sleetch-color-text);
+  background-color: transparent;
+  border-color: transparent;
+}
+.ghost:hover {
+  background-color: var(--_sleetch-color-muted);
+}
+
+/* Destructive — dangerous / irreversible actions */
+.destructive {
+  color: var(--_sleetch-color-background);
+  background-color: var(--_sleetch-syntax-deletion);
+  border-color: transparent;
+}
+.destructive:hover {
+  filter: brightness(1.1);
+}
+
+/* Shared interaction states */
 .default:active,
-.secondary:active {
+.primary:active,
+.secondary:active,
+.ghost:active,
+.outline:active,
+.destructive:active {
   transform: scale(0.98);
+}
+
+.default:disabled,
+.primary:disabled,
+.secondary:disabled,
+.ghost:disabled,
+.outline:disabled,
+.destructive:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
 }
 
 @media (max-width: 768px) {
   .default,
-  .secondary {
+  .primary,
+  .secondary,
+  .ghost,
+  .outline,
+  .destructive {
     padding: 6px 12px;
     font-size: 14px;
   }
 }
 
 :global(.sleetch-markdown) .default,
-:global(.sleetch-markdown) .secondary {
+:global(.sleetch-markdown) .primary,
+:global(.sleetch-markdown) .secondary,
+:global(.sleetch-markdown) .ghost,
+:global(.sleetch-markdown) .outline,
+:global(.sleetch-markdown) .destructive {
   margin: 0 0 1em;
 }

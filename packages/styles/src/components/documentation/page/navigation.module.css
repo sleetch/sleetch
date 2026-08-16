@@ -25,7 +25,7 @@
   max-width: 320px;
   padding: 1em 1em;
   border-radius: var(--_sleetch-radius);
-  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-muted);
+  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
   color: var(--_sleetch-color-text);
   text-decoration: none;
   transition:

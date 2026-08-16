@@ -3,7 +3,7 @@ import styles from '@sleetch/styles/components/button.module.css';
 import clsx from 'clsx';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'secondary';
+  variant?: 'default' | 'secondary' | 'primary' | 'ghost' | 'destructive' | 'outline';
 }
 
 export function Button({ variant = 'default', className, children, ...props }: ButtonProps) {

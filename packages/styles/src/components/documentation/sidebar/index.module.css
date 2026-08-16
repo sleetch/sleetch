@@ -51,7 +51,7 @@
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     padding: 2em 1.5em;
-    border-right: 1px solid var(--_sleetch-color-muted);
+    border-right: 1px solid var(--_sleetch-color-border);
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
   }
 

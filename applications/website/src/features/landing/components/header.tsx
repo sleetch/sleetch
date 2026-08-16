@@ -1,4 +1,4 @@
-import Logo from '@/assets/branding/logo.svg?react';
+import Logo from '@/assets/images/branding/logo.svg?react';
 import { ThemeToggle } from '@/features/theme/components/theme-toggle';
 
 export function LandingHeader() {

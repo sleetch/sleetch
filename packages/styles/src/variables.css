@@ -1,11 +1,15 @@
 :root {
-  --_sleetch-color-text-primary: var(--sleetch-color-text-primary, #7bc193);
+  --_sleetch-color-text-primary: var(--sleetch-color-text-primary, var(--_sleetch-color-primary));
   --_sleetch-color-text-underline: var(--sleetch-color-text-underline, #3d5245);
   --_sleetch-color-text: var(--sleetch-color-text, #eaeaea);
+  --_sleetch-color-primary-foreground: var(--sleetch-color-primary-foreground, #ffffff);
+  --_sleetch-color-primary: var(--sleetch-color-primary, #7bc193);
   --_sleetch-color-background: var(--sleetch-color-background, #171717);
+  --_sleetch-color-secondary: var(--sleetch-color-secondary, #242424);
   --_sleetch-color-card: var(--sleetch-color-card, #212121);
   --_sleetch-color-muted-foreground: var(--sleetch-color-muted-foreground, #9a9a9a);
   --_sleetch-color-muted: var(--sleetch-color-muted, #2c2c2c);
+  --_sleetch-color-border: var(--sleetch-color-border, #3c3c3c);
   --_sleetch-color-blockquote-border: var(--sleetch-color-blockquote-border, #4fae7b);
   --_sleetch-syntax-keyword: var(--sleetch-syntax-keyword, #7bc193);
   --_sleetch-syntax-string: var(--sleetch-syntax-string, #d4a76a);

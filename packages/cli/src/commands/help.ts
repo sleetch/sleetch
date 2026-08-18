@@ -9,7 +9,7 @@ export const help_command: command = {
   fallback: true,
   action: (options, cli) => {
     let lines = [
-      `${styleText('cyan', 'sleetch') + styleText('cyanBright', '.net')} is a powerful documentation framework.`,
+      `${styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} is a powerful documentation framework.`,
       '',
       `Usage: ${styleText('cyan', 'sleetch')} ${styleText('gray', '<command>')} ${styleText('cyanBright', '[...args]')}`,
       '',

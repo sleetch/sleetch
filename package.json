@@ -21,7 +21,7 @@
   },
   "workspaces": [
     "./packages/*",
-    "./examples/*",
+    "./templates/*",
     "./applications/*"
   ],
   "dependencies": {

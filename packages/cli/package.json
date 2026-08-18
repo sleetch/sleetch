@@ -17,11 +17,12 @@
     "zod": "^4.4.3"
   },
   "exports": {
-    ".": "./dist/index.js",
+    "./bin": "./dist/bin/index.js",
+    "./commands/create": "./dist/commands/create/index.js",
     "./package.json": "./package.json"
   },
   "bin": {
-    "sleetch": "./dist/index.js"
+    "sleetch": "./dist/bin/index.js"
   },
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",

@@ -36,6 +36,7 @@
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
         "react-router": "8.3.0",
+        "sleetch": "workspace:*",
         "tailwind-merge": "^3.6.0",
         "three": "^0.185.1",
         "vite-react-svg": "^0.0.13",
@@ -53,65 +54,11 @@
         "vite": "^8.2.1",
       },
     },
-    "examples/next": {
-      "name": "next-example",
-      "version": "0.1.0",
-      "dependencies": {
-        "@sleetch/client": "workspace:*",
-        "@sleetch/next": "workspace:*",
-        "@sleetch/react": "workspace:*",
-        "@sleetch/server": "workspace:*",
-        "next": "16.2.12",
-        "react": "19.2.4",
-        "react-dom": "19.2.4",
-      },
-      "devDependencies": {
-        "@tailwindcss/postcss": "^4",
-        "@types/node": "^20",
-        "@types/react": "^19",
-        "@types/react-dom": "^19",
-        "eslint": "^9",
-        "eslint-config-next": "16.2.12",
-        "tailwindcss": "^4",
-        "typescript": "^5",
-      },
-    },
-    "examples/react-router": {
-      "name": "@sleetch/react-router-example",
-      "dependencies": {
-        "@react-router/dev": "^8.0.1",
-        "@react-router/node": "^8.0.1",
-        "@react-router/serve": "^8.0.1",
-        "@sleetch/cli": "workspace:*",
-        "@sleetch/client": "workspace:*",
-        "@sleetch/react": "workspace:*",
-        "@sleetch/server": "workspace:*",
-        "@sleetch/vite": "workspace:*",
-        "@tailwindcss/vite": "^4.3.1",
-        "better-fs-routes": "^0.1.3",
-        "isbot": "^5",
-        "lucide-react": "^1.24.0",
-        "react": "^19.2.7",
-        "react-dom": "^19.2.7",
-        "react-router": "^8.0.1",
-        "tailwindcss": "^4.3.1",
-        "vite": "^8.1.0",
-      },
-      "devDependencies": {
-        "@tailwindcss/typography": "^0.5.20",
-        "@types/bun": "latest",
-        "@types/react": "^19.2.17",
-        "@types/react-dom": "^19.2.3",
-      },
-      "peerDependencies": {
-        "typescript": "^5",
-      },
-    },
     "packages/cli": {
       "name": "@sleetch/cli",
       "version": "1.0.5",
       "bin": {
-        "sleetch": "./dist/index.js",
+        "sleetch": "./dist/bin/index.js",
       },
       "dependencies": {
         "@sleetch/core": "workspace:*",
@@ -230,6 +177,60 @@
       "dependencies": {
         "@sleetch/core": "workspace:*",
         "vite": "^8.1.0",
+      },
+    },
+    "templates/next": {
+      "name": "next-example",
+      "version": "0.1.0",
+      "dependencies": {
+        "@sleetch/client": "workspace:*",
+        "@sleetch/next": "workspace:*",
+        "@sleetch/react": "workspace:*",
+        "@sleetch/server": "workspace:*",
+        "next": "16.2.12",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+      },
+      "devDependencies": {
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.12",
+        "tailwindcss": "^4",
+        "typescript": "^5",
+      },
+    },
+    "templates/react-router": {
+      "name": "@sleetch/react-router-example",
+      "dependencies": {
+        "@react-router/dev": "^8.0.1",
+        "@react-router/node": "^8.0.1",
+        "@react-router/serve": "^8.0.1",
+        "@sleetch/cli": "workspace:*",
+        "@sleetch/client": "workspace:*",
+        "@sleetch/react": "workspace:*",
+        "@sleetch/server": "workspace:*",
+        "@sleetch/vite": "workspace:*",
+        "@tailwindcss/vite": "^4.3.1",
+        "better-fs-routes": "^0.1.3",
+        "isbot": "^5",
+        "lucide-react": "^1.24.0",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+        "react-router": "^8.0.1",
+        "tailwindcss": "^4.3.1",
+        "vite": "^8.1.0",
+      },
+      "devDependencies": {
+        "@tailwindcss/typography": "^0.5.20",
+        "@types/bun": "latest",
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
       },
     },
   },
@@ -578,7 +579,7 @@
 
     "@sleetch/react": ["@sleetch/react@workspace:packages/react"],
 
-    "@sleetch/react-router-example": ["@sleetch/react-router-example@workspace:examples/react-router"],
+    "@sleetch/react-router-example": ["@sleetch/react-router-example@workspace:templates/react-router"],
 
     "@sleetch/server": ["@sleetch/server@workspace:packages/server"],
 
@@ -1604,7 +1605,7 @@
 
     "next": ["next@16.2.12", "", { "dependencies": { "@next/env": "16.2.12", "@swc/helpers": "0.5.15", "baseline-browser-mapping": "^2.9.19", "caniuse-lite": "^1.0.30001579", "postcss": "8.4.31", "styled-jsx": "5.1.6" }, "optionalDependencies": { "@next/swc-darwin-arm64": "16.2.12", "@next/swc-darwin-x64": "16.2.12", "@next/swc-linux-arm64-gnu": "16.2.12", "@next/swc-linux-arm64-musl": "16.2.12", "@next/swc-linux-x64-gnu": "16.2.12", "@next/swc-linux-x64-musl": "16.2.12", "@next/swc-win32-arm64-msvc": "16.2.12", "@next/swc-win32-x64-msvc": "16.2.12", "sharp": "^0.34.5" }, "peerDependencies": { "@opentelemetry/api": "^1.1.0", "@playwright/test": "^1.51.1", "babel-plugin-react-compiler": "*", "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", "sass": "^1.3.0" }, "optionalPeers": ["@opentelemetry/api", "@playwright/test", "babel-plugin-react-compiler", "sass"], "bin": { "next": "dist/bin/next" } }, "sha512-iD59eYQWmbFcEbX7v/acG5DRym9iw1DdaPoD0WTA920naWsE25wShzJW4+UvAs8MK9EC2kBfIH6vtto1H1PHGw=="],
 
-    "next-example": ["next-example@workspace:examples/next"],
+    "next-example": ["next-example@workspace:templates/next"],
 
     "node-exports-info": ["node-exports-info@1.6.2", "", { "dependencies": { "array.prototype.flatmap": "^1.3.3", "es-errors": "^1.3.0", "object.entries": "^1.1.9", "semver": "^6.3.1" } }, "sha512-kXs9Go0cah0qHVV2v389IXQLdLCeE1xfFtjOAF+iobu0OIoG1pje8At2vMHyaPMiPMnG/LWP50twML21eMcAag=="],
 

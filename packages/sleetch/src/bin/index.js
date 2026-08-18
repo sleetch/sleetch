@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-import '@sleetch/cli';
+import '@sleetch/cli/bin';

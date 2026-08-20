@@ -11,38 +11,34 @@ import {
   PageContent,
   PageHeader,
   PageNavigation,
+  useDocumentationContext,
 } from '@sleetch/react';
-import { get_page, get_tree } from '@sleetch/server';
+import { get_page } from '@sleetch/server';
 import manifest from '@sleetch/client/manifest.js';
-import { ThemeToggle } from '@/theme/components/theme-toggle';
 
 export function meta({ params, loaderData: data }: Route.MetaArgs) {
-  if (data) {
-    return [{ title: data.page.seo.title }, { name: 'description', content: data.page.seo.description }];
-  }
-  return [];
+  if (data) return [{ title: data.page.seo.title }, { name: 'description', content: data.page.seo.description }];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
   const page = await get_page('/' + params['*'], params.locale);
+  console.log('/' + params['*'], page);
   if (!page) throw data(null, { status: 404 });
-  const tree = await get_tree(params.locale);
-  return { page, tree };
+  return { page };
 }
 
 export default function Page({
   loaderData: {
     page: { language, path },
-    tree: { tree },
   },
 }: Route.ComponentProps) {
+  const { set_current_path } = useDocumentationContext();
+  set_current_path(path);
   const page = manifest[language]['markdown_modules'][path]();
   return (
     <>
       <DocumentationSidebarContent>
         <Suspense fallback={<p>Loading.</p>}>
-          <ThemeToggle />
-
           <PageHeader page={page} />
           <PageContent
             page={page}
@@ -53,7 +49,7 @@ export default function Page({
               Folder,
             }}
           />
-          <PageNavigation hrefBuilder={(href) => '/' + language + '/documentation' + href} tree={tree} currentPath={path} />
+          <PageNavigation />
         </Suspense>
       </DocumentationSidebarContent>
       <Suspense fallback={<p>Loading.</p>}>

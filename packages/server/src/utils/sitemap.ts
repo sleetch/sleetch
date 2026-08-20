@@ -1,7 +1,7 @@
-import type { transformer } from '@/types/builder';
+import type { path_transformer } from '@sleetch/core/configuration';
 import { get_languages, get_static_paths } from './tree';
 
-export async function get_sitemap(path_builder: transformer) {
+export async function get_sitemap(path_builder: path_transformer) {
   const languages = await get_languages();
   const urls: string[] = [];
   for (const language of languages) {

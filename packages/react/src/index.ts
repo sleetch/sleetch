@@ -1,12 +1,12 @@
 'use client';
 
+export { DocumentationProvider, useDocumentationContext } from './contexts/documentation';
+
 export { DocumentationSidebar } from './components/documentation/sidebar';
 export { DocumentationSidebarContent } from './components/documentation/sidebar/content';
-export { ConnectedDocumentationSidebar } from './components/documentation/connected-sidebar';
 
-export { DocumentationLayout, useDocumentationLayout } from './components/documentation/layout';
+export { DocumentationLayout } from './components/documentation/layout';
 export { DocumentationHeader } from './components/documentation/header';
-export { ConnectedDocumentationHeader } from './components/documentation/connected-header';
 export { DocumentationContent } from './components/documentation/content';
 
 export { DocumentationToc } from './components/documentation/toc';

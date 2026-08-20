@@ -25,7 +25,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </Folder>
       </FileSystem>
 
-      <Link to={'/documentation'}>
+      <Link to={'/documentation/'}>
         <Button>Let's get started</Button>
       </Link>
 

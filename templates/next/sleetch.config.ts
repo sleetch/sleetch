@@ -1,4 +1,4 @@
-import type { partial_sleetch_configuration } from '@sleetch/core/configuration';
+import type { sleetch_configuration } from '@sleetch/server';
 
 export default {
   languages: {
@@ -16,4 +16,4 @@ export default {
       mermaid: true,
     },
   },
-} satisfies partial_sleetch_configuration;
+} satisfies sleetch_configuration;

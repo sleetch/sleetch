@@ -1,5 +1,3 @@
-@import '../../../variables.css';
-
 .default {
   min-width: var(--_sleetch-toc-width);
   height: calc(100vh - var(--_sleetch-header-height));

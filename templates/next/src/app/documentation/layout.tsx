@@ -1,8 +1,8 @@
-import { getDocumentationTree } from '@/actions/tree';
 import { ConnectedDocumentationSidebar, DocumentationContent } from '@sleetch/react';
+import { get_tree } from '@sleetch/server';
 
 export default async function DocumentationLayout({ children }: { children: React.ReactNode }) {
-  const tree = await getDocumentationTree();
+  const { tree } = await get_tree();
 
   return (
     <DocumentationContent>

@@ -1,5 +1,3 @@
-@import './variables.css';
-
 .sleetch-markdown + .sleetch-markdown {
   padding-top: 0;
 }

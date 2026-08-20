@@ -7,16 +7,13 @@ import { useMemo, type BaseHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import styles from '@sleetch/styles/components/documentation/page/navigation.module.css';
 import type { tree_object } from '@sleetch/core/compiler';
+import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
 
 type category_node = Extract<tree_object, { type: 'category' }>;
 type page_node = Extract<tree_object, { type: 'page' }>;
 type data_node = Extract<tree_object, { type: 'data' }>;
 
-export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> {
-  tree: tree_object[];
-  currentPath: string;
-  hrefBuilder?: (path: string) => string;
-}
+export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> {}
 
 const defaultHrefBuilder = (path: string) => path;
 
@@ -130,15 +127,15 @@ function resolveDescription(description: string): string | undefined {
 interface NavigationCardProps {
   node: page_node;
   direction: 'previous' | 'next';
-  hrefBuilder: (path: string) => string;
 }
 
-function NavigationCard({ node, direction, hrefBuilder }: NavigationCardProps) {
+function NavigationCard({ node, direction }: NavigationCardProps) {
   const title = resolveTitle(node.frontmatter.title, node.path);
   const description = resolveDescription(node.frontmatter.description);
+  const { language, path_transformer } = useDocumentationContext();
 
   return (
-    <a href={hrefBuilder(node.path)} className={clsx(styles['card'], styles[direction])} data-direction={direction}>
+    <a href={path_transformer({ language, path: node.path })} className={clsx(styles['card'], styles[direction])} data-direction={direction}>
       <span className={styles['meta']}>
         {direction === 'previous' && <ChevronLeft />}
         <span className={styles['title']}>{title}</span>
@@ -149,10 +146,11 @@ function NavigationCard({ node, direction, hrefBuilder }: NavigationCardProps) {
   );
 }
 
-export function PageNavigation({ className, tree, currentPath, hrefBuilder = defaultHrefBuilder, ...props }: DocumentationNavigationProps) {
+export function PageNavigation({ className, ...props }: DocumentationNavigationProps) {
+  const { tree, current_path } = useDocumentationContext();
   const { previous, next } = useMemo(() => {
     const pages = flattenPages(tree);
-    const currentIndex = pages.findIndex((page) => page.path === currentPath);
+    const currentIndex = pages.findIndex((page) => page.path === current_path);
 
     if (currentIndex === -1) {
       return { previous: undefined, next: undefined };
@@ -162,16 +160,14 @@ export function PageNavigation({ className, tree, currentPath, hrefBuilder = def
       previous: pages[currentIndex - 1],
       next: pages[currentIndex + 1],
     };
-  }, [tree, currentPath]);
+  }, [tree, current_path]);
 
   if (!previous && !next) return null;
 
   return (
     <nav className={clsx(styles['navigation'], className)} aria-label="Pagination" {...props}>
-      <div className={styles['slot']}>{previous && <NavigationCard node={previous} direction="previous" hrefBuilder={hrefBuilder} />}</div>
-      <div className={clsx(styles['slot'], styles['slot-end'])}>
-        {next && <NavigationCard node={next} direction="next" hrefBuilder={hrefBuilder} />}
-      </div>
+      <div className={styles['slot']}>{previous && <NavigationCard node={previous} direction="previous" />}</div>
+      <div className={clsx(styles['slot'], styles['slot-end'])}>{next && <NavigationCard node={next} direction="next" />}</div>
     </nav>
   );
 }

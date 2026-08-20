@@ -1,4 +1,4 @@
-import type { transformer } from '@/types/builder';
+import type { path_transformer } from '@sleetch/core/configuration';
 import { get_pages } from './pages';
 import { get_languages } from './tree';
 
@@ -15,7 +15,7 @@ export async function get_rss({
   site: string;
   title: string;
   description: string;
-  transformer: transformer<string>;
+  transformer: path_transformer<string>;
 }) {
   const languages = await get_languages();
   const items: string[] = [];

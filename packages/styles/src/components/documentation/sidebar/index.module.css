@@ -1,6 +1,3 @@
-/* index.module.css */
-@import '../../../variables.css';
-
 .sidebar {
   min-width: var(--_sleetch-sidebar-width);
   height: calc(100vh - var(--_sleetch-header-height));

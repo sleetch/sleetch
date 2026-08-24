@@ -1,3 +1,6 @@
+// ClientPage.tsx
+'use client';
+
 import { Suspense } from 'react';
 import {
   Button,
@@ -10,26 +13,18 @@ import {
   PageHeader,
   PageNavigation,
 } from '@sleetch/react';
-import { get_page, get_tree } from '@sleetch/server';
-import manifest from '@sleetch/client/manifest.js';
-import { notFound } from 'next/navigation';
 
-export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
-  const { slug } = await params;
-  console.log(slug);
-  const p = await get_page('/' + slug.join('/'));
-  if (!p) {
-    console.log('Not found');
-    return notFound();
-  }
-  const tree = await get_tree();
-  const page = manifest[p.language]['markdown_modules'][p.path]();
+import manifest from '@sleetch/client/manifest.js';
+
+export default function ClientPage({ language, path }: { language: string; path: string }) {
+  const page = manifest[language]['markdown_modules'][path]();
 
   return (
     <>
       <DocumentationSidebarContent>
         <Suspense fallback={<p>Loading.</p>}>
           <PageHeader page={page} />
+
           <PageContent
             page={page}
             components={{
@@ -39,13 +34,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
               Folder,
             }}
           />
-          <PageNavigation
-            //hrefBuilder={(href) => '/' + language + '/documentation' + href}
-            tree={tree.tree}
-            currentPath={p.path}
-          />
         </Suspense>
+
+        <PageNavigation />
       </DocumentationSidebarContent>
+
       <Suspense fallback={<p>Loading.</p>}>
         <DocumentationToc page={page} />
       </Suspense>

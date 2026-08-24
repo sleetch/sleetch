@@ -6,6 +6,8 @@ import * as runtime from 'react/jsx-runtime';
 import type { MDXComponents } from 'mdx/types';
 import type { markdown_module } from '@sleetch/core/compiler';
 
+const mdxCache = new Map<string, ReturnType<typeof compileMDX>>();
+
 function compileMDX(code: string) {
   return run(code, {
     ...runtime,
@@ -13,6 +15,16 @@ function compileMDX(code: string) {
   });
 }
 
+function getCompiledMDX(code: string) {
+  let promise = mdxCache.get(code);
+
+  if (!promise) {
+    promise = compileMDX(code);
+    mdxCache.set(code, promise);
+  }
+
+  return promise;
+}
 export function PageContent({ page, components }: { page: Promise<markdown_module>; components?: MDXComponents }) {
   const value = use(page);
 
@@ -24,8 +36,7 @@ export function PageContent({ page, components }: { page: Promise<markdown_modul
     );
   }
 
-  const compiled = use(compileMDX(value.default.parsed.code));
-  const Content = compiled.default;
+  const { default: Content } = use(getCompiledMDX(value.default.parsed.code));
 
   return (
     <div className="sleetch-markdown">

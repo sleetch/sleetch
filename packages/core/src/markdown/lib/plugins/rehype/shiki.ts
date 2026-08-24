@@ -2,13 +2,13 @@ import { visit } from 'unist-util-visit';
 import { toString } from 'hast-util-to-string';
 import type { Plugin } from 'unified';
 import type { Root, Element } from 'hast';
-import { codeToHast } from 'shiki';
 import type { BundledLanguage } from 'shiki/bundle/web';
 import { shiki_theme } from '../../../utils/shiki/theme';
-import { shiki_transformers } from '../../../utils/shiki/transformers';
-
 export const rehype_shiki_plugin: Plugin<[], Root> = () => {
   return async (tree) => {
+    const { shiki_transformers } = await import('../../../utils/shiki/transformers');
+    const { codeToHast } = await import('shiki');
+
     const targets: { pre: Element; code: Element }[] = [];
 
     visit(tree, 'element', (node: Element) => {

@@ -4,10 +4,7 @@ export default {
   languages: {
     default: 'en',
   },
-  sources: [
-    { type: 'file-system', path: './src/content/default' },
-    { type: 'file-system', path: './src/content/french', language: 'fr' },
-  ],
+  sources: [{ type: 'file-system', path: './src/documentation' }],
   markdown: {
     engine: 'marked',
     plugins: {

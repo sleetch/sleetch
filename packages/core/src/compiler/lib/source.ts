@@ -31,6 +31,7 @@ export abstract class sleetch_source<tree_object_type extends tree_object, conte
   };
 
   abstract readonly builder: {
+    get_object_build_path(object: tree_object_type): string;
     build_object(language: string, object: tree_object_type): Promise<void>;
   };
 

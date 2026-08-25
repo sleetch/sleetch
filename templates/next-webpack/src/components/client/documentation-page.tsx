@@ -18,7 +18,7 @@ import {
 import manifest from '@sleetch/client/manifest.js';
 
 export default function ClientPage({ language, path }: { language: string; path: string }) {
-  const page = manifest[language]['markdown_modules'][path]();
+  const page = manifest[language]['pages'][path]();
   const { set_current_path } = useDocumentationContext();
   useEffect(() => {
     set_current_path(path);

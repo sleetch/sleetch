@@ -11,9 +11,9 @@ export class sleetch_webpack_plugin {
       if (!runtime.sources.loaded()) {
         await runtime.sources.load();
         await runtime.builder.build();
-      }
-      if (compiler.options.mode === 'development' && !runtime.sources.loaded()) {
-        await runtime.sources.watch();
+        if (compiler.options.mode === 'development') {
+          await runtime.sources.watch();
+        }
       }
     });
   }

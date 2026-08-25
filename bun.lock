@@ -208,7 +208,6 @@
         "@react-router/dev": "^8.0.1",
         "@react-router/node": "^8.0.1",
         "@react-router/serve": "^8.0.1",
-        "@sleetch/cli": "workspace:*",
         "@sleetch/client": "workspace:*",
         "@sleetch/react": "workspace:*",
         "@sleetch/server": "workspace:*",

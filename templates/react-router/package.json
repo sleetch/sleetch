@@ -18,7 +18,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@sleetch/cli": "workspace:*",
     "@sleetch/client": "workspace:*",
     "@sleetch/react": "workspace:*",
     "@sleetch/server": "workspace:*",

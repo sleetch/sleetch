@@ -13,10 +13,10 @@ export const generate_manifest = (router: sleetch_router) => {
           "${language}" : {
           'tree': () => import('${path.join('@sleetch/client/trees', language + '.js')}'),
 
-          'markdown_modules':{
+          'pages':{
 
           ${pages
-            .map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/markdown-modules', language, page.path + '.js')}')`)
+            .map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path + '.js')}')`)
             .join(',\n')}
                 }
           }

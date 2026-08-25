@@ -4,7 +4,7 @@ import '@sleetch/styles/katex.css';
 import { run } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import type { MDXComponents } from 'mdx/types';
-import type { markdown_module } from '@sleetch/core/compiler';
+import type { page_module } from '@sleetch/core/compiler';
 
 const mdxCache = new Map<string, ReturnType<typeof compileMDX>>();
 
@@ -25,7 +25,7 @@ function getCompiledMDX(code: string) {
 
   return promise;
 }
-export function PageContent({ page, components }: { page: Promise<markdown_module>; components?: MDXComponents }) {
+export function PageContent({ page, components }: { page: Promise<page_module>; components?: MDXComponents }) {
   const value = use(page);
 
   if (value.default.parsed.type == 'html') {

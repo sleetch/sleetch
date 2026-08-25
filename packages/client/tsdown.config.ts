@@ -11,7 +11,7 @@ export default defineConfig({
       },
       './manifest.js': './.sleetch/manifest.js',
       './trees/*.js': './.sleetch/trees/*.js',
-      './markdown-modules/*.js': './.sleetch/markdown-modules/*.js',
+      './markdown-modules/*.js': './.sleetch/pages/*.js',
     },
   },
   entry: ['src/**/*.ts'],

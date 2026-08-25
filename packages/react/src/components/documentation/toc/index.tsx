@@ -6,10 +6,10 @@ Needs more testing
 import { use, useEffect, useRef, useState, type BaseHTMLAttributes, type CSSProperties } from 'react';
 import styles from '@sleetch/styles/components/documentation/toc/index.module.css';
 import clsx from 'clsx';
-import type { markdown_module } from '@sleetch/core/compiler';
+import type { page_module } from '@sleetch/core/compiler';
 
 export interface DocumentationTocProps extends BaseHTMLAttributes<HTMLBaseElement> {
-  page: Promise<markdown_module>;
+  page: Promise<page_module>;
 }
 
 interface TocLinkStyle extends CSSProperties {

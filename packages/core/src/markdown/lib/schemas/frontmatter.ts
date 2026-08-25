@@ -9,7 +9,7 @@ export const page_frontmatter_schema = z.object({
   icon: z.string().optional(),
 });
 
-export const data_frontmatter_schema = z.object({
+export const category_frontmatter_schema = z.object({
   title: z.string().default('No title.'),
   icon: z.string().optional(),
   order: z.number().optional(),

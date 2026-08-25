@@ -3,13 +3,24 @@ import type { tree_object } from './routing';
 
 export type tree_module = { default: tree_object[] };
 
-export type markdown_module = {
+export type page_module = {
   default: {
+    type: 'page';
     toc: toc;
     frontmatter: page_frontmatter;
     parsed: parser_output;
   };
 };
+
+export type category_module = {
+  default: {
+    type: 'category';
+    frontmatter: page_frontmatter;
+    page: page_module['default'];
+  };
+};
+
+export type object_module = page_module | category_module;
 
 export type manifest_module = {
   default: {
@@ -18,7 +29,7 @@ export type manifest_module = {
     string,
     {
       tree: () => Promise<tree_module>;
-      markdown_modules: Record<string, () => Promise<markdown_module>>;
+      pages: Record<string, () => Promise<page_module>>;
     }
   >;
 };

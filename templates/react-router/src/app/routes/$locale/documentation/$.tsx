@@ -34,7 +34,7 @@ export default function Page({
 }: Route.ComponentProps) {
   const { set_current_path } = useDocumentationContext();
   set_current_path(path);
-  const page = manifest[language]['markdown_modules'][path]();
+  const page = manifest[language]['pages'][path]();
   return (
     <>
       <DocumentationSidebarContent>

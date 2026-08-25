@@ -1,5 +1,12 @@
 # @sleetch/vite
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated dependencies [7ae30d2]
+  - @sleetch/core@1.0.6
+
 ## 1.0.5
 
 ### Patch Changes

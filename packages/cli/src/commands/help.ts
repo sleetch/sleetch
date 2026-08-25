@@ -37,13 +37,13 @@ export const help_command: command = {
       for (const command of commands) {
         const path = [...pre_args, command.name];
 
-        lines.push(`  ${styleText('cyan', path.join(' '))} ${styleText('gray', '-')} ${command.description}`);
-
-        const options = Object.entries(command.options);
-
-        if (options.length > 0) {
-          for (const [name, option] of options) {
-            lines.push(`     ${styleText('dim', format_option(name, option as any))}`);
+        if (command.active) {
+          lines.push(`  ${styleText('cyan', path.join(' '))} ${styleText('gray', '-')} ${command.description}`);
+          const options = Object.entries(command.options);
+          if (options.length > 0) {
+            for (const [name, option] of options) {
+              lines.push(`     ${styleText('dim', format_option(name, option as any))}`);
+            }
           }
         }
 

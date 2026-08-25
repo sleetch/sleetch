@@ -4,9 +4,10 @@ import { pipeline } from 'node:stream';
 import { promisify, styleText } from 'node:util';
 import zlib from 'node:zlib';
 import tar from 'tar-fs';
-import { mkdir, rm, cp } from 'node:fs/promises';
+import { mkdir, rm, cp, readFile, writeFile } from 'node:fs/promises';
 import path, { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
+import cli_package_json from '@/../package.json' with { type: 'json' };
 
 const options = {
   name: { type: 'string' },
@@ -51,7 +52,13 @@ export const create_app_command: command<typeof options> = {
     if (response.ok && response.body) {
       await promisify(pipeline)(response.body, createWriteStream(source_code_download_path));
       await promisify(pipeline)(createReadStream(source_code_download_path), zlib.createGunzip(), tar.extract(source_code_extract_path, {}));
-      await cp(path.join(temp_directory, templates[framework]), final_template_directory, { recursive: true });
+      const temp_project_path = path.join(temp_directory, templates[framework]);
+      const temp_project_package_json_path = path.join(temp_directory, templates[framework], 'package.json');
+      const package_json_content = await readFile(temp_project_package_json_path, { encoding: 'utf-8' });
+      await writeFile(temp_project_package_json_path, package_json_content.replaceAll('workspace:*', cli_package_json.version), {
+        encoding: 'utf-8',
+      });
+      await cp(temp_project_path, final_template_directory, { recursive: true });
       await rm(temp_directory, { recursive: true, force: true });
     } else {
       return cli.error('error', 'could not fetch the template.');

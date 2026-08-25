@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { get_tree } from '@sleetch/server';
 import { DocumentationHeader, DocumentationLayout, DocumentationProvider } from '@sleetch/react';
+import { path_transformer } from '@/components/client/path-transformer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,7 +29,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body>
-        <DocumentationProvider tree={tree} language={language}>
+        <DocumentationProvider tree={tree} language={language} path_transformer={path_transformer}>
           <DocumentationLayout>
             <DocumentationHeader />
             {children}

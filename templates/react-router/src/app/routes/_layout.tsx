@@ -9,7 +9,12 @@ export async function loader({ params }: Route.LoaderArgs) {
 
 export default function Layout({ params, loaderData: { tree, language } }: Route.ComponentProps) {
   return (
-    <DocumentationProvider tree={tree} language={language} path_transformer={({ language, path }) => '/' + language + '/documentation' + path}>
+    <DocumentationProvider
+      tree={tree}
+      language={language}
+      path_transformer={({ language, path }) => '/' + language + '/documentation' + path}
+      current_path={'/' + params['*']}
+    >
       <DocumentationLayout>
         <DocumentationHeader />
         <Outlet />

@@ -1,0 +1,318 @@
+---
+title: Genetics & Breeding
+description: Genetic makeup, inheritance patterns, and breeding techniques of irises
+order: 3
+---
+
+# Genetics & Breeding
+
+The genetics of irises have been studied extensively, both for **scientific understanding** and **horticultural improvement**. With over 300 species and countless cultivars, irises exhibit remarkable genetic diversity.
+
+## Chromosome Structure
+
+### Chromosome Numbers
+
+| **Subgenus** | **Chromosome Number (2n)** | **Genome Size** | **Ploidy** |
+|--------------|----------------------------|-----------------|------------|
+| Iris (Bearded) | 24, 32, 40, 48 | Large | 2x, 3x, 4x, 5x |
+| Limniris (Beardless) | 24, 32, 36, 40, 48 | Medium | 2x, 3x, 4x |
+| Xiphium (Bulbous) | 10, 20, 30, 40 | Small | 2x, 3x, 4x |
+| Nevskia | 16, 32 | Small | 2x, 4x |
+| Scorpiris | 10, 20 | Small | 2x |
+| Hermodactyloides | 10, 20 | Small | 2x |
+
+> **Note**: The **bearded irises** (Subgenus *Iris*) show the most **polyploidy**, with chromosome numbers ranging from diploid (2n=24) to pentaploid (2n=48).
+
+### Karyotype Analysis
+
+```
+Typical Iris Karyotype (2n=24):
+├── 12 pairs of chromosomes
+├── Metacentric: 6 pairs
+├── Submetacentric: 4 pairs
+└── Acrocentric: 2 pairs
+```
+
+## Genetic Inheritance
+
+### Color Inheritance
+
+Iris flower color is controlled by **multiple gene pairs** following **Mendelian inheritance** patterns:
+
+#### Basic Color Genes
+
+| **Gene** | **Alleles** | **Effect** | **Inheritance** |
+|----------|-------------|------------|-----------------|
+| **A** | A (dominant), a (recessive) | Anthocyanin production | Complete dominance |
+| **B** | B (dominant), b (recessive) | Blue vs. purple | Incomplete dominance |
+| **C** | C (dominant), c (recessive) | Color intensity | Additive |
+| **I** | I (dominant), i (recessive) | Inhibitor (white) | Epistasis |
+
+#### Color Inheritance Examples
+
+```
+Purple × White (AABBcc × aabbCC):
+├── F1: AaBbCc (Purple)
+└── F2: 9 Purple : 3 Blue : 4 White
+
+Yellow × Purple (aaBBcc × AABBcc):
+├── F1: AaBBcc (Purple)
+└── F2: 3 Purple : 1 Yellow
+```
+
+### Pattern Inheritance
+
+| **Pattern** | **Gene** | **Inheritance** | **Example** |
+|-------------|----------|-----------------|-------------|
+| Self | s | Recessive | 'Blue Flag' |
+| Bicolor | b | Dominant | 'Conjuration' |
+| Plicata | p | Dominant | 'Honky Tonk Blues' |
+| Variegata | v | Dominant | 'Variegata' |
+| Amoena | a | Recessive | 'Amoena' |
+
+### The Famous Iris Dataset
+
+The **Fisher's Iris dataset** is one of the most famous datasets in statistics and machine learning:
+
+```python
+from sklearn.datasets import load_iris
+import pandas as pd
+
+# Load the dataset
+iris = load_iris()
+X = iris.data
+Y = iris.target
+feature_names = iris.feature_names
+target_names = iris.target_names
+
+# Create DataFrame
+df = pd.DataFrame(X, columns=feature_names)
+df['species'] = Y
+df['species_name'] = df['species'].map({i: name for i, name in enumerate(target_names)})
+
+print(df.head())
+```
+
+**Dataset Features:**
+- **Sepal Length** (cm)
+- **Sepal Width** (cm)
+- **Petal Length** (cm)
+- **Petal Width** (cm)
+
+**Species in Dataset:**
+1. *Iris setosa* (50 samples)
+2. *Iris versicolor* (50 samples)
+3. *Iris virginica* (50 samples)
+
+```mermaid
+flowchart TD
+    subgraph Petal Length Comparison
+        A[Setosa\n1.0-1.9 cm]
+        B[Versicolor\n3.0-5.1 cm]
+        C[Virginica\n4.5-6.9 cm]
+    end
+    
+    A -->|Increasing| B -->|Increasing| C
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#9f9,stroke:#333
+    style C fill:#99f,stroke:#333
+
+## Molecular Genetics
+
+### DNA Sequencing
+
+Recent advances in DNA sequencing have revealed the **genetic relationships** between iris species:
+
+```
+Genetic Markers Used:
+├── ITS (Internal Transcribed Spacer)
+│   └── Nuclear ribosomal DNA
+├── matK
+│   └── Chloroplast gene
+├── rbcL
+│   └── Chloroplast gene
+└── trnL-F
+    └── Chloroplast intergenic spacer
+```
+
+### Phylogenetic Tree
+
+```
+Simplified Phylogenetic Tree (based on DNA analysis):
+├── Subgenus Hermodactyloides
+│   └── Early diverging lineage
+├── Subgenus Scorpiris
+│   └── Juno irises
+├── Subgenus Nevskia
+│   └── Asian irises
+├── Subgenus Xiphium
+│   └── Bulbous irises
+├── Subgenus Limniris
+│   └── Beardless irises
+└── Subgenus Iris
+    └── Bearded irises (most recent)
+```
+
+### Gene Expression
+
+The expression of **flower color genes** varies during development:
+
+```
+Gene Expression Timeline:
+├── Stage 1: Bud Formation
+│   ├── CHS (Chalcone Synthase) ↑
+│   └── Color precursor production
+├── Stage 2: Early Flower Development
+│   ├── F3H (Flavanone 3-Hydroxylase) ↑
+│   └── Anthocyanin pathway activation
+├── Stage 3: Maturation
+│   ├── DFR (Dihydroflavonol 4-Reductase) ↑
+│   └── Final color development
+└── Stage 4: Full Bloom
+    ├── ANS (Anthocyanidin Synthase) ↑
+    └── Color stabilization
+```
+
+## Breeding Techniques
+
+### Traditional Breeding
+
+#### Cross-Pollination
+
+```md
+**Steps for Manual Pollination**:
+
+1. **Select Parents**
+   - Choose plants with desired traits
+   - Ensure compatibility (same subgenus)
+   - Consider bloom time synchronization
+
+2. **Emasculation** (Optional)
+   - Remove anthers from seed parent
+   - Prevents self-pollination
+   - Use fine tweezers
+
+3. **Pollination**
+   - Collect pollen from father plant
+   - Apply to stigma of mother plant
+   - Best done in morning (9-11 AM)
+
+4. **Labeling**
+   - Tag pollinated flowers
+   - Record parentage
+   - Note date of pollination
+
+5. **Seed Collection**
+   - Wait for capsule to mature (6-8 weeks)
+   - Harvest when capsule turns brown
+   - Dry seeds before storage
+```
+
+#### Breeding Goals
+
+| **Trait** | **Gene(s)** | **Breeding Method** | **Difficulty** |
+|-----------|-------------|---------------------|----------------|
+| New Colors | A, B, C | Cross different color parents | Medium |
+| Larger Blooms | Size genes | Select for largest flowers | Easy |
+| Disease Resistance | R genes | Cross with resistant species | Hard |
+| Extended Bloom | Flowering genes | Cross early and late bloomers | Medium |
+| Fragrance | F genes | Cross fragrant species | Medium |
+| Drought Tolerance | D genes | Cross with xeric species | Hard |
+
+### Modern Breeding Techniques
+
+#### Tissue Culture
+
+```python
+# Tissue culture protocol pseudocode
+protocol = {
+    "explants": "rhizome sections or leaf bases",
+    "sterilization": "70% ethanol (30s) + 10% bleach (10min)",
+    "medium": "MS medium with 2,4-D and kinetin",
+    "light": "16h photoperiod, 2000 lux",
+    "temperature": "22-25°C",
+    "stages": [
+        {"name": "Initiation", "duration": "4-6 weeks"},
+        {"name": "Multiplication", "duration": "6-8 weeks"},
+        {"name": "Rooting", "duration": "4-6 weeks"},
+        {"name": "Hardening", "duration": "2-4 weeks"}
+    ]
+}
+```
+
+#### Genetic Engineering
+
+While not yet widely used in iris breeding, **genetic engineering** techniques show promise:
+
+```
+Potential Applications:
+├── CRISPR-Cas9
+│   ├── Target: Color genes (A, B, C)
+│   └── Result: Novel color combinations
+├── Gene Silencing
+│   ├── Target: Inhibitor genes (I)
+│   └── Result: Enhanced color expression
+├── Gene Transfer
+│   ├── Source: Other plant species
+│   └── Result: New traits (disease resistance, fragrance)
+└── Marker-Assisted Selection
+    ├── Use: DNA markers for trait selection
+    └── Benefit: Faster breeding cycles
+```
+
+## Hybrid Registration
+
+### Registration Process
+
+To officially register a new iris cultivar:
+
+1. **Grow and Evaluate**
+   - Minimum 3 years of evaluation
+   - Ensure stability and uniformity
+   - Document characteristics
+
+2. **Name Selection**
+   - Unique name (not previously used)
+   - Follows ICNCP rules
+   - No offensive or misleading names
+
+3. **Documentation**
+   - Parentage information
+   - Description of traits
+   - Photographs
+   - Growing requirements
+
+4. **Registration**
+   - Submit to American Iris Society
+   - Pay registration fee
+   - Receive official registration number
+
+### Registration Authorities
+
+| **Region** | **Authority** | **Website** |
+|------------|---------------|-------------|
+| International | The American Iris Society | [www.irises.org](https://www.irises.org) |
+| Europe | British Iris Society | [www.britishirissociety.org.uk](https://www.britishirissociety.org.uk) |
+| Australia | Australian Iris Society | [www.irises.org.au](https://www.irises.org.au) |
+
+## Genetic Resources
+
+### Gene Banks
+
+| **Institution** | **Location** | **Collection Size** | **Focus** |
+|-----------------|--------------|---------------------|-----------|
+| USDA ARS | USA | 500+ accessions | Wild species |
+| Royal Botanic Gardens, Kew | UK | 300+ accessions | Global diversity |
+| Institute of Botany, CAS | China | 200+ accessions | Asian species |
+| VIR | Russia | 400+ accessions | Eurasian species |
+
+### DNA Sequence Databases
+
+- **GenBank**: [www.ncbi.nlm.nih.gov/genbank](https://www.ncbi.nlm.nih.gov/genbank)
+- **ENA**: [www.ebi.ac.uk/ena](https://www.ebi.ac.uk/ena)
+- **DDBJ**: [www.ddbj.nig.ac.jp](https://www.ddbj.nig.ac.jp)
+
+---
+
+*See also: [Taxonomy](/iris/botany/taxonomy) | [Morphology](/iris/botany/morphology)*

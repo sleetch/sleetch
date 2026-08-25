@@ -109,6 +109,9 @@ export class sleetch_runtime {
     },
     build_object: async (language: string, object: tree_object) => {
       if (object.type == 'category') {
+        if (object.page) {
+          await this.builder.build_object(language, object.page);
+        }
         for (const child_object of object.children) {
           await this.builder.build_object(language, child_object);
         }

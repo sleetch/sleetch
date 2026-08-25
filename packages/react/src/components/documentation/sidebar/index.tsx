@@ -43,18 +43,9 @@ type category_node = Extract<tree_object, { type: 'category' }>;
 type page_node = Extract<tree_object, { type: 'page' }>;
 type data_node = Extract<tree_object, { type: 'data' }>;
 
-function getCategoryData(category: category_node): data_node | undefined {
-  return category.children.find((c): c is data_node => c.type === 'data');
-}
-
-function getCategoryIndex(category: category_node): page_node | undefined {
-  return category.children.find((c): c is page_node => c.type === 'page' && c.index === true);
-}
-
 function getOrder(node: tree_object): number {
   if (node.type === 'category') {
-    const data = getCategoryData(node);
-    return data?.frontmatter?.order ?? Number.POSITIVE_INFINITY;
+    return node?.frontmatter?.order ?? Number.POSITIVE_INFINITY;
   }
   if (node.type === 'page') {
     return (node.frontmatter as { order?: number }).order ?? Number.POSITIVE_INFINITY;
@@ -65,7 +56,6 @@ function getOrder(node: tree_object): number {
 function sortNodes(nodes: tree_object[]): tree_object[] {
   return nodes
     .map((node, index) => ({ node, index }))
-    .filter(({ node }) => node.type !== 'data')
     .sort((a, b) => {
       const diff = getOrder(a.node) - getOrder(b.node);
       return diff !== 0 ? diff : a.index - b.index;
@@ -111,8 +101,6 @@ function SidebarTree({ nodes, depth, onLinkClick }: SidebarTreeProps) {
     <ul className={styles['list']} data-depth={depth}>
       {sorted.map((node) => {
         if (node.type === 'page') {
-          if (node.index) return null;
-
           const isActive = node.path === current_path;
           const icon = icon_transformer(node.frontmatter.icon);
 
@@ -149,27 +137,24 @@ interface CategoryItemProps extends HrefContext {
 function CategoryItem({ category, depth, onLinkClick }: CategoryItemProps) {
   const { icon_transformer, current_path, path_transformer, language } = useDocumentationContext();
 
-  const indexPage = getCategoryIndex(category);
-  const data = getCategoryData(category);
+  const title = category?.frontmatter?.title ?? (category.page ? resolveTitle(category.page.frontmatter.title, category.path) : category.path);
 
-  const title = data?.frontmatter?.title ?? (indexPage ? resolveTitle(indexPage.frontmatter.title, category.path) : category.path);
-
-  const iconName = data?.frontmatter?.icon ?? indexPage?.frontmatter?.icon;
+  const iconName = category?.frontmatter?.icon ?? category?.page?.frontmatter?.icon;
   const icon = icon_transformer(iconName);
 
-  const childNodes = category.children.filter((c) => c.type !== 'data' && !(c.type === 'page' && c.index === true));
+  const childNodes = category.children;
 
   const hasChildren = childNodes.length > 0;
-  const isIndexActive = indexPage ? indexPage.path === current_path : false;
+  const isIndexActive = category.page ? category.page.path === current_path : false;
 
   const [open, setOpen] = useState(true);
 
   return (
     <li className={styles['item']}>
       <div className={styles['row']}>
-        {indexPage ? (
+        {category.page ? (
           <a
-            href={path_transformer({ language, path: category.path })}
+            href={path_transformer({ language, path: category.page.path })}
             className={clsx(styles['link'], styles['category-link'], isIndexActive && styles['active'])}
             style={{ '--depth': depth } as React.CSSProperties}
             onClick={onLinkClick}

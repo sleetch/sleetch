@@ -16,15 +16,7 @@ export const generate_manifest = (router: sleetch_router) => {
           'markdown_modules':{
 
           ${pages
-            .filter((page) => page.type == 'page')
-            .map(
-              (page) =>
-                `        "${page.path}": () => import('${path.join(
-                  '@sleetch/client/markdown-modules',
-                  language,
-                  page.path + (page.index ? '/_index' : '') + '.js'
-                )}')`
-            )
+            .map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/markdown-modules', language, page.path + '.js')}')`)
             .join(',\n')}
                 }
           }

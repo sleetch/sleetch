@@ -7,7 +7,7 @@ import { write_file } from '@/compiler/utils/write-file';
 import type { file_info } from '@/compiler/types/watcher';
 import type { sleetch_router } from '../router';
 import type { sleetch_events_emitter } from '../emitter';
-import type { category, data, page } from '@/compiler/types/routing';
+import type { category, page } from '@/compiler/types/routing';
 
 import { CACHE_FOLDER, DATA_PAGE_NAME, INDEX_PAGE_NAME } from '@/compiler/utils/constants';
 
@@ -23,7 +23,7 @@ export type file_system_content = {
   type: configuration_file_system_source['type'];
   file_path: string;
 };
-export type file_system_tree_object = data<file_system_content> | page<file_system_content> | category<file_system_tree_object>;
+export type file_system_tree_object = page<file_system_content> | category<file_system_tree_object, file_system_content>;
 
 export class sleetch_file_system_source extends sleetch_source<file_system_tree_object, file_system_content, configuration_file_system_source> {
   static configuration_schema = z.object({
@@ -82,25 +82,50 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
     },
     get_object: (content: file_system_content) => {
       // supposed to be a file and existant path
-      const { name } = path.parse(content.file_path);
       const relative = path.relative(this.source.path, content.file_path);
-      const segments = relative.split(path.sep).filter(Boolean);
-      segments[segments.length - 1] = name;
-      if (name == DATA_PAGE_NAME) {
-        return {
-          type: 'data',
-          path: '/' + segments.join('/'),
-          content: content,
-          frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), data_frontmatter_schema).frontmatter,
-        } satisfies data<file_system_content>;
-      } else {
-        return {
-          type: 'page',
-          path: '/' + segments.join('/'),
-          content: content,
-          frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), page_frontmatter_schema).frontmatter,
-          index: name == INDEX_PAGE_NAME ? true : undefined,
-        } satisfies page<file_system_content>;
+      const relative_folder = path.dirname(relative);
+
+      const { name: page_name } = path.parse(content.file_path);
+
+      const page_path = '/' + [...relative.split(path.sep).filter(Boolean).slice(0, -1), page_name].join('/');
+      const category_path = '/' + [...relative_folder.split(path.sep).filter(Boolean)].join('/');
+
+      const top_category =
+        relative_folder == this.source.path
+          ? undefined
+          : ({
+              type: 'category',
+              path: category_path,
+              children: [],
+            } satisfies category<file_system_tree_object, file_system_content>);
+
+      switch (page_name) {
+        case DATA_PAGE_NAME:
+          if (top_category) {
+            return {
+              ...top_category,
+              frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), data_frontmatter_schema).frontmatter,
+            } satisfies category<file_system_tree_object, file_system_content>;
+          }
+        case INDEX_PAGE_NAME:
+          if (top_category) {
+            return {
+              ...top_category,
+              page: {
+                type: 'page',
+                path: category_path,
+                content: content,
+                frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), page_frontmatter_schema).frontmatter,
+              },
+            } satisfies category<file_system_tree_object, file_system_content>;
+          }
+        default:
+          return {
+            type: 'page',
+            path: page_path,
+            content,
+            frontmatter: extract_frontmatter(fs.readFileSync(content.file_path, 'utf-8'), page_frontmatter_schema).frontmatter,
+          } satisfies page<file_system_content>;
       }
     },
   };
@@ -110,9 +135,12 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
   private debounce?: NodeJS.Timeout;
 
   private get_object_build_path(object: file_system_tree_object) {
-    if (object.type == 'category') throw Error('Cannot generate build_path for category');
-    return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
+    if (object.type == 'category') {
+      if (object.page) return fs.readFileSync(object.page.content.file_path, { encoding: 'utf-8' });
+      else throw new Error('Un-indexed category cannot have a build path');
+    } else return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
   }
+
   private async scan(dir: string, files = new Map<string, file_info>()): Promise<Map<string, file_info>> {
     let entries: fs.Dirent[];
 

@@ -15,26 +15,15 @@ type data_node = Extract<tree_object, { type: 'data' }>;
 
 export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> {}
 
-const defaultHrefBuilder = (path: string) => path;
-
 /*
   Meme logique de tri/priorite que la sidebar (getCategoryData, getCategoryIndex,
   getOrder, sortNodes) pour garantir que l'ordre de navigation prev/next
   corresponde exactement a l'ordre affiche dans la sidebar.
 */
 
-function getCategoryData(category: category_node): data_node | undefined {
-  return category.children.find((c): c is data_node => c.type === 'data');
-}
-
-function getCategoryIndex(category: category_node): page_node | undefined {
-  return category.children.find((c): c is page_node => c.type === 'page' && c.index === true);
-}
-
 function getOrder(node: tree_object): number {
   if (node.type === 'category') {
-    const data = getCategoryData(node);
-    return data?.frontmatter?.order ?? Number.POSITIVE_INFINITY;
+    return node?.frontmatter?.order ?? Number.POSITIVE_INFINITY;
   }
   if (node.type === 'page') {
     return (node.frontmatter as { order?: number }).order ?? Number.POSITIVE_INFINITY;
@@ -45,7 +34,6 @@ function getOrder(node: tree_object): number {
 function sortNodes(nodes: tree_object[]): tree_object[] {
   return nodes
     .map((node, index) => ({ node, index }))
-    .filter(({ node }) => node.type !== 'data')
     .sort((a, b) => {
       const diff = getOrder(a.node) - getOrder(b.node);
       return diff !== 0 ? diff : a.index - b.index;
@@ -69,10 +57,9 @@ function flattenPages(nodes: tree_object[]): page_node[] {
     }
 
     if (node.type === 'category') {
-      const indexPage = getCategoryIndex(node);
+      const indexPage = node.page;
       if (indexPage) result.push(indexPage);
-
-      const rest = node.children.filter((c) => c.type !== 'data' && !(c.type === 'page' && c.index === true));
+      const rest = node.children;
       result.push(...flattenPages(rest));
     }
   }

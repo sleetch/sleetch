@@ -1,13 +1,14 @@
 import { get_page } from '@sleetch/server';
 import { notFound } from 'next/navigation';
-import ClientPage from '@/components/documentation-page';
+import ClientPage from '@/components/client/documentation-page';
+import manifest from '@sleetch/client/manifest.js';
 
 export default async function Page({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
   console.log(slug);
-  const server_page = await get_page('/' + slug.join('/'));
+  const server_page = await get_page(slug.join('/'));
   console.log(server_page);
-
+  console.log(manifest);
   if (!server_page) {
     return notFound();
   }

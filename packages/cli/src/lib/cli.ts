@@ -1,9 +1,7 @@
 import type { command } from '@/types/command';
-import { sleetch_runtime } from '@sleetch/core/compiler';
 import { parseArgs, styleText } from 'node:util';
 
 export class sleetch_cli {
-  runtime = new sleetch_runtime();
   commands: command[] = [];
   private fallback?: command;
 

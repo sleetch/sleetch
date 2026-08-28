@@ -10,10 +10,16 @@ export const build_command: command<typeof options> = {
   active: true,
   options,
   action: async (options, cli) => {
-    await cli.runtime.sources.load();
-    await cli.runtime.builder.build();
-    if (options.get_boolean_option('watch')) {
-      await cli.runtime.sources.watch();
+    try {
+      const { sleetch_runtime } = await import('@sleetch/core/compiler');
+      const runtime = new sleetch_runtime();
+      await runtime.sources.load();
+      await runtime.builder.build();
+      if (options.get_boolean_option('watch')) {
+        await runtime.sources.watch();
+      }
+    } catch (error) {
+      if (error instanceof Error) cli.error('error', error.message);
     }
   },
 };

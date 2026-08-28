@@ -31,7 +31,7 @@ export const create_app_command: command<typeof options> = {
 
     const templates: Record<string, any> = {
       'react-router': '/sleetch-main/templates/react-router',
-      'next-js': '/sleetch-main/templates/next',
+      'next-webpack': '/sleetch-main/templates/next-webpack',
     };
 
     const name = options.get_string_option('name');

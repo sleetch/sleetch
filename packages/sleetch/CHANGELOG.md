@@ -1,5 +1,12 @@
 # sleetch
 
+## 1.0.7
+
+### Patch Changes
+
+- Updated dependencies [1db1d74]
+  - @sleetch/cli@1.0.7
+
 ## 1.0.6
 
 ### Patch Changes

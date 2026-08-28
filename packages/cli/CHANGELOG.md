@@ -1,5 +1,15 @@
 # @sleetch/cli
 
+## 1.0.7
+
+### Patch Changes
+
+- 1db1d74: - Fixed client new pages path
+  - Fixed CLI hang
+  - Added error handling for get root function
+- Updated dependencies [1db1d74]
+  - @sleetch/core@1.0.7
+
 ## 1.0.6
 
 ### Patch Changes

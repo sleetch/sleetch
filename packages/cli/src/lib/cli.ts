@@ -1,5 +1,5 @@
-import type { command } from '@/types/command';
 import { parseArgs, styleText } from 'node:util';
+import type { command } from '@/types/command';
 
 export class sleetch_cli {
   commands: command[] = [];

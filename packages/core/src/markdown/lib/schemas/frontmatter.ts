@@ -1,5 +1,5 @@
 import z from 'zod';
-import { available_engines, } from '@/configuration/lib/schemas/markdown/engine';
+import { available_engines } from '@/configuration/lib/schemas/markdown/engine';
 
 export const page_frontmatter_schema = z.object({
   title: z.string().default('No title.'),

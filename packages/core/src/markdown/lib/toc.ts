@@ -3,11 +3,11 @@ import type { toc } from '../types/toc';
 
 export const parse_header_content = (line: string) => {
   let level: number = 0;
-  let diez_end_index: number | undefined ;
-  let bracket_start_index: number | undefined ;
-  let bracket_end_index: number | undefined ;
-  let parenthesis_start_index: number | undefined ;
-  let parenthesis_end_index: number | undefined ;
+  let diez_end_index: number | undefined;
+  let bracket_start_index: number | undefined;
+  let bracket_end_index: number | undefined;
+  let parenthesis_start_index: number | undefined;
+  let parenthesis_end_index: number | undefined;
   for (let i = 0; i < line.length; i++) {
     const letter = line[i];
     if (letter === '#') {

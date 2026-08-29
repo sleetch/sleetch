@@ -1,4 +1,4 @@
-import type { Themes } from "../lib/constants";
+import type { Themes } from '../lib/constants';
 
 export type Theme = (typeof Themes)[number];
 

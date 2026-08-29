@@ -24,9 +24,9 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
-    "rootDirs": [".", "./.react-router/types", "./.sleetch/**/*"],
+    "rootDirs": [".", "./.react-router/types", "./.sleetch/**/*"]
   },
-  "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"],
+  "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"]
 }

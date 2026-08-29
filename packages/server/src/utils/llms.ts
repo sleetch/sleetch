@@ -1,6 +1,6 @@
 import type { path_transformer } from '@sleetch/core/configuration';
 import { get_pages } from './pages';
-import { get_languages, } from './tree';
+import { get_languages } from './tree';
 
 export async function get_llms(transformer: path_transformer<string>) {
   const languages = await get_languages();

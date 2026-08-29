@@ -1,6 +1,5 @@
 'use client';
 
-
 export { Button } from './components/button';
 export { DocumentationContent } from './components/documentation/content';
 export { DocumentationHeader } from './components/documentation/header';

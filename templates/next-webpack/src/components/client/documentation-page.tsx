@@ -1,7 +1,6 @@
 // ClientPage.tsx
 'use client';
 
-
 import manifest from '@sleetch/client/manifest.js';
 import {
   Button,

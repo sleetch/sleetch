@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
-import { THEME_LOCAL_STORAGE_KEY, Themes } from "../lib/constants";
-import type { Theme, ThemeProviderProps } from "../types/themes";
-import { ThemeProviderContext } from "./context";
+import { useEffect, useState } from 'react';
+import { THEME_LOCAL_STORAGE_KEY, Themes } from '../lib/constants';
+import type { Theme, ThemeProviderProps } from '../types/themes';
+import { ThemeProviderContext } from './context';
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "dark",
-  ...props
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = 'dark', ...props }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(
-      THEME_LOCAL_STORAGE_KEY,
-    ) as Theme | null;
+    const stored = window.localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as Theme | null;
     if (stored) setTheme(stored);
   }, []);
 
@@ -22,11 +16,8 @@ export function ThemeProvider({
 
     root.classList.remove(...Themes);
 
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.classList.add(systemTheme);
       return;
     }
@@ -60,11 +51,9 @@ export function AntiFlickeringScript() {
                 let theme = stored || "system";
                 let systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches  ? "dark" : "light";
                 let applied = theme === "system" ? systemTheme : theme;
-                document.documentElement.classList.remove(${Themes.filter(
-                  (t) => !["dark", "light"].includes(t),
-                )
+                document.documentElement.classList.remove(${Themes.filter((t) => !['dark', 'light'].includes(t))
                   .map((x) => `"${x}"`)
-                  .join(", ")});
+                  .join(', ')});
                 document.documentElement.classList.add(applied);
               })();
             `,

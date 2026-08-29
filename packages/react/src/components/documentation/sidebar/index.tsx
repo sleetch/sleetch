@@ -7,7 +7,7 @@ import type { tree_object } from '@sleetch/core/compiler';
 import styles from '@sleetch/styles/components/documentation/sidebar/index.module.css';
 import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
-import type { BaseHTMLAttributes, } from 'react';
+import type { BaseHTMLAttributes } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
 export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseElement> {}

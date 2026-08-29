@@ -1,10 +1,9 @@
-
 import path from 'node:path';
 import { get_configuration } from '@/configuration';
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
-import { CACHE_FOLDER, } from '../utils/constants';
+import { CACHE_FOLDER } from '../utils/constants';
 import { write_file } from '../utils/write-file';
 import { sleetch_events_emitter } from './emitter';
 import { generate_manifest } from './generators/manifest';

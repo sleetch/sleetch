@@ -1,5 +1,5 @@
 import { get_configuration, type parsed_sleetch_configuration } from '@/configuration';
-import type { engines, } from '../types/engine';
+import type { engines } from '../types/engine';
 import { bun } from './engines/bun';
 import { dummy } from './engines/dummy';
 import { markdown_it } from './engines/markdown-it';

@@ -1,4 +1,4 @@
-import { extname, relative, } from 'node:path';
+import { extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';

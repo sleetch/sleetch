@@ -1,5 +1,5 @@
+import path from 'node:path';
 import { better_routing } from 'better-fs-routes';
-import path from 'path';
 
 export default better_routing({
   routes: {

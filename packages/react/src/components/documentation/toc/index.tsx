@@ -19,7 +19,7 @@ interface TocLinkStyle extends CSSProperties {
 export function DocumentationToc({ className, children, page, ...props }: DocumentationTocProps) {
   const value = use(page);
   const toc = value.default.toc;
-  if (toc.length == 0) return null;
+  if (toc.length === 0) return null;
 
   const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
   const [gapY, setGapY] = useState<number | null>(null);
@@ -97,12 +97,12 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
   }, [activeIds, toc]);
 
   return (
-    <aside className={clsx(styles['default'], className)} {...props}>
-      <h3 className={styles['title']}>On this page</h3>
-      <div className={styles['track']} ref={trackRef}>
-        <span className={styles['line']} aria-hidden="true" />
-        {gapY !== null && <span className={styles['gapDot']} style={{ top: gapY }} aria-hidden="true" />}
-        <ul className={styles['list']}>
+    <aside className={clsx(styles.default, className)} {...props}>
+      <h3 className={styles.title}>On this page</h3>
+      <div className={styles.track} ref={trackRef}>
+        <span className={styles.line} aria-hidden="true" />
+        {gapY !== null && <span className={styles.gapDot} style={{ top: gapY }} aria-hidden="true" />}
+        <ul className={styles.list}>
           {toc.map((item) => {
             const focused = activeIds.has(item.id);
             const linkStyle: TocLinkStyle = { '--depth': item.level };
@@ -110,7 +110,7 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
             return (
               <li
                 key={item.id}
-                className={styles['item']}
+                className={styles.item}
                 ref={(el) => {
                   if (el) itemRefs.current.set(item.id, el);
                   else itemRefs.current.delete(item.id);
@@ -120,7 +120,7 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
                   href={`#${item.id}`}
                   title={item.title}
                   aria-current={focused ? 'location' : undefined}
-                  className={clsx(styles['link'], focused && styles['active'])}
+                  className={clsx(styles.link, focused && styles.active)}
                   style={linkStyle}
                 >
                   {item.title}

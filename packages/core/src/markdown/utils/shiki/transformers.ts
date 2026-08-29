@@ -8,7 +8,7 @@ import {
   transformerNotationWordHighlight,
 } from '@shikijs/transformers';
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
-import type { ShikiTransformer, ShikiTransformerContext } from 'shiki';
+import type { ShikiTransformer, } from 'shiki';
 
 export function transformerTitle(): ShikiTransformer {
   return {

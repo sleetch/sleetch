@@ -6,7 +6,7 @@ export interface DocumentationContentProps extends BaseHTMLAttributes<HTMLDivEle
 
 export function DocumentationContent({ className, children, ...props }: DocumentationContentProps) {
   return (
-    <div className={clsx(styles['default'], className)} {...props}>
+    <div className={clsx(styles.default, className)} {...props}>
       {children}
     </div>
   );

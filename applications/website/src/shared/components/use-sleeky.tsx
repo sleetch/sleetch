@@ -28,7 +28,7 @@ export function useSleeky({ lerp_amount = 0.1 }: { lerp_amount?: number }) {
         const eye = data.eye.current;
         const origin = data.origin.current;
         if (eye && origin) {
-          if (cursor_position.x == 0 && cursor_position.y == 0) {
+          if (cursor_position.x === 0 && cursor_position.y === 0) {
             data.offset = lerp(data.offset, 50, lerp_amount);
           } else {
             data.offset = lerp(data.offset, 20, lerp_amount);
@@ -61,7 +61,7 @@ export function useSleeky({ lerp_amount = 0.1 }: { lerp_amount?: number }) {
     };
     animate();
     return () => cancelAnimationFrame(frame);
-  }, [eyesRef, cursor_position]);
+  }, [cursor_position, lerp_amount, lerp]);
 
   const Component = ({ className, children, ...props }: SleekyProps) => (
     <div className={clsx('relative aspect-square ', className)} {...props}>

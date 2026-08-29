@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 function walk(dir: string, base = './src', out: Record<string, string> = {}) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -22,8 +22,8 @@ const exports = walk('./src');
 
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
-packageJson['exports'] = exports;
+packageJson.exports = exports;
 
-fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2) + '\n');
+fs.writeFileSync('package.json', `${JSON.stringify(packageJson, null, 2)}\n`);
 
 console.log('Exported', Object.keys(exports).length, 'css files !');

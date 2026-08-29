@@ -41,7 +41,7 @@ export function DocumentationProvider({
   children,
   className,
   path_transformer = ({ path }) => path,
-  icon_transformer = (icon) => null,
+  icon_transformer = (_icon) => null,
   tree: tree_value,
   language: language_value,
   current_path: current_path_value,

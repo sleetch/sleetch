@@ -6,7 +6,7 @@ export interface DocumentationLayoutProps extends BaseHTMLAttributes<HTMLDivElem
 
 export function DocumentationLayout({ children, className, ...props }: DocumentationLayoutProps) {
   return (
-    <main className={clsx(styles['default'], className)} {...props}>
+    <main className={clsx(styles.default, className)} {...props}>
       {children}
     </main>
   );

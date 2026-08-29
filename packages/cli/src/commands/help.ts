@@ -7,7 +7,7 @@ export const help_command: command = {
   active: true,
   options: {},
   fallback: true,
-  action: (options, cli) => {
+  action: (_options, cli) => {
     const lines = [
       `${styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} is a powerful documentation framework.`,
       '',

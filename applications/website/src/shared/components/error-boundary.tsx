@@ -20,7 +20,7 @@ export function ErrorBoundary() {
       onMouseMove={(e) => {
         set_cursor_position({ x: e.clientX, y: e.clientY });
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(_e) => {
         set_cursor_position({ x: 0, y: 0 });
       }}
       className="min-h-screen p-8 space-y-2 flex flex-col items-center justify-center w-full"

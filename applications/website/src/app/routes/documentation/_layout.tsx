@@ -15,8 +15,8 @@ export default function Layout({ params, loaderData: { tree, language } }: Route
       <DocumentationContent>
         <ConnectedDocumentationSidebar
           tree={tree}
-          hrefBuilder={(href) => '/' + 'documentation' + href}
-          currentPath={'/' + params['*']}
+          hrefBuilder={(href) => `/documentation${href}`}
+          currentPath={`/${params['*']}`}
           //iconResolver={iconResolver}
         />
         <Outlet />

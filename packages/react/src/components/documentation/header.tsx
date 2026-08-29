@@ -8,7 +8,7 @@ export interface DocumentationHeaderProps extends BaseHTMLAttributes<HTMLDivElem
 export function DocumentationHeader({ className, children, ...props }: DocumentationHeaderProps) {
   const { toggle_sidebar } = useDocumentationContext();
   return (
-    <div className={clsx(styles['default'], className)} {...props}>
+    <div className={clsx(styles.default, className)} {...props}>
       <button className={styles['menu-toggle']} onClick={toggle_sidebar} aria-label="Toggle sidebar" type="button">
         <svg
           viewBox="0 0 24 24"

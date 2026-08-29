@@ -21,8 +21,8 @@ export function meta({ params, loaderData: data }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const page = await get_page('/' + params['*'], params.locale);
-  console.log('/' + params['*'], page);
+  const page = await get_page(`/${params['*']}`, params.locale);
+  console.log(`/${params['*']}`, page);
   if (!page) throw data(null, { status: 404 });
   return { page };
 }
@@ -34,7 +34,7 @@ export default function Page({
 }: Route.ComponentProps) {
   const { set_current_path } = useDocumentationContext();
   set_current_path(path);
-  const page = manifest[language]['pages'][path]();
+  const page = manifest[language].pages[path]();
   return (
     <>
       <DocumentationSidebarContent>

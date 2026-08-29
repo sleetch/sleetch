@@ -1,5 +1,5 @@
+
 import type { ReleasePlan } from '@changesets/types';
-import { release } from 'process';
 import { release_plan_file, root } from './utils/constants';
 import { packages_to_cwd } from './utils/cwd';
 
@@ -62,6 +62,6 @@ if (releases.length > 0) {
     }
   }
   console.log(`Publisheddd ${releases.length} packages.`);
-} else if (releases.length == 0) {
+} else if (releases.length === 0) {
   console.log('Nothing to publish..');
 }

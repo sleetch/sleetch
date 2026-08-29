@@ -28,7 +28,7 @@ function getCompiledMDX(code: string) {
 export function PageContent({ page, components }: { page: Promise<page_module>; components?: MDXComponents }) {
   const value = use(page);
 
-  if (value.default.parsed.type == 'html') {
+  if (value.default.parsed.type === 'html') {
     return (
       <div className="sleetch-markdown">
         <div dangerouslySetInnerHTML={{ __html: value.default.parsed.html }} />

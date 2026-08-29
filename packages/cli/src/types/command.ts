@@ -1,5 +1,4 @@
 import type { ParseArgsConfig } from 'node:util';
-import { boolean } from 'node_modules/zod/v4/core/regexes';
 import type { sleetch_cli } from '@/lib/cli';
 
 export type command_options = NonNullable<ParseArgsConfig['options']>;

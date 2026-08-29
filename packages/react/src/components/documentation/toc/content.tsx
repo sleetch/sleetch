@@ -6,7 +6,7 @@ export interface DocumentationTocContentProps extends BaseHTMLAttributes<HTMLDiv
 
 export function DocumentationTocContent({ className, children, ...props }: DocumentationTocContentProps) {
   return (
-    <div className={clsx(styles['default'], className)} {...props}>
+    <div className={clsx(styles.default, className)} {...props}>
       {children}
     </div>
   );

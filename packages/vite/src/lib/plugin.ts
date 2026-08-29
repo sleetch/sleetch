@@ -17,7 +17,7 @@ export function plugin(): Plugin {
     },
 
     async configureServer(server) {
-      if (server.config.mode == 'development') {
+      if (server.config.mode === 'development') {
         console.log('configServer', server.config.mode);
         await runtime.sources.load();
         await runtime.builder.build();

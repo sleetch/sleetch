@@ -14,7 +14,7 @@ export abstract class sleetch_source<tree_object_type extends tree_object, conte
   public id: string;
 
   constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: sleetch_events_emitter }) {
-    if (this.constructor == sleetch_source) {
+    if (this.constructor === sleetch_source) {
       throw new Error("Class is of abstract type and can't be instantiated");
     }
     this.type = configuration.type;

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import z from 'zod';
 import { get_root_dir } from '@/shared/utils/root';
 import type { parsed_sleetch_configuration } from '../types/configuration';
@@ -29,7 +29,7 @@ const load_configuration = (): parsed_sleetch_configuration => {
   const file_path = path.join(root, 'sleetch.config.ts');
   if (fs.existsSync(file_path)) {
     const mod = require(file_path); // await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
-    if ('default' in mod && typeof mod.default == 'object') {
+    if ('default' in mod && typeof mod.default === 'object') {
       const { data: configuration, error } = configuration_schema.safeParse(mod.default);
       if (error) {
         console.error('Your sleetch configuration contains incorrect information.');

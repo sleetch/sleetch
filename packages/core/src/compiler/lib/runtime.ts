@@ -1,10 +1,10 @@
-import fs from 'node:fs';
+
 import path from 'node:path';
 import { get_configuration } from '@/configuration';
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
-import { CACHE_FOLDER, NODE_MODULES_FOLDER } from '../utils/constants';
+import { CACHE_FOLDER, } from '../utils/constants';
 import { write_file } from '../utils/write-file';
 import { sleetch_events_emitter } from './emitter';
 import { generate_manifest } from './generators/manifest';
@@ -63,7 +63,7 @@ export class sleetch_runtime {
       console.time('runtime.sources.load');
       const configuration = get_configuration();
       for (const source of configuration.sources) {
-        if (source.type == 'file-system') {
+        if (source.type === 'file-system') {
           const instance = new sleetch_file_system_source({ source, events_emitter: this.event_emitter });
           this.sources_map.set(instance.id, instance);
         }
@@ -108,7 +108,7 @@ export class sleetch_runtime {
       console.timeEnd('runtime.builder.build');
     },
     build_object: async (language: string, object: tree_object) => {
-      if (object.type == 'category') {
+      if (object.type === 'category') {
         if (object.page) {
           await this.builder.build_object(language, object.page);
         }
@@ -135,7 +135,7 @@ export class sleetch_runtime {
   private build_manifest() {
     const files = generate_manifest(this._router);
     for (const extension of Object.keys(files) as (keyof typeof files)[]) {
-      write_file(path.join(CACHE_FOLDER, 'manifest' + extension), files[extension]);
+      write_file(path.join(CACHE_FOLDER, `manifest${extension}`), files[extension]);
     }
   }
 

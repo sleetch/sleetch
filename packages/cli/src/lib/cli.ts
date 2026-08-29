@@ -5,18 +5,16 @@ export class sleetch_cli {
   commands: command[] = [];
   private fallback?: command;
 
-  constructor() {}
-
   add(command: command) {
     this.commands.push(command);
-    if (command.active == true && command.fallback == true) {
+    if (command.active === true && command.fallback === true) {
       this.fallback = command;
     }
     return this;
   }
 
   resolve(args: string[]): { found: true; command: command; args: string[] } | { found: false; error: string; type: string } {
-    if (args.length == 0) {
+    if (args.length === 0) {
       if (this.fallback) {
         return { found: true, command: this.fallback, args };
       }
@@ -24,12 +22,12 @@ export class sleetch_cli {
     }
     const [command_name, ...command_args] = args;
     for (const command of this.commands) {
-      if (command_name == command.name) {
-        if (!command.subcommands || command.subcommands.length == 0) {
+      if (command_name === command.name) {
+        if (!command.subcommands || command.subcommands.length === 0) {
           if (command.active) {
             return { found: true, command, args: command_args };
           } else {
-            return { found: false, type: 'bad option', error: 'inactive command: ' + command_name };
+            return { found: false, type: 'bad option', error: `inactive command: ${command_name}` };
           }
         } else {
           const sub_cli = new sleetch_cli();
@@ -51,7 +49,7 @@ export class sleetch_cli {
 
   run(args: string[]) {
     const resolve = this.resolve(args);
-    if (resolve.found == true) {
+    if (resolve.found === true) {
       const { command, args } = resolve;
 
       const parsed = parseArgs({

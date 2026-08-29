@@ -10,7 +10,7 @@ export const marked_shiki_plugin: MarkedExtension = {
 
     if (token.type !== 'code') return undefined;
     const [lang = 'text', ...props] = token.lang?.split(' ') ?? [];
-    if (lang == 'mermaid') return undefined;
+    if (lang === 'mermaid') return undefined;
     const { text } = token;
     const html = await codeToHtml(text, {
       lang: (lang || 'text') as BundledLanguage,

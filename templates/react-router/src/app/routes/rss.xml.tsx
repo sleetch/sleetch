@@ -5,7 +5,7 @@ export const loader = async () => {
     site: 'https://sleetch.dev',
     title: 'My Documentation',
     description: 'Documentation updates',
-    transformer: ({ path, language }) => new URL('/' + language + '/' + 'documentation' + path, 'https://sleetch.dev').toString(),
+    transformer: ({ path, language }) => new URL(`/${language}/documentation${path}`, 'https://sleetch.dev').toString(),
   });
   return new Response(rss, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
 };

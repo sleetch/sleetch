@@ -5,7 +5,7 @@
     "build": "bunx pacwich run build 'path:packages/*' --dep-order --output-style=prefixed ",
     "dev": "bunx pacwich run dev",
     "lint": "bunx biome lint ",
-    "fix": "bunx biome check --write ",
+    "fix": "bunx biome check --write --unsafe",
     "changeset": "changeset",
     "ci:version": "bun scripts/version.ts",
     "ci:publish": "bun scripts/publish.ts"

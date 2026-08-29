@@ -23,7 +23,7 @@ export function meta({ params, loaderData: data }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const page = await get_page('/' + params['*']);
+  const page = await get_page(`/${params['*']}`);
   if (!page) throw data(null, { status: 404 });
   const tree = await get_tree();
   return { page, tree };
@@ -35,7 +35,7 @@ export default function Page({
     tree: { tree },
   },
 }: Route.ComponentProps) {
-  const page = manifest[language]['markdown_modules'][path]();
+  const page = manifest[language].markdown_modules[path]();
   return (
     <>
       <DocumentationSidebarContent>
@@ -50,7 +50,7 @@ export default function Page({
               Folder,
             }}
           />
-          <PageNavigation hrefBuilder={(href) => '/documentation' + href} tree={tree} currentPath={path} />
+          <PageNavigation hrefBuilder={(href) => `/documentation${href}`} tree={tree} currentPath={path} />
         </Suspense>
       </DocumentationSidebarContent>
       <Suspense fallback={<p>Loading.</p>}>

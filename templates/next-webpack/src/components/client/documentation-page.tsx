@@ -18,11 +18,11 @@ import {
 import { Suspense, useEffect } from 'react';
 
 export default function ClientPage({ language, path }: { language: string; path: string }) {
-  const page = manifest[language]['pages'][path]();
+  const page = manifest[language].pages[path]();
   const { set_current_path } = useDocumentationContext();
   useEffect(() => {
     set_current_path(path);
-  }, [path]);
+  }, [path, set_current_path]);
   return (
     <>
       <DocumentationSidebarContent>

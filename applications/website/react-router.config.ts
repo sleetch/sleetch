@@ -7,7 +7,7 @@ export default {
   prerender: {
     paths: async (args) => {
       const _static = args.getStaticPaths();
-      const { paths } = await get_static_paths(({ path, language }) => '/' + 'documentation' + path);
+      const { paths } = await get_static_paths(({ path, language }) => `/documentation${path}`);
       return [..._static, ...paths];
     },
     concurrency: 10,

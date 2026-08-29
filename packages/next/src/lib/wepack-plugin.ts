@@ -4,7 +4,6 @@ import type { Compiler } from 'webpack';
 const runtime = new sleetch_runtime();
 
 export class sleetch_webpack_plugin {
-  constructor() {}
 
   apply(compiler: Compiler) {
     compiler.hooks.beforeCompile.tapPromise('SleetchWebpackPlugin', async () => {

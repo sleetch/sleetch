@@ -62,13 +62,13 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 
   public readonly builder = {
     get_object_build_path(object: file_system_tree_object) {
-      if (object.type == 'category') {
+      if (object.type === 'category') {
         if (object.page) return fs.readFileSync(object.page.content.file_path, { encoding: 'utf-8' });
         else throw new Error('Un-indexed category cannot have a build path');
       } else return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
     },
     build_object: async (language: string, object: file_system_tree_object): Promise<void> => {
-      if (object.type == 'category' && !object.page) throw Error('Cannot build an un-indexed category');
+      if (object.type === 'category' && !object.page) throw Error('Cannot build an un-indexed category');
       const files = await generate_page_module(this.builder.get_object_build_path(object));
       for (const extension of Object.keys(files) as (keyof typeof files)[]) {
         write_file(path.join(this.build_folder_path, language, object.path + extension), files[extension]);
@@ -92,11 +92,11 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 
       const { name: page_name } = path.parse(content.file_path);
 
-      const page_path = '/' + [...relative.split(path.sep).filter(Boolean).slice(0, -1), page_name].join('/');
-      const category_path = '/' + (relative_folder == '.' ? [] : relative_folder.split(path.sep).filter(Boolean)).join('/');
+      const page_path = `/${[...relative.split(path.sep).filter(Boolean).slice(0, -1), page_name].join('/')}`;
+      const category_path = `/${(relative_folder === '.' ? [] : relative_folder.split(path.sep).filter(Boolean)).join('/')}`;
 
       const top_category =
-        relative_folder == this.source.path
+        relative_folder === this.source.path
           ? undefined
           : ({
               type: 'category',

@@ -12,8 +12,8 @@ export default function Layout({ params, loaderData: { tree, language } }: Route
     <DocumentationProvider
       tree={tree}
       language={language}
-      path_transformer={({ language, path }) => '/' + language + '/documentation' + path}
-      current_path={'/' + params['*']}
+      path_transformer={({ language, path }) => `/${language}/documentation${path}`}
+      current_path={`/${params['*']}`}
     >
       <DocumentationLayout>
         <DocumentationHeader />

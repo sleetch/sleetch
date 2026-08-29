@@ -4,7 +4,7 @@ import { parse_header_content } from '@/markdown/lib/toc';
 export function markdown_it_anchors_plugin(md: MarkdownItAsync) {
   const defaultRender =
     md.renderer.rules.heading_open ??
-    ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+    ((tokens, idx, options, _env, self) => self.renderToken(tokens, idx, options));
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
     const inlineToken = tokens[idx + 1];
     if (inlineToken?.type === 'inline') {

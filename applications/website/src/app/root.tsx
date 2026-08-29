@@ -1,4 +1,4 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import { AntiFlickeringScript, ThemeProvider } from '@/features/theme/components/provider';
 import type { Route } from './+types/root';
 import '@/assets/styles/global.css';

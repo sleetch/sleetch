@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import type { sleetch_router } from '../router';
 
 export const generate_manifest = (router: sleetch_router) => {
@@ -11,12 +11,12 @@ export const generate_manifest = (router: sleetch_router) => {
 
     language_manifests.push(`
           "${language}" : {
-          'tree': () => import('${path.join('@sleetch/client/trees', language + '.js')}'),
+          'tree': () => import('${path.join('@sleetch/client/trees', `${language}.js`)}'),
 
           'pages':{
 
           ${pages
-            .map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path + '.js')}')`)
+            .map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, `${page.path}.js`)}')`)
             .join(',\n')}
                 }
           }

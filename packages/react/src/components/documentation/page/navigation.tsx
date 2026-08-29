@@ -78,7 +78,7 @@ function ChevronLeft() {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={styles['chevron']}
+      className={styles.chevron}
     >
       <polyline points="15 18 9 12 15 6" />
     </svg>
@@ -96,7 +96,7 @@ function ChevronRight() {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={styles['chevron']}
+      className={styles.chevron}
     >
       <polyline points="9 18 15 12 9 6" />
     </svg>
@@ -122,13 +122,13 @@ function NavigationCard({ node, direction }: NavigationCardProps) {
   const { language, path_transformer } = useDocumentationContext();
 
   return (
-    <a href={path_transformer({ language, path: node.path })} className={clsx(styles['card'], styles[direction])} data-direction={direction}>
-      <span className={styles['meta']}>
+    <a href={path_transformer({ language, path: node.path })} className={clsx(styles.card, styles[direction])} data-direction={direction}>
+      <span className={styles.meta}>
         {direction === 'previous' && <ChevronLeft />}
-        <span className={styles['title']}>{title}</span>
+        <span className={styles.title}>{title}</span>
         {direction === 'next' && <ChevronRight />}
       </span>
-      {description && <span className={styles['description']}>{description}</span>}
+      {description && <span className={styles.description}>{description}</span>}
     </a>
   );
 }
@@ -152,9 +152,9 @@ export function PageNavigation({ className, ...props }: DocumentationNavigationP
   if (!previous && !next) return null;
 
   return (
-    <nav className={clsx(styles['navigation'], className)} aria-label="Pagination" {...props}>
-      <div className={styles['slot']}>{previous && <NavigationCard node={previous} direction="previous" />}</div>
-      <div className={clsx(styles['slot'], styles['slot-end'])}>{next && <NavigationCard node={next} direction="next" />}</div>
+    <nav className={clsx(styles.navigation, className)} aria-label="Pagination" {...props}>
+      <div className={styles.slot}>{previous && <NavigationCard node={previous} direction="previous" />}</div>
+      <div className={clsx(styles.slot, styles['slot-end'])}>{next && <NavigationCard node={next} direction="next" />}</div>
     </nav>
   );
 }

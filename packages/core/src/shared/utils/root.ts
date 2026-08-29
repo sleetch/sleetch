@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export function get_root_dir() {
   let root = process.cwd();
-  const parent = root;
+  const _parent = root;
   while (!fs.existsSync(path.join(root, 'package.json'))) {
     const parent = path.dirname(root);
     if (parent === root) {

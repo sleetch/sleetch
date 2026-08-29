@@ -1,7 +1,7 @@
 import { createReadStream, createWriteStream, existsSync } from 'node:fs';
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import path, { dirname, join } from 'node:path';
+import path from 'node:path';
 import { pipeline } from 'node:stream';
 import { promisify, styleText } from 'node:util';
 import zlib from 'node:zlib';
@@ -36,14 +36,14 @@ export const create_app_command: command<typeof options> = {
 
     const name = options.get_string_option('name');
     const framework = options.get_string_option('framework');
-    if (name == undefined) return cli.error('missing arg', 'name is missing.');
-    if (framework == undefined) return cli.error('missing arg', 'framework is missing.');
-    if (!Object.keys(templates).includes(framework)) return cli.error('bad option', 'framework must be : ' + Object.keys(templates).join(' / '));
+    if (name === undefined) return cli.error('missing arg', 'name is missing.');
+    if (framework === undefined) return cli.error('missing arg', 'framework is missing.');
+    if (!Object.keys(templates).includes(framework)) return cli.error('bad option', `framework must be : ${Object.keys(templates).join(' / ')}`);
 
     const final_template_directory = path.join(cwd, name);
 
     if (existsSync(final_template_directory)) {
-      return cli.error('error', final_template_directory + ' already exist on your filesystem.');
+      return cli.error('error', `${final_template_directory} already exist on your filesystem.`);
     }
 
     await mkdir(final_template_directory, { recursive: true });

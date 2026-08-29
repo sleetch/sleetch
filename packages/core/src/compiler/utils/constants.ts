@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { get_root_dir } from '@/shared';
 
 export const INDEX_PAGE_NAME = '_index';

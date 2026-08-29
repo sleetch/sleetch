@@ -29,7 +29,7 @@ export function LandingBentoGrid() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseout', handleMouseLeave);
     };
-  }, []);
+  }, [set_cursor_position]);
   return (
     <section className="grid gap-5 grid-cols-1 md:grid-cols-4  ">
       <div className="overflow-hidden col-span-3  sm:h-50 border rounded-xl p-5 space-y-2">

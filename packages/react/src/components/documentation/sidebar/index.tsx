@@ -7,7 +7,7 @@ import type { tree_object } from '@sleetch/core/compiler';
 import styles from '@sleetch/styles/components/documentation/sidebar/index.module.css';
 import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
-import type { BaseHTMLAttributes, ReactNode } from 'react';
+import type { BaseHTMLAttributes, } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
 export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseElement> {}
@@ -28,9 +28,9 @@ export function DocumentationSidebar({ className, children, ...props }: Document
 
   return (
     <>
-      {is_sidebar_open && <div className={styles['overlay']} onClick={close_sidebar} />}
-      <aside className={clsx(styles['sidebar'], is_sidebar_open && styles['sidebar-open'], className)} {...props}>
-        <nav className={styles['nav']}>
+      {is_sidebar_open && <div className={styles.overlay} onClick={close_sidebar} />}
+      <aside className={clsx(styles.sidebar, is_sidebar_open && styles['sidebar-open'], className)} {...props}>
+        <nav className={styles.nav}>
           <SidebarTree nodes={tree} depth={1} onLinkClick={close_sidebar} />
         </nav>
         {children}
@@ -78,7 +78,7 @@ function Chevron({ open }: { open: boolean }) {
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={clsx(styles['chevron'], open && styles['chevron-open'])}
+      className={clsx(styles.chevron, open && styles['chevron-open'])}
     >
       <polyline points="9 6 15 12 9 18" />
     </svg>
@@ -98,22 +98,22 @@ function SidebarTree({ nodes, depth, onLinkClick }: SidebarTreeProps) {
   const sorted = useMemo(() => sortNodes(nodes), [nodes]);
   const { icon_transformer, current_path, path_transformer, language } = useDocumentationContext();
   return (
-    <ul className={styles['list']} data-depth={depth}>
+    <ul className={styles.list} data-depth={depth}>
       {sorted.map((node) => {
         if (node.type === 'page') {
           const isActive = node.path === current_path;
           const icon = icon_transformer(node.frontmatter.icon);
 
           return (
-            <li key={node.path} className={styles['item']}>
+            <li key={node.path} className={styles.item}>
               <a
                 href={path_transformer({ language, path: node.path })}
-                className={clsx(styles['link'], isActive && styles['active'])}
+                className={clsx(styles.link, isActive && styles.active)}
                 style={{ '--depth': depth } as React.CSSProperties}
                 onClick={onLinkClick}
               >
-                {icon && <span className={styles['icon']}>{icon}</span>}
-                <span className={styles['label']}>{resolveTitle(node.frontmatter.title, node.path)}</span>
+                {icon && <span className={styles.icon}>{icon}</span>}
+                <span className={styles.label}>{resolveTitle(node.frontmatter.title, node.path)}</span>
               </a>
             </li>
           );
@@ -150,34 +150,34 @@ function CategoryItem({ category, depth, onLinkClick }: CategoryItemProps) {
   const [open, setOpen] = useState(true);
 
   return (
-    <li className={styles['item']}>
-      <div className={styles['row']}>
+    <li className={styles.item}>
+      <div className={styles.row}>
         {category.page ? (
           <a
             href={path_transformer({ language, path: category.page.path })}
-            className={clsx(styles['link'], styles['category-link'], isIndexActive && styles['active'])}
+            className={clsx(styles.link, styles['category-link'], isIndexActive && styles.active)}
             style={{ '--depth': depth } as React.CSSProperties}
             onClick={onLinkClick}
           >
-            {icon && <span className={styles['icon']}>{icon}</span>}
-            <span className={styles['label']}>{title}</span>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            <span className={styles.label}>{title}</span>
           </a>
         ) : (
           <button
             type="button"
-            className={clsx(styles['link'], styles['category-label'])}
+            className={clsx(styles.link, styles['category-label'])}
             style={{ '--depth': depth } as React.CSSProperties}
             onClick={() => hasChildren && setOpen((o) => !o)}
           >
-            {icon && <span className={styles['icon']}>{icon}</span>}
-            <span className={styles['label']}>{title}</span>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            <span className={styles.label}>{title}</span>
           </button>
         )}
 
         {hasChildren && (
           <button
             type="button"
-            className={styles['toggle']}
+            className={styles.toggle}
             aria-label={open ? 'Collapse' : 'Expand'}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}

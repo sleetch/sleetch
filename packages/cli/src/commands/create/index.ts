@@ -6,7 +6,7 @@ export const create_command: command = {
   description: 'Create.',
   options: {},
   active: false,
-  action: (options, cli) => {
+  action: (options, _cli) => {
     console.log('create', options);
   },
   subcommands: [create_app_command],

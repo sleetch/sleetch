@@ -6,7 +6,7 @@ export interface DocumentationSidebarContentProps extends BaseHTMLAttributes<HTM
 
 export function DocumentationSidebarContent({ className, children, ...props }: DocumentationSidebarContentProps) {
   return (
-    <div className={clsx(styles['default'], className)} {...props}>
+    <div className={clsx(styles.default, className)} {...props}>
       {children}
     </div>
   );

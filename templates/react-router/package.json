@@ -1,38 +1,38 @@
 {
-  "name": "@sleetch/react-router-template",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.20",
-    "@types/bun": "latest",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "@sleetch/client": "workspace:*",
-    "@sleetch/react": "workspace:*",
-    "@sleetch/server": "workspace:*",
-    "@sleetch/vite": "workspace:*",
-    "@react-router/dev": "^8.0.1",
-    "@react-router/node": "^8.0.1",
-    "@react-router/serve": "^8.0.1",
-    "@tailwindcss/vite": "^4.3.1",
-    "better-fs-routes": "^0.1.3",
-    "isbot": "^5",
-    "lucide-react": "^1.24.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-router": "^8.0.1",
-    "tailwindcss": "^4.3.1",
-    "vite": "^8.1.0"
-  }
+    "name": "@sleetch/react-router-template",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "build": "react-router build",
+        "dev": "react-router dev",
+        "start": "react-router-serve ./build/server/index.js",
+        "typecheck": "react-router typegen && tsc"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.20",
+        "@types/bun": "latest",
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@sleetch/client": "workspace:*",
+        "@sleetch/react": "workspace:*",
+        "@sleetch/server": "workspace:*",
+        "@sleetch/vite": "workspace:*",
+        "@react-router/dev": "^8.0.1",
+        "@react-router/node": "^8.0.1",
+        "@react-router/serve": "^8.0.1",
+        "@tailwindcss/vite": "^4.3.1",
+        "better-fs-routes": "^0.1.3",
+        "isbot": "^5",
+        "lucide-react": "^1.24.0",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+        "react-router": "^8.0.1",
+        "tailwindcss": "^4.3.1",
+        "vite": "^8.1.0"
+    }
 }

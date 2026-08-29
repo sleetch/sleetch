@@ -5,77 +5,77 @@
 .ghost,
 .outline,
 .destructive {
-  border-radius: var(--_sleetch-radius);
-  padding: 3px 10px;
-  font-family: var(--_sleetch-font-base);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid transparent;
-  transition:
-    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-    border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-    filter var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-    opacity var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+    border-radius: var(--_sleetch-radius);
+    padding: 3px 10px;
+    font-family: var(--_sleetch-font-base);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition:
+        background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+        border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+        filter var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+        opacity var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 /* Default — neutral filled, matches card surface */
 .default {
-  color: var(--_sleetch-color-text);
-  background-color: var(--_sleetch-color-background);
-  border-color: var(--_sleetch-color-border);
+    color: var(--_sleetch-color-text);
+    background-color: var(--_sleetch-color-background);
+    border-color: var(--_sleetch-color-border);
 }
 .default:hover {
-  background-color: var(--_sleetch-color-muted);
-  border-color: var(--_sleetch-color-text-underline);
+    background-color: var(--_sleetch-color-muted);
+    border-color: var(--_sleetch-color-text-underline);
 }
 
 .outline {
-  color: var(--_sleetch-color-text);
-  border-color: var(--_sleetch-color-border);
+    color: var(--_sleetch-color-text);
+    border-color: var(--_sleetch-color-border);
 }
 .outline:hover {
-  background-color: var(--_sleetch-color-muted);
-  border-color: var(--_sleetch-color-text-underline);
+    background-color: var(--_sleetch-color-muted);
+    border-color: var(--_sleetch-color-text-underline);
 }
 
 .primary {
-  color: var(--_sleetch-color-primary-foreground);
-  background-color: var(--_sleetch-color-text-primary);
-  border-color: transparent;
+    color: var(--_sleetch-color-primary-foreground);
+    background-color: var(--_sleetch-color-text-primary);
+    border-color: transparent;
 }
 .primary:hover {
-  filter: brightness(1.1);
+    filter: brightness(1.1);
 }
 
 .secondary {
-  color: var(--_sleetch-color-text);
-  background-color: var(--_sleetch-color-secondary);
-  border-color: var(--_sleetch-color-border);
+    color: var(--_sleetch-color-text);
+    background-color: var(--_sleetch-color-secondary);
+    border-color: var(--_sleetch-color-border);
 }
 .secondary:hover {
-  background-color: var(--_sleetch-color-muted);
+    background-color: var(--_sleetch-color-muted);
 }
 
 /* Ghost — no border, no fill until interaction */
 .ghost {
-  color: var(--_sleetch-color-text);
-  background-color: transparent;
-  border-color: transparent;
+    color: var(--_sleetch-color-text);
+    background-color: transparent;
+    border-color: transparent;
 }
 .ghost:hover {
-  background-color: var(--_sleetch-color-muted);
+    background-color: var(--_sleetch-color-muted);
 }
 
 /* Destructive — dangerous / irreversible actions */
 .destructive {
-  color: var(--_sleetch-color-background);
-  background-color: var(--_sleetch-syntax-deletion);
-  border-color: transparent;
+    color: var(--_sleetch-color-background);
+    background-color: var(--_sleetch-syntax-deletion);
+    border-color: transparent;
 }
 .destructive:hover {
-  filter: brightness(1.1);
+    filter: brightness(1.1);
 }
 
 /* Shared interaction states */
@@ -85,7 +85,7 @@
 .ghost:active,
 .outline:active,
 .destructive:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 .default:disabled,
@@ -94,29 +94,29 @@
 .ghost:disabled,
 .outline:disabled,
 .destructive:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-  filter: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
 }
 
 @media (max-width: 768px) {
-  .default,
-  .primary,
-  .secondary,
-  .ghost,
-  .outline,
-  .destructive {
-    padding: 6px 12px;
-    font-size: 14px;
-  }
+    .default,
+    .primary,
+    .secondary,
+    .ghost,
+    .outline,
+    .destructive {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
 }
 
-:global(.sleetch-markdown) .default,
-:global(.sleetch-markdown) .primary,
-:global(.sleetch-markdown) .secondary,
-:global(.sleetch-markdown) .ghost,
-:global(.sleetch-markdown) .outline,
-:global(.sleetch-markdown) .destructive {
-  margin: 0 0 1em;
+.sleetch-markdown .default,
+.sleetch-markdown .primary,
+.sleetch-markdown .secondary,
+.sleetch-markdown .ghost,
+.sleetch-markdown .outline,
+.sleetch-markdown .destructive {
+    margin: 0 0 1em;
 }

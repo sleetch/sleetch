@@ -5,8 +5,8 @@ import { markdown_schema } from './markdown';
 import { sources_schema } from './sources';
 
 export const configuration_schema = z.object({
-  logger: logger_schema,
-  markdown: markdown_schema,
-  languages: languages_schema,
-  sources: sources_schema,
+    logger: logger_schema,
+    markdown: markdown_schema,
+    languages: languages_schema,
+    sources: sources_schema,
 });

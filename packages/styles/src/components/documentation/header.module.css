@@ -1,45 +1,45 @@
 .default {
-  color: var(--_sleetch-color-text);
-  height: var(--_sleetch-header-height);
-  background-color: color-mix(in srgb, var(--_sleetch-color-card) 30%, transparent);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--_sleetch-color-border);
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 2em;
-  gap: 1em;
-  z-index: 100;
+    color: var(--_sleetch-color-text);
+    height: var(--_sleetch-header-height);
+    background-color: color-mix(in srgb, var(--_sleetch-color-card) 30%, transparent);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--_sleetch-color-border);
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 2em;
+    gap: 1em;
+    z-index: 100;
 }
 
 .menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--_sleetch-color-text);
-  cursor: pointer;
-  padding: 0.5em;
-  border-radius: var(--_sleetch-radius);
-  transition: background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+    display: none;
+    background: none;
+    border: none;
+    color: var(--_sleetch-color-text);
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: var(--_sleetch-radius);
+    transition: background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .menu-toggle:hover {
-  background-color: var(--_sleetch-color-muted);
+    background-color: var(--_sleetch-color-muted);
 }
 
 .menu-toggle:active {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 @media (max-width: 768px) {
-  .default {
-    padding: 0 1em;
-  }
+    .default {
+        padding: 0 1em;
+    }
 
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

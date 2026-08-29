@@ -1,27 +1,27 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
-  "changelog": "@changesets/cli/changelog",
-  "commit": false,
-  "fixed": [
-    [
-      "sleetch",
-      "@sleetch/cli",
-      "@sleetch/core",
-      "@sleetch/vite",
-      "@sleetch/next",
-      "@sleetch/react",
-      "@sleetch/server",
-      "@sleetch/client",
-      "@sleetch/styles"
-    ]
-  ],
-  "linked": [],
-  "access": "restricted",
-  "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": [],
-  "privatePackages": {
-    "version": false,
-    "tag": false
-  }
+    "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
+    "changelog": "@changesets/cli/changelog",
+    "commit": false,
+    "fixed": [
+        [
+            "sleetch",
+            "@sleetch/cli",
+            "@sleetch/core",
+            "@sleetch/vite",
+            "@sleetch/next",
+            "@sleetch/react",
+            "@sleetch/server",
+            "@sleetch/client",
+            "@sleetch/styles"
+        ]
+    ],
+    "linked": [],
+    "access": "restricted",
+    "baseBranch": "main",
+    "updateInternalDependencies": "patch",
+    "ignore": [],
+    "privatePackages": {
+        "version": false,
+        "tag": false
+    }
 }

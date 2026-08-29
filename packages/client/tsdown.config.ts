@@ -1,24 +1,24 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  exports: {
-    customExports: {
-      './markdown.css': {
-        default: './src/styles/markdown.css',
-      },
-      './base.css': {
-        default: './src/styles/base.css',
-      },
-      './manifest.js': './.sleetch/manifest.js',
-      './trees/*.js': './.sleetch/trees/*.js',
-      './pages/*.js': './.sleetch/pages/*.js',
+    exports: {
+        customExports: {
+            './markdown.css': {
+                default: './src/styles/markdown.css',
+            },
+            './base.css': {
+                default: './src/styles/base.css',
+            },
+            './manifest.js': './.sleetch/manifest.js',
+            './trees/*.js': './.sleetch/trees/*.js',
+            './pages/*.js': './.sleetch/pages/*.js',
+        },
     },
-  },
-  entry: ['src/**/*.ts'],
-  fixedExtension: false,
-  format: 'esm',
-  clean: true,
-  dts: {
-    sourcemap: false,
-  },
+    entry: ['src/**/*.ts'],
+    fixedExtension: false,
+    format: 'esm',
+    clean: true,
+    dts: {
+        sourcemap: false,
+    },
 });

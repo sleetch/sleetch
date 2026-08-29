@@ -1,84 +1,84 @@
 .file-system {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15em;
-  color: var(--_sleetch-color-text);
-  font-family: var(--_sleetch-font-base);
-  font-size: var(--_sleetch-font-size-small);
-  line-height: var(--_sleetch-line-height);
-  padding: 0.85em;
-  background: var(--_sleetch-color-card);
-  border-radius: var(--_sleetch-radius);
-  border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
-  margin: 0 0 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    color: var(--_sleetch-color-text);
+    font-family: var(--_sleetch-font-base);
+    font-size: var(--_sleetch-font-size-small);
+    line-height: var(--_sleetch-line-height);
+    padding: 0.85em;
+    background: var(--_sleetch-color-card);
+    border-radius: var(--_sleetch-radius);
+    border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
+    margin: 0 0 1em;
 }
 
 .folder {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .folder.hidden {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 .row {
-  display: flex;
-  align-items: center;
-  gap: 0.55em;
-  padding: 0.4em 0.6em;
-  border-radius: calc(var(--_sleetch-radius) - 2px);
-  transition:
-    background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-    color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+    padding: 0.4em 0.6em;
+    border-radius: calc(var(--_sleetch-radius) - 2px);
+    transition:
+        background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+        color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .folderRow {
-  color: var(--_sleetch-color-muted-foreground);
+    color: var(--_sleetch-color-muted-foreground);
 }
 
 .icon {
-  flex-shrink: 0;
-  color: currentColor;
+    flex-shrink: 0;
+    color: currentColor;
 }
 
 .label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .comment {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--_sleetch-color-muted-foreground);
-  font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--_sleetch-color-muted-foreground);
+    font-style: italic;
 }
 
 .children {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15em;
-  margin-left: 0.75em;
-  padding-left: 0.65em;
-  border-left: var(--_sleetch-underline-height) solid var(--_sleetch-color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    margin-left: 0.75em;
+    padding-left: 0.65em;
+    border-left: var(--_sleetch-underline-height) solid var(--_sleetch-color-border);
 }
 
 .file {
-  color: var(--_sleetch-color-text);
-  cursor: default;
+    color: var(--_sleetch-color-text);
+    cursor: default;
 }
 
 .file:hover {
-  background: var(--_sleetch-color-muted);
+    background: var(--_sleetch-color-muted);
 }
 
 .file.selected {
-  color: var(--_sleetch-color-text-primary);
-  background: color-mix(in srgb, var(--_sleetch-color-text-primary) 12%, transparent);
+    color: var(--_sleetch-color-text-primary);
+    background: color-mix(in srgb, var(--_sleetch-color-text-primary) 12%, transparent);
 }
 
 .file.selected:hover {
-  background: color-mix(in srgb, var(--_sleetch-color-text-primary) 18%, transparent);
+    background: color-mix(in srgb, var(--_sleetch-color-text-primary) 18%, transparent);
 }

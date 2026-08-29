@@ -1,11 +1,11 @@
 .default {
-  display: flex;
-  flex: 1;
-  min-height: calc(100vh - var(--_sleetch-header-height));
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - var(--_sleetch-header-height));
 }
 
 @media (max-width: 768px) {
-  .default {
-    flex-direction: column;
-  }
+    .default {
+        flex-direction: column;
+    }
 }

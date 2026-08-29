@@ -5,9 +5,9 @@ import type { BaseHTMLAttributes } from 'react';
 export interface DocumentationContentProps extends BaseHTMLAttributes<HTMLDivElement> {}
 
 export function DocumentationContent({ className, children, ...props }: DocumentationContentProps) {
-  return (
-    <div className={clsx(styles.default, className)} {...props}>
-      {children}
-    </div>
-  );
+    return (
+        <div className={clsx(styles.default, className)} {...props}>
+            {children}
+        </div>
+    );
 }

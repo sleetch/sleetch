@@ -1,28 +1,28 @@
 {
-  "name": "@sleetch/server",
-  "version": "1.0.7",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch"
-  },
-  "dependencies": {
-    "@sleetch/core": "workspace:*"
-  },
-  "peerDependencies": {
-    "@sleetch/client": "workspace:*"
-  },
-  "exports": {
-    ".": "./dist/index.js",
-    "./package.json": "./package.json"
-  },
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js"
+    "name": "@sleetch/server",
+    "version": "1.0.7",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsdown",
+        "dev": "tsdown --watch"
+    },
+    "dependencies": {
+        "@sleetch/core": "workspace:*"
+    },
+    "peerDependencies": {
+        "@sleetch/client": "workspace:*"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./package.json": "./package.json"
+    },
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js"
 }

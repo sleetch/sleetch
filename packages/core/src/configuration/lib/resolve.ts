@@ -1,9 +1,9 @@
-import { configuration_schema } from './schemas/configuration';
 import fs from 'fs';
 import path from 'path';
+import z from 'zod';
 import { get_root_dir } from '@/shared/utils/root';
 import type { parsed_sleetch_configuration } from '../types/configuration';
-import z from 'zod';
+import { configuration_schema } from './schemas/configuration';
 
 let cache: parsed_sleetch_configuration | undefined;
 let cache_mtime: number | undefined;
@@ -21,6 +21,7 @@ export const get_configuration = () => {
 };
 
 import { createRequire } from 'node:module';
+
 const require = createRequire(import.meta.url);
 
 const load_configuration = (): parsed_sleetch_configuration => {

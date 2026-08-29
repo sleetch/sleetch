@@ -1,7 +1,6 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
-
-import type { Route } from './+types/root';
 import { AntiFlickeringScript, ThemeProvider } from '@/features/theme/components/provider';
+import type { Route } from './+types/root';
 import '@/assets/styles/global.css';
 
 export const links: Route.LinksFunction = () => [

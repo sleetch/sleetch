@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEffect, useRef, useState, type BaseHTMLAttributes } from 'react';
+import { type BaseHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 export interface SleekyProps extends BaseHTMLAttributes<HTMLDivElement> {}
 
@@ -48,7 +48,7 @@ export function useSleeky({ lerp_amount = 0.1 }: { lerp_amount?: number }) {
 
             const scalar_angle = Math.acos(eye_scalar_cursor / (origin_to_eye_vector_norm * origin_to_cursor_vector_norm));
             const det = origin_to_eye_vector.x * origin_to_cursor_vector.y - origin_to_eye_vector.y * origin_to_cursor_vector.x;
-            let new_angle = det >= 0 ? -scalar_angle : scalar_angle;
+            const new_angle = det >= 0 ? -scalar_angle : scalar_angle;
             const diff = Math.round((data.angle - new_angle) / (Math.PI * 2)) * Math.PI * 2; // AI Generated, prevents multiple turn of the eye..
             data.angle = lerp(data.angle, new_angle + diff, lerp_amount);
           }

@@ -1,21 +1,21 @@
 // ClientPage.tsx
 'use client';
 
-import { Suspense, useEffect } from 'react';
+
+import manifest from '@sleetch/client/manifest.js';
 import {
   Button,
-  FileSystem,
-  File,
-  Folder,
   DocumentationSidebarContent,
   DocumentationToc,
+  File,
+  FileSystem,
+  Folder,
   PageContent,
   PageHeader,
   PageNavigation,
   useDocumentationContext,
 } from '@sleetch/react';
-
-import manifest from '@sleetch/client/manifest.js';
+import { Suspense, useEffect } from 'react';
 
 export default function ClientPage({ language, path }: { language: string; path: string }) {
   const page = manifest[language]['pages'][path]();

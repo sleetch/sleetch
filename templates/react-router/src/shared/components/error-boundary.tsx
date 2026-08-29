@@ -1,5 +1,4 @@
-import { isRouteErrorResponse } from 'react-router';
-import { useRouteError } from 'react-router';
+import { isRouteErrorResponse, useRouteError } from 'react-router';
 import '@sleetch/client/markdown.css';
 
 export function ErrorBoundary() {

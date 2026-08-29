@@ -1,5 +1,5 @@
 import type z from 'zod';
-import { configuration_schema } from '@/configuration/lib/schemas/configuration';
+import type { configuration_schema } from '@/configuration/lib/schemas/configuration';
 
 type DeepPartial<T> = T extends object
   ? {

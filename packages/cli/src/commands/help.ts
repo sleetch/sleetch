@@ -1,5 +1,5 @@
-import type { command, command_options } from '@/types/command';
 import { styleText } from 'node:util';
+import type { command, command_options } from '@/types/command';
 
 export const help_command: command = {
   name: 'help',
@@ -8,7 +8,7 @@ export const help_command: command = {
   options: {},
   fallback: true,
   action: (options, cli) => {
-    let lines = [
+    const lines = [
       `${styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} is a powerful documentation framework.`,
       '',
       `Usage: ${styleText('cyan', 'sleetch')} ${styleText('gray', '<command>')} ${styleText('cyanBright', '[...args]')}`,

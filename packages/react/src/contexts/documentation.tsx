@@ -1,6 +1,6 @@
-import type { path_transformer } from '@sleetch/core/configuration';
 import type { tree_object } from '@sleetch/core/compiler';
-import { createContext, useContext, useState, type BaseHTMLAttributes, type ReactNode } from 'react';
+import type { path_transformer } from '@sleetch/core/configuration';
+import { type BaseHTMLAttributes, createContext, type ReactNode, useContext, useState } from 'react';
 
 type sidebar_context = {
   is_sidebar_open: boolean;

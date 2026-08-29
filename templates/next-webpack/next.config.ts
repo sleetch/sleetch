@@ -1,5 +1,5 @@
-import type { NextConfig } from 'next';
 import withSleetch from '@sleetch/next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {/* config options here */};
 

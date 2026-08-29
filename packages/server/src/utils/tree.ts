@@ -1,5 +1,4 @@
-import { to_flat_tree } from '@sleetch/core/compiler';
-import { resolve_language, type tree_module, type manifest_module } from '@sleetch/core/compiler';
+import { type manifest_module, resolve_language, to_flat_tree, type tree_module } from '@sleetch/core/compiler';
 import type { path_transformer } from '@sleetch/core/configuration';
 
 export const get_tree = async (_language?: string) => {

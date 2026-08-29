@@ -1,5 +1,5 @@
 import type { MarkedExtension } from 'marked';
-import { type BundledLanguage } from 'shiki';
+import type { BundledLanguage } from 'shiki';
 import { shiki_theme } from '../../../utils/shiki/theme';
 
 export const marked_shiki_plugin: MarkedExtension = {

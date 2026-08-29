@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react';
 import { flushSync } from 'react-dom';
-import type { Theme } from '../types/themes';
 import { useTheme } from '../hooks/use-theme';
+import type { Theme } from '../types/themes';
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();

@@ -1,5 +1,5 @@
-import type { sleetch_router } from '../router';
 import path from 'path';
+import type { sleetch_router } from '../router';
 
 export const generate_manifest = (router: sleetch_router) => {
   const languages = router.get_languages();

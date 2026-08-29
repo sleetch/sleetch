@@ -1,9 +1,9 @@
-import ViteLogo from '@/assets/images/logos/vite.svg';
-import TanstackLogo from '@/assets/images/logos/tanstack.svg';
-import RRLogo from '@/assets/images/logos/react-router.svg';
-import NextLogo from '@/assets/images/logos/nextjs-icon.svg';
-import { useSleeky } from '@/shared/components/use-sleeky';
 import { useEffect } from 'react';
+import NextLogo from '@/assets/images/logos/nextjs-icon.svg';
+import RRLogo from '@/assets/images/logos/react-router.svg';
+import TanstackLogo from '@/assets/images/logos/tanstack.svg';
+import ViteLogo from '@/assets/images/logos/vite.svg';
+import { useSleeky } from '@/shared/components/use-sleeky';
 
 export function LandingBentoGrid() {
   const { Component: Sleeky, set_cursor_position } = useSleeky({ lerp_amount: 0.5 });

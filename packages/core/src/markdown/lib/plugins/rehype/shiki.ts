@@ -1,8 +1,8 @@
-import { visit } from 'unist-util-visit';
+import type { Element, Root } from 'hast';
 import { toString } from 'hast-util-to-string';
-import type { Plugin } from 'unified';
-import type { Root, Element } from 'hast';
 import type { BundledLanguage } from 'shiki/bundle/web';
+import type { Plugin } from 'unified';
+import { visit } from 'unist-util-visit';
 import { shiki_theme } from '../../../utils/shiki/theme';
 export const rehype_shiki_plugin: Plugin<[], Root> = () => {
   return async (tree) => {

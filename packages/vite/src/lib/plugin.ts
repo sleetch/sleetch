@@ -1,5 +1,5 @@
-import type { Plugin } from 'vite';
 import { sleetch_runtime } from '@sleetch/core/compiler';
+import type { Plugin } from 'vite';
 
 const runtime = new sleetch_runtime();
 

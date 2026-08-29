@@ -1,6 +1,6 @@
-import type { BaseHTMLAttributes } from 'react';
 import styles from '@sleetch/styles/components/documentation/header.module.css';
 import clsx from 'clsx';
+import type { BaseHTMLAttributes } from 'react';
 import { useDocumentationContext } from '../../contexts/documentation';
 
 export interface DocumentationHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {}

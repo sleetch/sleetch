@@ -1,8 +1,8 @@
-import type { Plugin } from 'unified';
-import type { Root, Element } from 'hast';
-import { visit } from 'unist-util-visit';
-import { toString } from 'hast-util-to-string';
+import type { Element, Root } from 'hast';
 import { fromHtml } from 'hast-util-from-html';
+import { toString } from 'hast-util-to-string';
+import type { Plugin } from 'unified';
+import { visit } from 'unist-util-visit';
 import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 
 export const rehype_mermaid_plugin: Plugin<[], Root> = () => {

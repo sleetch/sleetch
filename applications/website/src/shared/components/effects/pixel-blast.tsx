@@ -1,5 +1,6 @@
 import { Effect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
-import React, { useEffect, useRef } from 'react';
+import type React from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 type PixelBlastVariant = 'square' | 'circle' | 'triangle' | 'diamond';

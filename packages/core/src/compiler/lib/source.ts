@@ -1,9 +1,9 @@
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
+import { resolve_language } from '../utils/resolve-language';
 import type { sleetch_events_emitter } from './emitter';
 import type { sleetch_router } from './router';
-import { resolve_language } from '../utils/resolve-language';
 
 export abstract class sleetch_source<tree_object_type extends tree_object, content_type extends content, source_type extends source> {
   readonly type: source_type['type'];

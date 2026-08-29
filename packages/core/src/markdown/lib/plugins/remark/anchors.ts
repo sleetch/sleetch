@@ -1,7 +1,7 @@
-import type { Plugin } from 'unified';
 import type { Heading } from 'mdast';
-import { visit } from 'unist-util-visit';
 import { toString } from 'mdast-util-to-string';
+import type { Plugin } from 'unified';
+import { visit } from 'unist-util-visit';
 import { parse_header_content } from '@/markdown/lib/toc';
 
 export const remark_anchors_plugin: Plugin = () => {

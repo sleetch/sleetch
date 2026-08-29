@@ -1,6 +1,6 @@
-import type { BaseHTMLAttributes } from 'react';
 import styles from '@sleetch/styles/components/documentation/toc/content.module.css';
 import clsx from 'clsx';
+import type { BaseHTMLAttributes } from 'react';
 
 export interface DocumentationTocContentProps extends BaseHTMLAttributes<HTMLDivElement> {}
 

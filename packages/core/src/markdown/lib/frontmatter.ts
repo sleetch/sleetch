@@ -6,8 +6,8 @@ export const extract_frontmatter = <FrontmatterSchema extends z.ZodTypeAny>(
   schema: FrontmatterSchema
 ): { frontmatter: z.infer<FrontmatterSchema>; markdown: string } => {
   const lines = input.split('\n');
-  let start_index: number | undefined = undefined;
-  let end_index: number | undefined = undefined;
+  let start_index: number | undefined ;
+  let end_index: number | undefined ;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (line.trim() == '') continue;

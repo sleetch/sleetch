@@ -1,6 +1,6 @@
 import type { source } from '@/configuration/types/sources';
-import type { content } from './content';
 import type { sleetch_source } from '../lib/source';
+import type { content } from './content';
 import type { tree_object } from './routing';
 
 export interface file_info {

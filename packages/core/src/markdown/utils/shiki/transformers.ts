@@ -1,15 +1,14 @@
-import type { ShikiTransformer, ShikiTransformerContext } from 'shiki';
-import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
-
 import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight,
-  transformerNotationFocus,
-  transformerNotationErrorLevel,
   transformerMetaHighlight,
   transformerMetaWordHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
 } from '@shikijs/transformers';
+import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
+import type { ShikiTransformer, ShikiTransformerContext } from 'shiki';
 
 export function transformerTitle(): ShikiTransformer {
   return {

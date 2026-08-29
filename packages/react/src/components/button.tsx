@@ -1,6 +1,6 @@
-import type { ButtonHTMLAttributes } from 'react';
 import styles from '@sleetch/styles/components/button.module.css';
 import clsx from 'clsx';
+import type { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'secondary' | 'primary' | 'ghost' | 'destructive' | 'outline';

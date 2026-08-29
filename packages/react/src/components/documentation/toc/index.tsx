@@ -3,10 +3,10 @@ AI Generated :(
 Needs more testing
 */
 
-import { use, useEffect, useRef, useState, type BaseHTMLAttributes, type CSSProperties } from 'react';
+import type { page_module } from '@sleetch/core/compiler';
 import styles from '@sleetch/styles/components/documentation/toc/index.module.css';
 import clsx from 'clsx';
-import type { page_module } from '@sleetch/core/compiler';
+import { type BaseHTMLAttributes, type CSSProperties, use, useEffect, useRef, useState } from 'react';
 
 export interface DocumentationTocProps extends BaseHTMLAttributes<HTMLBaseElement> {
   page: Promise<page_module>;

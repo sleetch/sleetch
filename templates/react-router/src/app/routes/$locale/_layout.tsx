@@ -1,4 +1,4 @@
-import { DocumentationSidebar, DocumentationContent } from '@sleetch/react';
+import { DocumentationContent, DocumentationSidebar } from '@sleetch/react';
 import { Outlet } from 'react-router';
 import type { Route } from './+types/_layout';
 

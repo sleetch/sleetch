@@ -1,7 +1,7 @@
-import type { parser } from '@/markdown/types/engine';
 import { Marked } from 'marked';
-import { marked_anchors_plugin } from '@/markdown/lib/plugins/marked/anchors';
 import { get_configuration } from '@/configuration';
+import { marked_anchors_plugin } from '@/markdown/lib/plugins/marked/anchors';
+import type { parser } from '@/markdown/types/engine';
 
 export const marked: parser = async (content: string) => {
   const configuration = get_configuration();

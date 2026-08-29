@@ -1,5 +1,5 @@
-import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 import type { MarkedExtension } from 'marked';
+import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 
 export const marked_mermaid_plugin: MarkedExtension = {
   renderer: {

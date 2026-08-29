@@ -1,13 +1,13 @@
 import { createReadStream, createWriteStream, existsSync } from 'node:fs';
-import type { command, command_options } from '@/types/command';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path, { dirname, join } from 'node:path';
 import { pipeline } from 'node:stream';
 import { promisify, styleText } from 'node:util';
 import zlib from 'node:zlib';
 import tar from 'tar-fs';
-import { mkdir, rm, cp, readFile, writeFile } from 'node:fs/promises';
-import path, { join, dirname } from 'node:path';
-import { tmpdir } from 'node:os';
 import cli_package_json from '@/../package.json' with { type: 'json' };
+import type { command, command_options } from '@/types/command';
 
 const options = {
   name: { type: 'string' },

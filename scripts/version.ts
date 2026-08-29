@@ -1,5 +1,6 @@
 import get_release_plan from "@changesets/get-release-plan";
 import { release_plan_file_path, root } from "./utils/constants";
+
 const release_plan = await get_release_plan(root);
 const releases = release_plan.releases
   .filter((r) => r.oldVersion !== r.newVersion)

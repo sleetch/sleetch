@@ -1,21 +1,18 @@
-import { sleetch_source } from '../source';
-
-import { data_frontmatter_schema, extract_frontmatter, page_frontmatter_schema } from '@/markdown';
-import { generate_page_module } from '../generators/page';
-import { write_file } from '@/compiler/utils/write-file';
-
-import type { file_info } from '@/compiler/types/watcher';
-import type { sleetch_router } from '../router';
-import type { sleetch_events_emitter } from '../emitter';
+import fs from 'node:fs';
+import path from 'node:path';
+import z from 'zod';
 import type { category, page } from '@/compiler/types/routing';
 
+import type { file_info } from '@/compiler/types/watcher';
 import { CACHE_FOLDER, DATA_PAGE_NAME, INDEX_PAGE_NAME } from '@/compiler/utils/constants';
-
-import path from 'node:path';
-import fs from 'node:fs';
-import { list_all_files } from '@/shared/utils/list-files';
 import { resolve_language } from '@/compiler/utils/resolve-language';
-import z from 'zod';
+import { write_file } from '@/compiler/utils/write-file';
+import { data_frontmatter_schema, extract_frontmatter, page_frontmatter_schema } from '@/markdown';
+import { list_all_files } from '@/shared/utils/list-files';
+import type { sleetch_events_emitter } from '../emitter';
+import { generate_page_module } from '../generators/page';
+import type { sleetch_router } from '../router';
+import { sleetch_source } from '../source';
 
 export type configuration_file_system_source = z.infer<typeof sleetch_file_system_source.configuration_schema>;
 export type file_system_content = {

@@ -1,9 +1,9 @@
 import { Button, File, FileSystem, Folder } from '@sleetch/react';
 import '@sleetch/client/markdown.css';
-import { Link } from 'react-router';
-import type { Route } from './+types/_index';
 
 import manifest from '@sleetch/client/manifest.js';
+import { Link } from 'react-router';
+import type { Route } from './+types/_index';
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (

@@ -1,8 +1,8 @@
-import { use, type BaseHTMLAttributes } from 'react';
+import type { page_module } from '@sleetch/core/compiler';
 //import styles from '@sleetch/styles/components/Page/header.module.css';
 import clsx from 'clsx';
+import { type BaseHTMLAttributes, use } from 'react';
 import { Button } from '../../button';
-import type { page_module } from '@sleetch/core/compiler';
 
 export interface PageHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {
   page: Promise<page_module>;

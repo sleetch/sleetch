@@ -2,9 +2,9 @@ import { use } from 'react';
 import '@sleetch/styles/markdown.css';
 import '@sleetch/styles/katex.css';
 import { run } from '@mdx-js/mdx';
-import * as runtime from 'react/jsx-runtime';
-import type { MDXComponents } from 'mdx/types';
 import type { page_module } from '@sleetch/core/compiler';
+import type { MDXComponents } from 'mdx/types';
+import * as runtime from 'react/jsx-runtime';
 
 const mdxCache = new Map<string, ReturnType<typeof compileMDX>>();
 

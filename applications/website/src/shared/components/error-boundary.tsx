@@ -1,5 +1,4 @@
-import { isRouteErrorResponse } from 'react-router';
-import { useRouteError } from 'react-router';
+import { isRouteErrorResponse, useRouteError } from 'react-router';
 import { useSleeky } from './use-sleeky';
 
 export function ErrorBoundary() {

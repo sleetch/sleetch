@@ -1,8 +1,8 @@
 import { reactRouter } from '@react-router/dev/vite';
+import sleetch from '@sleetch/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import reactSVG from 'vite-react-svg';
-import sleetch from '@sleetch/vite';
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), sleetch(), reactSVG({})],

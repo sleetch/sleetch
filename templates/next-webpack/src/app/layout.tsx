@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { get_tree } from '@sleetch/server';
 import { DocumentationHeader, DocumentationLayout, DocumentationProvider } from '@sleetch/react';
+import { get_tree } from '@sleetch/server';
 import { path_transformer } from '@/components/client/path-transformer';
 
 const geistSans = Geist({

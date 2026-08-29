@@ -1,10 +1,10 @@
-import type { Route } from './+types/_index';
-
-import { LandingHero } from '@/features/landing/components/sections/hero';
 import { LandingBentoGrid } from '@/features/landing/components/sections/bento';
 
-import { ThemeToggle } from '@/features/theme/components/theme-toggle';
+import { LandingHero } from '@/features/landing/components/sections/hero';
 import { LandingLayouts } from '@/features/landing/components/sections/layouts';
+
+import { ThemeToggle } from '@/features/theme/components/theme-toggle';
+import type { Route } from './+types/_index';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Sleetch' }, { name: 'description', content: 'Welcome to Sleetch !' }];

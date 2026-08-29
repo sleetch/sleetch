@@ -1,4 +1,4 @@
-import { resolve_language, type manifest_module } from '@sleetch/core/compiler';
+import { type manifest_module, resolve_language } from '@sleetch/core/compiler';
 import { get_static_paths } from './tree';
 
 export const get_page = async (_path: string, _language?: string) => {

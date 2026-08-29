@@ -1,9 +1,9 @@
-import type { parser } from '@/markdown/types/engine';
 import { compile } from '@mdx-js/mdx';
+import type { PluggableList } from 'unified';
+import { get_configuration } from '@/configuration';
 import { remark_anchors_plugin } from '@/markdown/lib/plugins/remark/anchors';
 import { remark_gfm_plugin } from '@/markdown/lib/plugins/remark/gfm';
-import { get_configuration } from '@/configuration';
-import type { PluggableList } from 'unified';
+import type { parser } from '@/markdown/types/engine';
 
 export const mdx_js: parser = async (content: string) => {
   const remarkPlugins: PluggableList = [[remark_anchors_plugin], [remark_gfm_plugin]];

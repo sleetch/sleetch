@@ -1,7 +1,7 @@
 import z from 'zod';
-import { markdown_schema } from './markdown';
-import { logger_schema } from './logger';
 import { languages_schema } from './languages';
+import { logger_schema } from './logger';
+import { markdown_schema } from './markdown';
 import { sources_schema } from './sources';
 
 export const configuration_schema = z.object({

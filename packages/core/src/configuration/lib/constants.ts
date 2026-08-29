@@ -1,1 +1,1 @@
-export const is_bun = !Boolean(typeof Bun === 'undefined');
+export const is_bun = !(typeof Bun === 'undefined');

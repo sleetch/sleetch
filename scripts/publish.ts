@@ -1,7 +1,7 @@
-import { release_plan_file, root } from './utils/constants';
 import type { ReleasePlan } from '@changesets/types';
-import { packages_to_cwd } from './utils/cwd';
 import { release } from 'process';
+import { release_plan_file, root } from './utils/constants';
+import { packages_to_cwd } from './utils/cwd';
 
 if (!(await release_plan_file.exists())) {
   console.error('release-plan.json is missing');

@@ -1,6 +1,6 @@
-import type { BaseHTMLAttributes } from 'react';
 import styles from '@sleetch/styles/components/documentation/layout.module.css';
 import clsx from 'clsx';
+import type { BaseHTMLAttributes } from 'react';
 
 export interface DocumentationLayoutProps extends BaseHTMLAttributes<HTMLDivElement> {}
 

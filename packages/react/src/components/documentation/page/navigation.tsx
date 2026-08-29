@@ -3,11 +3,11 @@
   Needs more testing
 */
 
-import { useMemo, type BaseHTMLAttributes } from 'react';
-import clsx from 'clsx';
-import styles from '@sleetch/styles/components/documentation/page/navigation.module.css';
 import type { tree_object } from '@sleetch/core/compiler';
+import styles from '@sleetch/styles/components/documentation/page/navigation.module.css';
+import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
+import { type BaseHTMLAttributes, useMemo } from 'react';
 
 type category_node = Extract<tree_object, { type: 'category' }>;
 type page_node = Extract<tree_object, { type: 'page' }>;

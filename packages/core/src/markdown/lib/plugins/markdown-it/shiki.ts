@@ -1,7 +1,7 @@
-import { shiki_theme } from '../../../utils/shiki/theme';
+import type { MarkdownItAsync } from 'markdown-it-async';
 
 import type { BundledLanguage } from 'shiki/bundle/web';
-import type { MarkdownItAsync } from 'markdown-it-async';
+import { shiki_theme } from '../../../utils/shiki/theme';
 
 export const markdown_it_shiki_plugin = async (md: MarkdownItAsync) => {
   const { shiki_transformers } = await import('../../../utils/shiki/transformers');

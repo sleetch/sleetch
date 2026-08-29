@@ -1,5 +1,5 @@
-import { parse_header_content } from '@/markdown/lib/toc';
 import type { MarkdownItAsync } from 'markdown-it-async';
+import { parse_header_content } from '@/markdown/lib/toc';
 
 export function markdown_it_anchors_plugin(md: MarkdownItAsync) {
   const defaultRender =

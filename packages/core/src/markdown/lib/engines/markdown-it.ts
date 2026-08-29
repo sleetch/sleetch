@@ -1,7 +1,7 @@
-import type { parser } from '@/markdown/types/engine';
 import MarkdownItAsync from 'markdown-it-async';
-import { markdown_it_anchors_plugin } from '@/markdown/lib/plugins/markdown-it/anchors';
 import { get_configuration } from '@/configuration';
+import { markdown_it_anchors_plugin } from '@/markdown/lib/plugins/markdown-it/anchors';
+import type { parser } from '@/markdown/types/engine';
 
 export const markdown_it: parser = async (content: string) => {
   const configuration = get_configuration();

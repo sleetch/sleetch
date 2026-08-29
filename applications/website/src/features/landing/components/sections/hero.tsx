@@ -1,6 +1,7 @@
 import { Button } from '@sleetch/react';
-import Logo from '@/assets/images/branding/logo.svg?react';
 import { Link } from 'react-router';
+import Logo from '@/assets/images/branding/logo.svg?react';
+
 function Card(data: { feature: string }) {
   return (
     <div className="border rounded-sm px-3 py-1.5 text-sm bg-secondary">

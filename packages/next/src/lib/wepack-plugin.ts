@@ -1,5 +1,5 @@
-import type { Compiler } from 'webpack';
 import { sleetch_runtime } from '@sleetch/core/compiler';
+import type { Compiler } from 'webpack';
 
 const runtime = new sleetch_runtime();
 

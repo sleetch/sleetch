@@ -1,9 +1,9 @@
 import { get_configuration, type parsed_sleetch_configuration } from '@/configuration';
 import type { engines, parser } from '../types/engine';
+import { bun } from './engines/bun';
 import { dummy } from './engines/dummy';
 import { markdown_it } from './engines/markdown-it';
 import { marked } from './engines/marked';
-import { bun } from './engines/bun';
 import { mdx_js } from './engines/mdx-js';
 
 export const markdown_engines: engines = {

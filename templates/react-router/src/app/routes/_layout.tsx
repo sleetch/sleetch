@@ -1,7 +1,7 @@
-import { DocumentationLayout, DocumentationHeader, DocumentationProvider } from '@sleetch/react';
+import { DocumentationHeader, DocumentationLayout, DocumentationProvider } from '@sleetch/react';
+import { get_tree } from '@sleetch/server';
 import { Outlet } from 'react-router';
 import type { Route } from './+types/_layout';
-import { get_tree } from '@sleetch/server';
 
 export async function loader({ params }: Route.LoaderArgs) {
   return await get_tree(params.locale);

@@ -3,12 +3,12 @@
   Needs more testing
 */
 
-import type { BaseHTMLAttributes, ReactNode } from 'react';
-import { useMemo, useState, useEffect } from 'react';
-import clsx from 'clsx';
-import styles from '@sleetch/styles/components/documentation/sidebar/index.module.css';
 import type { tree_object } from '@sleetch/core/compiler';
+import styles from '@sleetch/styles/components/documentation/sidebar/index.module.css';
+import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
+import type { BaseHTMLAttributes, ReactNode } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseElement> {}
 

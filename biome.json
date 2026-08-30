@@ -1,48 +1,45 @@
 {
-    "files": {
-        "includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/output", "!**/.*", "!**/.*"]
-    },
-
-    "formatter": {
-        "enabled": true,
-        "indentStyle": "space",
-        "indentWidth": 4,
-        "lineWidth": 150
-    },
-
-    "javascript": {
-        "formatter": {
-            "quoteStyle": "single",
-            "semicolons": "always",
-            "trailingCommas": "es5",
-            "bracketSpacing": true,
-            "arrowParentheses": "always"
-        }
-    },
-
-    "css": {
-        "parser": {
-            "tailwindDirectives": true
-        }
-    },
-
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "preset": "recommended",
-            "a11y": "off",
-            "correctness": {
-                "noUnusedImports": "error"
-            },
-            "complexity": {
-                "noImportantStyles": "off"
-            },
-            "security": {
-                "noDangerouslySetInnerHtml": "off"
-            }
-        },
-        "domains": {
-            "tailwind": "recommended"
-        }
-    }
+	"root": true,
+	"files": {
+		"includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/output", "!**/.*", "!**/.*"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 10,
+		"lineWidth": 150
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "always",
+			"trailingCommas": "es5",
+			"bracketSpacing": true,
+			"arrowParentheses": "always"
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"a11y": "off",
+			"correctness": {
+				"noUnusedImports": "error"
+			},
+			"complexity": {
+				"noImportantStyles": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			}
+		},
+		"domains": {
+			"tailwind": "recommended"
+		}
+	}
 }

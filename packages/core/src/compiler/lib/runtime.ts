@@ -3,7 +3,7 @@ import { get_configuration } from '@/configuration';
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
-import { CACHE_FOLDER } from '../utils/constants';
+import { CACHE_FOLDER, TREES_CACHE_FOLDER } from '../utils/constants';
 import { write_file } from '../utils/write-file';
 import { sleetch_events_emitter } from './emitter';
 import { generate_manifest } from './generators/manifest';
@@ -129,7 +129,7 @@ export class sleetch_runtime {
 		const tree = this._router.get_tree(language);
 		const files = generate_tree(tree);
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
-			write_file(path.join(CACHE_FOLDER, 'trees', language + extension), files[extension]);
+			write_file(path.join(TREES_CACHE_FOLDER, language + extension), files[extension]);
 		}
 	}
 

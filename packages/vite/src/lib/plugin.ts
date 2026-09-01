@@ -10,8 +10,14 @@ export function plugin(): Plugin {
 
 		config(config) {
 			return {
+				ssr: {
+					noExternal: ["@sleetch/client"],
+				},
 				optimizeDeps: {
-					exclude: [...(config.optimizeDeps?.exclude ?? []), "@sleetch/client"],
+					exclude: [
+						...(config.optimizeDeps?.exclude ?? []),
+						"@sleetch/client",
+					],
 				},
 				server: {
 					watch: {
@@ -39,11 +45,31 @@ export function plugin(): Plugin {
 		async configureServer(server) {
 			server.watcher.add(`**/node_modules/@sleetch/client/**`);
 
+			server.middlewares.use((req, res, next) => {
+				if (req.url?.includes(`node_modules/@sleetch/client`)) {
+					res.setHeader('Cache-Control', 'no-store');
+				}
+				next();
+			});
+
+			const invalidateAll = (file: string) => {
+				console.log("invalidate", file)
+				for (const env of Object.values(server.environments)) {
+					const mods = env.moduleGraph.getModulesByFile(file);
+					if (mods) for (const mod of mods) env.moduleGraph.invalidateModule(mod);
+				}
+			};
+
 			if (server.config.mode === 'development') {
-				console.log('configServer', server.config.mode);
 				await runtime.sources.load();
 				await runtime.builder.build();
 				await runtime.sources.watch();
+
+				runtime.watcher.on("edited", (content, source) => {
+					const object = source.router.get_object(content)
+					const build_path = source.builder.get_path(source.language, object)
+					invalidateAll(build_path)
+				});
 			}
 		},
 	};

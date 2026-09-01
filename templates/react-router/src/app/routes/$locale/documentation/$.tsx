@@ -1,4 +1,4 @@
-import manifest from '@sleetch/client/manifest.js';
+import manifest from '@sleetch/client/manifest';
 import {
 	Button,
 	DocumentationSidebarContent,

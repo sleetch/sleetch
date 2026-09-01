@@ -3,21 +3,18 @@ import type { sleetch_router } from '../router';
 
 export const generate_manifest = (router: sleetch_router) => {
 	const languages = router.get_languages();
-	const build_id = Date.now()
-
 	const language_manifests = [];
-
 	for (const language of languages) {
 		const pages = router.get_flat_tree(language);
 
 		language_manifests.push(`
           "${language}" : {
-          'tree': () => import('${path.join('@sleetch/client/trees', `${language}.js`)}'),
+          'tree': () => import('${path.join('@sleetch/client/trees', language)}'),
 
           'pages':{
 
           ${pages
-				.map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, `${page.path}.js`)}?v=${build_id}')`)
+				.map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path == "/" ? "index" : page.path)}')`)
 				.join(',\n')}
                 }
           }
@@ -36,3 +33,15 @@ export const generate_manifest = (router: sleetch_router) => {
       `,
 	};
 };
+
+
+
+
+
+
+
+
+
+
+
+// ?v=${build_id}

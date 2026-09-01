@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string[
 	if (!server_page) {
 		return notFound();
 	}
-	const { default: manifest } = await import('sleetch/generated/manifest.js')
+	const { default: manifest } = await import('@sleetch/client/manifest')
 	const page_loader = manifest[server_page.language].pages[server_page.path]
 	const { default: page } = await page_loader();
 	return <ClientPage page={page} path={server_page.path} />;

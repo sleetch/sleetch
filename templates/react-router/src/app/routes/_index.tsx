@@ -1,8 +1,8 @@
 import { Button, File, FileSystem, Folder } from '@sleetch/react';
 import '@sleetch/client/markdown.css';
 
+import manifest from '@sleetch/client/manifest';
 import { Link } from 'react-router';
-import manifest from 'sleetch/generated/manifest';
 
 export default function Home() {
 	return (

@@ -43,14 +43,7 @@ export function plugin(): Plugin {
 		},
 
 		async configureServer(server) {
-			server.watcher.add(`**/node_modules/@sleetch/client/**`);
-
-			server.middlewares.use((req, res, next) => {
-				if (req.url?.includes(`node_modules/@sleetch/client`)) {
-					res.setHeader('Cache-Control', 'no-store');
-				}
-				next();
-			});
+			console.log("Hello bitch")
 
 			const invalidateAll = (file: string) => {
 				console.log("invalidate", file)

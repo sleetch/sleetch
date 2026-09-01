@@ -38,9 +38,6 @@
 			"@/*": [
 				"./src/*"
 			],
-			"sleetch/generated/*": [
-				".sleetch/*"
-			]
 		},
 		"rootDirs": [
 			"."

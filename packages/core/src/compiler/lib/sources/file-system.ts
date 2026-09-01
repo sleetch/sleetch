@@ -73,7 +73,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 			} else return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
 		},
 		get_path(language: string, object: file_system_tree_object, extension = ".js") {
-			return path.join(PAGES_CACHE_FOLDER, language, object.path + extension)
+			return path.join(PAGES_CACHE_FOLDER, language, (object.path === "/" ? "index" : object.path) + extension)
 		},
 		build_object: async (language: string, object: file_system_tree_object): Promise<void> => {
 			if (object.type === 'category' && !object.page) throw Error('Cannot build an un-indexed category');

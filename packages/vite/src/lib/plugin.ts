@@ -43,7 +43,8 @@ export function plugin(): Plugin {
 		},
 
 		async configureServer(server) {
-			console.log("Hello bitch")
+			console.log("Hello dev") // oops ^^
+			server.watcher.add(`**/node_modules/@sleetch/client/**`);
 
 			const invalidateAll = (file: string) => {
 				console.log("invalidate", file)

@@ -8,61 +8,49 @@ import {
 	Folder,
 	PageContent,
 	PageHeader,
-	PageLoader,
 	PageNavigation,
 } from '@sleetch/react';
 import { get_page } from '@sleetch/server';
-import { Suspense } from 'react';
 import { data } from 'react-router';
 
 import type { Route } from './+types/$';
 
 export function meta({ loaderData: data }: Route.MetaArgs) {
-	// if (data) return [{ title: data.page.frontmatter.title }, { name: 'description', content: data.page.frontmatter.description }];
+	if (data) return [{ title: data.page.frontmatter.title }, { name: 'description', content: data.page.frontmatter.description }];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
 	const page_data = await get_page(`/${params['*']}`, params.locale);
 	console.log(`/${params['*']}`, page_data);
 	if (!page_data) throw data(null, { status: 404 });
-	return { page_data };
+	const { default: page } = await manifest[page_data.language]["pages"][page_data.path]()
+	return { page_data, page };
 }
 
 export default function Page({
 	loaderData: {
-		page_data: { language, path },
+		page
 	},
 }: Route.ComponentProps) {
-	const page_promise = manifest[language]["pages"][path]()
 	return (
 		<>
 			<DocumentationSidebarContent>
-				<Suspense fallback={<p>Loading.</p>}>
 
-					<PageLoader page={page_promise}>
-						{(page) => <>
-							<PageHeader page={page} />
+				<PageHeader page={page} />
 
-							<PageContent
-								page={page}
-								components={{
-									Button,
-									FileSystem,
-									File,
-									Folder,
-								}}
-							/>
-						</>}
-					</PageLoader>
+				<PageContent
+					page={page}
+					components={{
+						Button,
+						FileSystem,
+						File,
+						Folder,
+					}}
+				/>
 
-					<PageNavigation />
-				</Suspense>
+				<PageNavigation />
 			</DocumentationSidebarContent>
-			<Suspense fallback={<p>Loading.</p>}>
-				<PageLoader page={page_promise}>
-					{(page) => <DocumentationToc page={page} />}
-				</PageLoader>
-			</Suspense>
+			<DocumentationToc page={page} />
 		</>
 	);
 }

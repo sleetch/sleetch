@@ -1,32 +1,52 @@
 {
-    "compilerOptions": {
-        "lib": ["DOM", "DOM.Iterable", "ES2022"],
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleDetection": "force",
-        "jsx": "react-jsx",
-        "allowJs": true,
-        "baseUrl": ".",
-        "moduleResolution": "bundler",
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "verbatimModuleSyntax": true,
-        "noEmit": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUncheckedIndexedAccess": false,
-        "experimentalDecorators": true,
-        "noImplicitOverride": true,
-        "types": ["@types/bun"],
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "noPropertyAccessFromIndexSignature": false,
-        "paths": {
-            "@/*": ["./src/*"]
-        },
-        "rootDirs": [".", "./.react-router/types", "./.sleetch/**/*"]
-    },
-    "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"]
+	"compilerOptions": {
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		],
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleDetection": "force",
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"baseUrl": ".",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": false,
+		"experimentalDecorators": true,
+		"noImplicitOverride": true,
+		"types": [
+			"@types/bun"
+		],
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"paths": {
+			"@/*": [
+				"./src/*"
+			],
+			"sleetch/generated/*": [
+				"./.sleetch/*"
+			]
+		},
+		"rootDirs": [
+			".",
+			"./.react-router/types",
+			"./.sleetch/**/*"
+		]
+	},
+	"include": [
+		"src/**/*",
+		"**/.server/**/*",
+		"**/.client/**/*",
+		".react-router/types/**/*"
+	]
 }

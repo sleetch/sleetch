@@ -1,7 +1,15 @@
 {
 	"root": true,
 	"files": {
-		"includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/output", "!**/.*", "!**/.*"]
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/dist",
+			"!**/build",
+			"!**/output",
+			"!**/.*",
+			"!**/.*"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -15,7 +23,8 @@
 			"semicolons": "always",
 			"trailingCommas": "es5",
 			"bracketSpacing": true,
-			"arrowParentheses": "always"
+			"arrowParentheses": "always",
+			"quoteProperties": "asNeeded"
 		}
 	},
 	"css": {

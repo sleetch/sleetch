@@ -1,40 +1,62 @@
 {
-    "compilerOptions": {
-        "lib": ["DOM", "DOM.Iterable", "ES2022"],
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleDetection": "force",
-        "jsx": "react-jsx",
-        "allowJs": true,
-        "baseUrl": ".",
-        "moduleResolution": "bundler",
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "verbatimModuleSyntax": true,
-        "noEmit": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUncheckedIndexedAccess": false,
-        "experimentalDecorators": true,
-        "noImplicitOverride": true,
-        "types": ["@types/bun"],
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "noPropertyAccessFromIndexSignature": false,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "paths": {
-            "@/*": ["./src/*"]
-        },
-        "rootDirs": ["."],
-        "incremental": true,
-        "resolveJsonModule": true
-    },
-    "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "src/**/*.mts"],
-    "exclude": ["node_modules"]
+	"compilerOptions": {
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		],
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleDetection": "force",
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"baseUrl": ".",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": false,
+		"experimentalDecorators": true,
+		"noImplicitOverride": true,
+		"types": [
+			"@types/bun"
+		],
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"paths": {
+			"@/*": [
+				"./src/*"
+			],
+			"sleetch/generated/*": [
+				".sleetch/*"
+			]
+		},
+		"rootDirs": [
+			"."
+		],
+		"incremental": true,
+		"resolveJsonModule": true
+	},
+	"include": [
+		"next-env.d.ts",
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts",
+		"src/**/*.mts"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }

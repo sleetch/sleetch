@@ -1,5 +1,12 @@
 # @sleetch/core
 
+## 1.0.8
+
+### Patch Changes
+
+- 41c1d6b: - Cleaner client module exports
+  - Live reload fixed
+
 ## 1.0.7
 
 ### Patch Changes

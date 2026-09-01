@@ -1,5 +1,14 @@
 # @sleetch/vite
 
+## 1.0.8
+
+### Patch Changes
+
+- 41c1d6b: - Cleaner client module exports
+  - Live reload fixed
+- Updated dependencies [41c1d6b]
+  - @sleetch/core@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes

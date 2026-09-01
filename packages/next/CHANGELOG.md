@@ -1,5 +1,12 @@
 # @sleetch/next
 
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies [41c1d6b]
+  - @sleetch/core@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes

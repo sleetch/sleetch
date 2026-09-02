@@ -11,9 +11,9 @@ export class sleetch_webpack_plugin {
 				await runtime.builder.build();
 				if (compiler.options.mode === 'development') {
 					await runtime.sources.watch();
-					runtime.watcher.on("edited", async (a, b) => {
+					runtime.watcher.on('edited', async (a, b) => {
 						compiler.watching?.invalidate();
-					})
+					});
 				}
 			}
 		});

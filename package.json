@@ -1,33 +1,33 @@
 {
-    "name": "sleetch-monorepo",
-    "private": true,
-    "scripts": {
-        "build": "bunx pacwich run build 'path:packages/*' --dep-order --output-style=prefixed ",
-        "dev": "bunx pacwich run dev",
-        "lint": "bunx biome lint ",
-        "fix": "bunx biome check --write --unsafe",
-        "changeset": "changeset",
-        "ci:version": "bun scripts/version.ts",
-        "ci:publish": "bun scripts/publish.ts"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^2.5.11",
-        "@changesets/cli": "^2.31.1",
-        "@changesets/get-release-plan": "^4.0.16",
-        "@changesets/types": "^6.1.0",
-        "@types/bun": "latest",
-        "publint": "^0.3.24",
-        "tsdown": "^0.22.14"
-    },
-    "peerDependencies": {
-        "typescript": "^5.9.3"
-    },
-    "workspaces": [
-        "./packages/*",
-        "./templates/*",
-        "./applications/*"
-    ],
-    "dependencies": {
-        "pacwich": "^0.7.1"
-    }
+	"name": "sleetch-monorepo",
+	"private": true,
+	"scripts": {
+		"build": "bunx pacwich run build 'path:packages/*' --dep-order --output-style=prefixed ",
+		"dev": "bunx pacwich run dev",
+		"lint": "bunx biome lint ",
+		"fix": "bunx biome check --write --unsafe",
+		"changeset": "changeset",
+		"ci:version": "bun scripts/version.ts",
+		"ci:publish": "bun scripts/publish.ts"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.11",
+		"@changesets/cli": "^2.31.1",
+		"@changesets/get-release-plan": "^4.0.16",
+		"@changesets/types": "^6.1.0",
+		"@types/bun": "latest",
+		"publint": "^0.3.24",
+		"tsdown": "^0.22.14"
+	},
+	"peerDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"workspaces": [
+		"./packages/*",
+		"./templates/*",
+		"./applications/*"
+	],
+	"dependencies": {
+		"pacwich": "^0.7.1"
+	}
 }

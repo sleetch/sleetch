@@ -110,10 +110,10 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 				relative_folder === this.source.path
 					? undefined
 					: ({
-						type: 'category',
-						path: category_path,
-						children: [],
-					} satisfies category<file_system_tree_object, file_system_content>);
+							type: 'category',
+							path: category_path,
+							children: [],
+						} satisfies category<file_system_tree_object, file_system_content>);
 
 			// biome-ignore-start lint/suspicious/noFallthroughSwitchClause: Expected
 			switch (page_name) {

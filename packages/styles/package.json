@@ -16,6 +16,7 @@
     "./katex.css": "./src/katex.css",
     "./markdown.css": "./src/markdown.css",
     "./components/documentation/content.module.css": "./src/components/documentation/content.module.css",
+    "./components/documentation/sidebar/toggle.module.css": "./src/components/documentation/sidebar/toggle.module.css",
     "./components/documentation/sidebar/content.module.css": "./src/components/documentation/sidebar/content.module.css",
     "./components/documentation/sidebar/index.module.css": "./src/components/documentation/sidebar/index.module.css",
     "./components/documentation/page/navigation.module.css": "./src/components/documentation/page/navigation.module.css",

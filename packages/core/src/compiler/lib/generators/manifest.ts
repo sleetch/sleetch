@@ -14,8 +14,11 @@ export const generate_manifest = (router: sleetch_router) => {
           'pages':{
 
           ${pages
-				.map((page) => `        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path == "/" ? "index" : page.path)}')`)
-				.join(',\n')}
+						.map(
+							(page) =>
+								`        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path == '/' ? 'index' : page.path)}')`,
+						)
+						.join(',\n')}
                 }
           }
         `);
@@ -33,15 +36,5 @@ export const generate_manifest = (router: sleetch_router) => {
       `,
 	};
 };
-
-
-
-
-
-
-
-
-
-
 
 // ?v=${build_id}

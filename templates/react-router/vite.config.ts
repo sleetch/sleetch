@@ -10,6 +10,6 @@ export default defineConfig({
 		tsconfigPaths: true,
 	},
 	ssr: {
-		noExternal: ['@sleetch/react']
-	}
+		noExternal: ['@sleetch/react'],
+	},
 });

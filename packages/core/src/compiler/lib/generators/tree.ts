@@ -1,10 +1,10 @@
 import type { tree_object } from '@/compiler/types/routing';
 
 export const generate_tree = (tree: tree_object[]) => {
-    return {
-        '.js': `
+	return {
+		'.js': `
       export default ${JSON.stringify(tree)};
     `,
-        '.d.ts': '',
-    };
+		'.d.ts': '',
+	};
 };

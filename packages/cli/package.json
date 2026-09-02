@@ -1,34 +1,34 @@
 {
-    "name": "@sleetch/cli",
-    "version": "1.0.8",
-    "type": "module",
-    "files": [
-        "dist"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "tsdown",
-        "dev": "tsdown --watch"
-    },
-    "dependencies": {
-        "@sleetch/core": "workspace:*",
-        "tar-fs": "^3.1.3",
-        "zod": "^4.4.3"
-    },
-    "devDependencies": {
-        "@types/tar-fs": "^2.0.4"
-    },
-    "exports": {
-        "./bin": "./dist/bin/index.js",
-        "./commands/create": "./dist/commands/create/index.js",
-        "./package.json": "./package.json"
-    },
-    "bin": {
-        "sleetch": "./dist/bin/index.js"
-    },
-    "types": "./dist/index.d.ts",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js"
+	"name": "@sleetch/cli",
+	"version": "1.0.8",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch"
+	},
+	"dependencies": {
+		"@sleetch/core": "workspace:*",
+		"tar-fs": "^3.1.3",
+		"zod": "^4.4.3"
+	},
+	"devDependencies": {
+		"@types/tar-fs": "^2.0.4"
+	},
+	"exports": {
+		"./bin": "./dist/bin/index.js",
+		"./commands/create": "./dist/commands/create/index.js",
+		"./package.json": "./package.json"
+	},
+	"bin": {
+		"sleetch": "./dist/bin/index.js"
+	},
+	"types": "./dist/index.d.ts",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js"
 }

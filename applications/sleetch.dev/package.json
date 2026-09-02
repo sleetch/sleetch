@@ -1,42 +1,43 @@
 {
-    "name": "@sleetch/website",
-    "type": "module",
-    "scripts": {
-        "build": "react-router build",
-        "dev": "react-router dev --host",
-        "start": "react-router-serve ./build/server/index.js",
-        "typecheck": "react-router typegen && tsc"
-    },
-    "dependencies": {
-        "@react-router/node": "8.3.0",
-        "@react-router/serve": "8.3.0",
-        "@sleetch/client": "workspace:*",
-        "@sleetch/react": "workspace:*",
-        "@sleetch/server": "workspace:*",
-        "@sleetch/vite": "workspace:*",
-        "sleetch": "workspace:*",
-        "better-fs-routes": "^0.1.3",
-        "clsx": "^2.1.1",
-        "fluid-tailwindcss": "^1.1.7",
-        "isbot": "^5.2.1",
-        "postprocessing": "^6.39.4",
-        "react": "^19.2.8",
-        "react-dom": "^19.2.8",
-        "react-router": "8.3.0",
-        "tailwind-merge": "^3.6.0",
-        "three": "^0.185.1",
-        "vite-react-svg": "^0.0.13"
-    },
-    "devDependencies": {
-        "@react-router/dev": "^8.3.0",
-        "@tailwindcss/typography": "^0.5.20",
-        "@tailwindcss/vite": "^4.3.3",
-        "@types/bun": "^1.3.14",
-        "@types/react": "^19.2.18",
-        "@types/react-dom": "^19.2.4",
-        "@types/three": "^0.185.4",
-        "tailwindcss": "^4.3.3",
-        "typescript": "^5.9.3",
-        "vite": "^8.2.1"
-    }
+	"name": "@sleetch/website",
+	"type": "module",
+	"scripts": {
+		"build": "react-router build",
+		"dev": "react-router dev --host",
+		"start": "react-router-serve ./build/server/index.js",
+		"typecheck": "react-router typegen && tsc"
+	},
+	"dependencies": {
+		"@react-router/node": "8.3.0",
+		"@react-router/serve": "8.3.0",
+		"@sleetch/client": "workspace:*",
+		"@sleetch/react": "workspace:*",
+		"@sleetch/server": "workspace:*",
+		"@sleetch/vite": "workspace:*",
+		"better-fs-routes": "^0.1.3",
+		"clsx": "^2.1.1",
+		"fluid-tailwindcss": "^1.1.7",
+		"isbot": "^5.2.1",
+		"lucide-react": "^1.39.0",
+		"postprocessing": "^6.39.4",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
+		"react-router": "8.3.0",
+		"sleetch": "workspace:*",
+		"tailwind-merge": "^3.6.0",
+		"three": "^0.185.1",
+		"vite-react-svg": "^0.0.13"
+	},
+	"devDependencies": {
+		"@react-router/dev": "^8.3.0",
+		"@tailwindcss/typography": "^0.5.20",
+		"@tailwindcss/vite": "^4.3.3",
+		"@types/bun": "^1.3.14",
+		"@types/react": "^19.2.18",
+		"@types/react-dom": "^19.2.4",
+		"@types/three": "^0.185.4",
+		"tailwindcss": "^4.3.3",
+		"typescript": "^5.9.3",
+		"vite": "^8.2.1"
+	}
 }

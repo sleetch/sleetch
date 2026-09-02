@@ -11,13 +11,10 @@ export function plugin(): Plugin {
 		config(config) {
 			return {
 				ssr: {
-					noExternal: ["@sleetch/client"],
+					noExternal: ['@sleetch/client'],
 				},
 				optimizeDeps: {
-					exclude: [
-						...(config.optimizeDeps?.exclude ?? []),
-						"@sleetch/client",
-					],
+					exclude: [...(config.optimizeDeps?.exclude ?? []), '@sleetch/client'],
 				},
 				server: {
 					watch: {
@@ -43,11 +40,11 @@ export function plugin(): Plugin {
 		},
 
 		async configureServer(server) {
-			console.log("Hello dev") // oops ^^
+			console.log('Hello dev'); // oops ^^
 			server.watcher.add(`**/node_modules/@sleetch/client/**`);
 
 			const invalidateAll = (file: string) => {
-				console.log("invalidate", file)
+				console.log('invalidate', file);
 				for (const env of Object.values(server.environments)) {
 					const mods = env.moduleGraph.getModulesByFile(file);
 					if (mods) for (const mod of mods) env.moduleGraph.invalidateModule(mod);
@@ -59,10 +56,10 @@ export function plugin(): Plugin {
 				await runtime.builder.build();
 				await runtime.sources.watch();
 
-				runtime.watcher.on("edited", (content, source) => {
-					const object = source.router.get_object(content)
-					const build_path = source.builder.get_path(source.language, object)
-					invalidateAll(build_path)
+				runtime.watcher.on('edited', (content, source) => {
+					const object = source.router.get_object(content);
+					const build_path = source.builder.get_path(source.language, object);
+					invalidateAll(build_path);
 				});
 			}
 		},

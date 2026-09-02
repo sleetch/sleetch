@@ -1,0 +1,27 @@
+.default {
+	display: none;
+	background: none;
+	border: none;
+	color: var(--_sleetch-color-text);
+	cursor: pointer;
+	padding: 0.5em;
+	border-radius: var(--_sleetch-radius);
+	transition: background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+}
+
+.default:hover {
+	background-color: var(--_sleetch-color-muted);
+}
+
+.default:active {
+	transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+
+	.default {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

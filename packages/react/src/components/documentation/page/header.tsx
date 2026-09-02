@@ -5,7 +5,7 @@ import type { BaseHTMLAttributes } from 'react';
 import { Button } from '../../button';
 
 export interface PageHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {
-	page: page_module["default"];
+	page: page_module['default'];
 }
 
 export function PageHeader({ page, className, children, ...props }: PageHeaderProps) {

@@ -29,11 +29,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 	return { page, tree };
 }
 
-export default function Page({
-	loaderData: {
-		page,
-	},
-}: Route.ComponentProps) {
+export default function Page({ loaderData: { page } }: Route.ComponentProps) {
 	return (
 		<>
 			<DocumentationSidebarContent>

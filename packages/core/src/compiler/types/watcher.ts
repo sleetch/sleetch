@@ -4,12 +4,12 @@ import type { content } from './content';
 import type { tree_object } from './routing';
 
 export interface file_info {
-    mtimeMs: number;
-    size: number;
+	mtimeMs: number;
+	size: number;
 }
 
 export interface watcher_events {
-    added: [content: content, source: sleetch_source<tree_object, content, source>];
-    removed: [content: content, source: sleetch_source<tree_object, content, source>];
-    edited: [content: content, source: sleetch_source<tree_object, content, source>];
+	added: [content: content, source: sleetch_source<tree_object, content, source>];
+	removed: [content: content, source: sleetch_source<tree_object, content, source>];
+	edited: [content: content, source: sleetch_source<tree_object, content, source>];
 }

@@ -23,19 +23,14 @@ export async function loader({ params }: Route.LoaderArgs) {
 	const page_data = await get_page(`/${params['*']}`, params.locale);
 	console.log(`/${params['*']}`, page_data);
 	if (!page_data) throw data(null, { status: 404 });
-	const { default: page } = await manifest[page_data.language]["pages"][page_data.path]()
+	const { default: page } = await manifest[page_data.language]['pages'][page_data.path]();
 	return { page_data, page };
 }
 
-export default function Page({
-	loaderData: {
-		page
-	},
-}: Route.ComponentProps) {
+export default function Page({ loaderData: { page } }: Route.ComponentProps) {
 	return (
 		<>
 			<DocumentationSidebarContent>
-
 				<PageHeader page={page} />
 
 				<PageContent

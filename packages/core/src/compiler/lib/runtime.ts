@@ -17,7 +17,7 @@ export class sleetch_runtime {
 	private event_emitter = new sleetch_events_emitter();
 	private _router = new sleetch_router();
 
-	public watcher = this.event_emitter
+	public watcher = this.event_emitter;
 
 	private get sources_instances() {
 		return this.sources_map.values();

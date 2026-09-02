@@ -1,108 +1,108 @@
 .navigation {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
-    padding: var(--_sleetch-padding-root);
-    padding-top: 0px;
-    font-family: var(--_sleetch-font-base);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1em;
+	padding: var(--_sleetch-padding-root);
+	padding-top: 0px;
+	font-family: var(--_sleetch-font-base);
 }
 
 .slot {
-    display: flex;
+	display: flex;
 }
 
 .slot-end {
-    justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-    width: 100%;
-    max-width: 320px;
-    padding: 1em 1em;
-    border-radius: var(--_sleetch-radius);
-    border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
-    color: var(--_sleetch-color-text);
-    text-decoration: none;
-    transition:
-        border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-        background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
+	width: 100%;
+	max-width: 320px;
+	padding: 1em 1em;
+	border-radius: var(--_sleetch-radius);
+	border: var(--_sleetch-hr-height) solid var(--_sleetch-color-border);
+	color: var(--_sleetch-color-text);
+	text-decoration: none;
+	transition:
+		border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+		background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
 .card:hover,
 .card:focus-visible {
-    border-color: var(--_sleetch-color-text-primary);
-    background-color: color-mix(in srgb, var(--_sleetch-color-text-primary) 8%, var(--_sleetch-color-card));
+	border-color: var(--_sleetch-color-text-primary);
+	background-color: color-mix(in srgb, var(--_sleetch-color-text-primary) 8%, var(--_sleetch-color-card));
 }
 
 .card:focus-visible {
-    outline: 2px solid var(--_sleetch-color-text-primary);
-    outline-offset: 2px;
+	outline: 2px solid var(--_sleetch-color-text-primary);
+	outline-offset: 2px;
 }
 
 .next {
-    align-items: flex-end;
-    text-align: right;
+	align-items: flex-end;
+	text-align: right;
 }
 
 .previous {
-    align-items: flex-start;
-    text-align: left;
+	align-items: flex-start;
+	text-align: left;
 }
 
 .meta {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    font-size: var(--_sleetch-font-size-tiny);
-    color: var(--_sleetch-color-muted-foreground);
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	font-size: var(--_sleetch-font-size-tiny);
+	color: var(--_sleetch-color-muted-foreground);
 }
 
 .chevron {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
 }
 
 .title {
-    font-size: var(--_sleetch-font-size-base);
-    font-weight: var(--_sleetch-font-weight-heading);
-    line-height: var(--_sleetch-line-height-heading);
-    color: var(--_sleetch-color-text);
+	font-size: var(--_sleetch-font-size-base);
+	font-weight: var(--_sleetch-font-weight-heading);
+	line-height: var(--_sleetch-line-height-heading);
+	color: var(--_sleetch-color-text);
 }
 
 .description {
-    font-size: var(--_sleetch-font-size-tiny);
-    line-height: var(--_sleetch-line-height);
-    color: var(--_sleetch-color-muted-foreground);
-    overflow: hidden;
+	font-size: var(--_sleetch-font-size-tiny);
+	line-height: var(--_sleetch-line-height);
+	color: var(--_sleetch-color-muted-foreground);
+	overflow: hidden;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .navigation {
-        padding: 1.5em 2em;
-    }
+	.navigation {
+		padding: 1.5em 2em;
+	}
 }
 
 @media (max-width: 768px) {
-    .card {
-        max-width: 100%;
-    }
+	.card {
+		max-width: 100%;
+	}
 
-    .navigation {
-        grid-template-columns: 1fr;
+	.navigation {
+		grid-template-columns: 1fr;
 
-        padding: 1em 1em;
-    }
+		padding: 1em 1em;
+	}
 
-    .slot-end {
-        justify-content: flex-start;
-    }
+	.slot-end {
+		justify-content: flex-start;
+	}
 
-    .next {
-        align-items: flex-start;
-        text-align: left;
-    }
+	.next {
+		align-items: flex-start;
+		text-align: left;
+	}
 }

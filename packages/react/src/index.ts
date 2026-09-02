@@ -10,9 +10,10 @@ export { PageHeader } from './components/documentation/page/header';
 export { PageLoader } from './components/documentation/page/loader';
 export { PageNavigation } from './components/documentation/page/navigation';
 
-
 export { DocumentationSidebar } from './components/documentation/sidebar';
 export { DocumentationSidebarContent } from './components/documentation/sidebar/content';
+export { DocumentationSidebarToggle } from './components/documentation/sidebar/toggle';
+
 export { DocumentationToc } from './components/documentation/toc';
 export { DocumentationTocContent } from './components/documentation/toc/content';
 

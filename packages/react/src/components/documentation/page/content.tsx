@@ -25,8 +25,7 @@ function getCompiledMDX(code: string) {
 
 	return promise;
 }
-export function PageContent({ page, components }: { page: page_module["default"]; components?: MDXComponents }) {
-
+export function PageContent({ page, components }: { page: page_module['default']; components?: MDXComponents }) {
 	if (page.parsed.type === 'html') {
 		return (
 			<div className="sleetch-markdown">

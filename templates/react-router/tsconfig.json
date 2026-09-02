@@ -1,10 +1,6 @@
 {
 	"compilerOptions": {
-		"lib": [
-			"DOM",
-			"DOM.Iterable",
-			"ES2022"
-		],
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
@@ -23,27 +19,14 @@
 		"noUncheckedIndexedAccess": false,
 		"experimentalDecorators": true,
 		"noImplicitOverride": true,
-		"types": [
-			"@types/bun"
-		],
+		"types": ["@types/bun"],
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false,
 		"paths": {
-			"@/*": [
-				"./src/*"
-			],
+			"@/*": ["./src/*"]
 		},
-		"rootDirs": [
-			".",
-			"./.react-router/types",
-			"./.sleetch/**/*"
-		]
+		"rootDirs": [".", "./.react-router/types", "./.sleetch/**/*"]
 	},
-	"include": [
-		"src/**/*",
-		"**/.server/**/*",
-		"**/.client/**/*",
-		".react-router/types/**/*"
-	]
+	"include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"]
 }

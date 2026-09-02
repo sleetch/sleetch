@@ -1,33 +1,33 @@
 {
-    "name": "@sleetch/client",
-    "version": "1.0.8",
-    "type": "module",
-    "files": [
-        "dist",
-        "src/styles"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "tsdown",
-        "dev": "tsdown --watch"
-    },
-    "dependencies": {
-        "@sleetch/core": "workspace:*",
-        "@sleetch/styles": "workspace:*"
-    },
-    "exports": {
-        ".": "./dist/index.js",
-        "./package.json": "./package.json",
-        "./markdown.css": {
-            "default": "./src/styles/markdown.css"
-        },
-        "./base.css": {
-            "default": "./src/styles/base.css"
-        },
-        "./manifest": "./.sleetch/manifest.js",
-        "./trees/*": "./.sleetch/trees/*.js",
-        "./pages/*": "./.sleetch/pages/*.js"
-    }
+	"name": "@sleetch/client",
+	"version": "1.0.8",
+	"type": "module",
+	"files": [
+		"dist",
+		"src/styles"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch"
+	},
+	"dependencies": {
+		"@sleetch/core": "workspace:*",
+		"@sleetch/styles": "workspace:*"
+	},
+	"exports": {
+		".": "./dist/index.js",
+		"./package.json": "./package.json",
+		"./markdown.css": {
+			"default": "./src/styles/markdown.css"
+		},
+		"./base.css": {
+			"default": "./src/styles/base.css"
+		},
+		"./manifest": "./.sleetch/manifest.js",
+		"./trees/*": "./.sleetch/trees/*.js",
+		"./pages/*": "./.sleetch/pages/*.js"
+	}
 }

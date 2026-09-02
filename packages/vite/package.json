@@ -1,24 +1,24 @@
 {
-    "name": "@sleetch/vite",
-    "version": "1.0.8",
-    "type": "module",
-    "files": [
-        "dist"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "tsdown",
-        "dev": "tsdown --watch"
-    },
-    "exports": {
-        ".": "./dist/index.js",
-        "./lib/plugin": "./dist/lib/plugin.js",
-        "./package.json": "./package.json"
-    },
-    "dependencies": {
-        "@sleetch/core": "workspace:*",
-        "vite": "^8.1.0"
-    }
+	"name": "@sleetch/vite",
+	"version": "1.0.8",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch"
+	},
+	"exports": {
+		".": "./dist/index.js",
+		"./lib/plugin": "./dist/lib/plugin.js",
+		"./package.json": "./package.json"
+	},
+	"dependencies": {
+		"@sleetch/core": "workspace:*",
+		"vite": "^8.1.0"
+	}
 }

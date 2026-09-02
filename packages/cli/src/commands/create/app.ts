@@ -69,14 +69,18 @@ export const create_app_command: command<typeof options> = {
 		const lines = [`${styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} is a powerful documentation framework.`];
 		lines.push('');
 		lines.push(
-			`The sleetch ${styleText('dim', framework)} documentation template has been downloaded. I hope it will be useful for ${styleText('dim', name)}. `
+			`The sleetch ${styleText('dim', framework)} documentation template has been downloaded. I hope it will be useful for ${styleText('dim', name)}. `,
 		);
 		lines.push('');
 		lines.push(`Check your project: cd ./${name} `);
 		lines.push(
-			`Install the dependencies: ${styleText('cyan', 'bun') + styleText('dim', '/') + styleText('white', 'npm') + styleText('dim', '/') + styleText('white', 'pnpm')} install`
+			`Install the dependencies: ${styleText('cyan', 'bun') + styleText('dim', '/') + styleText('white', 'npm') + styleText('dim', '/') + styleText('white', 'pnpm')} install`,
 		);
-		lines.push(`Note: we also have templates for: ${Object.keys(templates).filter((t) => t !== framework).join(', ')} `);
+		lines.push(
+			`Note: we also have templates for: ${Object.keys(templates)
+				.filter((t) => t !== framework)
+				.join(', ')} `,
+		);
 		lines.push('');
 		lines.push(`Learn more: ${styleText('gray', 'https://') + styleText('cyan', 'sleetch') + styleText('cyanBright', '.dev')} `);
 		lines.push(`            ${styleText('gray', 'https://github.com/tornado-softwares/') + styleText('cyan', 'sleetch')}`);

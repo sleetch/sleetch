@@ -5,9 +5,9 @@ import { defineConfig } from 'vite';
 import reactSVG from 'vite-react-svg';
 
 export default defineConfig({
-    plugins: [tailwindcss(), reactRouter(), sleetch(), reactSVG({})],
-    publicDir: 'src/assets/public',
-    resolve: {
-        tsconfigPaths: true,
-    },
+	plugins: [tailwindcss(), reactRouter(), sleetch(), reactSVG({})],
+	publicDir: 'src/assets/public',
+	resolve: {
+		tsconfigPaths: true,
+	},
 });

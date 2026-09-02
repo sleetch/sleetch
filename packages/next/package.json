@@ -1,31 +1,31 @@
 {
-    "name": "@sleetch/next",
-    "version": "1.0.8",
-    "type": "module",
-    "files": [
-        "dist"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {
-        "build": "tsdown",
-        "dev": "tsdown --watch"
-    },
-    "exports": {
-        ".": "./dist/index.js",
-        "./lib/plugin": "./dist/lib/plugin.js",
-        "./lib/wepack-plugin": "./dist/lib/wepack-plugin.js",
-        "./package.json": "./package.json"
-    },
-    "dependencies": {
-        "@sleetch/core": "workspace:*"
-    },
-    "peerDependencies": {
-        "next": "^16.0.0",
-        "@types/webpack": "^5.28.5"
-    },
-    "devDependencies": {
-        "next": "^16.2.12"
-    }
+	"name": "@sleetch/next",
+	"version": "1.0.8",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch"
+	},
+	"exports": {
+		".": "./dist/index.js",
+		"./lib/plugin": "./dist/lib/plugin.js",
+		"./lib/wepack-plugin": "./dist/lib/wepack-plugin.js",
+		"./package.json": "./package.json"
+	},
+	"dependencies": {
+		"@sleetch/core": "workspace:*"
+	},
+	"peerDependencies": {
+		"next": "^16.0.0",
+		"@types/webpack": "^5.28.5"
+	},
+	"devDependencies": {
+		"next": "^16.2.12"
+	}
 }

@@ -16,7 +16,7 @@ import {
 import { Suspense, useEffect } from 'react';
 import type { page_module } from '../../../../../packages/core/dist/compiler/types/modules';
 
-export default function ClientPage({ path, page }: { page: page_module["default"]; path: string }) {
+export default function ClientPage({ path, page }: { page: page_module['default']; path: string }) {
 	const { set_current_path } = useDocumentationContext();
 	useEffect(() => {
 		set_current_path(path);

@@ -1,15 +1,7 @@
 {
 	"root": true,
 	"files": {
-		"includes": [
-			"**",
-			"!**/node_modules",
-			"!**/dist",
-			"!**/build",
-			"!**/output",
-			"!**/.*",
-			"!**/.*"
-		]
+		"includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/output", "!**/.*", "!**/.*"]
 	},
 	"formatter": {
 		"enabled": true,

@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { type BaseHTMLAttributes, type CSSProperties, useEffect, useRef, useState } from 'react';
 
 export interface DocumentationTocProps extends BaseHTMLAttributes<HTMLBaseElement> {
-	page: page_module["default"];
+	page: page_module['default'];
 }
 
 interface TocLinkStyle extends CSSProperties {
@@ -50,7 +50,7 @@ export function DocumentationToc({ className, children, page, ...props }: Docume
 			{
 				rootMargin: '0px 0px -70% 0px',
 				threshold: 0,
-			}
+			},
 		);
 
 		for (const el of elements) observer.observe(el);

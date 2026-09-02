@@ -1,7 +1,6 @@
 import type { source } from '@/configuration/types/sources';
 import type { content } from '../types/content';
 import type { tree_object } from '../types/routing';
-import { resolve_language } from '../utils/resolve-language';
 import type { sleetch_events_emitter } from './emitter';
 import type { sleetch_router } from './router';
 
@@ -13,14 +12,14 @@ export abstract class sleetch_source<tree_object_type extends tree_object, conte
 
 	public id: string;
 
-	constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: sleetch_events_emitter }) {
+	constructor(configuration: { type: source_type['type']; source: source_type; events_emitter: sleetch_events_emitter, language: string }) {
 		if (this.constructor === sleetch_source) {
 			throw new Error("Class is of abstract type and can't be instantiated");
 		}
 		this.type = configuration.type;
 		this.source = configuration.source;
 		this.events_emitter = configuration.events_emitter;
-		this.language = resolve_language(configuration.source.language);
+		this.language = configuration.language
 
 		this.id = `${this.type}:${crypto.randomUUID()}`;
 	}

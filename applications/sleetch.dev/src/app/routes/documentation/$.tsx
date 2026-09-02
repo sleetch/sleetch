@@ -11,51 +11,45 @@ import {
 	PageNavigation,
 } from '@sleetch/react';
 import { get_page, get_tree } from '@sleetch/server';
-import { Suspense } from 'react';
 import { data } from 'react-router';
 import type { Route } from './+types/$';
 
 export function meta({ loaderData: data }: Route.MetaArgs) {
 	if (data) {
-		return [{ title: data.page.seo.title }, { name: 'description', content: data.page.seo.description }];
+		return [{ title: data.page.frontmatter.title }, { name: 'description', content: data.page.frontmatter.description }];
 	}
 	return [];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-	const page = await get_page(`/${params['*']}`);
-	if (!page) throw data(null, { status: 404 });
+	const page_data = await get_page(`/${params['*']}`);
+	if (!page_data) throw data(null, { status: 404 });
 	const tree = await get_tree();
+	const { default: page } = await manifest[page_data.language].pages[page_data.path]();
 	return { page, tree };
 }
 
 export default function Page({
 	loaderData: {
-		page: { language, path },
-		tree: { tree },
+		page,
 	},
 }: Route.ComponentProps) {
-	const page = manifest[language].markdown_modules[path]();
 	return (
 		<>
 			<DocumentationSidebarContent>
-				<Suspense fallback={<p>Loading.</p>}>
-					<PageHeader page={page} />
-					<PageContent
-						page={page}
-						components={{
-							Button,
-							FileSystem,
-							File,
-							Folder,
-						}}
-					/>
-					<PageNavigation hrefBuilder={(href) => `/documentation${href}`} tree={tree} currentPath={path} />
-				</Suspense>
+				<PageHeader page={page} />
+				<PageContent
+					page={page}
+					components={{
+						Button,
+						FileSystem,
+						File,
+						Folder,
+					}}
+				/>
+				<PageNavigation />
 			</DocumentationSidebarContent>
-			<Suspense fallback={<p>Loading.</p>}>
-				<DocumentationToc page={page} />
-			</Suspense>
+			<DocumentationToc page={page} />
 		</>
 	);
 }

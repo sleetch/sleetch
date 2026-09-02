@@ -37,6 +37,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 			type: 'file-system',
 			source: configuration.source,
 			events_emitter: configuration.events_emitter,
+			language: resolve_language(configuration.source.language),
 		});
 	}
 
@@ -61,7 +62,6 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 		},
 	};
 
-
 	public readonly builder = {
 		read_object(object: file_system_tree_object) {
 			if (object.type === 'category') {
@@ -72,8 +72,8 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 				else throw new Error('Un-indexed category cannot have a build path');
 			} else return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
 		},
-		get_path(language: string, object: file_system_tree_object, extension = ".js") {
-			return path.join(PAGES_CACHE_FOLDER, language, (object.path === "/" ? "index" : object.path) + extension)
+		get_path(language: string, object: file_system_tree_object, extension = '.js') {
+			return path.join(PAGES_CACHE_FOLDER, language, (object.path === '/' ? 'index' : object.path) + extension);
 		},
 		build_object: async (language: string, object: file_system_tree_object): Promise<void> => {
 			if (object.type === 'category' && !object.page) throw Error('Cannot build an un-indexed category');
@@ -87,14 +87,13 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 	public readonly router = {
 		load: async (router: sleetch_router) => {
 			const files = list_all_files(this.source.path);
-			const language = resolve_language(this.source.language);
 			for (const file_path of files) {
 				const object = this.router.get_object({
 					type: 'file-system',
 					file_path,
 					source_id: this.id,
 				});
-				router.join_object(language, object);
+				router.join_object(this.language, object);
 			}
 		},
 		get_object: (content: file_system_content) => {
@@ -199,7 +198,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 						file_path: file,
 						source_id: this.id,
 					},
-					this
+					this,
 				);
 				continue;
 			}
@@ -212,7 +211,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 						file_path: file,
 						source_id: this.id,
 					},
-					this
+					this,
 				);
 			}
 		}
@@ -226,7 +225,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 						file_path: file,
 						source_id: this.id,
 					},
-					this
+					this,
 				);
 			}
 		}

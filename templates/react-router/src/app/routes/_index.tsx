@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 export default function Home() {
 	return (
-		<main className="max-w-337.5 w-full mx-auto  sleetch-markdown">
+		<main className="max-w-337.5 w-full mx-auto sleetch-markdown p-8">
 			<h1>Welcome to my Super Documentation !</h1>
 			<p>This is a place where you can learn a lot about this framework !</p>
 
@@ -24,7 +24,7 @@ export default function Home() {
 				</Folder>
 			</FileSystem>
 
-			<Link to={'/documentation/'}>
+			<Link to={'/en/documentation/'}>
 				<Button>Let's get started</Button>
 			</Link>
 

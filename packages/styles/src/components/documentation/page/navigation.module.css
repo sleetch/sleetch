@@ -3,7 +3,8 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 1em;
 	padding: var(--_sleetch-padding-root);
-	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
 	font-family: var(--_sleetch-font-base);
 }
 

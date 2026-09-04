@@ -31,17 +31,15 @@
 	--_sleetch-syntax-emphasis: var(--sleetch-syntax-emphasis, #eaeaea);
 	--_sleetch-syntax-strong: var(--sleetch-syntax-strong, #eaeaea);
 
-	--_sleetch-font-base: var(
-		--sleetch-font-base,
-		system-ui,
-		-apple-system,
-		BlinkMacSystemFont,
-		"Segoe UI",
-		Roboto,
-		"Helvetica Neue",
-		Arial,
-		sans-serif
-	);
+	--_sleetch-font-base: var(--sleetch-font-base,
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			"Helvetica Neue",
+			Arial,
+			sans-serif);
 	--_sleetch-font-mono: var(--sleetch-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
 
 	--_sleetch-font-weight-heading: var(--sleetch-font-weight-heading, 600);
@@ -57,7 +55,8 @@
 	--_sleetch-line-height-heading: var(--sleetch-line-height-heading, 1.25);
 
 	--_sleetch-header-height: var(--sleetch-header-height, 3.5em);
-	--_sleetch-sidebar-width: var(--sleetch-sidebar-width, clamp(300px, 25vw, 350px)); /*To check*/
+	--_sleetch-sidebar-width: var(--sleetch-sidebar-width, clamp(300px, 25vw, 350px));
+	/*To check*/
 	--_sleetch-toc-width: var(--sleetch-toc-width, 280px);
 
 	--_sleetch-margin-heading: var(--sleetch-margin-heading, 1.2em 0 0.6em);
@@ -71,7 +70,7 @@
 	--_sleetch-padding-pre: var(--sleetch-padding-pre, 1em);
 	--_sleetch-padding-code: var(--sleetch-padding-code, 0.2em 0.4em);
 	--_sleetch-padding-blockquote: var(--sleetch-padding-blockquote, 0.5em 1em);
-	--_sleetch-padding-root: var(--sleetch-padding-root, 1.5em 4em);
+	--_sleetch-padding-root: var(--sleetch-padding-root, 2em 4em);
 
 	--_sleetch-mobile-breakpoint: var(--sleetch-mobile-breakpoint, 768px);
 	--_sleetch-tablet-breakpoint: var(--sleetch-tablet-breakpoint, 1024px);
@@ -89,10 +88,8 @@
 
 	--_sleetch-twoslash-border-color: var(--sleetch-twoslash-border-color, var(--_sleetch-color-muted));
 	--_sleetch-twoslash-underline-color: var(--sleetch-twoslash-underline-color, currentColor);
-	--_sleetch-twoslash-highlighted-border: var(
-		--sleetch-twoslash-highlighted-border,
-		color-mix(in srgb, var(--_sleetch-color-text-primary) 30%, transparent)
-	);
+	--_sleetch-twoslash-highlighted-border: var(--sleetch-twoslash-highlighted-border,
+			color-mix(in srgb, var(--_sleetch-color-text-primary) 30%, transparent));
 	--_sleetch-twoslash-highlighted-bg: var(--sleetch-twoslash-highlighted-bg, color-mix(in srgb, var(--_sleetch-color-text-primary) 15%, transparent));
 	--_sleetch-twoslash-popup-bg: var(--sleetch-twoslash-popup-bg, var(--_sleetch-color-card));
 	--_sleetch-twoslash-popup-color: var(--sleetch-twoslash-popup-color, var(--_sleetch-color-text));
@@ -113,8 +110,6 @@
 	--_sleetch-twoslash-tag-warn-color: var(--sleetch-twoslash-tag-warn-color, var(--_sleetch-twoslash-warn-color));
 	--_sleetch-twoslash-tag-warn-bg: var(--sleetch-twoslash-tag-warn-bg, var(--_sleetch-twoslash-warn-bg));
 	--_sleetch-twoslash-tag-annotate-color: var(--sleetch-twoslash-tag-annotate-color, var(--_sleetch-color-text-primary));
-	--_sleetch-twoslash-tag-annotate-bg: var(
-		--sleetch-twoslash-tag-annotate-bg,
-		color-mix(in srgb, var(--_sleetch-color-text-primary) 15%, transparent)
-	);
+	--_sleetch-twoslash-tag-annotate-bg: var(--sleetch-twoslash-tag-annotate-bg,
+			color-mix(in srgb, var(--_sleetch-color-text-primary) 15%, transparent));
 }

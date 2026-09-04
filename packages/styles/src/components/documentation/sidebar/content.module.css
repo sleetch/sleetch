@@ -2,7 +2,7 @@
 	color: var(--_sleetch-color-text);
 	width: 100%;
 	flex: 1;
-	padding: 0 2em;
+	padding: var(--_sleetch-padding-root);
 	max-width: 1200px;
 	margin: 0 auto;
 }

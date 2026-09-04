@@ -20,8 +20,8 @@ export function meta({ loaderData: data }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-	const page_data = await get_page(`/${params['*']}`, params.locale);
-	console.log(`/${params['*']}`, page_data);
+	const page_data = await get_page(`/${params['*'] ?? ""}`, params.locale);
+	console.log(`/${params['*'] ?? ""}`, page_data);
 	if (!page_data) throw data(null, { status: 404 });
 	const { default: page } = await manifest[page_data.language]['pages'][page_data.path]();
 	return { page_data, page };

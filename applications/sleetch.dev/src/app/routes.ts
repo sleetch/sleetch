@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { better_routing } from 'better-fs-routes';
 
-export default better_routing({
+const routes = better_routing({
 	routes: {
 		directory: path.join(process.cwd(), '/src/app/routes'),
 		extensions: ['.js', '.jsx', '.ts', '.tsx'], // '.md', '.mdx'
@@ -22,3 +22,7 @@ export default better_routing({
 		},
 	},
 });
+
+
+console.log(JSON.stringify(routes, null, 2))
+export default routes

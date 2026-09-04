@@ -4,7 +4,9 @@
 	position: sticky;
 	top: var(--_sleetch-header-height);
 	color: var(--_sleetch-color-text);
-	padding: 4em 2em;
+	padding: var(--_sleetch-padding-root);
+	padding-left: 1em;
+	padding-right: 1em;
 	border-left: 1px dashed var(--_sleetch-color-border);
 	display: flex;
 	flex-direction: column;
@@ -20,7 +22,7 @@
 @media (min-width: 1025px) and (max-width: 1280px) {
 	.default {
 		min-width: 220px;
-		padding: 3em 1.5em;
+		padding: 1em 1.5em;
 	}
 }
 
@@ -59,7 +61,8 @@
 }
 
 .list {
-	position: relative; /* nécessaire pour que le z-index prenne le dessus sur .line */
+	position: relative;
+	/* nécessaire pour que le z-index prenne le dessus sur .line */
 	z-index: 1;
 	list-style: none;
 	margin: 0;
@@ -70,7 +73,8 @@
 }
 
 .item {
-	min-width: 0; /* requis pour que l'ellipsis fonctionne dans un flex/grid parent */
+	min-width: 0;
+	/* requis pour que l'ellipsis fonctionne dans un flex/grid parent */
 }
 
 .link {
@@ -78,7 +82,8 @@
 
 	display: block;
 	width: 100%;
-	margin-left: -1px; /* centre la bordure de 3px sur la ligne de 1px */
+	margin-left: -1px;
+	/* centre la bordure de 3px sur la ligne de 1px */
 	padding-block: 0.4em;
 	padding-left: calc(1em + (var(--depth) - 1) * 0.85em);
 	padding-right: 0.5em;

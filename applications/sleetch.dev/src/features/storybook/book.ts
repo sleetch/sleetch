@@ -1,8 +1,8 @@
-import { defineBook } from "@sleetch/react"
+import { defineBook } from '@sleetch/react';
 
 export const { Component: Book } = defineBook({
-	button: () => import("./stories/button"),
-	file: () => import("./stories/file"),
+	button: () => import('./stories/button'),
+	file: () => import('./stories/file'),
 });
 
-export default Book
+export default Book;

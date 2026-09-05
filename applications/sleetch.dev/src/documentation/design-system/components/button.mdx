@@ -1,9 +1,97 @@
 ---
 title: Button
+description: A flexible button component with multiple visual variants for common actions.
 engine: mdx-js
 ---
 
- <Book story="button" />
+The `Button` component is used to trigger actions and provides several visual variants for different levels of emphasis.
 
+The default button is suitable for standard actions where no particular emphasis is required.
 
-This is our super Story Component !
+<Book story="button" variants={['default']} />
+
+For the primary action on a page or within a section, use the `primary` variant.
+
+<Book story="button" variants={['primary']} />
+
+Secondary actions can use the `secondary` variant. This provides less visual emphasis than a primary action while remaining clearly interactive.
+
+<Book story="button" variants={['secondary']} />
+
+For actions that may have destructive consequences, such as deleting data, use the `destructive` variant.
+
+<Book story="button" variants={['destructive']} />
+
+The `outline` variant is useful for secondary actions that should remain visually distinct from the surrounding content.
+
+<Book story="button" variants={['outline']} />
+
+For low-emphasis actions, the `ghost` variant removes most of the button's visual weight while preserving its interactive behavior.
+
+<Book story="button" variants={['ghost']} />
+
+Buttons support the native `disabled` attribute. A disabled button cannot be interacted with and is visually presented as unavailable.
+
+<Book story="button" variants={['disabled']} />
+
+A disabled button can also communicate an operation that is temporarily unavailable, such as an action currently being processed.
+
+<Book story="button" variants={['loading']} />
+
+Buttons can be combined to create groups of related actions. Usually, the less important action is placed first and the primary action last.
+
+<Book story="button" variants={['grouped']} />
+
+For confirmation flows, a ghost or outline button can be paired with a destructive action.
+
+<Book story="button" variants={['actions']} />
+
+## Variants
+
+The `variant` prop controls the visual appearance of the button.
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="destructive">Delete</Button>
+```
+
+The available variants are:
+
+* `default` — standard button appearance.
+* `primary` — emphasizes the main action.
+* `secondary` — provides a less prominent alternative action.
+* `outline` — creates a visually distinct secondary action.
+* `ghost` — provides a low-emphasis action.
+* `destructive` — indicates an action that may remove or permanently modify data.
+
+## Native button properties
+
+`Button` extends the native `HTMLButtonElement` attributes, so standard button properties can be passed directly to the component.
+
+For example:
+
+```tsx
+<Button type="submit">
+	Submit
+</Button>
+
+<Button disabled>
+	Unavailable
+</Button>
+```
+
+This means attributes such as `type`, `disabled`, `name`, `value`, and event handlers can be used without requiring additional component-specific APIs.
+
+## Custom classes
+
+The component also accepts `className`, allowing additional styles to be applied when necessary.
+
+```tsx
+<Button variant="primary" className="my-custom-class">
+	Custom button
+</Button>
+```

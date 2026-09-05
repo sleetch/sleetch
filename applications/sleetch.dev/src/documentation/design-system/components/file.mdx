@@ -1,9 +1,31 @@
 ---
 title: File System
-description: This is a super File System component
+description: A simple, composable file system component for displaying folders and files.
 engine: mdx-js
 ---
 
- <Book story="file" />
+The `FileSystem` component provides a simple way to represent files and folders in a familiar tree-like layout.
 
-This is our super Story Component !
+Use `Folder` to group files and other folders, and `File` to represent individual files.
+
+<Book story="file" variants={['default']} />
+
+The component supports nested folders, making it suitable for displaying project structures and other hierarchical file systems.
+
+<Book story="file" variants={['nested']} />
+
+Files can also display additional information using the `comment` prop. This can be used for file sizes, descriptions, timestamps, or other metadata.
+
+<Book story="file" variants={['comments']} />
+
+A file can be marked as selected using the `selected` prop. This is useful when representing the currently active or focused file.
+
+<Book story="file" variants={['selected']} />
+
+Folders can be hidden using the `hidden` prop. This is useful for representing hidden directories such as `.git`.
+
+<Book story="file" variants={['hidden']} />
+
+For a more complete example, the file system can combine nested folders, selected files, and file metadata into a realistic project structure.
+
+<Book story="file" variants={['project']} />

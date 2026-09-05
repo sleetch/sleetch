@@ -24,8 +24,6 @@ export function meta({ loaderData: data }: Route.MetaArgs) {
 
 export async function loader({ params }: Route.LoaderArgs) {
 	const page_data = await get_page(`/${params['*'] ?? ''}`);
-	console.log(page_data, `/${params['*']}`);
-
 	if (!page_data) throw data(null, { status: 404 });
 	const tree = await get_tree();
 	const { default: page } = await manifest[page_data.language].pages[page_data.path]();

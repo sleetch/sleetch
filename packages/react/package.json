@@ -42,6 +42,7 @@
 		"vite-plugin-lib-inject-css": "^2.2.2"
 	},
 	"dependencies": {
+		"@sleetch/client": "workspace:*",
 		"@mdx-js/mdx": "^3.1.1",
 		"clsx": "^2.1.1",
 		"glob": "^13.0.6",

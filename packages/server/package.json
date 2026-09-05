@@ -13,7 +13,8 @@
 		"dev": "tsdown --watch"
 	},
 	"dependencies": {
-		"@sleetch/core": "workspace:*"
+		"@sleetch/core": "workspace:*",
+		"@sleetch/client": "workspace:*"
 	},
 	"peerDependencies": {
 		"@sleetch/client": "workspace:*"

@@ -14,7 +14,7 @@ export default defineConfig({
 			'./pages/*': './.sleetch/pages/*.js',
 		},
 	},
-	entry: ['src/**/*.ts'],
+	entry: ['src/**/index.ts'],
 	fixedExtension: false,
 	format: 'esm',
 	clean: true,

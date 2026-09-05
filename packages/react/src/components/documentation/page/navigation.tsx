@@ -3,17 +3,16 @@
   Needs more testing
 */
 
+import { clean_path } from '@sleetch/client';
 import type { tree_object } from '@sleetch/core/compiler';
 import styles from '@sleetch/styles/components/documentation/page/navigation.module.css';
 import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
 import { type BaseHTMLAttributes, useMemo } from 'react';
 
-type category_node = Extract<tree_object, { type: 'category' }>;
 type page_node = Extract<tree_object, { type: 'page' }>;
-type data_node = Extract<tree_object, { type: 'data' }>;
 
-export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> {}
+export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> { }
 
 /*
   Meme logique de tri/priorite que la sidebar (getCategoryData, getCategoryIndex,
@@ -137,7 +136,7 @@ export function PageNavigation({ className, ...props }: DocumentationNavigationP
 	const { tree, current_path } = useDocumentationContext();
 	const { previous, next } = useMemo(() => {
 		const pages = flattenPages(tree);
-		const currentIndex = pages.findIndex((page) => page.path === current_path);
+		const currentIndex = pages.findIndex((page) => page.path === clean_path(current_path));
 
 		if (currentIndex === -1) {
 			return { previous: undefined, next: undefined };

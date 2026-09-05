@@ -20,7 +20,6 @@
 		opacity var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
 }
 
-/* Default — neutral filled, matches card surface */
 .default {
 	color: var(--_sleetch-color-text);
 	background-color: var(--_sleetch-color-background);
@@ -62,7 +61,6 @@
 	background-color: var(--_sleetch-color-muted);
 }
 
-/* Ghost — no border, no fill until interaction */
 .ghost {
 	color: var(--_sleetch-color-text);
 	background-color: transparent;
@@ -73,7 +71,6 @@
 	background-color: var(--_sleetch-color-muted);
 }
 
-/* Destructive — dangerous / irreversible actions */
 .destructive {
 	color: var(--_sleetch-color-background);
 	background-color: var(--_sleetch-syntax-deletion);
@@ -84,7 +81,6 @@
 	filter: brightness(1.1);
 }
 
-/* Shared interaction states */
 .default:active,
 .primary:active,
 .secondary:active,

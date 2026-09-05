@@ -1,0 +1,67 @@
+.book {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 1.5em;
+	padding: 1em 0em;
+	font-family: var(--_sleetch-font-base);
+	color: var(--_sleetch-color-text);
+	background-color: var(--_sleetch-color-background);
+}
+
+.intro {
+	width: 100%;
+	margin: var(--_sleetch-margin-paragraph);
+	font-size: var(--_sleetch-font-size-small);
+	color: var(--_sleetch-color-muted-foreground);
+}
+
+.card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 220px;
+	min-height: 120px;
+	width: 100%;
+	height: 17em;
+	padding: 2em 1em 2.4em;
+	border: 1px solid var(--_sleetch-color-border);
+	border-radius: var(--_sleetch-radius);
+	background-color: var(--_sleetch-color-background);
+	transition:
+		border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
+		background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+}
+
+
+.cardDotted {
+	background-color: var(--_sleetch-color-background);
+	background-image: radial-gradient(var(--_sleetch-color-border) 1px, transparent 1px);
+	background-size: 14px 14px;
+	background-position: -1px -1px;
+}
+
+.variantLabel {
+	position: absolute;
+	left: 0.75em;
+	bottom: 0.6em;
+	font-family: var(--_sleetch-font-mono);
+	font-size: var(--_sleetch-font-size-tiny);
+	line-height: 1;
+	color: var(--_sleetch-color-muted-foreground);
+	background-color: var(--_sleetch-color-muted);
+	padding: var(--_sleetch-padding-code);
+	border-radius: calc(var(--_sleetch-radius) / 2);
+	pointer-events: none;
+}
+
+@media (max-width: 768px) {
+	.book {
+		flex-direction: column;
+	}
+
+	.card {
+		width: 100%;
+	}
+}

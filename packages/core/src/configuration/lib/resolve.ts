@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import z from 'zod';
-import { get_root_dir } from '@/shared/utils/root';
 import type { parsed_sleetch_configuration } from '../types/configuration';
 import { configuration_schema } from './schemas/configuration';
 
@@ -9,7 +8,7 @@ let cache: parsed_sleetch_configuration | undefined;
 let cache_mtime: number | undefined;
 
 export const get_configuration = () => {
-	const root = get_root_dir();
+	const root = ROOT_FOLDER
 	const file_path = path.join(root, 'sleetch.config.ts');
 	const mtime = fs.existsSync(file_path) ? fs.statSync(file_path).mtimeMs : undefined;
 	if (!cache || cache_mtime !== mtime) {
@@ -21,11 +20,12 @@ export const get_configuration = () => {
 };
 
 import { createRequire } from 'node:module';
+import { ROOT_FOLDER } from '@/compiler/utils/constants';
 
 const require = createRequire(import.meta.url);
 
 const load_configuration = (): parsed_sleetch_configuration => {
-	const root = get_root_dir();
+	const root = ROOT_FOLDER
 	const file_path = path.join(root, 'sleetch.config.ts');
 	if (fs.existsSync(file_path)) {
 		const mod = require(file_path); // await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}

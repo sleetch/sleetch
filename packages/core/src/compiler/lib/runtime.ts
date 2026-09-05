@@ -48,6 +48,7 @@ export class sleetch_runtime {
 			if (path) {
 				this._router.remove_object_from_path(source.language, path);
 			} else {
+				console.error(content, source)
 				throw new Error('WHATTTTTTTTTT');
 			}
 			this.build_tree(source.language);

@@ -1,5 +1,7 @@
+import { pathToFileURL } from 'node:url';
 import { compile } from '@mdx-js/mdx';
 import type { PluggableList } from 'unified';
+import { ROOT_FOLDER } from '@/compiler/utils/constants';
 import { get_configuration } from '@/configuration';
 import { remark_anchors_plugin } from '@/markdown/lib/plugins/remark/anchors';
 import { remark_gfm_plugin } from '@/markdown/lib/plugins/remark/gfm';
@@ -25,6 +27,7 @@ export const mdx_js: parser = async (content: string) => {
 	}
 	const compiled = await compile(content, {
 		outputFormat: 'function-body',
+		//	baseUrl: pathToFileURL(`${ROOT_FOLDER}/`).href,
 		remarkPlugins,
 		rehypePlugins,
 	});

@@ -19,3 +19,5 @@ export { DocumentationTocContent } from './components/documentation/toc/content'
 
 export { File, FileSystem, Folder } from './components/file-system';
 export { DocumentationProvider, useDocumentationContext } from './contexts/documentation';
+
+export { defineBook, defineStory } from './story';

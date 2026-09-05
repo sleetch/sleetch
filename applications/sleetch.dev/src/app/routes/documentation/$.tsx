@@ -12,6 +12,7 @@ import {
 } from '@sleetch/react';
 import { get_page, get_tree } from '@sleetch/server';
 import { data } from 'react-router';
+import { Book } from '@/features/storybook/book';
 import type { Route } from './+types/$';
 
 export function meta({ loaderData: data }: Route.MetaArgs) {
@@ -22,8 +23,8 @@ export function meta({ loaderData: data }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-	const page_data = await get_page(`/${params['*'] ?? ""}`);
-	console.log(page_data, `/${params['*']}`)
+	const page_data = await get_page(`/${params['*'] ?? ''}`);
+	console.log(page_data, `/${params['*']}`);
 
 	if (!page_data) throw data(null, { status: 404 });
 	const tree = await get_tree();
@@ -37,12 +38,14 @@ export default function Page({ loaderData: { page } }: Route.ComponentProps) {
 			<DocumentationSidebarContent>
 				<PageHeader page={page} />
 				<PageContent
+					baseUrl={'http://localhost:5173/'}
 					page={page}
 					components={{
 						Button,
 						FileSystem,
 						File,
 						Folder,
+						Book,
 					}}
 				/>
 				<PageNavigation />

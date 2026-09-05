@@ -243,10 +243,6 @@ export class sleetch_router {
 			return `file-system:${content.file_path}`;
 		}
 
-		if (content.type === 'git') {
-			return `git:${content.file_url}`;
-		}
-
 		return 'unknown';
 	}
 

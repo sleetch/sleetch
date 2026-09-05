@@ -23,6 +23,4 @@ const routes = better_routing({
 	},
 });
 
-
-console.log(JSON.stringify(routes, null, 2))
-export default routes
+export default routes;

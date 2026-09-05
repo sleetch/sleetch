@@ -8,24 +8,24 @@ import * as runtime from 'react/jsx-runtime';
 
 const mdxCache = new Map<string, ReturnType<typeof compileMDX>>();
 
-function compileMDX(code: string) {
+function compileMDX(code: string, baseUrl: string) {
 	return run(code, {
 		...runtime,
-		baseUrl: import.meta.url,
+		baseUrl
 	});
 }
 
-function getCompiledMDX(code: string) {
+function getCompiledMDX(code: string, baseUrl: string) {
 	let promise = mdxCache.get(code);
 
 	if (!promise) {
-		promise = compileMDX(code);
+		promise = compileMDX(code, baseUrl);
 		mdxCache.set(code, promise);
 	}
 
 	return promise;
 }
-export function PageContent({ page, components }: { page: page_module['default']; components?: MDXComponents }) {
+export function PageContent({ page, components, baseUrl }: { page: page_module['default']; components?: MDXComponents, baseUrl: string }) {
 	if (page.parsed.type === 'html') {
 		return (
 			<div className="sleetch-markdown">
@@ -34,11 +34,11 @@ export function PageContent({ page, components }: { page: page_module['default']
 		);
 	}
 
-	const { default: Content } = use(getCompiledMDX(page.parsed.code));
+	const { default: Content } = use(getCompiledMDX(page.parsed.code, baseUrl));
 
 	return (
 		<div className="sleetch-markdown">
-			<Content components={components} />
+			<Content baseUrl={baseUrl} components={components} />
 		</div>
 	);
 }

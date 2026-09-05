@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useDocumentationContext } from 'packages/react/src/contexts/documentation';
 import type { BaseHTMLAttributes } from 'react';
 
-export interface DocumentationHeaderProps extends BaseHTMLAttributes<HTMLButtonElement> { }
+export interface DocumentationHeaderProps extends BaseHTMLAttributes<HTMLButtonElement> {}
 
 export function DocumentationSidebarToggle({ className, ...props }: DocumentationHeaderProps) {
 	const { toggle_sidebar } = useDocumentationContext();

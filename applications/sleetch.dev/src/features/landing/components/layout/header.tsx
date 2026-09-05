@@ -8,8 +8,7 @@ export function LandingHeader() {
 	return (
 		<DocumentationHeader>
 			<div className="flex gap-3 items-center justify-between max-w-337.5 w-full mx-auto fl-px-5/10">
-				<Link to={'/'} rel={"_blank"}>
-
+				<Link to={'/'} rel={'_blank'}>
 					<div className="flex items-center gap-2">
 						<Logo className="size-8  " />
 						<h1 className="font-brand font-bold  text-2xl">Sleetch</h1>

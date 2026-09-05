@@ -69,14 +69,14 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 					return fs.readFileSync(object.page.content.file_path, {
 						encoding: 'utf-8',
 					});
-				else throw new Error('Un-indexed category cannot have a build path');
+				else throw new Error('Un-indexed category cannot have a build page');
 			} else return fs.readFileSync(object.content.file_path, { encoding: 'utf-8' });
 		},
 		get_path(language: string, object: file_system_tree_object, extension = '.js') {
 			return path.join(PAGES_CACHE_FOLDER, language, (object.path === '/' ? 'index' : object.path) + extension);
 		},
 		build_object: async (language: string, object: file_system_tree_object): Promise<void> => {
-			if (object.type === 'category' && !object.page) throw Error('Cannot build an un-indexed category');
+			if (object.type === 'category' && !object.page) return // throw Error('Cannot build an un-indexed category');
 			const files = await generate_page_module(this.builder.read_object(object));
 			for (const extension of Object.keys(files) as (keyof typeof files)[]) {
 				write_file(this.builder.get_path(language, object, extension), files[extension]);
@@ -110,10 +110,10 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 				relative_folder === this.source.path
 					? undefined
 					: ({
-							type: 'category',
-							path: category_path,
-							children: [],
-						} satisfies category<file_system_tree_object, file_system_content>);
+						type: 'category',
+						path: category_path,
+						children: [],
+					} satisfies category<file_system_tree_object, file_system_content>);
 
 			// biome-ignore-start lint/suspicious/noFallthroughSwitchClause: Expected
 			switch (page_name) {

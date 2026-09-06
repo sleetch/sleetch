@@ -6,7 +6,7 @@ import { lazy, Suspense } from 'react';
 
 export function defineStory<
 	T extends ComponentType<any>,
-	V extends Record<string, {
+	const V extends Record<string, {
 		props: ComponentProps<T>;
 		dotted?: boolean;
 		render?: (props: ComponentProps<T>) => ReactElement;
@@ -14,49 +14,66 @@ export function defineStory<
 >(data: {
 	component: T;
 	variants: V;
-}) {
+}): {
+	variants: (keyof V)[];
+	render: (variant: keyof V) => ReactElement;
+	Component: (props?: {
+		variants?: (keyof V)[];
+	}) => ReactElement;
+} {
 	const variants = Object.keys(data.variants) as (keyof V)[];
-	const render = (variant: keyof V) => data.variants[variant].render ? data.variants[variant].render(data.variants[variant].props) : <data.component {...data.variants[variant].props} />
+
+	const render = (variant: keyof V) =>
+		data.variants[variant].render
+			? data.variants[variant].render(data.variants[variant].props)
+			: <data.component {...data.variants[variant].props} />;
+
 	return {
 		variants,
 		render,
-		Component: ({ variants: selected }: {
-			variants?: (keyof V)[];
-		} = {}) => {
-			return <div className={`no-sleetch-markdown ${styles.book}`}>
-				{(selected ?? variants).map((variant) => {
-					return (
+		Component: ({ variants: selected } = {}) => {
+			return (
+				<div className={`no-sleetch-markdown ${styles.book}`}>
+					{(selected ?? variants).map((variant) => (
 						<div
 							key={variant.toString()}
-							className={`${styles.card} ${data.variants[variant].dotted ? styles.cardDotted : ""}`}
+							className={`${styles.card} ${data.variants[variant].dotted
+								? styles.cardDotted
+								: ""
+								}`}
 						>
 							{render(variant)}
-							<span className={styles.variantLabel}>{variant.toString()}</span>
+							<span className={styles.variantLabel}>
+								{variant.toString()}
+							</span>
 						</div>
-					)
-				})}
-			</div>
+					))}
+				</div>
+			);
 		},
 	};
 }
 
-
 type StoryLoader = () => Promise<{
-	default: ReturnType<typeof defineStory>;
+	default: {
+		variants: readonly PropertyKey[];
+		Component: ComponentType<any>;
+	};
 }>;
 
-type StoryVariant<
-	T extends Record<string, StoryLoader>,
-	K extends keyof T,
-> =
-	Awaited<ReturnType<T[K]>>['default']['variants'][number];
+type StoryVariants<L> =
+	L extends () => Promise<{ default: infer S }>
+	? S extends { variants: readonly (infer V)[] }
+	? V
+	: never
+	: never;
 
 type BookProps<
 	T extends Record<string, StoryLoader>,
 	K extends keyof T,
 > = {
 	story: K;
-	variants?: StoryVariant<T, K>[];
+	variants?: StoryVariants<T[K]>[];
 };
 
 export function defineBook<T extends Record<string, StoryLoader>>(stories: T) {
@@ -79,7 +96,5 @@ export function defineBook<T extends Record<string, StoryLoader>>(stories: T) {
 		);
 	}
 
-	return {
-		Component,
-	};
+	return { Component };
 }

@@ -11,7 +11,7 @@ const mdxCache = new Map<string, ReturnType<typeof compileMDX>>();
 function compileMDX(code: string, baseUrl: string) {
 	return run(code, {
 		...runtime,
-		baseUrl
+		baseUrl,
 	});
 }
 
@@ -25,7 +25,7 @@ function getCompiledMDX(code: string, baseUrl: string) {
 
 	return promise;
 }
-export function PageContent({ page, components, baseUrl }: { page: page_module['default']; components?: MDXComponents, baseUrl: string }) {
+export function PageContent({ page, components, baseUrl }: { page: page_module['default']; components?: MDXComponents; baseUrl: string }) {
 	if (page.parsed.type === 'html') {
 		return (
 			<div className="sleetch-markdown">

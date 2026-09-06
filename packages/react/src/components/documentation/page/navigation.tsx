@@ -12,7 +12,7 @@ import { type BaseHTMLAttributes, useMemo } from 'react';
 
 type page_node = Extract<tree_object, { type: 'page' }>;
 
-export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> { }
+export interface DocumentationNavigationProps extends BaseHTMLAttributes<HTMLDivElement> {}
 
 /*
   Meme logique de tri/priorite que la sidebar (getCategoryData, getCategoryIndex,

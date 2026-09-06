@@ -27,6 +27,7 @@
     "./components/file-system.module.css": "./src/components/file-system.module.css",
     "./components/story.module.css": "./src/components/story.module.css",
     "./components/select.module.css": "./src/components/select.module.css",
-    "./components/button.module.css": "./src/components/button.module.css"
+    "./components/button.module.css": "./src/components/button.module.css",
+    "./components/spinner.module.css": "./src/components/spinner.module.css"
   }
 }

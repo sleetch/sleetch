@@ -1,0 +1,104 @@
+---
+title: Spinner
+description: An animated indicator used to communicate that an operation is currently in progress.
+engine: mdx-js
+---
+
+The `Spinner` component provides a visual indication that content or an operation is loading.
+
+The basic spinner requires no configuration and can be rendered wherever a loading state needs to be communicated.
+
+## Sizes
+
+The `Spinner` component supports three sizes: `small`, `medium`, and `large`.
+
+The `small` size is the default and is useful for compact or inline loading states.
+
+<Book story="spinner" variants={['default']} />
+
+The `medium` size is suitable for most loading indicators within a component or section.
+
+The `large` size is intended for prominent loading states, such as a page or full section.
+
+All available sizes can be compared below.
+
+<Book story="spinner" variants={['sizes']} />
+
+Use the `size` prop to select the appropriate size:
+
+```tsx
+<Spinner size="small" />
+<Spinner size="medium" />
+<Spinner size="large" />
+```
+
+The available values are:
+
+* `small` : compact loading indicator and the default size.
+* `medium` : general-purpose loading indicator.
+* `large` : prominent loading indicator for larger loading states.
+
+## Loading state
+
+A spinner is typically displayed while an operation is in progress. When possible, give the spinner an accessible label and use `role="status"` so that assistive technologies can communicate the loading state.
+
+<Book story="spinner" variants={['loading']} />
+
+For example:
+
+```tsx
+<Spinner aria-label="Loading" role="status" />
+```
+
+The spinner can also be displayed alongside text when the loading state benefits from additional context.
+
+<Book story="spinner" variants={['withContent']} />
+
+```tsx
+<div className="flex items-center gap-2">
+	<Spinner aria-label="Loading" role="status" />
+	<span>Loading...</span>
+</div>
+```
+
+## Custom styling
+
+`Spinner` accepts a `className` prop, allowing additional styles to be applied when the default appearance does not fit the surrounding interface.
+
+<Book story="spinner" variants={['customClass']} />
+
+```tsx
+<Spinner className="my-custom-spinner" />
+```
+
+The spinner can also be positioned inside a larger loading container, such as a page or panel.
+
+<Book story="spinner" variants={['pageLoading']} />
+
+## Props
+
+`Spinner` accepts the standard attributes available on a `div`, including `className`, `id`, `aria-*` attributes, and event handlers.
+
+The component does not expose a size or animation prop. Its visual appearance is controlled by the component stylesheet, while `className` can be used to customize it when necessary.
+
+## Accessibility
+
+A spinner by itself is only a visual indicator. For loading states that need to be communicated to screen readers, provide an accessible label:
+
+```tsx
+<Spinner
+	aria-label="Loading"
+	role="status"
+/>
+```
+
+If visible text already communicates the state, the spinner can remain decorative:
+
+```tsx
+<div className="flex items-center gap-2">
+	<Spinner aria-hidden="true" />
+	<span>Loading...</span>
+</div>
+```
+
+Use the approach that best matches the surrounding UI and avoid communicating the same loading state redundantly.

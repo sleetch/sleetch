@@ -1,4 +1,4 @@
-import { Button, defineStory } from '@sleetch/react';
+import { Button, defineStory, Spinner } from '@sleetch/react';
 
 export default defineStory({
 	component: Button,
@@ -55,9 +55,10 @@ export default defineStory({
 
 		loading: {
 			props: {
-				children: 'Saving...',
+				children: <>Saving... <Spinner /></>,
 				variant: 'primary',
 				disabled: true,
+				className: "gap-2"
 			},
 		},
 

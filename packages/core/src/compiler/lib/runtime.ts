@@ -24,7 +24,7 @@ export class sleetch_runtime {
 	}
 
 	constructor() {
-		this.event_emitter.on('edited', async (content, source) => {
+		this.event_emitter.on('edited-page', async (content, source) => {
 			console.log('edited', content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
@@ -33,7 +33,7 @@ export class sleetch_runtime {
 			this.build_manifest();
 		});
 
-		this.event_emitter.on('added', async (content, source) => {
+		this.event_emitter.on('added-page', async (content, source) => {
 			console.log('added', content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
@@ -42,7 +42,7 @@ export class sleetch_runtime {
 			this.build_manifest();
 		});
 
-		this.event_emitter.on('removed', async (content, source) => {
+		this.event_emitter.on('removed-page', async (content, source) => {
 			console.log('removed', content);
 			const path = this._router.path_from_content(source.language, content);
 			if (path) {
@@ -132,6 +132,7 @@ export class sleetch_runtime {
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
 			write_file(path.join(TREES_CACHE_FOLDER, language + extension), files[extension]);
 		}
+		this.event_emitter.emit('updated-tree', language);
 	}
 
 	private build_manifest() {
@@ -139,6 +140,7 @@ export class sleetch_runtime {
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
 			write_file(path.join(CACHE_FOLDER, `manifest${extension}`), files[extension]);
 		}
+		this.event_emitter.emit('updated-manifest');
 	}
 
 	private resolve_source(source_id: string) {

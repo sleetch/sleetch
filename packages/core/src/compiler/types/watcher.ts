@@ -9,7 +9,9 @@ export interface file_info {
 }
 
 export interface watcher_events {
-	added: [content: content, source: sleetch_source<tree_object, content, source>];
-	removed: [content: content, source: sleetch_source<tree_object, content, source>];
-	edited: [content: content, source: sleetch_source<tree_object, content, source>];
+	"added-page": [content: content, source: sleetch_source<tree_object, content, source>];
+	"removed-page": [content: content, source: sleetch_source<tree_object, content, source>];
+	"edited-page": [content: content, source: sleetch_source<tree_object, content, source>];
+	"updated-tree": [language: string];
+	"updated-manifest": [];
 }

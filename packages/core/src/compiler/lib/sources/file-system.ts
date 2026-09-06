@@ -192,7 +192,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 
 			if (!old) {
 				this.events_emitter.emit(
-					'added',
+					'added-page',
 					{
 						type: 'file-system',
 						file_path: file,
@@ -205,7 +205,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 
 			if (old.mtimeMs !== info.mtimeMs || old.size !== info.size) {
 				this.events_emitter.emit(
-					'edited',
+					'edited-page',
 					{
 						type: 'file-system',
 						file_path: file,
@@ -219,7 +219,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 		for (const file of previous.keys()) {
 			if (!current.has(file)) {
 				this.events_emitter.emit(
-					'removed',
+					'removed-page',
 					{
 						type: 'file-system',
 						file_path: file,

@@ -56,7 +56,7 @@ export function plugin(): Plugin {
 				await runtime.builder.build();
 				await runtime.sources.watch();
 
-				runtime.watcher.on('edited', (content, source) => {
+				runtime.watcher.on('edited-page', (content, source) => {
 					const object = source.router.get_object(content);
 					const build_path = source.builder.get_path(source.language, object);
 					invalidateAll(build_path);

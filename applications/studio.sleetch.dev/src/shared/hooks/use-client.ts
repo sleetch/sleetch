@@ -15,6 +15,10 @@ function getClient() {
 		client.on('update-languages', (data) => {
 			useClientStore.getState().set_languages(data.languages);
 		});
+
+		client.on("update-tree", (data) => {
+			useClientStore.getState().set_tree(data.language, data.tree);
+		});
 	}
 	return client;
 }

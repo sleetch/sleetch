@@ -18,7 +18,10 @@ export const studio_events = [
 	defineEvent({
 		id: 'update-tree',
 		from: 'server',
-		schema: z.custom<tree_object>(),
+		schema: z.object({
+			language: z.string(),
+			tree: z.custom<tree_object[]>()
+		})
 	}),
 
 	defineEvent({

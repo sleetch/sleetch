@@ -13,10 +13,7 @@ export type send<E extends event<any, z.ZodType, any>> = <I extends Extract<E, {
 export function create_client<E extends events>(configuration: {
 	keepalive: boolean;
 	url: URL;
-}): {
-	on: on<E[number]>;
-	send: send<E[number]>;
-} {
+}) {
 	const socket = new WebSocket(configuration.url);
 	const on: on<E[number]> = (id, callback) => {
 		socket.addEventListener('message', (event) => {
@@ -38,24 +35,39 @@ export function create_client<E extends events>(configuration: {
 	};
 
 	const send: send<E[number]> = (event) => {
-		const trySend = () => {
-			if (socket.readyState === WebSocket.OPEN) {
-				try {
-					socket.send(JSON.stringify(event));
-				} catch (err) {
-					return
+		return new Promise<void>((resolve, reject) => {
+			const trySend = () => {
+				if (socket.readyState === WebSocket.OPEN) {
+					try {
+						socket.send(JSON.stringify(event));
+						resolve();
+					} catch (err) {
+						reject(new Error("Could not send event."));
+					}
+				} else if (socket.readyState === WebSocket.CONNECTING) {
+					socket.addEventListener('open', trySend, { once: true });
+					socket.addEventListener('error', () => reject(new Error("Socket errored while connecting.")), { once: true });
+				} else {
+					reject(new Error("Could not send event. Websocket disconnected."));
 				}
-			} else if (socket.readyState === WebSocket.CONNECTING) {
-				socket.addEventListener('open', trySend, { once: true });
-			} else {
-				return
-			}
-		};
-		trySend()
+			};
+			trySend();
+		});
 	};
+
+	const close = () => socket.close()
+
+	const ready = new Promise<void>((resolve, reject) => {
+		socket.addEventListener('open', () => resolve(), { once: true });
+		socket.addEventListener('error', (err) => reject(new Error(`WebSocket error : ${configuration.url.toString()} : ${err.type}`)), {
+			once: true,
+		});
+	});
 
 	return {
 		on,
-		send
+		send,
+		ready,
+		close
 	};
 }

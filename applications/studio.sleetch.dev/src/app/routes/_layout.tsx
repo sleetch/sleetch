@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router';
+import { LoadingPage } from '@/shared/components/loading-page';
 
 export function meta() {
 	return [{ title: 'Sleetch' }, { name: 'description', content: 'Welcome to Sleetch !' }];
@@ -6,6 +8,8 @@ export function meta() {
 
 export default function Layout() {
 	return (
-		<Outlet />
+		<Suspense fallback={<LoadingPage />}>
+			<Outlet />
+		</Suspense>
 	);
 }

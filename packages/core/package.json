@@ -14,6 +14,7 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
+		"@sleetch/websockets": "workspace:*",
 		"@mdit/plugin-katex": "^1.0.1",
 		"@mdx-js/mdx": "^3.1.1",
 		"@shikijs/transformers": "^4.3.1",
@@ -46,6 +47,7 @@
 		"./configuration": "./dist/configuration/index.js",
 		"./markdown": "./dist/markdown/index.js",
 		"./shared": "./dist/shared/index.js",
+		"./studio": "./dist/studio/index.js",
 		"./package.json": "./package.json"
 	},
 	"main": "./dist/index.js",

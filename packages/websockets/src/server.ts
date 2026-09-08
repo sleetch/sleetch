@@ -28,9 +28,7 @@ export function create_server<E extends events>(configuration: {
 	events: E;
 	port: number;
 	path: string;
-}): {
-	on: on<E[number]>;
-} {
+}) {
 	const server = new WebSocketServer({
 		port: configuration.port,
 		path: configuration.path,
@@ -84,8 +82,27 @@ export function create_server<E extends events>(configuration: {
 		}
 	};
 
+	const broadcast = <
+		I extends Extract<E[number], { from: 'server' }>['id']
+	>(
+		event: {
+			id: I;
+			data: z.infer<
+				Extract<
+					Extract<E[number], { from: 'server' }>,
+					{ id: I }
+				>['schema']
+			>;
+		}
+	) => {
+		for (const client of clients) {
+			const socket = new SleetchSocket(client)
+			socket.send(event)
+		}
+	};
 
 	return {
 		on,
+		broadcast
 	};
 }

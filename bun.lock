@@ -62,7 +62,9 @@
         "@react-router/node": "8.3.0",
         "@react-router/serve": "8.3.0",
         "@sleetch/client": "workspace:*",
+        "@sleetch/core": "workspace:*",
         "@sleetch/react": "workspace:*",
+        "@sleetch/websockets": "workspace:*",
         "better-fs-routes": "^0.1.3",
         "clsx": "^2.1.1",
         "fluid-tailwindcss": "^1.1.7",
@@ -76,6 +78,7 @@
         "tailwind-merge": "^3.6.0",
         "three": "^0.185.1",
         "vite-react-svg": "^0.0.13",
+        "zustand": "^5.0.15",
       },
       "devDependencies": {
         "@react-router/dev": "^8.3.0",
@@ -96,6 +99,8 @@
       },
       "dependencies": {
         "@sleetch/core": "workspace:*",
+        "@sleetch/server": "workspace:*",
+        "@sleetch/websockets": "workspace:*",
         "tar-fs": "^3.1.3",
         "zod": "^4.4.3",
       },
@@ -119,6 +124,7 @@
         "@mdx-js/mdx": "^3.1.1",
         "@shikijs/transformers": "^4.3.1",
         "@shikijs/twoslash": "^4.3.1",
+        "@sleetch/websockets": "workspace:*",
         "beautiful-mermaid": "^1.1.3",
         "hast": "^1.0.0",
         "hast-util-from-html": "^2.0.3",
@@ -219,9 +225,11 @@
       "name": "@sleetch/websockets",
       "version": "0.0.1",
       "dependencies": {
-        "@types/ws": "^8.18.1",
         "ws": "^8.21.3",
         "zod": "^4.5.4",
+      },
+      "devDependencies": {
+        "@types/ws": "^8.18.1",
       },
     },
     "templates/next-webpack": {
@@ -2156,6 +2164,8 @@
     "zod": ["zod@4.5.4", "", {}, "sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA=="],
 
     "zod-validation-error": ["zod-validation-error@4.0.2", "", { "peerDependencies": { "zod": "^3.25.0 || ^4.0.0" } }, "sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ=="],
+
+    "zustand": ["zustand@5.0.15", "", { "peerDependencies": { "@types/react": ">=18.0.0", "immer": ">=9.0.6", "react": ">=18.0.0", "use-sync-external-store": ">=1.2.0" }, "optionalPeers": ["@types/react", "immer", "react", "use-sync-external-store"] }, "sha512-MpSEjRiBkA9crSYeOUH32rJC7SVqAbm0Fqcqge/bUi2PPoLcBWKOsG+C8mevmpr8TwXHBVkChbbJiyvkE+i/3A=="],
 
     "zwitch": ["zwitch@2.0.4", "", {}, "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="],
 

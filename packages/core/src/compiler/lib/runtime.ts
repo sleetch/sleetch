@@ -24,8 +24,10 @@ export class sleetch_runtime {
 	}
 
 	constructor() {
+		const configuration = get_configuration()
+
 		this.event_emitter.on('edited-page', async (content, source) => {
-			console.log('edited', content);
+			configuration.logger.log('edited', content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
 			this._router.join_object(source.language, object);
@@ -34,7 +36,7 @@ export class sleetch_runtime {
 		});
 
 		this.event_emitter.on('added-page', async (content, source) => {
-			console.log('added', content);
+			configuration.logger.log('added', content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
 			this._router.join_object(source.language, object);
@@ -43,13 +45,12 @@ export class sleetch_runtime {
 		});
 
 		this.event_emitter.on('removed-page', async (content, source) => {
-			console.log('removed', content);
+			configuration.logger.log('removed', content);
 			const path = this._router.path_from_content(source.language, content);
 			if (path) {
 				this._router.remove_object_from_path(source.language, path);
 			} else {
-				console.error(content, source)
-				throw new Error('WHATTTTTTTTTT');
+				throw new Error('Unexpected error, could not delete content object.');
 			}
 			this.build_tree(source.language);
 			this.build_manifest();

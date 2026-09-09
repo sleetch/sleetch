@@ -5,11 +5,11 @@ import { useClientStore } from '../stores/client';
 
 let client: ReturnType<typeof create_client<studio_events>> | null = null;
 
-function getClient() {
+function getClient(token: string) {
 	if (client === null) {
 		client = create_client<studio_events>({
 			keepalive: true,
-			url: new URL('ws://localhost:2008'),
+			url: new URL(`ws://localhost:2008/${token}`),
 		});
 
 		client.on('update-languages', (data) => {
@@ -23,8 +23,8 @@ function getClient() {
 	return client;
 }
 
-export function useClient() {
-	const c = getClient();
+export function useClient(token: string) {
+	const c = getClient(token);
 	use(c.ready);
 	return c;
 }

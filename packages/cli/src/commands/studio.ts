@@ -1,6 +1,6 @@
 import { studio_events } from '@sleetch/core/studio';
 import { get_tree } from '@sleetch/server';
-import { create_server } from '@sleetch/websockets/server';
+import { WebsocketServer } from '@sleetch/websockets/server';
 import type { command, command_options } from '@/types/command';
 
 const options = {} as const satisfies command_options;
@@ -15,14 +15,21 @@ export const studio_command: command<typeof options> = {
 			const { sleetch_runtime } = await import('@sleetch/core/compiler');
 			const { get_languages } = await import('@sleetch/server');
 
-			const server = create_server({ events: studio_events, port: 2008, path: '/' });
+			const token = crypto.randomUUID()
+
+			const server = new WebsocketServer({ events: studio_events, port: 2008, path: `/${token}` });
 			const runtime = new sleetch_runtime();
 
 			await runtime.sources.load();
 			await runtime.builder.build();
 			await runtime.sources.watch();
 
-			server.on('get-languages', async (data, socket) => {
+			server.on("connect", (socket) => {
+				server.call({ id: "get-languages", data: {} }, socket)
+				server.call({ id: "get-trees", data: {} }, socket)
+			})
+
+			server.on('get-languages', async (_, socket) => {
 				console.log('get languagessss');
 				await socket.send({
 					id: 'update-languages',
@@ -32,7 +39,7 @@ export const studio_command: command<typeof options> = {
 				});
 			});
 
-			server.on('get-trees', async (data, socket) => {
+			server.on('get-trees', async (_, socket) => {
 				const languages = await get_languages();
 				for (const language of languages) {
 					const { tree } = await get_tree(language)
@@ -79,6 +86,8 @@ export const studio_command: command<typeof options> = {
 						}
 					})
 			});
+
+			console.log(`Open http://localhost:5173/?token=${token}`)
 
 		} catch (error) {
 			if (error instanceof Error) cli.error('error', error.message);

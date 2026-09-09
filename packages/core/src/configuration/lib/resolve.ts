@@ -32,8 +32,7 @@ const load_configuration = (): parsed_sleetch_configuration => {
 		if ('default' in mod && typeof mod.default === 'object') {
 			const { data: configuration, error } = configuration_schema.safeParse(mod.default);
 			if (error) {
-				console.error('Your sleetch configuration contains incorrect information.');
-				throw new Error(z.prettifyError(error));
+				throw new Error('Your sleetch configuration contains incorrect information.\n' + z.prettifyError(error));
 			}
 			return configuration;
 		}

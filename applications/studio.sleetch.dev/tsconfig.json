@@ -4,14 +4,29 @@
 	},
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		],
 		"moduleResolution": "bundler",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": [
+				"./src/*"
+			]
 		},
 		"baseUrl": ".",
-		"rootDirs": [".", "./.react-router/types"],
+		"rootDirs": [
+			".",
+			"./.react-router/types"
+		],
 		"allowJs": true
 	},
-	"include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"]
+	"include": [
+		"src/**/*",
+		"**/.server/**/*",
+		"**/.client/**/*",
+		".react-router/types/**/*",
+		"src/app/routes/$.tsx"
+	]
 }

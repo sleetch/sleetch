@@ -25,7 +25,6 @@ export class sleetch_runtime {
 
 	constructor() {
 		const configuration = get_configuration()
-
 		this.event_emitter.on('edited-page', async (content, source) => {
 			configuration.logger.log('edited', content);
 			const object = source.router.get_object(content);

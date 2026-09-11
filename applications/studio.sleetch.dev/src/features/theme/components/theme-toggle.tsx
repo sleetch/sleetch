@@ -54,13 +54,13 @@ export function ThemeToggle() {
 			<select
 				value={theme}
 				onChange={(e) => handleChange(e.target.value as Theme)}
-				// onClick={() => handleChange(theme === "dark" ? "light" : "dark")}
+			// onClick={() => handleChange(theme === "dark" ? "light" : "dark")}
 			>
 				<option value="light">Light</option>
 				<option value="dark">Dark</option>
 				<option value="system">System</option>
 			</select>
-			<span ref={baseRef} style={{ position: 'absolute', opacity: 0 }}>
+			<span ref={baseRef} style={{ position: 'absolute', opacity: 0, pointerEvents: "none" }}>
 				anchor
 			</span>
 		</div>

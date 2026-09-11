@@ -1,5 +1,4 @@
 import fs from 'node:fs';
-import path from 'node:path';
 import z from 'zod';
 import type { parsed_sleetch_configuration } from '../types/configuration';
 import { configuration_schema } from './schemas/configuration';
@@ -8,9 +7,7 @@ let cache: parsed_sleetch_configuration | undefined;
 let cache_mtime: number | undefined;
 
 export const get_configuration = () => {
-	const root = ROOT_FOLDER
-	const file_path = path.join(root, 'sleetch.config.ts');
-	const mtime = fs.existsSync(file_path) ? fs.statSync(file_path).mtimeMs : undefined;
+	const mtime = fs.existsSync(CONFIGURATION_FILE_PATH) ? fs.statSync(CONFIGURATION_FILE_PATH).mtimeMs : undefined;
 	if (!cache || cache_mtime !== mtime) {
 		cache = load_configuration();
 		cache.logger.debug(cache_mtime ? 'cached sleetch configuration.' : 'refreshed sleetch configuration.');
@@ -20,15 +17,14 @@ export const get_configuration = () => {
 };
 
 import { createRequire } from 'node:module';
-import { ROOT_FOLDER } from '@/compiler/utils/constants';
+import { CONFIGURATION_FILE_PATH } from '@/compiler/utils/constants';
 
 const require = createRequire(import.meta.url);
 
 const load_configuration = (): parsed_sleetch_configuration => {
-	const root = ROOT_FOLDER
-	const file_path = path.join(root, 'sleetch.config.ts');
-	if (fs.existsSync(file_path)) {
-		const mod = require(file_path); // await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
+	if (fs.existsSync(CONFIGURATION_FILE_PATH)) {
+		delete require.cache[CONFIGURATION_FILE_PATH];
+		const mod = require(CONFIGURATION_FILE_PATH); // await import(/* @vite-ignore */ `${file_path}`); // ?t=${Date.now()}
 		if ('default' in mod && typeof mod.default === 'object') {
 			const { data: configuration, error } = configuration_schema.safeParse(mod.default);
 			if (error) {

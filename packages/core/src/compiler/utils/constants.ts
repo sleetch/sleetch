@@ -11,3 +11,6 @@ export const CACHE_FOLDER = path.join(NODE_MODULES_FOLDER, '/@sleetch/client/.sl
 
 export const PAGES_CACHE_FOLDER = path.join(CACHE_FOLDER, 'pages');
 export const TREES_CACHE_FOLDER = path.join(CACHE_FOLDER, 'trees');
+
+
+export const CONFIGURATION_FILE_PATH = path.join(ROOT_FOLDER, 'sleetch.config.ts');

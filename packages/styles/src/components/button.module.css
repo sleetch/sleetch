@@ -1,4 +1,13 @@
 /* Shared base */
+.default>*,
+.primary>*,
+.secondary>*,
+.ghost>*,
+.outline>*,
+.destructive>* {
+	pointer-events: none;
+}
+
 .default,
 .primary,
 .secondary,
@@ -103,6 +112,7 @@
 }
 
 @media (max-width: 768px) {
+
 	.default,
 	.primary,
 	.secondary,

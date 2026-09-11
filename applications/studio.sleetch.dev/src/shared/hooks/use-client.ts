@@ -19,6 +19,10 @@ function getClient(token: string) {
 		client.on("update-tree", (data) => {
 			useClientStore.getState().set_tree(data.language, data.tree);
 		});
+
+		client.on("update-sources", (data) => {
+			useClientStore.getState().set_sources(data.sources);
+		});
 	}
 	return client;
 }

@@ -1,11 +1,12 @@
 import { clean_path } from '@sleetch/client';
-import { type manifest_module, resolve_language } from '@sleetch/core/compiler';
+import { resolve_language } from '@sleetch/core/compiler';
+import { get_manifest } from './manifest';
 import { get_static_paths } from './tree';
 
 export const get_page = async (_path: string, _language?: string) => {
 	_path = clean_path(_path);
 	const language = resolve_language(_language);
-	const { default: manifest }: manifest_module = await import('@sleetch/client/manifest');
+	const manifest = await get_manifest();
 	for (const path of Object.keys(manifest[language].pages)) {
 		if (path === _path) {
 			const { default: page } = await manifest[language].pages[path]();

@@ -29,12 +29,13 @@ export class sleetch_cloud_source extends sleetch_source<cloud_tree_object, clou
 			source: configuration.source,
 			events_emitter: configuration.events_emitter,
 			language: 'en',
+			static: false
 		});
 	}
 
 	public readonly watcher = {
-		watch: async () => {},
-		close: () => {},
+		watch: async () => { },
+		close: () => { },
 	};
 
 	public readonly builder = {
@@ -44,11 +45,11 @@ export class sleetch_cloud_source extends sleetch_source<cloud_tree_object, clou
 		get_path(language: string, object: cloud_tree_object, extension = '.js') {
 			return '';
 		},
-		build_object: async (language: string, object: cloud_tree_object): Promise<void> => {},
+		build_object: async (language: string, object: cloud_tree_object): Promise<void> => { },
 	};
 
 	public readonly router = {
-		load: async (router: sleetch_router) => {},
+		load: async (router: sleetch_router) => { },
 		get_object: (content: cloud_content) => {
 			return { type: 'category', children: [], path: '' } satisfies cloud_tree_object;
 		},

@@ -9,6 +9,7 @@ export interface page<C extends content> {
 }
 
 export interface category<T, C extends content> {
+
 	path: string;
 	type: 'category';
 	frontmatter?: data_frontmatter;

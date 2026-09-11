@@ -38,6 +38,7 @@ export class sleetch_file_system_source extends sleetch_source<file_system_tree_
 			source: configuration.source,
 			events_emitter: configuration.events_emitter,
 			language: resolve_language(configuration.source.language),
+			static: true
 		});
 	}
 

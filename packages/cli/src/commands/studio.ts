@@ -1,3 +1,4 @@
+import { get_configuration } from '@sleetch/core/configuration';
 import { studio_events } from '@sleetch/core/studio';
 import { get_tree } from '@sleetch/server';
 import { WebsocketServer } from '@sleetch/websockets/server';
@@ -7,7 +8,7 @@ const options = {} as const satisfies command_options;
 
 export const studio_command: command<typeof options> = {
 	name: 'studio',
-	description: 'Start static-content studio.',
+	description: 'Start content studio.',
 	active: true,
 	options,
 	action: async (options, cli) => {
@@ -15,7 +16,7 @@ export const studio_command: command<typeof options> = {
 			const { sleetch_runtime } = await import('@sleetch/core/compiler');
 			const { get_languages } = await import('@sleetch/server');
 
-			const token = crypto.randomUUID()
+			const token = crypto.randomUUID();
 
 			const server = new WebsocketServer({ events: studio_events, port: 2008, path: `/${token}` });
 			const runtime = new sleetch_runtime();
@@ -24,10 +25,13 @@ export const studio_command: command<typeof options> = {
 			await runtime.builder.build();
 			await runtime.sources.watch();
 
-			server.on("connect", (socket) => {
-				server.call({ id: "get-languages", data: {} }, socket)
-				server.call({ id: "get-trees", data: {} }, socket)
-			})
+			console.log(`Open http://localhost:5173/?token=${token}`);
+
+			server.on('connect', (socket) => {
+				server.call({ id: 'get-languages', data: {} }, socket);
+				server.call({ id: 'get-trees', data: {} }, socket);
+				server.call({ id: 'get-sources', data: undefined }, socket);
+			});
 
 			server.on('get-languages', async (_, socket) => {
 				console.log('get languagessss');
@@ -42,28 +46,37 @@ export const studio_command: command<typeof options> = {
 			server.on('get-trees', async (_, socket) => {
 				const languages = await get_languages();
 				for (const language of languages) {
-					const { tree } = await get_tree(language)
+					const { tree } = await get_tree(language);
 					await socket.send({
 						id: 'update-tree',
 						data: {
 							language,
-							tree
+							tree,
 						},
 					});
 				}
 			});
 
 			server.on('get-tree', async (data, socket) => {
-				const { tree, language } = await get_tree(data.language)
+				const { tree, language } = await get_tree(data.language);
 				await socket.send({
 					id: 'update-tree',
 					data: {
 						language,
-						tree
+						tree,
 					},
 				});
 			});
 
+			server.on('get-sources', async (data, socket) => {
+				const { sources } = get_configuration();
+				await socket.send({
+					id: 'update-sources',
+					data: {
+						sources
+					},
+				});
+			});
 
 			runtime.watcher.on('updated-manifest', async () => {
 				const languages = await get_languages();
@@ -76,18 +89,16 @@ export const studio_command: command<typeof options> = {
 			});
 
 			runtime.watcher.on('updated-tree', async (language) => {
-				const { tree } = await get_tree(language)
-				server.broadcast(
-					{
-						id: 'update-tree',
-						data: {
-							language,
-							tree
-						}
-					})
+				console.log("updated")
+				const { tree } = await get_tree(language);
+				server.broadcast({
+					id: 'update-tree',
+					data: {
+						language,
+						tree,
+					},
+				});
 			});
-
-			console.log(`Open http://localhost:5173/?token=${token}`)
 
 		} catch (error) {
 			if (error instanceof Error) cli.error('error', error.message);

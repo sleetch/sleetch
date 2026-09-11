@@ -10,6 +10,7 @@ export default defineConfig({
 				default: './src/styles/base.css',
 			},
 			'./manifest': './.sleetch/manifest.js',
+			'./manifest-cache-bust': './.sleetch/manifest-esm-cache-bust.js',
 			'./trees/*': './.sleetch/trees/*.js',
 			'./pages/*': './.sleetch/pages/*.js',
 		},

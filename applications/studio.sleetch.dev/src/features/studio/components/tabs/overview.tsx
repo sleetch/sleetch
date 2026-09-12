@@ -62,11 +62,15 @@ export function Overview() {
 
 	return (
 		<div className="w-full flex flex-col gap-3">
-			<div className="grid grid-cols-5 gap-3">
-				<Card icon={Languages} title="Languages" value={state.languages.length} />
-				<Card icon={Package} title="Categories" value={categoriesCount} />
-				<Card icon={Heading1} title="Pages" value={pagesCount} />
+			<div className='space-y-2'>
+				<h1 className='text-3xl'>Cool statistics</h1>
+				<div className="grid grid-cols-5 gap-3">
+					<Card icon={Languages} title="Languages" value={state.languages.length} />
+					<Card icon={Package} title="Categories" value={categoriesCount} />
+					<Card icon={Heading1} title="Pages" value={pagesCount} />
+				</div>
 			</div>
+
 		</div>
 	);
 }

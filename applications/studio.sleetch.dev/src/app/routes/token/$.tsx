@@ -4,6 +4,7 @@ import { data, Link } from 'react-router';
 import Logo from '@/assets/images/branding/logo.svg?react';
 import { Overview } from '@/features/studio/components/tabs/overview';
 import { ThemeToggle } from '@/features/theme/components/theme-toggle';
+import { ErrorPage } from '@/shared/components/error-page';
 import { LoadingPage } from '@/shared/components/loading-page';
 import { useClient } from '@/shared/hooks/use-client';
 import { useClientStore } from '@/shared/stores/client';
@@ -32,9 +33,12 @@ export default function Page({ params }: Route.ComponentProps) {
 					</Button>
 				</header>
 				<div className="p-3 flex-1 w-full space-y-2">
-					<Button className='w-full py-2! gap-2 justify-between!' onClick={() => state.set_tab("overview")}><Gauge className='size-5' /> Overview </Button>
-					<Button className='w-full py-2! gap-2 justify-between!' onClick={() => state.set_tab("pages")}> <Notebook className='size-5' /> Pages </Button>
-
+					<Button variant={state.tab === "overview" ? "secondary" : "ghost"} className="w-full py-2! gap-2 justify-between!" onClick={() => state.set_tab('overview')}>
+						<Gauge className="size-5" /> Overview{' '}
+					</Button>
+					<Button variant={state.tab === "pages" ? "secondary" : "ghost"} className="w-full py-2! gap-2 justify-between!" onClick={() => state.set_tab('pages')}>
+						<Notebook className="size-5" /> Pages{' '}
+					</Button>
 				</div>
 			</aside>
 			<div id="sidebar-content" className="w-full flex flex-col">
@@ -54,11 +58,11 @@ export default function Page({ params }: Route.ComponentProps) {
 					</Button>
 				</header>
 				<div className="p-3 size-full min-h-0">
-					<div className="rounded-xl bg-card border size-full overflow-auto p-3">
+					<div className="rounded-xl bg-card border size-full overflow-auto p-6">
 						{(() => {
 							if (state.loading) return <LoadingPage height="full" />;
 							if (state.tab === 'overview') return <Overview />;
-							return <>tab not found</>;
+							return <ErrorPage height='full' message='Oops.' details='This section is still in construction !' />;
 						})()}
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { type BaseHTMLAttributes, useEffect, useRef, useState } from 'react';
+import { type BaseHTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
 
-export interface SleekyProps extends BaseHTMLAttributes<HTMLDivElement> {}
+export interface SleekyProps extends BaseHTMLAttributes<HTMLDivElement> { }
 
 export function useSleeky({ lerp_amount = 0.1 }: { lerp_amount?: number }) {
 	const [cursor_position, set_cursor_position] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -17,9 +17,9 @@ export function useSleeky({ lerp_amount = 0.1 }: { lerp_amount?: number }) {
 		{ eye: leftEyeRef, origin: leftEyeOriginRef, angle: 0, offset: 20 },
 	]);
 
-	const lerp = (start: number, end: number, amount: number) => {
+	const lerp = useCallback((start: number, end: number, amount: number) => {
 		return start + (end - start) * amount;
-	};
+	}, []);
 
 	useEffect(() => {
 		let frame: number;

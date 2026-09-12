@@ -4,10 +4,6 @@ import { redirect } from 'react-router';
 import { ThemeToggle } from '@/features/theme/components/theme-toggle';
 import type { Route } from './+types/_index';
 
-export function meta() {
-	return [{ title: 'Sleetch' }, { name: 'description', content: 'Welcome to Sleetch !' }];
-}
-
 export const loader = ({ url }: Route.LoaderArgs) => {
 	const token = url.searchParams.get('token');
 	if (token) return redirect(`/token/${token}`);

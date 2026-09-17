@@ -1,7 +1,7 @@
 import { defineEvent } from '@sleetch/websockets';
 import z from 'zod';
 import type { tree_object } from '@/compiler';
-import type { parsed_sleetch_configuration } from '@/configuration';
+import type { sleetch_source_details } from '@/compiler/lib/source';
 
 export const studio_events = [
 	defineEvent({
@@ -13,7 +13,7 @@ export const studio_events = [
 		id: 'update-sources',
 		from: 'server',
 		schema: z.object({
-			sources: z.custom<parsed_sleetch_configuration['sources']>()
+			sources: z.custom<sleetch_source_details[]>()
 		})
 	}),
 

@@ -24,8 +24,9 @@ export const studio_command: command<typeof options> = {
 			await runtime.sources.load();
 			await runtime.builder.build();
 			await runtime.sources.watch();
-
-			console.log(`Open http://localhost:5173/?token=${token}`);
+			// @ts-expect-error
+			const dev = typeof __DEV__ !== 'undefined' ? __DEV__ : true
+			console.log(`Open ${dev === true ? `http://localhost:5173/?token=${token}` : `https://studio.sleetch.dev/?token=${token}`}`);
 
 			server.on('connect', (socket) => {
 				server.call({ id: 'get-languages', data: {} }, socket);
@@ -34,7 +35,6 @@ export const studio_command: command<typeof options> = {
 			});
 
 			server.on('get-languages', async (_, socket) => {
-				console.log('get languagessss');
 				await socket.send({
 					id: 'update-languages',
 					data: {
@@ -69,11 +69,10 @@ export const studio_command: command<typeof options> = {
 			});
 
 			server.on('get-sources', async (data, socket) => {
-				const { sources } = get_configuration();
 				await socket.send({
 					id: 'update-sources',
 					data: {
-						sources
+						sources: runtime.sources.details(),
 					},
 				});
 			});
@@ -89,7 +88,6 @@ export const studio_command: command<typeof options> = {
 			});
 
 			runtime.watcher.on('updated-tree', async (language) => {
-				console.log("updated")
 				const { tree } = await get_tree(language);
 				server.broadcast({
 					id: 'update-tree',
@@ -99,7 +97,6 @@ export const studio_command: command<typeof options> = {
 					},
 				});
 			});
-
 		} catch (error) {
 			if (error instanceof Error) cli.error('error', error.message);
 		}

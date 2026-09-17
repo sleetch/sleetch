@@ -9,7 +9,7 @@ import { sleetch_events_emitter } from './emitter';
 import { generate_manifest } from './generators/manifest';
 import { generate_tree } from './generators/tree';
 import { sleetch_router } from './router';
-import type { sleetch_source } from './source';
+import type { sleetch_source, sleetch_source_details } from './source';
 import { sleetch_file_system_source } from './sources/file-system';
 
 export class sleetch_runtime {
@@ -57,6 +57,17 @@ export class sleetch_runtime {
 	}
 
 	public readonly sources = {
+		details: (): sleetch_source_details[] => {
+			return Array.from(this.sources_instances, source => {
+				return {
+					id: source.id,
+					language: source.language,
+					source: source.source,
+					static: source.static,
+					type: source.type
+				} as sleetch_source_details
+			})
+		},
 		loaded: () => {
 			return this.sources_map.size > 0;
 		},

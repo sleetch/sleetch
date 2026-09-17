@@ -1,12 +1,11 @@
-import type { tree_object } from '@sleetch/core/compiler';
-import type { parsed_sleetch_configuration } from '@sleetch/core/configuration';
+import type { sleetch_source_details, tree_object } from '@sleetch/core/compiler';
 import { create } from 'zustand';
 
 type DynamicClientStateVariables = {
 	loading: boolean;
 	languages: string[];
 	trees: Record<string, tree_object[]>;
-	sources: parsed_sleetch_configuration["sources"];
+	sources: sleetch_source_details[];
 };
 
 type StaticClientStateVariables = {

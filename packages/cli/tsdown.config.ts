@@ -7,6 +7,9 @@ export default defineConfig({
 			sleetch: 'src/bin/index.ts',
 		},
 	},
+	define: {
+		__DEV__: 'false',
+	},
 	entry: ['src/**/index.ts'],
 	deps: {
 		neverBundle: [/^@sleetch\/cache(\/.*)?$/],

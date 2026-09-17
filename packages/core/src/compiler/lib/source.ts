@@ -4,6 +4,12 @@ import type { tree_object } from '../types/routing';
 import type { sleetch_events_emitter } from './emitter';
 import type { sleetch_router } from './router';
 
+type ClassProperties<C> = {
+	[Key in keyof C as C[Key] extends Function ? never : Key]: C[Key]
+}
+
+export type sleetch_source_details = Omit<ClassProperties<sleetch_source<tree_object, content, source>>, "watcher" | "builder" | "router">
+
 export abstract class sleetch_source<tree_object_type extends tree_object, content_type extends content, source_type extends source> {
 	readonly type: source_type['type'];
 	readonly source: source_type;

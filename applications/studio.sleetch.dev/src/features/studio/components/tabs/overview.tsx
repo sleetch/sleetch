@@ -71,6 +71,9 @@ export function Overview() {
 				</div>
 			</div>
 
+			<pre>
+				{JSON.stringify(state.sources, null, 2)}
+			</pre>
 		</div>
 	);
 }

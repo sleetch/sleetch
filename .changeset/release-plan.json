@@ -1,9 +1,63 @@
 {
   "releases": [
     {
+      "name": "@sleetch/cli",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/core",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
       "name": "@sleetch/websockets",
-      "oldVersion": "0.0.0",
-      "newVersion": "0.0.1",
+      "oldVersion": "0.0.1",
+      "newVersion": "0.0.2",
+      "type": "patch"
+    },
+    {
+      "name": "sleetch",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/client",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/next",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/react",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/server",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/vite",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
+      "type": "patch"
+    },
+    {
+      "name": "@sleetch/styles",
+      "oldVersion": "1.0.8",
+      "newVersion": "1.0.9",
       "type": "patch"
     }
   ]

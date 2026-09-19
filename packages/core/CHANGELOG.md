@@ -1,5 +1,15 @@
 # @sleetch/core
 
+## 1.0.9
+
+### Patch Changes
+
+- faf942d: - Fixed cli error
+  - Improved the websocket package
+  - Improved sleetch studio overall
+- Updated dependencies [faf942d]
+  - @sleetch/websockets@0.0.2
+
 ## 1.0.8
 
 ### Patch Changes

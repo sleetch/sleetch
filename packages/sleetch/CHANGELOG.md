@@ -1,5 +1,12 @@
 # sleetch
 
+## 1.0.9
+
+### Patch Changes
+
+- Updated dependencies [faf942d]
+  - @sleetch/cli@1.0.9
+
 ## 1.0.8
 
 ### Patch Changes

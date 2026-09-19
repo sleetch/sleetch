@@ -23,6 +23,7 @@
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8",
 		"react-router": "8.3.0",
+		"recharts": "^3.10.1",
 		"sleetch": "workspace:*",
 		"tailwind-merge": "^3.6.0",
 		"three": "^0.185.1",

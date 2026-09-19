@@ -1,19 +1,23 @@
-import path from 'node:path';
-import { get_configuration } from '@/configuration';
-import type { source } from '@/configuration/types/sources';
-import type { content } from '../types/content';
-import type { tree_object } from '../types/routing';
-import { CACHE_FOLDER, TREES_CACHE_FOLDER } from '../utils/constants';
-import { write_file } from '../utils/write-file';
-import { sleetch_events_emitter } from './emitter';
-import { generate_manifest } from './generators/manifest';
-import { generate_tree } from './generators/tree';
-import { sleetch_router } from './router';
-import type { sleetch_source, sleetch_source_details } from './source';
-import { sleetch_file_system_source } from './sources/file-system';
+import path from "node:path";
+import { get_configuration } from "@/configuration";
+import type { source } from "@/configuration/types/sources";
+import type { content } from "../types/content";
+import type { tree_object } from "../types/routing";
+import { CACHE_FOLDER, TREES_CACHE_FOLDER } from "../utils/constants";
+import { write_file } from "../utils/write-file";
+import { sleetch_events_emitter } from "./emitter";
+import { generate_manifest } from "./generators/manifest";
+import { generate_tree } from "./generators/tree";
+import { sleetch_router } from "./router";
+import type { sleetch_source, sleetch_source_details } from "./source";
+import { sleetch_cloud_source } from "./sources/cloud";
+import { sleetch_file_system_source } from "./sources/file-system";
 
 export class sleetch_runtime {
-	private sources_map: Map<string, sleetch_source<tree_object, content, source>> = new Map();
+	private sources_map: Map<
+		string,
+		sleetch_source<tree_object, content, source>
+	> = new Map();
 	private event_emitter = new sleetch_events_emitter();
 	private _router = new sleetch_router();
 
@@ -24,9 +28,9 @@ export class sleetch_runtime {
 	}
 
 	constructor() {
-		const configuration = get_configuration()
-		this.event_emitter.on('edited-page', async (content, source) => {
-			configuration.logger.log('edited', content);
+		const configuration = get_configuration();
+		this.event_emitter.on("edited-page", async (content, source) => {
+			configuration.logger.log("edited", content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
 			this._router.join_object(source.language, object);
@@ -34,8 +38,8 @@ export class sleetch_runtime {
 			this.build_manifest();
 		});
 
-		this.event_emitter.on('added-page', async (content, source) => {
-			configuration.logger.log('added', content);
+		this.event_emitter.on("added-page", async (content, source) => {
+			configuration.logger.log("added", content);
 			const object = source.router.get_object(content);
 			source.builder.build_object(source.language, object);
 			this._router.join_object(source.language, object);
@@ -43,13 +47,18 @@ export class sleetch_runtime {
 			this.build_manifest();
 		});
 
-		this.event_emitter.on('removed-page', async (content, source) => {
-			configuration.logger.log('removed', content);
-			const path = this._router.path_from_content(source.language, content);
+		this.event_emitter.on("removed-page", async (content, source) => {
+			configuration.logger.log("removed", content);
+			const path = this._router.path_from_content(
+				source.language,
+				content,
+			);
 			if (path) {
 				this._router.remove_object_from_path(source.language, path);
 			} else {
-				throw new Error('Unexpected error, could not delete content object.');
+				throw new Error(
+					"Unexpected error, could not delete content object.",
+				);
 			}
 			this.build_tree(source.language);
 			this.build_manifest();
@@ -58,37 +67,48 @@ export class sleetch_runtime {
 
 	public readonly sources = {
 		details: (): sleetch_source_details[] => {
-			return Array.from(this.sources_instances, source => {
+			return Array.from(this.sources_instances, (source) => {
 				return {
 					id: source.id,
 					language: source.language,
 					source: source.source,
 					static: source.static,
-					type: source.type
-				} as sleetch_source_details
-			})
+					type: source.type,
+				} as sleetch_source_details;
+			});
 		},
 		loaded: () => {
 			return this.sources_map.size > 0;
 		},
 		load: async () => {
-			if (this.sources_map.size > 0) throw new Error('You cannot load sources twice.');
-			console.time('runtime.sources.load');
+			if (this.sources_map.size > 0)
+				throw new Error("You cannot load sources twice.");
+			console.time("runtime.sources.load");
 			const configuration = get_configuration();
 			for (const source of configuration.sources) {
-				if (source.type === 'file-system') {
-					const instance = new sleetch_file_system_source({ source, events_emitter: this.event_emitter });
+				if (source.type === "file-system") {
+					const instance = new sleetch_file_system_source({
+						source,
+						events_emitter: this.event_emitter,
+					});
+					this.sources_map.set(instance.id, instance);
+				}
+				if (source.type === "cloud") {
+					const instance = new sleetch_cloud_source({
+						source,
+						events_emitter: this.event_emitter,
+					});
 					this.sources_map.set(instance.id, instance);
 				}
 			}
-			console.timeEnd('runtime.sources.load');
+			console.timeEnd("runtime.sources.load");
 		},
 		watch: async () => {
-			console.time('runtime.sources.watch');
+			console.time("runtime.sources.watch");
 			for (const source of this.sources_instances) {
 				await source.watcher.watch();
 			}
-			console.timeEnd('runtime.sources.watch');
+			console.timeEnd("runtime.sources.watch");
 		},
 		close: async () => {
 			for (const source of this.sources_instances) {
@@ -99,17 +119,17 @@ export class sleetch_runtime {
 
 	public readonly router = {
 		load: async () => {
-			console.time('runtime.router.load');
+			console.time("runtime.router.load");
 			for (const source of this.sources_instances) {
 				await source.router.load(this._router);
 			}
-			console.timeEnd('runtime.router.load');
+			console.timeEnd("runtime.router.load");
 		},
 	};
 
 	public readonly builder = {
 		build: async () => {
-			console.time('runtime.builder.build');
+			console.time("runtime.builder.build");
 			await this.router.load();
 			for (const language of this._router.get_languages()) {
 				for (const object of this._router.get_tree(language)) {
@@ -118,10 +138,10 @@ export class sleetch_runtime {
 				this.build_tree(language);
 			}
 			this.build_manifest();
-			console.timeEnd('runtime.builder.build');
+			console.timeEnd("runtime.builder.build");
 		},
 		build_object: async (language: string, object: tree_object) => {
-			if (object.type === 'category') {
+			if (object.type === "category") {
 				if (object.page) {
 					await this.builder.build_object(language, object.page);
 				}
@@ -129,10 +149,10 @@ export class sleetch_runtime {
 					await this.builder.build_object(language, child_object);
 				}
 			} else {
-				console.time('runtime.builder.build_object');
+				console.time("runtime.builder.build_object");
 				const instance = this.resolve_source(object.content.source_id);
 				instance.builder.build_object(language, object);
-				console.timeEnd('runtime.builder.build_object');
+				console.timeEnd("runtime.builder.build_object");
 			}
 		},
 	};
@@ -141,22 +161,29 @@ export class sleetch_runtime {
 		const tree = this._router.get_tree(language);
 		const files = generate_tree(tree);
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
-			write_file(path.join(TREES_CACHE_FOLDER, language + extension), files[extension]);
+			write_file(
+				path.join(TREES_CACHE_FOLDER, language + extension),
+				files[extension],
+			);
 		}
-		this.event_emitter.emit('updated-tree', language);
+		this.event_emitter.emit("updated-tree", language);
 	}
 
 	private build_manifest() {
 		const files = generate_manifest(this._router);
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
-			write_file(path.join(CACHE_FOLDER, `manifest${extension}`), files[extension]);
+			write_file(
+				path.join(CACHE_FOLDER, `manifest${extension}`),
+				files[extension],
+			);
 		}
-		this.event_emitter.emit('updated-manifest');
+		this.event_emitter.emit("updated-manifest");
 	}
 
 	private resolve_source(source_id: string) {
 		const instance = this.sources_map.get(source_id);
-		if (!instance) throw new Error('Could not find any sources with that id.');
+		if (!instance)
+			throw new Error("Could not find any sources with that id.");
 		return instance;
 	}
 }

@@ -1,21 +1,28 @@
-import z from 'zod';
-import type { category, page } from '@/compiler/types/routing';
+import z from "zod";
+import type { category, page } from "@/compiler/types/routing";
 
-import type { sleetch_events_emitter } from '../emitter';
-import type { sleetch_router } from '../router';
-import { sleetch_source } from '../source';
+import type { sleetch_events_emitter } from "../emitter";
+import type { sleetch_router } from "../router";
+import { sleetch_source } from "../source";
 
-export type configuration_cloud_source = z.infer<typeof sleetch_cloud_source.configuration_schema>;
+export type configuration_cloud_source = z.infer<
+	typeof sleetch_cloud_source.configuration_schema
+>;
 export type cloud_content = {
 	source_id: string;
-	type: configuration_cloud_source['type'];
+	type: configuration_cloud_source["type"];
 	file_path: string;
 };
-export type cloud_tree_object = page<cloud_content> | category<cloud_tree_object, cloud_content>;
+export type cloud_tree_object =
+	page<cloud_content> | category<cloud_tree_object, cloud_content>;
 
-export class sleetch_cloud_source extends sleetch_source<cloud_tree_object, cloud_content, configuration_cloud_source> {
+export class sleetch_cloud_source extends sleetch_source<
+	cloud_tree_object,
+	cloud_content,
+	configuration_cloud_source
+> {
 	static configuration_schema = z.object({
-		type: z.literal('cloud'),
+		type: z.literal("cloud"),
 		server: z.string(),
 		secret: z.string(),
 	});
@@ -25,33 +32,44 @@ export class sleetch_cloud_source extends sleetch_source<cloud_tree_object, clou
 		events_emitter: sleetch_events_emitter;
 	}) {
 		super({
-			type: 'cloud',
+			type: "cloud",
 			source: configuration.source,
 			events_emitter: configuration.events_emitter,
-			language: 'en',
-			static: false
+			language: "fr",
+			static: false,
 		});
 	}
 
 	public readonly watcher = {
-		watch: async () => { },
-		close: () => { },
+		watch: async () => {},
+		close: () => {},
 	};
 
 	public readonly builder = {
 		read_object(object: cloud_tree_object) {
-			return '';
+			return "";
 		},
-		get_path(language: string, object: cloud_tree_object, extension = '.js') {
-			return '';
+		get_path(
+			language: string,
+			object: cloud_tree_object,
+			extension = ".js",
+		) {
+			return "";
 		},
-		build_object: async (language: string, object: cloud_tree_object): Promise<void> => { },
+		build_object: async (
+			language: string,
+			object: cloud_tree_object,
+		): Promise<void> => {},
 	};
 
 	public readonly router = {
-		load: async (router: sleetch_router) => { },
+		load: async (router: sleetch_router) => {},
 		get_object: (content: cloud_content) => {
-			return { type: 'category', children: [], path: '' } satisfies cloud_tree_object;
+			return {
+				type: "category",
+				children: [],
+				path: "",
+			} satisfies cloud_tree_object;
 		},
 	};
 }

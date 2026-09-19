@@ -1,54 +1,58 @@
-import { get_configuration } from '@sleetch/core/configuration';
-import { studio_events } from '@sleetch/core/studio';
-import { get_tree } from '@sleetch/server';
-import { WebsocketServer } from '@sleetch/websockets/server';
-import type { command, command_options } from '@/types/command';
+import { WebsocketServer } from "@sleetch/websockets/server";
+import type { command, command_options } from "@/types/command";
 
 const options = {} as const satisfies command_options;
 
 export const studio_command: command<typeof options> = {
-	name: 'studio',
-	description: 'Start content studio.',
+	name: "studio",
+	description: "Start content studio.",
 	active: true,
 	options,
 	action: async (options, cli) => {
 		try {
-			const { sleetch_runtime } = await import('@sleetch/core/compiler');
-			const { get_languages } = await import('@sleetch/server');
+			const { studio_events } = await import("@sleetch/core/studio");
+			const { sleetch_runtime } = await import("@sleetch/core/compiler");
+			const { get_languages, get_tree } = await import("@sleetch/server");
 
 			const token = crypto.randomUUID();
 
-			const server = new WebsocketServer({ events: studio_events, port: 2008, path: `/${token}` });
+			const server = new WebsocketServer({
+				events: studio_events,
+				port: 2008,
+				path: `/${token}`,
+			});
 			const runtime = new sleetch_runtime();
 
 			await runtime.sources.load();
 			await runtime.builder.build();
 			await runtime.sources.watch();
 			// @ts-expect-error
-			const dev = typeof __DEV__ !== 'undefined' ? __DEV__ : true
-			console.log(`Open ${dev === true ? `http://localhost:5173/?token=${token}` : `https://studio.sleetch.dev/?token=${token}`}`);
+			const dev = typeof __DEV__ !== "undefined" ? __DEV__ : true;
+			console.log(
+				`Open ${dev === true ? `http://localhost:5173/?token=${token}` : `https://studio.sleetch.dev/?token=${token}`}`,
+			);
 
-			server.on('connect', (socket) => {
-				server.call({ id: 'get-languages', data: {} }, socket);
-				server.call({ id: 'get-trees', data: {} }, socket);
-				server.call({ id: 'get-sources', data: undefined }, socket);
+			server.on("connect", (socket) => {
+				server.call({ id: "get-languages", data: {} }, socket);
+				server.call({ id: "get-trees", data: {} }, socket);
+				server.call({ id: "get-sources", data: undefined }, socket);
 			});
 
-			server.on('get-languages', async (_, socket) => {
+			server.on("get-languages", async (_, socket) => {
 				await socket.send({
-					id: 'update-languages',
+					id: "update-languages",
 					data: {
 						languages: await get_languages(),
 					},
 				});
 			});
 
-			server.on('get-trees', async (_, socket) => {
+			server.on("get-trees", async (_, socket) => {
 				const languages = await get_languages();
 				for (const language of languages) {
 					const { tree } = await get_tree(language);
 					await socket.send({
-						id: 'update-tree',
+						id: "update-tree",
 						data: {
 							language,
 							tree,
@@ -57,10 +61,10 @@ export const studio_command: command<typeof options> = {
 				}
 			});
 
-			server.on('get-tree', async (data, socket) => {
+			server.on("get-tree", async (data, socket) => {
 				const { tree, language } = await get_tree(data.language);
 				await socket.send({
-					id: 'update-tree',
+					id: "update-tree",
 					data: {
 						language,
 						tree,
@@ -68,29 +72,29 @@ export const studio_command: command<typeof options> = {
 				});
 			});
 
-			server.on('get-sources', async (data, socket) => {
+			server.on("get-sources", async (data, socket) => {
 				await socket.send({
-					id: 'update-sources',
+					id: "update-sources",
 					data: {
 						sources: runtime.sources.details(),
 					},
 				});
 			});
 
-			runtime.watcher.on('updated-manifest', async () => {
+			runtime.watcher.on("updated-manifest", async () => {
 				const languages = await get_languages();
 				server.broadcast({
-					id: 'update-languages',
+					id: "update-languages",
 					data: {
 						languages,
 					},
 				});
 			});
 
-			runtime.watcher.on('updated-tree', async (language) => {
+			runtime.watcher.on("updated-tree", async (language) => {
 				const { tree } = await get_tree(language);
 				server.broadcast({
-					id: 'update-tree',
+					id: "update-tree",
 					data: {
 						language,
 						tree,
@@ -98,7 +102,7 @@ export const studio_command: command<typeof options> = {
 				});
 			});
 		} catch (error) {
-			if (error instanceof Error) cli.error('error', error.message);
+			if (error instanceof Error) cli.error("error", error.message);
 		}
 	},
 };

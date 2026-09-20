@@ -1,5 +1,13 @@
 # @sleetch/server
 
+## 1.0.11
+
+### Patch Changes
+
+- d394da8: fixed manifest url resolve.
+  - @sleetch/core@1.0.11
+  - @sleetch/client@1.0.11
+
 ## 1.0.10
 
 ### Patch Changes

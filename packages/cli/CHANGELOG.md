@@ -1,5 +1,13 @@
 # @sleetch/cli
 
+## 1.0.11
+
+### Patch Changes
+
+- Updated dependencies [d394da8]
+  - @sleetch/server@1.0.11
+  - @sleetch/core@1.0.11
+
 ## 1.0.10
 
 ### Patch Changes

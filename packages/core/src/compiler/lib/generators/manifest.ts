@@ -1,5 +1,5 @@
-import path from 'node:path';
-import type { sleetch_router } from '../router';
+import path from "node:path";
+import type { sleetch_router } from "../router";
 
 export const generate_manifest = (router: sleetch_router) => {
 	const languages = router.get_languages();
@@ -11,33 +11,33 @@ export const generate_manifest = (router: sleetch_router) => {
 
 			language_manifests.push(`
           "${language}" : {
-          'tree': () => import('${path.join('@sleetch/client/trees', language)}${cache_bust ? `?version=${Date.now()}` : ""}'),
+          'tree': () => import('${path.join("@sleetch/client/trees", language)}${cache_bust ? `?version=${Date.now()}` : ""}'),
 
           'pages':{
 
           ${pages
-					.map(
-						(page) =>
-							`        "${page.path}": () => import('${path.join('@sleetch/client/pages', language, page.path === '/' ? 'index' : page.path)}${cache_bust ? `?version=${Date.now()}` : ""}')`,
-					)
-					.join(',\n')}
+				.map(
+					(page) =>
+						`        "${page.path}": () => import('${path.join("@sleetch/client/pages", language, page.path === "/" ? "index" : page.path)}${cache_bust ? `?version=${Date.now()}` : ""}')`,
+				)
+				.join(",\n")}
                 }
           }
         `);
 		}
-		return language_manifests
-	}
+		return language_manifests;
+	};
 
 	return {
-		'.js': `export default {
+		".js": `export default {
     'languages': ${JSON.stringify(languages)},
-    ${get_manifests(false).join(',\n')}
+    ${get_manifests(false).join(",\n")}
     };`,
-		'-esm-cache-bust.js': `export default {
+		"-esm-cache-bust.js": `export default {
       'languages': ${JSON.stringify(languages)},
-      ${get_manifests(true).join(',\n')}
+      ${get_manifests(true).join(",\n")}
       };`,
-		'.d.ts': `
+		".d.ts": `
         import type { manifest_module } from '@sleetch/core/compiler';
         declare const manifest: manifest_module['default'];
         export default manifest;

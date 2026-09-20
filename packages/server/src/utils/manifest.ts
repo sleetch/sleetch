@@ -1,29 +1,26 @@
-import type { manifest_module } from '@sleetch/core/compiler';
+import type { manifest_module } from "@sleetch/core/compiler";
 
 export const isBareESM =
-	typeof module === 'undefined' &&
-	typeof import.meta !== 'undefined' &&
-	typeof process !== 'undefined' &&
+	typeof module === "undefined" &&
+	typeof import.meta !== "undefined" &&
+	typeof process !== "undefined" &&
 	(!import.meta.env || (!import.meta.env.DEV && !import.meta.env.PROD));
 
-
 const dynamic_import = new Function(
-	'specifier',
-	'return import(specifier)'
+	"specifier",
+	"return import(specifier)",
 ) as (specifier: string) => Promise<any>;
 
 export const get_manifest = async () => {
 	if (isBareESM) {
-		const { default: manifest }: manifest_module =
-			await dynamic_import(
-				`@sleetch/client/manifest-cache-bust?t=${Date.now()}`
-			);
-
+		const base = import.meta.resolve("@sleetch/client/manifest-cache-bust");
+		const { default: manifest }: manifest_module = await dynamic_import(
+			`${base}?t=${Date.now()}`,
+		);
 		return manifest;
 	}
 
 	const { default: manifest }: manifest_module =
-		await import('@sleetch/client/manifest');
-
+		await import("@sleetch/client/manifest");
 	return manifest;
 };

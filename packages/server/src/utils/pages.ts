@@ -1,5 +1,5 @@
 import { clean_path } from "@sleetch/client";
-import { resolve_language } from "@sleetch/core/compiler";
+import { resolve_language } from "@sleetch/core/compiler/utils";
 import { get_manifest } from "./manifest";
 import { get_static_paths } from "./tree";
 

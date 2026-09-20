@@ -1,8 +1,5 @@
-import {
-	resolve_language,
-	to_flat_tree,
-	type tree_module,
-} from "@sleetch/core/compiler";
+import { to_flat_tree, type tree_module } from "@sleetch/core/compiler";
+import { resolve_language } from "@sleetch/core/compiler/utils";
 import type { path_transformer } from "@sleetch/core/configuration";
 import { get_manifest } from "./manifest";
 

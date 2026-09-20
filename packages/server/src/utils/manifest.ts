@@ -4,8 +4,11 @@ Needs check side effects as it is registering a global resolver with module.regi
 */
 
 import module, { createRequire } from "node:module";
+import { join } from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 import type { manifest_module } from "@sleetch/core/compiler";
+import { ROOT_FOLDER } from "@sleetch/core/compiler/utils";
 
 const native_import = new Function("u", "return import(u)") as (
 	u: string,
@@ -67,9 +70,21 @@ const can_native_resolve = () => {
 		return false;
 	}
 };
+
+const resolve_from_project = (specifier: string, root?: string) => {
+	if (!root) return import.meta.resolve(specifier);
+	try {
+		const require = createRequire(join(root, "noop.js"));
+		return pathToFileURL(require.resolve(specifier)).href;
+	} catch {
+		throw new Error(
+			`Cannot resolve "${specifier}" from ${root}. Is @sleetch/client installed in this project?`,
+		);
+	}
+};
 export const get_manifest = async ({
 	fresh = false,
-	root,
+	root = ROOT_FOLDER,
 }: { fresh?: boolean; root?: string } = {}): Promise<
 	manifest_module["default"]
 > => {
@@ -90,7 +105,10 @@ export const get_manifest = async ({
 	if (root) clear_require_cache(root);
 
 	const v = next_version();
-	const url = import.meta.resolve("@sleetch/client/manifest-cache-bust");
+	const url = resolve_from_project(
+		"@sleetch/client/manifest-cache-bust",
+		root,
+	);
 	const mod = await native_import(`${url}?${PARAM}=${v}`);
 	return mod.create_manifest(v);
 };

@@ -1,12 +1,12 @@
-import { clean_path } from '@sleetch/client';
-import { resolve_language } from '@sleetch/core/compiler';
-import { get_manifest } from './manifest';
-import { get_static_paths } from './tree';
+import { clean_path } from "@sleetch/client";
+import { resolve_language } from "@sleetch/core/compiler";
+import { get_manifest } from "./manifest";
+import { get_static_paths } from "./tree";
 
 export const get_page = async (_path: string, _language?: string) => {
 	_path = clean_path(_path);
 	const language = resolve_language(_language);
-	const manifest = await get_manifest();
+	const manifest = await get_manifest({ fresh: true });
 	for (const path of Object.keys(manifest[language].pages)) {
 		if (path === _path) {
 			const { default: page } = await manifest[language].pages[path]();
@@ -23,7 +23,10 @@ export const get_page = async (_path: string, _language?: string) => {
 };
 
 export const get_pages = async (_language?: string) => {
-	const { language, paths } = await get_static_paths(async ({ path, language }) => await get_page(path, language), _language);
+	const { language, paths } = await get_static_paths(
+		async ({ path, language }) => await get_page(path, language),
+		_language,
+	);
 	const pages = (await Promise.all(paths)).filter((x) => x !== undefined);
 	return { language, pages };
 };

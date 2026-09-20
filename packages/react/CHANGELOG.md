@@ -1,5 +1,11 @@
 # @sleetch/react
 
+## 1.0.11
+
+### Patch Changes
+
+- @sleetch/client@1.0.11
+
 ## 1.0.10
 
 ### Patch Changes

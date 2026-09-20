@@ -93,7 +93,6 @@ export const studio_command: command<typeof options> = {
 
 			runtime.watcher.on("updated-tree", async (language) => {
 				const { tree } = await get_tree(language);
-				console.log("TREE", tree);
 				server.broadcast({
 					id: "update-tree",
 					data: {

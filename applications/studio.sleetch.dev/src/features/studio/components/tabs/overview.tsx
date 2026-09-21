@@ -182,7 +182,7 @@ export function Overview() {
             <p className="text-3xl font-bold font-brand">{dynamicSourcesCount}</p>
           </Card>
         </div>
-        <h1 className="text-2xl">Repartition Analysis</h1>
+        <h1 className="text-2xl pt-3">Repartition Analysis</h1>
 
         <div className="grid grid-cols-4 gap-3">
           <Card icon={ChartBarBig} title="Pages / Languages" className="col-span-2">

@@ -123,21 +123,25 @@ const renderShape = (props: any, chartId: string) => {
         style={{ outline: 'none' }}
       />
 
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle - 5}
-        endAngle={endAngle + 5}
-        innerRadius={(outerRadius ?? 0) + 6}
-        outerRadius={(outerRadius ?? 0) + 10}
-        fill={'var(--border)'}
-      />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={'var(--border)'} fill="none" />
-      <circle cx={ex} cy={ey} r={2} fill={'var(--border)'} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="var(--foreground)">{`${payload['name']}`}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="var(--muted-foreground)">
-        {`${((percent ?? 1) * 100).toFixed(0)}%`}
-      </text>
+      {percent !== 0 && (
+        <>
+          <Sector
+            cx={cx}
+            cy={cy}
+            startAngle={startAngle - (percent !== 100 ? 5 : 0)}
+            endAngle={endAngle + (percent !== 100 ? 5 : 1)}
+            innerRadius={(outerRadius ?? 0) + 6}
+            outerRadius={(outerRadius ?? 0) + 10}
+            fill={'var(--border)'}
+          />
+          <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={'var(--border)'} fill="none" />
+          <circle cx={ex} cy={ey} r={2} fill={'var(--border)'} stroke="none" />
+          <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="var(--foreground)">{`${payload['name']}`}</text>
+          <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="var(--muted-foreground)">
+            {`${((percent ?? 1) * 100).toFixed(0)}%`}
+          </text>
+        </>
+      )}
     </g>
   );
 };
@@ -227,9 +231,9 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
                 : undefined
             }
             margin={{
-              top: 20,
+              top: 50,
               right: 120,
-              bottom: 20,
+              bottom: 50,
               left: 120,
             }}
           >

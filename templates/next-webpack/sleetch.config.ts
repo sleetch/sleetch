@@ -1,12 +1,17 @@
-import type { sleetch_configuration } from '@sleetch/server';
+import type { sleetch_configuration } from "@sleetch/server";
 
 export default {
 	languages: {
-		default: 'en',
+		default: "en",
 	},
-	sources: [{ type: 'file-system', path: './src/documentation' }],
+	sources: [
+		{
+			type: "git-file-system",
+			url: "https://github.com/sleetch/iris-documentation",
+		},
+	],
 	markdown: {
-		engine: 'marked',
+		engine: "marked",
 		plugins: {
 			syntax_highlighting: true,
 			latex: true,

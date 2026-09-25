@@ -7,7 +7,7 @@
 	padding: var(--_sleetch-padding-root);
 	padding-left: 1em;
 	padding-right: 1em;
-	border-left: 1px dashed var(--_sleetch-color-border);
+	/*border-left: 1px dashed var(--_sleetch-color-border); */
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
@@ -43,7 +43,7 @@
 	top: 0;
 	bottom: 0;
 	width: 1px;
-	background: var(--_sleetch-color-muted);
+	/* background: var(--_sleetch-color-muted); */
 	z-index: 0;
 }
 
@@ -57,7 +57,8 @@
 	transform: translate(-50%, -50%);
 	z-index: 1;
 	pointer-events: none;
-	transition: top var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+	transition: top var(--_sleetch-transition-duration)
+		var(--_sleetch-transition-timing);
 }
 
 .list {
@@ -82,7 +83,7 @@
 
 	display: block;
 	width: 100%;
-	margin-left: -1px;
+	margin-left: -5px;
 	/* centre la bordure de 3px sur la ligne de 1px */
 	padding-block: 0.4em;
 	padding-left: calc(1em + (var(--depth) - 1) * 0.85em);
@@ -101,10 +102,14 @@
 	text-overflow: ellipsis;
 
 	transition:
-		color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-		border-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-		background-color var(--_sleetch-transition-duration) var(--_sleetch-transition-timing),
-		transform var(--_sleetch-transition-duration) var(--_sleetch-transition-timing);
+		color var(--_sleetch-transition-duration)
+			var(--_sleetch-transition-timing),
+		border-color var(--_sleetch-transition-duration)
+			var(--_sleetch-transition-timing),
+		background-color var(--_sleetch-transition-duration)
+			var(--_sleetch-transition-timing),
+		transform var(--_sleetch-transition-duration)
+			var(--_sleetch-transition-timing);
 }
 
 .link:hover {
@@ -113,7 +118,10 @@
 
 .active {
 	border-left-color: var(--_sleetch-color-text-primary);
-	background: color-mix(in srgb, var(--_sleetch-color-text-underline) 35%, transparent);
+	background: color-mix(
+		in srgb,
+		var(--_sleetch-color-text-underline) 35%,
+		transparent
+	);
 	color: var(--_sleetch-color-text);
-	transform: translateX(4px);
 }

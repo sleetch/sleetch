@@ -1,6 +1,6 @@
-import type { content } from '../types/content';
-import type { category, page, tree_object } from '../types/routing';
-import { to_flat_tree } from '../utils/flat-tree';
+import type { content } from "../types/content";
+import type { category, page, tree_object } from "../types/routing";
+import { to_flat_tree } from "../utils/flat-tree";
 
 export class sleetch_router {
 	private trees: Map<string, tree_object[]> = new Map();
@@ -25,14 +25,18 @@ export class sleetch_router {
 		return [...this.trees.keys()];
 	}
 
-	insert_object(language: string, object: tree_object, tree: tree_object[] = this.get_tree(language)) {
+	insert_object(
+		language: string,
+		object: tree_object,
+		tree: tree_object[] = this.get_tree(language),
+	) {
 		const index = tree.findIndex((item) => item.path === object.path);
 
 		// No existing node: simply insert it.
 		if (index === -1) {
 			tree.push(object);
 
-			if (object.type === 'page') {
+			if (object.type === "page") {
 				this.index_page(language, object);
 			} else if (object.page) {
 				this.index_page(language, object.page);
@@ -49,7 +53,7 @@ export class sleetch_router {
 		// - frontmatter
 		// - page
 		// - children
-		if (existing.type === 'category' && object.type === 'category') {
+		if (existing.type === "category" && object.type === "category") {
 			this.merge_category(language, existing, object);
 			return;
 		}
@@ -58,7 +62,7 @@ export class sleetch_router {
 		//
 		// A page having the same path as a category
 		// becomes the category's page.
-		if (existing.type === 'category' && object.type === 'page') {
+		if (existing.type === "category" && object.type === "page") {
 			this.set_category_page(language, existing, object);
 			return;
 		}
@@ -67,7 +71,7 @@ export class sleetch_router {
 		//
 		// Convert the existing page into the category's page,
 		// then merge the category.
-		if (existing.type === 'page' && object.type === 'category') {
+		if (existing.type === "page" && object.type === "category") {
 			const merged: category<tree_object, content> = {
 				...object,
 				page: object.page ?? existing,
@@ -88,7 +92,7 @@ export class sleetch_router {
 		// page + page
 		//
 		// Same path means replacement.
-		if (existing.type === 'page' && object.type === 'page') {
+		if (existing.type === "page" && object.type === "page") {
 			this.unindex_page(language, existing);
 
 			tree[index] = object;
@@ -97,7 +101,11 @@ export class sleetch_router {
 		}
 	}
 
-	private merge_category(language: string, target: category<tree_object, content>, source: category<tree_object, content>) {
+	private merge_category(
+		language: string,
+		target: category<tree_object, content>,
+		source: category<tree_object, content>,
+	) {
 		// Merge frontmatter.
 		if (source.frontmatter !== undefined) {
 			target.frontmatter = source.frontmatter;
@@ -114,7 +122,11 @@ export class sleetch_router {
 		}
 	}
 
-	private set_category_page(language: string, category: category<tree_object, content>, page: page<content>) {
+	private set_category_page(
+		language: string,
+		category: category<tree_object, content>,
+		page: page<content>,
+	) {
 		if (category.page) {
 			this.unindex_page(language, category.page);
 		}
@@ -125,7 +137,10 @@ export class sleetch_router {
 	}
 
 	private index_page(language: string, page: page<content>) {
-		this.get_source_index(language).set(this.source_key(page.content), page.path);
+		this.get_source_index(language).set(
+			this.source_key(page.content),
+			page.path,
+		);
 	}
 
 	private unindex_page(language: string, page: page<content>) {
@@ -138,13 +153,19 @@ export class sleetch_router {
 		}
 	}
 
-	join_object(language: string, object: tree_object, tree: tree_object[] = this.get_tree(language)) {
+	join_object(
+		language: string,
+		object: tree_object,
+		tree: tree_object[] = this.get_tree(language),
+	) {
 		// A source can only exist once in the routing tree.
 		//
 		// If the same source was previously associated with another
 		// path, remove the old node before inserting the new one.
-		if (object.type === 'page') {
-			const previous_path = this.get_source_index(language).get(this.source_key(object.content));
+		if (object.type === "page") {
+			const previous_path = this.get_source_index(language).get(
+				this.source_key(object.content),
+			);
 
 			if (previous_path && previous_path !== object.path) {
 				this.remove_object_from_path(language, previous_path);
@@ -166,13 +187,17 @@ export class sleetch_router {
 		this.remove_object_from_path(language, object.path);
 	}
 
-	remove_object_from_path(language: string, path: string, tree: tree_object[] = this.get_tree(language)): boolean {
+	remove_object_from_path(
+		language: string,
+		path: string,
+		tree: tree_object[] = this.get_tree(language),
+	): boolean {
 		const index = tree.findIndex((object) => object.path === path);
 
 		if (index !== -1) {
 			const [removed] = tree.splice(index, 1);
 
-			if (removed.type === 'page') {
+			if (removed.type === "page") {
 				this.unindex_page(language, removed);
 			} else {
 				if (removed.page) {
@@ -186,14 +211,18 @@ export class sleetch_router {
 		}
 
 		for (const node of tree) {
-			if (node.type !== 'category') {
+			if (node.type !== "category") {
 				continue;
 			}
 
 			if (this.remove_object_from_path(language, path, node.children)) {
 				// A category can still be meaningful if it has a page
 				// or frontmatter, even after all its children disappear.
-				if (node.children.length === 0 && node.page === undefined && node.frontmatter === undefined) {
+				if (
+					node.children.length === 0 &&
+					node.page === undefined &&
+					node.frontmatter === undefined
+				) {
 					const node_index = tree.indexOf(node);
 
 					if (node_index !== -1) {
@@ -210,7 +239,7 @@ export class sleetch_router {
 
 	private unindex_tree_pages(language: string, tree: tree_object[]) {
 		for (const object of tree) {
-			if (object.type === 'page') {
+			if (object.type === "page") {
 				this.unindex_page(language, object);
 				continue;
 			}
@@ -239,32 +268,40 @@ export class sleetch_router {
 	}
 
 	private source_key(content: content): string {
-		if (content.type === 'file-system') {
+		if (content.type === "file-system") {
 			return `file-system:${content.file_path}`;
 		}
+		if (content.type === "git-file-system") {
+			return `git-file-system:${content.file_path}`;
+		}
 
-		return 'unknown';
+		return "unknown";
 	}
 
-	private ensure_category_path(language: string, path: string, tree: tree_object[] = this.get_tree(language)): tree_object[] {
-		const segments = path.split('/').filter(Boolean);
+	private ensure_category_path(
+		language: string,
+		path: string,
+		tree: tree_object[] = this.get_tree(language),
+	): tree_object[] {
+		const segments = path.split("/").filter(Boolean);
 
 		// The last segment is the object itself.
 		segments.pop();
 
 		let current_tree = tree;
-		let cumulative = '';
+		let cumulative = "";
 
 		for (const segment of segments) {
 			cumulative = `${cumulative}/${segment}`;
 
 			let category = current_tree.find(
-				(object): object is category<tree_object, content> => object.type === 'category' && object.path === cumulative,
+				(object): object is category<tree_object, content> =>
+					object.type === "category" && object.path === cumulative,
 			);
 
 			if (!category) {
 				category = {
-					type: 'category',
+					type: "category",
 					path: cumulative,
 					children: [],
 				};

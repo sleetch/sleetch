@@ -12,6 +12,7 @@ import { sleetch_router } from "./router";
 import type { sleetch_source, sleetch_source_details } from "./source";
 import { sleetch_cloud_source } from "./sources/cloud";
 import { sleetch_file_system_source } from "./sources/file-system";
+import { sleetch_git_file_system_source } from "./sources/git-file-system";
 
 export class sleetch_runtime {
 	private sources_map: Map<
@@ -95,6 +96,13 @@ export class sleetch_runtime {
 				}
 				if (source.type === "cloud") {
 					const instance = new sleetch_cloud_source({
+						source,
+						events_emitter: this.event_emitter,
+					});
+					this.sources_map.set(instance.id, instance);
+				}
+				if (source.type === "git-file-system") {
+					const instance = new sleetch_git_file_system_source({
 						source,
 						events_emitter: this.event_emitter,
 					});

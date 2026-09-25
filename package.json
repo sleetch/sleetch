@@ -28,6 +28,6 @@
 		"./applications/*"
 	],
 	"dependencies": {
-		"pacwich": "^0.7.2"
+		"pacwich": "^0.7.3"
 	}
 }

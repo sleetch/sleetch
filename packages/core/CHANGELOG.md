@@ -1,5 +1,11 @@
 # @sleetch/core
 
+## 1.0.12
+
+### Patch Changes
+
+- 51ee29a: - Added git file system sources
+
 ## 1.0.11
 
 ## 1.0.10

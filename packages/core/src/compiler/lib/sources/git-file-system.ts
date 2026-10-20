@@ -13,6 +13,7 @@ import type { category, page } from "@/compiler/types/routing";
 import type { file_info } from "@/compiler/types/watcher";
 import {
 	DATA_PAGE_NAME,
+	GIT_SOURCES_CACHE_FOLDER,
 	INDEX_PAGE_NAME,
 	PAGES_CACHE_FOLDER,
 } from "@/compiler/utils/constants";
@@ -32,7 +33,6 @@ import { sleetch_source } from "../source";
 const execFileAsync = promisify(execFile);
 
 const GIT_POLL_INTERVAL_MS = 15_000;
-const GIT_SOURCES_CACHE_FOLDER = ".sleetch/git-sources";
 
 export type configuration_git_file_system_source = z.infer<
 	typeof sleetch_git_file_system_source.configuration_schema
@@ -251,11 +251,7 @@ export class sleetch_git_file_system_source extends sleetch_source<
 	private ensure_repo_promise?: Promise<void>;
 
 	private get repo_dir(): string {
-		return path.join(
-			process.cwd(),
-			GIT_SOURCES_CACHE_FOLDER,
-			this.repository_hash,
-		);
+		return path.join(GIT_SOURCES_CACHE_FOLDER, this.repository_hash);
 	}
 
 	private is_git_internal(file_path: string): boolean {

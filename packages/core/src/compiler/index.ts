@@ -1,6 +1,10 @@
 export { sleetch_runtime } from "@/compiler/lib/runtime";
 export type { sleetch_source_details } from "@/compiler/lib/source";
-export { CACHE_FOLDER, ROOT_FOLDER } from "@/compiler/utils/constants";
+export {
+	CACHE_FOLDER,
+	GIT_SOURCES_CACHE_FOLDER,
+	ROOT_FOLDER,
+} from "@/compiler/utils/constants";
 export { to_flat_tree } from "@/compiler/utils/flat-tree";
 export type {
 	category_module,

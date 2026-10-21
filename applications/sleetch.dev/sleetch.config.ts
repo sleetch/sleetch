@@ -5,7 +5,7 @@ export default {
     default: 'en',
   },
   sources: [
-    //{ type: 'git-file-system', url: 'https://github.com/sleetch/iris-documentation', branch: 'main', token" },
+    // { type: 'git-file-system', url: 'https://github.com/sleetch/iris-documentation', branch: 'main' },
     { type: 'file-system', path: './src/documentation' },
     // { type: 'cloud', server: '', secret: 'ddd' },
   ],

@@ -1,9 +1,9 @@
 import { get_page } from '@sleetch/server';
 import { data } from 'react-router';
-import { generate_open_graph } from '@/features/documentation/open-graph/utils';
 import type { Route } from './+types/open-graph';
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
+  const { generate_open_graph } = await import('@/features/documentation/open-graph/utils');
   const url = new URL(request.url);
   const path = url.searchParams.get('path');
 

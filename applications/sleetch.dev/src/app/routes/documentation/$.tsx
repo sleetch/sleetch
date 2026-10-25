@@ -1,14 +1,14 @@
 import manifest from '@sleetch/client/manifest';
 import {
-	Button,
-	DocumentationSidebarContent,
-	DocumentationToc,
-	File,
-	FileSystem,
-	Folder,
-	PageContent,
-	PageHeader,
-	PageNavigation,
+  Button,
+  DocumentationSidebarContent,
+  DocumentationToc,
+  File,
+  FileSystem,
+  Folder,
+  PageContent,
+  PageHeader,
+  PageNavigation,
 } from '@sleetch/react';
 import { get_page, get_tree } from '@sleetch/server';
 import { data } from 'react-router';
@@ -16,41 +16,49 @@ import { Book } from '@/features/storybook/book';
 import type { Route } from './+types/$';
 
 export function meta({ loaderData: data }: Route.MetaArgs) {
-	if (data) {
-		return [{ title: data.page.frontmatter.title }, { name: 'description', content: data.page.frontmatter.description }];
-	}
-	return [];
+  if (data) {
+    return [
+      { title: data.page.frontmatter.title },
+      { name: 'description', content: data.page.frontmatter.description },
+      { property: 'og:title', content: data.page.frontmatter.title },
+      { property: 'og:description', content: data.page.frontmatter.description },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:image', content: data.open_graph },
+    ];
+  }
+  return [];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-	const page_data = await get_page(`/${params['*'] ?? ''}`);
-	if (!page_data) throw data(null, { status: 404 });
-	const tree = await get_tree();
-	const { default: page } = await manifest[page_data.language].pages[page_data.path]();
-	return { page, tree };
+  const path = `/${params['*'] ?? ''}`;
+  const page_data = await get_page(path);
+  if (!page_data) throw data(null, { status: 404 });
+  const tree = await get_tree();
+  const { default: page } = await manifest[page_data.language].pages[page_data.path]();
+  return { page, tree, open_graph: `https://sleetch.dev/documentation/open-graph?path=${page_data.path}` };
 }
 
 export default function Page({ loaderData: { page } }: Route.ComponentProps) {
-	return (
-		<>
-			<DocumentationSidebarContent>
-				<PageHeader page={page} />
-				<PageContent
-					baseUrl={'http://localhost:5173/'}
-					page={page}
-					components={{
-						Button,
-						FileSystem,
-						File,
-						Folder,
-						Book,
-					}}
-				/>
-				<PageNavigation />
-			</DocumentationSidebarContent>
-			<DocumentationToc page={page} />
-		</>
-	);
+  return (
+    <>
+      <DocumentationSidebarContent>
+        <PageHeader page={page} />
+        <PageContent
+          baseUrl={'http://localhost:5173/'}
+          page={page}
+          components={{
+            Button,
+            FileSystem,
+            File,
+            Folder,
+            Book,
+          }}
+        />
+        <PageNavigation />
+      </DocumentationSidebarContent>
+      <DocumentationToc page={page} />
+    </>
+  );
 }
 
 export { ErrorBoundary } from '@/shared/components/error-boundary';

@@ -6,19 +6,37 @@ export class sleetch_router {
 	private trees: Map<string, tree_object[]> = new Map();
 	private source_index: Map<string, Map<string, string>> = new Map();
 
-	get_tree(language: string): tree_object[] {
+	get_tree(
+		language: string,
+		filter_excluded: boolean = false,
+	): tree_object[] {
 		let tree = this.trees.get(language);
 
 		if (!tree) {
 			tree = [];
 			this.trees.set(language, tree);
 		}
-
+		if (filter_excluded) return this.filter_excluded(tree);
 		return tree;
 	}
 
+	filter_excluded(tree: tree_object[]): tree_object[] {
+		return tree
+			.filter((object) => !object.frontmatter?.exclude)
+			.map((object) => {
+				if (object.type !== "category") {
+					return object;
+				}
+
+				return {
+					...object,
+					children: this.filter_excluded(object.children),
+				};
+			});
+	}
+
 	get_flat_tree(language: string) {
-		return to_flat_tree(this.get_tree(language));
+		return to_flat_tree(this.get_tree(language, true));
 	}
 
 	get_languages(): string[] {

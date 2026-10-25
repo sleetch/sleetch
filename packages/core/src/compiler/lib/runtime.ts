@@ -140,7 +140,7 @@ export class sleetch_runtime {
 			console.time("runtime.builder.build");
 			await this.router.load();
 			for (const language of this._router.get_languages()) {
-				for (const object of this._router.get_tree(language)) {
+				for (const object of this._router.get_tree(language, true)) {
 					await this.builder.build_object(language, object);
 				}
 				this.build_tree(language);
@@ -166,7 +166,7 @@ export class sleetch_runtime {
 	};
 
 	private build_tree(language: string) {
-		const tree = this._router.get_tree(language);
+		const tree = this._router.get_tree(language, true);
 		const files = generate_tree(tree);
 		for (const extension of Object.keys(files) as (keyof typeof files)[]) {
 			write_file(

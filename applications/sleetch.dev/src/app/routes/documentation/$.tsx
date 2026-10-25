@@ -35,7 +35,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   if (!page_data) throw data(null, { status: 404 });
   const tree = await get_tree();
   const { default: page } = await manifest[page_data.language].pages[page_data.path]();
-  return { page, tree, open_graph: `https://sleetch.dev/documentation/open-graph?path=${page_data.path}` };
+  return { page, tree, open_graph: `http://localhost:5173/documentation/open-graph.png?path=${page_data.path}` };
 }
 
 export default function Page({ loaderData: { page } }: Route.ComponentProps) {

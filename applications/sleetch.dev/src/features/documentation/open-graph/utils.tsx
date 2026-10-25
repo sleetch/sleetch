@@ -1,10 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import satori from 'satori';
+import sharp from 'sharp';
 import Logo from '@/assets/images/branding/logo.svg?react';
 
-const satoshi = await readFile(fileURLToPath(new URL('../../../assets/fonts/satoshi/Satoshi-Regular.ttf', import.meta.url)));
-
+const satoshi = await readFile(resolve(process.cwd(), 'src/assets/fonts/satoshi/Satoshi-Regular.ttf'));
 export const generate_open_graph = async (data: { title: string; description: string }) => {
   const background = '#0a0a0a';
   const foreground = '#fafafa';
@@ -64,9 +64,11 @@ export const generate_open_graph = async (data: { title: string; description: st
     }
   );
 
-  return new Response(svg, {
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return new Response(png, {
     headers: {
-      'Content-Type': 'image/svg+xml; charset=utf-8',
+      'Content-Type': 'image/png; charset=utf-8',
       'Cache-Control': 'public, max-age=3600',
     },
   });

@@ -52,7 +52,7 @@ export const generate_open_graph = async (data: { title: string; description: st
     </div>,
     {
       width: 1200,
-      height: 650,
+      height: 630,
       fonts: [
         {
           name: 'Satoshi',
